@@ -1,0 +1,1 @@
+<?php App::import('Vendor','xtcpdf');$pdf = new XTCPDF('L', PDF_UNIT, 'A4', true, 'UTF-8', false);//$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);$pdf->AddPage();$html = $outputcompra;$pdf->writeHTML($html, true, false, true, false, '');$pdf->lastPage();echo $pdf->Output('E:/' . DS . $name, 'F');echo "pdf generated";

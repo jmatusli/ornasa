@@ -1,0 +1,882 @@
+/*
+	light #F77C54
+	original #FB4001
+	dark #C43201
+	*/
+	/*
+	input[type="text"]{
+		text-transform: uppercase;
+	}
+	*/
+	/*
+	specific container configuration from globalsupply
+	#container{
+		background:#1A7EFF;
+		color: #fff;
+		font-family:helvetica,verdana,'lucida grande',arial,sans-serif;
+		font-size:14px;
+		margin: 0 auto;
+		width:1600px;
+	}
+	*/
+  
+  h1 {
+    font-size:36px;
+  }
+  
+	#ornasa{
+		background:#F77C54;
+		color: #fff;
+		font-family:Verdana,'Courier New','lucida grande',arial,helvetica,sans-serif;
+		font-size:14px;
+		margin: 0;
+	}
+	
+	#ornasa label{
+		width:15%;
+		font-weight:bold;
+		vertical-align:top;
+	}
+	
+	#container form .container-fluid{
+		width:100%;
+	}
+  
+	#container form div.container div,
+	#container form div.container-fluid div{
+		padding:0;
+    clear:none!important;
+	}
+  
+  #container form div.container div.row,
+	#container form div.container-fluid div.row{
+		clear:both;
+	}
+	
+	#container form div.container p.clearleft,
+	#container form div.container-fluid p.clearleft,
+	#container form div.container div.clearleft,
+	#container form div.container-fluid div.clearleft {
+		clear:left !important;
+	}
+	
+	#container form div.container div.clearright,
+	#container form div.container-fluid div.clearright {
+		clear:right !important;
+	}
+	
+	#container form .container div h3,
+	#container form .container-fluid div h3{
+		margin-top:0em;
+	}
+	
+	#container .container label,
+	#container .container-fluid label{
+		width:30%;
+	}
+
+	#container div.container-fluid dl,
+  #container dl.dl100
+  {
+		width:100%;
+	}
+	
+	#container div.container-fluid dl dd,
+  #container dl.dl100 dd
+  {
+		float:left;
+		margin-left:40%;
+		width:50%;
+		
+	}
+	
+	#container .container .labelfirst label,
+	#container .container-fluid .labelfirst label{
+		width:80%;
+	}
+	
+	#container div.labelfirst label{
+		margin-left:0%;
+	}
+	#container div.labelfirst input[type=checkbox]{
+		width:5%;
+	}
+
+	#container div.label50 label{
+		width:50%;
+	}
+	#container div.label50 input{
+		width:50%;
+	}
+	
+	div.useractions {
+		background-color:#00FF00;
+	}
+	
+	.useractions .nav a:hover, .useractions .nav a:focus {
+		background-color: #0e0;
+		border-color: #428bca;
+	}
+	
+	.useractions .nav .open>a, .useractions .nav .open>a:hover, .useractions .nav .open>a:focus {
+		background-color: #0e0;
+		border-color: #428bca;
+	}
+	
+	.useractions .dropdown-menu {
+		background-color: #0e0;
+	}
+	
+	.lightgreen {
+		background-color:#C8FF91 !important;
+	}
+
+	#ornasa div.modal-dialog label,
+	#ornasa div.container-fluid label {
+		width:40%;
+	}
+  
+  #ornasa div.modal-dialog select,
+  #ornasa div.modal-dialog input{
+    width:55%;
+  }
+ 
+  #ornasa div.modal-dialog td select,
+  #ornasa div.modal-dialog td input{
+    width:100%;
+  }
+	
+	#ornasa input[readonly='readonly']{
+		border:#ffffff 0px;
+	}
+	
+	#ornasa div.machines div.input label,
+	#ornasa div.machines div.input input 
+	{
+		width:50%;
+	}
+	#ornasa div.machines div.input.checkbox input
+	{
+		width:100%;
+	}
+	
+  #container .checkboxleft label{
+		padding-left:10%!important;
+		width:40%!important;
+	}
+	#container .checkboxleft input{
+		width:10%!important;
+	}
+  #container .checkboxleftbig label{
+		padding-left:10%;
+		width:80% !important;
+	}
+	#container .checkboxleftbig input{
+		width:10%;
+	}
+	
+	#ornasa input.nobox {
+		border:0px;
+		border-color:#FFFFFF;
+	}
+	
+  #ornasa .allowed {
+		background-color:#B6FF00;
+	}
+	#ornasa .redbg {
+		background-color:#FF6A00;
+	}
+	#ornasa .greenbg {
+		background-color:#00FF00;
+	}
+	#ornasa .greentext {
+		color:#00FF00;
+	}
+	#ornasa .darkgreentext {
+		color:#008800;
+	}
+	#ornasa .yellowbg {
+		background-color:#FFFF00;
+	}
+	
+	span.currency,
+	span.currencyleft
+	{
+		float:left;
+	}
+	
+	#ornasa input.red{
+		color:#ff0000;
+	}
+		
+	
+	#ornasa .amountright
+	{
+		float:right;
+		text-align:right;
+	}
+	
+	#ornasa .italic {
+		font-style:italic;
+	}
+	
+	#ornasa .fullwidth{
+		width:100%;
+		border-right:0;
+	}
+	
+  div.radioset {
+    width:100%;
+		float:left;
+		clear:none;
+  }
+	#AccountingCodeAddForm div.radioset,
+	#AccountingCodeEditForm div.radioset{
+		width:45%;
+		float:left;
+		clear:none;
+	}
+	
+  div.radioset legend,
+	#AccountingCodeAddForm div.radioset legend,
+	#AccountingCodeEditForm div.radioset legend{
+		margin-bottom:0px;
+		color:#000000;
+		font-size:120%;
+	}
+	
+  div.radioset input,
+	#AccountingCodeAddForm div.radioset input,
+	#AccountingCodeEditForm div.radioset input {
+		width:20%!important;
+		display:inline-block;
+		margin:0px;
+	}
+	
+  div.radioset label,
+	#AccountingCodeAddForm div.radioset label,
+	#AccountingCodeEditForm div.radioset label {
+		width:70%!important;
+		display:inline-block;
+		margin:0px;
+	}
+		
+	#ornasa #OrderAddSaleForm div,
+	#ornasa #OrderEditSaleForm div,
+	#ornasa #OrderAddRemissionForm div,
+	#ornasa #OrderEditRemissionForm div,
+	#ornasa #CashReceiptAddForm div,
+	#ornasa #CashReceiptEditForm div,
+	#ornasa #ChequeAddForm div,
+	#ornasa #ChequeEditForm div,
+	#ornasa #TransferAddForm div,
+	#ornasa #TransferEditForm div
+	{
+		padding:0em 0.5em;
+		margin:0 0 0.5em 0;
+	}
+	#ornasa #OrderAddSaleForm  label,
+	#ornasa #OrderEditSaleForm  label,
+	#ornasa #OrderAddRemissionForm  label,
+	#ornasa #OrderEditRemissionForm  label,
+	#ornasa #CashReceiptAddForm  label,
+	#ornasa #CashReceiptEditForm  label,
+	#ornasa #ChequeAddForm label,
+	#ornasa #ChequeEditForm label,
+	#ornasa #TransferAddForm label,
+	#ornasa #TransferEditForm label
+	{
+		width:25%;
+	} 
+	#ornasa #OrderAddSaleForm .righttop input,
+	#ornasa #OrderEditSaleForm .righttop input,
+	#ornasa #OrderAddRemissionForm .righttop input,
+	#ornasa #OrderEditRemissionForm .righttop input,
+	#ornasa #CashReceiptAddForm .righttop input,
+	#ornasa #CashReceiptEditForm .righttop input,
+	{
+		width:20%;
+	}
+	#ornasa #OrderAddSaleForm .righttop label, #ornasa #OrderAddSaleForm .righttop input,
+	#ornasa #OrderEditSaleForm .righttop label, #ornasa #OrderEditSaleForm .righttop input,
+	#ornasa #OrderAddRemissionForm .righttop label, #ornasa #OrderAddRemissionForm .righttop input,
+	#ornasa #OrderEditRemissionForm .righttop label, #ornasa #OrderEditRemissionForm .righttop input
+	{
+		width:40%;
+	}
+	#ornasa #CashReceiptAddForm .righttop label, #ornasa #CashReceiptAddForm .righttop input,
+	#ornasa #CashReceiptEditForm .righttop label, #ornasa #CashReceiptEditForm .righttop input
+	{
+		width:45%;
+	}
+	#ornasa #OrderAddSaleForm .checkbox input,
+	#ornasa #OrderEditSaleForm .checkbox input,
+	#ornasa #OrderAddRemissionForm .checkbox input,
+	#ornasa #OrderEditRemissionForm .checkbox input,
+	#ornasa #CashReceiptAddForm .checkbox input,
+	#ornasa #CashReceiptEditForm .checkbox input
+	{
+		float:left;
+		width:5%;
+		margin-left:25%;
+	}
+	
+	#ornasa #CashReceiptAddForm input,
+	#ornasa #CashReceiptEditForm input,
+	#ornasa #CashReceiptAddForm textarea,
+	#ornasa #CashReceiptEditForm textarea,
+	#ornasa #CashReceiptAddForm select,
+	#ornasa #CashReceiptEditForm select
+	{
+		font-size:100%;
+		padding:0;
+	}
+	
+	#ornasa #invoicesForClient div.input,
+	#ornasa #invoicesForClient div.input input,
+	#ornasa #invoicesForClient div.input select
+	{
+		width:100%;
+		padding:0;
+	}
+	
+	#ornasa .italic{
+		font-style:italic;
+	}
+	
+	#ornasa div input.narrow{
+		width:30%;
+	}
+	
+	#ornasa width60 {
+		width:60%;
+	}
+	
+	#ornasa div.narrow{
+		width:80%;
+	}
+	
+	#ornasa div.righttop dl {
+		width:100%;
+	}
+	#ornasa div.righttop dt {
+		width:40%;
+		clear:left;
+		display:inline-block;
+	}
+	#ornasa div.righttop dd {
+		width:40%;
+		display:inline-block;
+		margin:0;
+		clear:right;
+	}
+	
+	#ornasa .checkbox label{
+		padding-left:0em;
+		width:15%;
+	}
+	
+	#ornasa input{
+		width:60%;
+	}
+	
+	#ornasa .checkbox input{
+		padding-left:0em;
+		width:30%;
+		margin-left:0%;
+	}
+	
+	#ornasa .submit input{
+		width:10em;
+	}
+	
+	#ornasa .centered{
+		text-align:center;
+	}
+	
+	#ornasa a.btn-primary{
+		text-decoration:none;
+		font-weight:bold;
+	}
+	
+	#ornasa .bold{
+		font-weight:bold;
+	}
+	
+  #ornasa .info{
+		background-color:#bbbbbb;
+    color:#0000ff;
+    font-weight:700;
+    font-size:1.4em;
+	}
+  
+	#ornasa .warning{
+		background-color:#ff0000;
+    color:#fff;
+    font-weight:700;
+    font-size:1.4em;
+	}
+  
+  #ornasa .pendingentry{
+		background-color:#ffd400;
+	}
+	
+  
+  #ornasa .notallowed{
+		background-color:#ffa500;
+    color:#b00;
+    font-size:1.5em;
+	}
+	
+	#ornasa .orderdate{
+		width:100px;
+	}
+	
+	#ornasa .productionRuns.manipular form div{
+		margin:0;
+		padding:0;
+	}
+	
+	#productionRunDateManipulation {
+		display:none;
+	}
+	
+	#ornasa div.form,
+	#ornasa div.view,
+	#OrderAddSaleForm, 	#OrderAddSaleForm div,
+	#OrderEditSaleForm,	#OrderEditSaleForm div, 
+	#OrderAddPurchaseForm, #OrderEditPurchaseForm,
+	#ProductionRunAddForm,#ProductionRunEditForm, 
+	#CashReceiptAddForm,#CashReceiptEditForm, 
+	#ornasa div.orders.view, #ornasa div.productionRuns.view{
+		position:relative;
+	}
+	
+
+	#ornasa .righttop {
+		position:absolute;
+		right:0%;
+		top:1.5em;
+		width:20%;
+		background-color:#aaffdd;
+	}
+	
+	#ornasa .righttop.wide{
+		width:35%;
+	}
+	
+	#ornasa .orders.view .righttop, 
+	#ornasa div.productionRuns.view .righttop,
+	{
+		position:absolute;
+		right:5%;
+		top:1.5em;
+		width:20%;
+		background-color:#ffffff;
+	}
+	
+	#OrderAddSaleForm div.righttop{
+		width:25%;
+		top:0em;
+	}
+	
+	#OrderAddSaleForm div.actions.righttop 
+	{
+		width:15%;
+		background-color:#FFFFFF;
+		top:0em;
+	}
+	
+	#ornasa #OrderAddPurchaseForm .righttop  {
+		right:0%;
+	}
+	
+	
+	#ornasa .righttop label, #ornasa .righttop input{
+		width:100%;
+	}
+	
+	#ornasa form#CashReceiptAddForm , #ornasa form#CashReceiptEditForm  {
+		margin-right:0;
+		width:100%;
+	}
+	#CashReceiptAddForm .righttop, #ornasa #CashReceiptEditForm .righttop  {
+		width:30%;
+	}
+	
+	#ornasa #ProductionRunAddForm .righttop, #ornasa #ProductionRunEditForm .righttop  {
+		width:35%;
+	}
+	
+	#ProductionRunAddForm .righttop label, #ProductionRunAddForm .righttop input,
+	#ProductionRunEditForm .righttop label, #ProductionRunEditForm .righttop input
+	{
+		width:50%;
+	}
+	
+	#ornasa .stockItems.report, 
+	#ornasa .stockItems.inventory, 
+	#ornasa .orders.form.sales, 
+	#ornasa .stockMovements.report,
+	#ornasa .stockItemReclassification 
+	{
+		width:100%;
+		border-right:0;
+	}
+
+	#ornasa dt{
+    width:20em;
+    vertical-align:middle;
+    line-height:2em;
+    
+	}
+  #ornasa dd{
+    margin-left:20em;
+    line-height:2em;
+    vertical-align:middle;
+    margin-top:-2em;
+	}
+	
+  #ornasa dl.narrow dt {
+    width:10em;
+  }
+  #ornasa dl.narrow dd{
+		margin-left:10em;
+	}
+	
+	#ornasa #headerbar{
+		background:#C43201;
+	}	
+	#ornasa #header h1{
+		background:#C43201;
+		display:inline-block;
+		position:relative;
+	}
+
+	#ornasa #header h1 a{
+		background:#C43201;
+	}
+	
+	#ornasa #headerbar nav{
+		background:#C43201;		
+		display:inline-block;
+		
+	}
+	#headerbar ul{
+		top:20px;
+		left:20px;
+	}
+	
+  .username{
+		display:inline-block;
+		position:relative;
+		float:right;
+		font-weight:bold;
+		color:#ffffff;
+		font-size:1.6em;
+		margin: 20px 20px 0px 0px;
+	}
+	
+  .print{
+		position:relative;
+		float:right;
+		margin: 40px 20px 0px 0px;
+	}
+	
+	.logout{
+		position:relative;
+		float:right;
+		margin: 40px 35px 0px 0px;
+	}
+	
+	#footer {
+		min-height:62px;
+	}
+	
+	#copyright {
+		float:left;
+	}
+	
+	#intersinaptico{
+		position:relative;
+		float:right;
+	}
+	
+	div.home {
+		float:left;
+		width:85%;
+		border-right:1px solid #666;
+		padding:10px 2%;
+	}
+	
+	/***************************************************************************************************************
+	/** add configuration options ************************************************************
+	/**************************************************************************************************************/
+
+	#configoptions h1 {
+		font-weight:bold;
+	}
+
+	#configoptions .col-md-4 div {
+		margin-left:5%;
+	}
+
+	#configoptions .col-md-4 div a {
+		font-size:1.2em;
+		text-decoration:none;
+	}
+
+	/***************************************************************************************************************
+	/** production runs ************************************************************
+	/**************************************************************************************************************/
+	
+	
+	div.productionRuns.view {
+		float:left;
+		clear:none;
+		width:55%;
+	}
+	/*
+	div.productionRuns.form.edit{
+		width:80%;
+	}
+	*/
+	div.stockRemovals.form, div.stockRemovals.view {
+		float:left;
+		clear:none;
+		width:55%;
+	}
+
+	div.stockRemovals.form.edit{
+		width:80%;
+	}
+
+	div.productionRuns.form  div.col-md-6{
+		float:left;
+		clear:none;
+	}
+	
+	#ornasa div.productionRuns.form .col-md-6 label, div.productionRuns.view label{
+		/*float:left;
+		clear:none;*/
+		width:45%;
+	}
+	#ornasa div.productionRuns.form input, div.productionRuns.view input{
+		/*float:left;
+		clear:none;*/
+		width:45%;
+	}
+	
+	#inventoryTotals {
+		margin-left:1em;
+		float:left;
+		clear:right;
+		width:20%;
+	}
+	
+	#StockItemReclasificarTaponesForm label {
+		width:25%;
+	}
+	
+	#ornasa .sales,#ornasa  .sales form{
+		padding-right:0;
+	}
+	
+	#ornasa .sales form .col-md-5, #ornasa .sales form .col-md-4, #ornasa .sales form .col-md-3{
+		clear:none;
+	}
+	
+	#ornasa .sales #inventoryTotals, 
+	#ornasa .actions.productionrun #inventoryTotals,
+	#ornasa .stockItemReclassification #inventoryTotals
+	{
+		width:100%;
+	}
+
+	#ornasa .sales select, #ornasa .sales input{
+		font-size:100%;
+	}
+	
+  #ornasa .totals select, #ornasa .totals input{
+		font-size:130%;
+	}
+  
+	#printinfo{
+		display:none;
+	}
+	
+	#ornasa #sub-menu ul li {
+		float:left;
+		list-style-type:none;
+	}
+	#ornasa #sub-menu ul li a {
+		font-weight:normal; 
+		text-decoration:none;
+	}
+	#ornasa #sub-menu ul li.active>a{
+		font-weight:bold;
+		color:black;
+	}
+  
+	img.resize {
+		width:400px; /* you can use % */
+		height: auto;
+	}
+	
+	div, span {
+		font-size:1em;
+	}
+  .extraSmall {
+    font-size:0.6em;
+  }
+	.small {
+		font-size:0.9em;
+	}
+	.big{
+		font-size:1.5em;
+	}
+  
+	.left {
+    text-align:left;
+  }
+	.centered{
+		text-align:center;
+	}
+	.right{
+		text-align:right;
+	}
+	div.right{
+		padding-right:1em;
+	}
+	
+	span {
+		margin-left:0.5em;
+	}
+	.bold{
+		font-weight:bold;
+	}
+	.underline{
+		text-decoration:underline;
+	}
+  .red {
+    color:#f00;
+  }
+  .redBackground{
+    background-color:red!important;
+    color:#fff;
+  }
+  
+  .tooltipcontainer {
+  position: relative;
+  //display: inline-block;
+  //border-bottom: 1px dotted black;
+}
+
+.tooltipcontainer .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgba(230,250,90,0.5);
+  color: #3c3c3c;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-weight:700;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  left: 70%;
+}
+
+.tooltipcontainer .tooltiptext.grand {
+  visibility: hidden;
+  width: 200px;
+  background-color: rgba(230,250,90,0.5);
+  color: #3c3c3c;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-weight:700;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -40px;
+  left: 50%;
+}
+
+.tooltipcontainer:hover .tooltiptext {
+  visibility: visible;
+}
+ 
+.hidden{ 
+    display: none;
+} 
+
+#clientProcessMsg {
+  
+  position:absolute;
+  left:60px;
+  top:20px;
+  font-size:1.3em;
+  /*display:inline-block;*/
+  /*margin-left:5px;*/
+}
+
+.clientCategoryRadio label{
+  //padding-left:0em;
+  width:28%!important;
+  text-align:left;
+  //margin-left:0%;
+}
+.clientCategoryRadio input{
+  //padding-left:0em;
+  width:4%!important;
+  float:none;
+  //margin-left:0%;
+}
+
+button, input, optgroup, select, textarea {
+  margin-bottom:5px;
+}
+
+input[type=decimal],
+input[type=number]{
+  text-align:right;
+}
+
+.totalCell{
+  background-color:#b2d9ff;
+}
+@media screen{
+  .linkStyledText {
+    background:none!important;
+    border:0px!important;
+    display:inline!important;
+    text-shadow:none!important;
+    text-decoration:underline!important;
+    color:blue!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    font-weight:bold!important;
+    font-size:0.9em!important;
+    text-align:left!important;
+  }
+  .hiddenOnScreen {
+    display:none;
+  }
+}
+
+.width100 div,
+.width100 div input,
+.width100 div select{
+  width:100%!important;
+}
+
+@media only screen and (max-width: 600px) {
+  #content {
+    font-size:1.2em;
+  }
+  div.deliveries {
+    font-size:1.5em!important;
+  }
+}

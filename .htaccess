@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+  #RewriteEngine on
+  #RewriteRule    ^$ app/webroot/    [L]
+  #RewriteRule    (.*) app/webroot/$1 [L]
+
+  # https://stackoverflow.com/questions/25275865/cakephp-and-https-redirects  
+  RewriteEngine on
+  #RewriteBase /
+
+  # FORCE SSL REDIRECTION
+  #RewriteCond %{ENV:HTTPS} !on [NC]
+  RewriteCond %{HTTPS} !on [NC]
+  #RewriteCond %{HTTP_HOST} !^localhost [NC]
+  #RewriteCond %{HTTP_HOST} !^staging [NC]
+  RewriteRule ^(.*)$ https://ornasa.com/sistema/$1 [R,L]
+
+  RewriteRule ^$ app/webroot/ [L]
+  RewriteRule (.*) app/webroot/$1 [L]
+</IfModule>

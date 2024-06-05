@@ -1,0 +1,56 @@
+﻿		$role->id = 7;
+		$this->Acl->allow($role, 'controllers');
+		
+		$role->id = 8;
+		$this->Acl->deny($role, 'controllers');
+		$this->Acl->allow($role, 'controllers/Transactions');
+		$this->Acl->allow($role, 'controllers/TransactionModes');
+		$this->Acl->allow($role, 'controllers/TransactionTypes');
+		$this->Acl->allow($role, 'controllers/Currencies');
+		$this->Acl->allow($role, 'controllers/ExchangeRates');
+		$this->Acl->allow($role, 'controllers/Invoices');
+		$this->Acl->allow($role, 'controllers/Cashregisters');
+		
+		$role->id = 9;
+		$this->Acl->deny($role, 'controllers');
+		$this->Acl->allow($role, 'controllers/Orders');
+		$this->Acl->allow($role, 'controllers/OrdersProducts');
+		$this->Acl->allow($role, 'controllers/TransactionTypes');
+		$this->Acl->allow($role, 'controllers/Products');
+		$this->Acl->allow($role, 'controllers/Prices');
+		$this->Acl->allow($role, 'controllers/Invoices');
+		$this->Acl->allow($role, 'controllers/Locations');
+
+		$role->id = 10;
+		$this->Acl->deny($role, 'controllers');
+		$this->Acl->allow($role, 'controllers/Orders');
+		$this->Acl->allow($role, 'controllers/OrdersProducts');
+		$this->Acl->allow($role, 'controllers/Products');
+
+		$role->id = 11;
+		$this->Acl->deny($role, 'controllers');
+		$this->Acl->allow($role, 'controllers/Transactions');
+		$this->Acl->allow($role, 'controllers/TransactionModes');
+		$this->Acl->allow($role, 'controllers/TransactionTypes');
+		$this->Acl->allow($role, 'controllers/Currencies');
+		$this->Acl->allow($role, 'controllers/ExchangeRates');
+		$this->Acl->allow($role, 'controllers/Invoices');
+		$this->Acl->allow($role, 'controllers/AccountingCodes');
+		$this->Acl->allow($role, 'controllers/Cashregisters');
+		$this->Acl->allow($role, 'controllers/Customers');
+		$this->Acl->allow($role, 'controllers/Quotations');
+		
+		$role->id = 12;
+		$this->Acl->deny($role, 'controllers');
+		$this->Acl->allow($role, 'controllers/Transactions');
+		$this->Acl->allow($role, 'controllers/TransactionModes');
+		$this->Acl->allow($role, 'controllers/TransactionTypes');
+		$this->Acl->allow($role, 'controllers/Currencies');
+		$this->Acl->allow($role, 'controllers/ExchangeRates');
+		$this->Acl->allow($role, 'controllers/Invoices');
+		$this->Acl->allow($role, 'controllers/Cashregisters');
+		$this->Acl->allow($role, 'controllers/Orders');
+		$this->Acl->allow($role, 'controllers/OrdersProducts');
+		$this->Acl->allow($role, 'controllers/Products');
+		$this->Acl->allow($role, 'controllers/Prices');
+		$this->Acl->allow($role, 'controllers/Locations');

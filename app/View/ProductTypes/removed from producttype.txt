@@ -1,0 +1,10 @@
+<?php echo $this->Html->link($productType['StockItems']['id'], array('controller' => 'stock_items', 'action' => 'view', $productType['StockItems']['id'])); ?>
+
+
+<!--li><?php echo $this->Html->link(__('List Stock Items'), array('controller' => 'stock_items', 'action' => 'index')); ?> </li-->
+		<!--li><?php echo $this->Html->link(__('New Stock Items'), array('controller' => 'stock_items', 'action' => 'add')); ?> </li-->
+		<li><?php echo $this->Html->link(__('List Production Runs'), array('controller' => 'production_runs', 'action' => 'index')); ?> </li>
+		<? if ($userrole!=ROLE_FOREMAN){ ?>
+		<li><?php echo $this->Html->link(__('New Production Run'), array('controller' => 'production_runs', 'action' => 'add')); ?> </li>
+		<? } ?>
+		

@@ -1,0 +1,40 @@
+SELECT * FROM `third_parties` WHERE bool_provider=0 AND bool_generic=1;
+
+SELECT * 
+FROM quotations
+WHERE client_id IN (9,176)
+ORDER BY client_name ASC;
+
+SELECT client_name, client_mail, client_phone, client_ruc, client_address, client_type_id, zone_id 
+FROM quotations
+WHERE client_id IN (9,176)
+ORDER BY client_name ASC;
+
+SELECT client_name, client_mail, client_phone, client_ruc, client_address, client_type_id, zone_id 
+FROM sales_orders
+WHERE client_id IN (9,176)
+ORDER BY client_name ASC;
+
+SELECT client_name, client_mail, client_phone, client_ruc, client_address, client_type_id, zone_id 
+FROM orders
+WHERE third_party_id IN (9,176)
+ORDER BY client_name ASC;
+
+SELECT *
+FROM orders
+WHERE third_party_id IN (9,176) AND client_name IS NULL
+ORDER BY order_date ASC;
+
+SELECT id, company_name FROM `third_parties` WHERE bool_provider=0
+
+SELECT DISTINCT client_name, client_mail, client_phone, client_ruc, client_address, client_type_id, zone_id 
+FROM orders
+WHERE third_party_id IN (9,176)
+ORDER BY client_name ASC;
+
+... client_phone updates
+
+UPDATE orders SET client_type_id=NULL WHERE client_type_id=0;
+UPDATE orders SET zone_id=NULL WHERE zone_id=0;
+
+... client_type_id and zone_id updates

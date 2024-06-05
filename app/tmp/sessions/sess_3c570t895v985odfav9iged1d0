@@ -1,0 +1,1 @@
+Config|a:3:{s:9:"userAgent";s:32:"19bd5c7e9c83196a9d9ee5ab9e26987c";s:4:"time";i:1717535797;s:9:"countdown";i:10;}Message|a:1:{s:4:"auth";a:3:{s:7:"message";s:44:"No tiene permiso para ver este funcionalidad";s:7:"element";s:7:"default";s:6:"params";a:0:{}}}Auth|a:1:{s:8:"redirect";s:18:"/orders/crearVenta";}

@@ -1,0 +1,3197 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-10-22 10:52+0200\n"
+"PO-Revision-Date: 2014-01-13 13:35-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: Spanish\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: Controller/Scaffold.php:128
+msgid "Scaffold :: "
+msgstr ""
+
+#: Controller/Scaffold.php:167;234;303
+msgid "Invalid %s"
+msgstr "Registro no válido"
+
+#: Controller/Scaffold.php:222
+msgid "updated"
+msgstr "actualizado"
+
+#: Controller/Scaffold.php:225
+msgid "saved"
+msgstr "guardado"
+
+#: Controller/Scaffold.php:245
+msgid "The %1$s has been %2$s"
+msgstr "El registro ha sido %2$s"
+
+#: Controller/Scaffold.php:255
+msgid "Please correct errors below."
+msgstr "Por favor, corrija los siguientes errores."
+
+#: Controller/Scaffold.php:306
+msgid "The %1$s with id: %2$s has been deleted."
+msgstr "El registro con id: %2$s ha sido borrado."
+
+#: Controller/Scaffold.php:309
+msgid "There was an error deleting the %1$s with id: %2$s"
+msgstr "Se encontró un error al borrar el registro con id: %2$s"
+
+#: Controller/Component/AuthComponent.php:427
+msgid "You are not authorized to access that location."
+msgstr "No tienes permisos para acceder a dicha ubicación."
+
+#: Error/ExceptionRenderer.php:209
+msgid "Not Found"
+msgstr "No encontrado"
+
+#: Error/ExceptionRenderer.php:231
+msgid "An Internal Error Has Occurred."
+msgstr "Ha ocurrido un error interno."
+
+#: Model/Validator/CakeValidationSet.php:286
+msgid "This field cannot be left blank"
+msgstr "Este campo no puede dejarse en blanco"
+
+#: Network/CakeResponse.php:1269
+msgid "The requested file was not found"
+msgstr "No se encontró el archivo solicitado"
+
+#: Utility/CakeNumber.php:119
+msgid "%s KB"
+msgstr ""
+
+#: Utility/CakeNumber.php:121
+msgid "%s MB"
+msgstr ""
+
+#: Utility/CakeNumber.php:123
+msgid "%s GB"
+msgstr ""
+
+#: Utility/CakeNumber.php:125
+msgid "%s TB"
+msgstr ""
+
+#: Utility/CakeNumber.php:117
+msgid "%d Byte"
+msgid_plural "%d Bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Utility/CakeTime.php:398
+msgid "Today, %s"
+msgstr "Hoy, %s"
+
+#: Utility/CakeTime.php:401
+msgid "Yesterday, %s"
+msgstr "Ayer, %s"
+
+#: Utility/CakeTime.php:404
+msgid "Tomorrow, %s"
+msgstr "Mañana, %s"
+
+#: Utility/CakeTime.php:409
+msgid "Sunday"
+msgstr "Domingo"
+
+#: Utility/CakeTime.php:410
+msgid "Monday"
+msgstr "Lunes"
+
+#: Utility/CakeTime.php:411
+msgid "Tuesday"
+msgstr "Martes"
+
+#: Utility/CakeTime.php:412
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#: Utility/CakeTime.php:413
+msgid "Thursday"
+msgstr "Jueves"
+
+#: Utility/CakeTime.php:414
+msgid "Friday"
+msgstr "Viernes"
+
+#: Utility/CakeTime.php:415
+msgid "Saturday"
+msgstr "Sábado"
+
+#: Utility/CakeTime.php:421
+msgid "On %s %s"
+msgstr "el %s %s"
+
+#: Utility/CakeTime.php:742
+msgid "%s ago"
+msgstr "hace %s"
+
+#: Utility/CakeTime.php:743
+msgid "on %s"
+msgstr "el %s"
+
+#: Utility/CakeTime.php:795
+msgid "just now"
+msgstr "justo ahora"
+
+#: Utility/CakeTime.php:911
+msgid "about a second ago"
+msgstr "hace un segundo"
+
+#: Utility/CakeTime.php:912
+msgid "about a minute ago"
+msgstr "hace un minuto"
+
+#: Utility/CakeTime.php:913
+msgid "about an hour ago"
+msgstr "hace una hora"
+
+#: Utility/CakeTime.php:914
+msgid "about a day ago"
+msgstr "hace un día"
+
+#: Utility/CakeTime.php:915
+msgid "about a week ago"
+msgstr "hace una semana"
+
+#: Utility/CakeTime.php:916
+msgid "about a year ago"
+msgstr "hace un año"
+
+#: Utility/CakeTime.php:925
+msgid "in about a second"
+msgstr "en un segundo"
+
+#: Utility/CakeTime.php:926
+msgid "in about a minute"
+msgstr "en un minuto"
+
+#: Utility/CakeTime.php:927
+msgid "in about an hour"
+msgstr "en una hora"
+
+#: Utility/CakeTime.php:928
+msgid "in about a day"
+msgstr "en un día"
+
+#: Utility/CakeTime.php:929
+msgid "in about a week"
+msgstr "en una semana"
+
+#: Utility/CakeTime.php:930
+msgid "in about a year"
+msgstr "en un año"
+
+#: Utility/CakeTime.php:952;974
+msgid "days"
+msgstr "días"
+
+#: Utility/CakeTime.php:884
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] "%d año"
+msgstr[1] "%d años"
+
+#: Utility/CakeTime.php:887
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] "%d mes"
+msgstr[1] "%d meses"
+
+#: Utility/CakeTime.php:890
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] "%d semana"
+msgstr[1] "%d semanas"
+
+#: Utility/CakeTime.php:893
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d día"
+msgstr[1] "%d días"
+
+#: Utility/CakeTime.php:896
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d hora"
+msgstr[1] "%d horas"
+
+#: Utility/CakeTime.php:899
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minuto"
+msgstr[1] "%d minutos"
+
+#: Utility/CakeTime.php:902
+msgid "%d second"
+msgid_plural "%d seconds"
+msgstr[0] "%d segundo"
+msgstr[1] "%d segundos"
+
+#: View/Helper/FormHelper.php:694
+msgid "Error in field %s"
+msgstr "Error en el campo %s"
+
+#: View/Helper/FormHelper.php:883
+#: View/Scaffolds/form.ctp:48
+#: View/Scaffolds/index.ctp:79;94
+#: View/Scaffolds/view.ctp:65;80;190
+msgid "New %s"
+msgstr "Nuevo registro"
+
+#: View/Helper/FormHelper.php:1457
+msgid "empty"
+msgstr "vacío"
+
+#: View/Helper/FormHelper.php:1830
+#: View/Scaffolds/form.ctp:23
+msgid "Submit"
+msgstr "Enviar"
+
+msgid "Save"
+msgstr "Guardar"
+
+#: View/Helper/FormHelper.php:2760
+msgid "January"
+msgstr "Enero"
+
+#: View/Helper/FormHelper.php:2761
+msgid "February"
+msgstr "Febrero"
+
+#: View/Helper/FormHelper.php:2762
+msgid "March"
+msgstr "Marzo"
+
+#: View/Helper/FormHelper.php:2763
+msgid "April"
+msgstr "Abril"
+
+#: View/Helper/FormHelper.php:2764
+msgid "May"
+msgstr "Mayo"
+
+#: View/Helper/FormHelper.php:2765
+msgid "June"
+msgstr "Junio"
+
+#: View/Helper/FormHelper.php:2766
+msgid "July"
+msgstr "Julio"
+
+#: View/Helper/FormHelper.php:2767
+msgid "August"
+msgstr "Agosto"
+
+#: View/Helper/FormHelper.php:2768
+msgid "September"
+msgstr "Septiembre"
+
+#: View/Helper/FormHelper.php:2769
+msgid "October"
+msgstr "Octubre"
+
+#: View/Helper/FormHelper.php:2770
+msgid "November"
+msgstr "Noviembre"
+
+#: View/Helper/FormHelper.php:2771
+msgid "December"
+msgstr "Diciembre"
+
+#: View/Helper/HtmlHelper.php:766
+msgid "Home"
+msgstr "Inicio"
+
+#: View/Helper/PaginatorHelper.php:627
+msgid " of "
+msgstr " de "
+
+#: View/Scaffolds/form.ctp:27
+#: View/Scaffolds/index.ctp:26;77
+#: View/Scaffolds/view.ctp:49
+msgid 'actions'
+msgstr "Acciones"
+
+#: View/Scaffolds/form.ctp:31
+#: View/Scaffolds/index.ctp:51
+#: View/Scaffolds/view.ctp:175
+msgid "Delete"
+msgstr "Borrar"
+
+#: View/Scaffolds/form.ctp:34
+#: View/Scaffolds/index.ctp:54
+#: View/Scaffolds/view.ctp:57;178
+msgid "Are you sure you want to delete # %s?"
+msgstr "¿Estás seguro que quieres borrar # %s?"
+
+msgid "Are you sure you want to delete exit # %s?"
+msgstr "¿Estás seguro que quieres borrar la salida con código %s?"
+
+#: View/Scaffolds/form.ctp:37
+msgid "List"
+msgstr "Listado"
+
+#: View/Scaffolds/form.ctp:44
+#: View/Scaffolds/index.ctp:87
+#: View/Scaffolds/view.ctp:61;74
+msgid "List %s"
+msgstr "Lista de registros"
+
+#: View/Scaffolds/index.ctp:48
+#: View/Scaffolds/view.ctp:163
+msgid "View"
+msgstr "Ver"
+
+#: View/Scaffolds/index.ctp:49
+#: View/Scaffolds/view.ctp:169
+msgid "Edit"
+msgstr "Editar"
+
+#: View/Scaffolds/index.ctp:65
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "Pagina {:page} de {:pages}, mostrando {:current} registros de un total de {:count}, a partir del registro {:start}, hasta {:end}"
+
+#: View/Scaffolds/index.ctp:70
+msgid "previous"
+msgstr "anterior"
+
+#: View/Scaffolds/index.ctp:72
+msgid "next"
+msgstr "siguiente"
+
+#: View/Scaffolds/view.ctp:20
+msgid "View %s"
+msgstr "Ver %s"
+
+#: View/Scaffolds/view.ctp:57
+msgid "Delete %s"
+msgstr "Borrar %s"
+
+#: View/Scaffolds/view.ctp:95;135
+msgid "Related %s"
+msgstr "%s relacionado/as"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Cash"
+msgstr "Efectivo"
+
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgid "Event"
+msgstr "Evento"
+
+msgid "Previous Month"
+msgstr "Mes Previo"
+
+msgid "Next Month"
+msgstr "Mes Siguiente"
+
+msgid "Finished Product"
+msgstr "Producto Fabricado"
+
+
+#########################################################################################################
+#: Users
+msgid "Logout"
+msgstr "Salir"
+
+msgid "Please enter your username and password"
+msgstr "Por favor introduzca su nombre de usuario y contraseña"
+
+msgid "Users"
+msgstr "Usuarios"
+
+msgid "Username"
+msgstr "Usuario"
+
+msgid "User"
+msgstr "Usuario"
+
+msgid "Password"
+msgstr "Contraseña"
+
+msgid "Role"
+msgstr "Papel"
+
+msgid "Roles"
+msgstr "Papeles"
+
+msgid "Edit Role"
+msgstr "Editar Papel"
+
+msgid "Add Role"
+msgstr "Crear Papel"
+
+msgid "New Role"
+msgstr "Nuevo Papel"
+
+msgid "List Roles"
+msgstr "Todos Papeles"
+
+msgid "List Order"
+msgstr "Orden en la lista"
+
+msgid "First Name"
+msgstr "Nombre"
+
+msgid "Last Name"
+msgstr "Apellido"
+
+msgid "Email"
+msgstr "Correo"
+
+msgid "Phone"
+msgstr "Teléfono"
+
+msgid "The user has been saved."
+msgstr "El usuario está guardado!"
+
+msgid "Related User Logs"
+msgstr "Logs de Usuario"
+
+msgid "Add User"
+msgstr "Crear Nuevo Usuario"
+
+msgid "Edit User"
+msgstr "Editar Usuario"
+
+msgid "Delete User"
+msgstr "Eliminar Usuario"
+
+msgid "The user has been deleted."
+msgstr "El usuario ha estado eliminado!"
+
+msgid "User Logs"
+msgstr "Logs de Usuario"
+
+
+#########################################################################################################
+#: General
+msgid "Order"
+msgstr "Orden"
+
+msgid "Amount"
+msgstr "Monto"
+
+msgid "Created"
+msgstr "Creado"
+
+msgid "Modified"
+msgstr "Modificado"
+
+msgid "Delete"
+msgstr "Remover"
+
+msgid "Machine"
+msgstr "Máquina"
+
+msgid "Machines"
+msgstr "Máquinas"
+
+msgid "Operator"
+msgstr "Operador"
+
+msgid "Operators"
+msgstr "Operadores"
+
+msgid "Shift"
+msgstr "Turno"
+
+msgid "Shifts"
+msgstr "Turnos"
+
+msgid "Product Type"
+msgstr "Tipo de Producto"
+
+msgid "Product Types"
+msgstr "Tipos de Producto"
+
+msgid "Production Run Type"
+msgstr "Tipo de Producción"
+
+msgid "Production Run Types"
+msgstr "Tipos de Producción"
+
+msgid "Provider"
+msgstr "Proveedor"
+
+msgid "Providers"
+msgstr "Proveedores"
+
+msgid "Client"
+msgstr "Cliente"
+
+msgid "Clients"
+msgstr "Clientes"
+
+msgid "Purchase"
+msgstr "Entrada"
+
+msgid "Purchases"
+msgstr "Entradas"
+
+msgid "Sale"
+msgstr "Venta"
+
+msgid "Sales"
+msgstr "Ventas"
+
+msgid "Product"
+msgstr "Producto"
+
+msgid "Products"
+msgstr "Productos"
+
+msgid "Short Description"
+msgstr "Descripción corta"
+
+msgid "Long Description"
+msgstr "Descripción larga"
+
+#########################################################################################################
+#: Configuration
+msgid "Configuration Options"
+msgstr "Opciones de configuración"
+
+msgid "User Management"
+msgstr "Manejo de Usuarios"
+
+
+
+#########################################################################################################
+#: Machines
+msgid "Add Machine"
+msgstr "Crear Nueva Máquina"
+
+msgid "Edit Machine"
+msgstr "Editar Máquina"
+
+msgid "Delete Machine"
+msgstr "Eliminar Máquina"
+
+msgid "Related Production Runs for Machine"
+msgstr "Procesos de Producción para esta máquina"
+
+msgid "The machine has been saved."
+msgstr "La máquina está guardada!"
+
+msgid "The machine has been deleted."
+msgstr "La máquina está eliminada!"
+
+
+
+#########################################################################################################
+#: Operators
+msgid "Add Operator"
+msgstr "Crear Nuevo Operador"
+
+msgid "Edit Operator"
+msgstr "Editar Operador"
+
+msgid "Delete Operator"
+msgstr "Eliminar Operador"
+
+msgid "Related Production Runs for Operator"
+msgstr "Procesos de Producción para Operador"
+
+msgid "The operator has been saved."
+msgstr "El operador está guardado."
+
+msgid "The operator has been deleted."
+msgstr "El operador está eliminado!"
+
+msgid "Bool Active"
+msgstr "Activo"
+
+msgid "Active"
+msgstr "Activo"
+
+msgid "Inactive"
+msgstr "Desactivado"
+
+#########################################################################################################
+#: Products
+msgid "Add Product"
+msgstr "Crear Nuevo Producto"
+
+msgid "Edit Product"
+msgstr "Editar Producto"
+
+msgid "Delete Product"
+msgstr "Eliminar Producto"
+
+msgid "Related Production Runs for Product"
+msgstr "Procesos de Producción con este Producto"
+
+msgid "Related Products for Product"
+msgstr "Productos de este tipo"
+
+msgid "The product has been saved."
+msgstr "El producto está guardado."
+
+msgid "The product has been deleted."
+msgstr "El producto está eliminado!"
+
+msgid "Preferred Raw Material"
+msgstr "Materia Prima Preferida"
+
+msgid "Entry Date"
+msgstr "Fecha Entrada"
+
+msgid "Entry"
+msgstr "Entrada"
+
+msgid "Quantity Moved"
+msgstr "Cantidad Movimiento"
+
+msgid "Reclassification"
+msgstr "Reclasificación"
+
+msgid "Acceptable Production"
+msgstr "Producción Aceptable"
+
+msgid "Yes"
+msgstr "Sí"
+
+
+
+msgid "Product Category"
+msgstr "Categoría"
+
+msgid "Raw Material"
+msgstr "Materia Prima"
+
+#########################################################################################################
+#: Product Types
+
+msgid "Add Product Type"
+msgstr "Crear Nuevo Tipo de Producto"
+
+msgid "Edit Product Type"
+msgstr "Editar Tipo de Producto"
+
+msgid "Delete Product Type"
+msgstr "Eliminar Tipo de Producto"
+
+msgid "Related Production Runs for Product Type"
+msgstr "Procesos de Producción con este Tipo de Producto"
+
+msgid "Related Products for Product Type"
+msgstr "Productos de este tipo"
+
+msgid "The product type has been saved."
+msgstr "El tipo de producto está guardado."
+
+msgid "The product type has been deleted."
+msgstr "El tipo de producto está eliminado!"
+
+msgid "New Product Type"
+msgstr "Nuevo Tipo de Producto"
+
+msgid "List Product Types"
+msgstr "Todos Tipos de Producto"
+
+#########################################################################################################
+#: Product Natures
+
+msgid "Product Natures"
+msgstr "Naturalezas de Producto"
+
+msgid "Product Nature"
+msgstr "Naturaleza de Producto"
+
+msgid "All Product Natures"
+msgstr "Todas Naturalezas de Producción"
+
+msgid "List Product Natures"
+msgstr "Todas Naturalezas de Producto"
+
+msgid "New Product Nature"
+msgstr "Nueva Naturaleza de Producto"
+
+msgid "Add Product Nature"
+msgstr "Crear Nueva Naturaleza de Producto"
+
+msgid "Edit Product Nature"
+msgstr "Editar Naturaleza de Producto"
+
+msgid "Delete Product Nature"
+msgstr "Eliminar Naturaleza de Producto"
+
+msgid "The product nature has been saved."
+msgstr "La naturaleza de producto está guardada."
+
+msgid "The product nature has been deleted."
+msgstr "La naturaleza de producto está eliminada!"
+
+
+#########################################################################################################
+#: Production Types
+
+msgid "Production Types"
+msgstr "Tipos de Producción"
+
+msgid "Production Type"
+msgstr "Tipo de Producción"
+
+msgid "All Production Types"
+msgstr "Tipos de Producción"
+
+msgid "List Production Types"
+msgstr "Todos Tipos de Producción"
+
+msgid "New Production Type"
+msgstr "Nuevo Tipo de Producción"
+
+msgid "Add Production Type"
+msgstr "Crear Nuevo Tipo de Producción"
+
+msgid "Edit Production Type"
+msgstr "Editar Tipo de Producción"
+
+msgid "Delete Production Type"
+msgstr "Eliminar Tipo de Producción"
+
+msgid "The production type has been saved."
+msgstr "El tipo de producción está guardado."
+
+msgid "The production type has been deleted."
+msgstr "El tipo de producción ha estado eliminado!"
+
+#########################################################################################################
+#: Client Types
+
+msgid "Client Types"
+msgstr "Tipos de Cliente"
+
+msgid "Client Type"
+msgstr "Tipo de Cliente"
+
+msgid "All Client Types"
+msgstr "Tipos de Cliente"
+
+msgid "List Client Types"
+msgstr "Todos Tipos de Cliente"
+
+msgid "New Client Type"
+msgstr "Nuevo Tipo de Cliente"
+
+msgid "Add Client Type"
+msgstr "Crear Nuevo Tipo de Cliente"
+
+msgid "Edit Client Type"
+msgstr "Editar Tipo de Cliente"
+
+msgid "Delete Client Type"
+msgstr "Eliminar Tipo de Cliente"
+
+msgid "The client type has been saved."
+msgstr "El tipo de cliente está guardado."
+
+msgid "The client type has been deleted."
+msgstr "El tipo de cliente ha estado eliminado!"
+
+#########################################################################################################
+#: Recipes
+
+msgid "Recipes"
+msgstr "Recetas"
+
+msgid "Recipe"
+msgstr "Receta"
+
+msgid "All Recipes"
+msgstr "Recetas"
+
+msgid "List Recipes"
+msgstr "Todas Recetas"
+
+msgid "New Recipe"
+msgstr "Nueva Receta"
+
+msgid "Add Recipe"
+msgstr "Crear Nueva Receta"
+
+msgid "Edit Recipe"
+msgstr "Editar Receta"
+
+msgid "Delete Recipe"
+msgstr "Eliminar Receta"
+
+msgid "The recipe has been saved."
+msgstr "La receta está guardado."
+
+msgid "The recipe has been deleted."
+msgstr "La receta ha estado eliminado!"
+
+msgid "Mill Conversion Product"
+msgstr "Conversión Molina"
+
+#########################################################################################################
+#: Units
+
+msgid "Units"
+msgstr "Unidades"
+
+msgid "Unit"
+msgstr "Unidad"
+
+msgid "All Units"
+msgstr "Unidades"
+
+msgid "List Units"
+msgstr "Todas Unidades"
+
+msgid "New Unit"
+msgstr "Nueva Unidad"
+
+msgid "Add Unit"
+msgstr "Crear Nueva Unidad"
+
+msgid "Edit Unit"
+msgstr "Editar Unidad"
+
+msgid "Delete Unit"
+msgstr "Eliminar Unidad"
+
+msgid "The unit has been saved."
+msgstr "La unidad está guardado."
+
+msgid "The unit has been deleted."
+msgstr "La unidad ha estado eliminado!"
+
+#########################################################################################################
+#: Vehicles
+
+msgid "Vehicles"
+msgstr "Vehículos"
+
+msgid "Vehicle"
+msgstr "Vehículo"
+
+msgid "All Vehicles"
+msgstr "Vehículos"
+
+msgid "List Vehicles"
+msgstr "Todos Vehículos"
+
+msgid "New Vehicle"
+msgstr "Nuevo Vehículo"
+
+msgid "Add Vehicle"
+msgstr "Crear Nuevo Vehículo"
+
+msgid "Edit Vehicle"
+msgstr "Editar Vehículo"
+
+msgid "Delete Vehicle"
+msgstr "Eliminar Vehículo"
+
+msgid "The vehicle has been saved."
+msgstr "El vehículo está guardado."
+
+msgid "The vehicle has been deleted."
+msgstr "El vehículo ha estado eliminado!"
+
+msgid "Driver User"
+msgstr "Conductor"
+
+#########################################################################################################
+#: Driverrs
+
+msgid "Drivers"
+msgstr "Conductores"
+
+msgid "Driver"
+msgstr "Conductor"
+
+msgid "All Drivers"
+msgstr "Conductores"
+
+msgid "List Drivers"
+msgstr "Todos Conductores"
+
+msgid "New Driver"
+msgstr "Nuevo Conductor"
+
+msgid "Add Driver"
+msgstr "Crear Nuevo Conductor"
+
+msgid "Edit Driver"
+msgstr "Editar Conductor"
+
+msgid "Delete Driver"
+msgstr "Eliminar Conductor"
+
+msgid "The driver has been saved."
+msgstr "El conductor está guardado."
+
+msgid "The driver has been deleted."
+msgstr "El conductor ha estado eliminado!"
+
+msgid "License Plate"
+msgstr "Placa"
+
+#########################################################################################################
+#: Zones
+
+msgid "Zones"
+msgstr "Zonas"
+
+msgid "Zone"
+msgstr "Zona"
+
+msgid "All Zones"
+msgstr "Zonas"
+
+msgid "List Zones"
+msgstr "Todas Zonas"
+
+msgid "New Zone"
+msgstr "Nueva Zona"
+
+msgid "Add Zone"
+msgstr "Crear Nueva Zona"
+
+msgid "Edit Zone"
+msgstr "Editar Zona"
+
+msgid "Delete Zone"
+msgstr "Eliminar Zona"
+
+msgid "The zone has been saved."
+msgstr "La zona está guardada."
+
+msgid "The zone has been deleted."
+msgstr "La zona ha estado eliminada!"
+
+#########################################################################################################
+#: Products
+msgid "Add Product"
+msgstr "Crear Nuevo Producto"
+
+msgid "Edit Product"
+msgstr "Editar Producto"
+
+msgid "Delete Product"
+msgstr "Eliminar Producto"
+
+msgid "Related Production Runs for Product"
+msgstr "Procesos de Producción con este Producto"
+
+msgid "Related Products for Product"
+msgstr "Productos de este tipo"
+
+msgid "The product has been saved."
+msgstr "El producto está guardado."
+
+msgid "The product has been deleted."
+msgstr "El producto está eliminado!"
+
+msgid "Packaging Unit"
+msgstr "Unidad de Empaque"
+
+msgid "Purchase Order Id"
+msgstr "Entrada"
+
+msgid "Production Run Id"
+msgstr "Producción"
+
+msgid "Sale Order Id"
+msgstr "Venta"
+
+msgid "Product Id"
+msgstr "Producto"
+
+msgid "Product Type Id"
+msgstr "Tipo Producto"
+
+msgid "Product Unit Price"
+msgstr "Precio Unidad"
+
+msgid "Product Total Price"
+msgstr "Precio Total"
+
+msgid "Previous Quantity"
+msgstr "Cantidad Previa"
+
+msgid "Production Result Code Id"
+msgstr "Código Producto"
+
+msgid "Actions"
+msgstr "Acciones"
+
+msgid "Stock Movement"
+msgstr "Movimiento de Inventario"
+
+msgid "Related Stock Items"
+msgstr "Inventario Relacionado"
+
+
+
+#########################################################################################################
+#: Shifts
+msgid "Add Shift"
+msgstr "Crear Nuevo Turno"
+
+msgid "Edit Shift"
+msgstr "Editar Turno"
+
+msgid "Delete Shift"
+msgstr "Eliminar Turno"
+
+msgid "Related Production Runs for Shift"
+msgstr "Procesos de Producción en este Turno"
+
+msgid "The shift has been saved."
+msgstr "El turno está guardado."
+
+msgid "The shift has been deleted."
+msgstr "El turno está eliminado!"
+
+#########################################################################################################
+#: Warehouses
+
+msgid "Warehouse"
+msgstr "Bodega"
+
+msgid "Warehouses"
+msgstr "Bodegas"
+
+msgid "New Warehouse"
+msgstr "Nueva Bodega"
+
+msgid "List Warehouses"
+msgstr "Todas Bodegas"
+
+msgid "Add Warehouse"
+msgstr "Crear Nueva Bodega"
+
+msgid "Edit Warehouse"
+msgstr "Editar Bodega"
+
+msgid "Delete Warehouse"
+msgstr "Eliminar Bodega"
+
+msgid "The warehouse has been saved."
+msgstr "Se grabó la bodega."
+
+msgid "The warehouse has been deleted."
+msgstr "Se eliminó la bodega!"
+
+#########################################################################################################
+#: Plants
+
+msgid "Plant"
+msgstr "Planta"
+
+msgid "Plants"
+msgstr "Plantas"
+
+msgid "New Plant"
+msgstr "Nueva Planta"
+
+msgid "List Plants"
+msgstr "Todas Plantas"
+
+msgid "Add Plant"
+msgstr "Crear Nueva Planta"
+
+msgid "Edit Plant"
+msgstr "Editar Planta"
+
+msgid "Delete Plant"
+msgstr "Eliminar Planta"
+
+msgid "The plant has been saved."
+msgstr "Se grabó la planta."
+
+msgid "The plant has been deleted."
+msgstr "Se eliminó la planta!"
+
+#########################################################################################################
+#: Third Parties
+msgid "Bool Provider"
+msgstr "Es Proveedor?"
+
+msgid "Company Name"
+msgstr "Compañía"
+
+msgid "Add Provider"
+msgstr "Crear Nuevo Proveedor"
+
+msgid "Edit Provider"
+msgstr "Editar Proveedor"
+
+msgid "Delete Provider"
+msgstr "Eliminar Proveedor"
+
+msgid "Related Purchases from Provider"
+msgstr "Entradas de este Proveedor"
+
+msgid "The provider has been saved."
+msgstr "El proveedor está guardado."
+
+msgid "The provider has been deleted."
+msgstr "El proveedor está eliminado!"
+
+msgid "Add Client"
+msgstr "Crear Nuevo Cliente"
+
+msgid "Edit Client"
+msgstr "Editar Cliente"
+
+msgid "Delete Client"
+msgstr "Eliminar Cliente"
+
+msgid "Related Sales to Client"
+msgstr "Ventas a este Cliente"
+
+msgid "The client has been saved."
+msgstr "El cliente está guardado."
+
+msgid "The client has been deleted."
+msgstr "El cliente está eliminado!"
+
+msgid "Credit Days"
+msgstr "Días de Crédito"
+
+msgid "Credit Amount"
+msgstr "Límite de Crédito (C$)"
+
+msgid "Credit Currency"
+msgstr "Moneda de Crédito"
+
+msgid "Quality"
+msgstr "Calidad"
+
+msgid "Invoice Price"
+msgstr "Precio Factura"
+
+msgid "Remission Price"
+msgstr "Precio Remisión"
+
+msgid "Address"
+msgstr "Dirección"
+
+msgid "Ruc Number"
+msgstr "Número RUC"
+
+##################
+#Payment Modes
+#################
+
+msgid "List Payment Modes"
+msgstr "Todos Modos de Pago"
+
+msgid "New Payment Mode"
+msgstr "Nuevo Modo de Pago"
+
+msgid "All Payment Modes"
+msgstr "Todos Modos de Pago"
+
+msgid "Add Payment Mode"
+msgstr "Crear Nuevo Modo de Pago"
+
+msgid "Edit Payment Mode"
+msgstr "Editar Modo de Pago"
+
+msgid "Delete Payment Mode"
+msgstr "Eliminar Modo de Pago"
+
+msgid "Payment Modes"
+msgstr "Modos de Pago"
+
+msgid "Payment Mode"
+msgstr "Modo de Pago"
+
+msgid "The payment mode has been saved."
+msgstr "El modo de pago está guardado!"
+
+msgid "The payment mode has been deleted."
+msgstr "El modo de pago está eliminado!"
+
+msgid "The payment mode could not be deleted. Please, try again."
+msgstr "El modo de pago no se podía eliminar!"
+
+##################
+#Purchase Orders
+#################
+
+msgid "List Purchase Orders"
+msgstr "Todas Ordenes de Compra"
+
+msgid "New Purchase Order"
+msgstr "Nueva Orden de Compra"
+
+msgid "All Purchase Orders"
+msgstr "Todas Ordenes de Compra"
+
+msgid "Add Purchase Order"
+msgstr "Crear Nueva Orden de Compra"
+
+msgid "Edit Purchase Order"
+msgstr "Editar Orden de Compra"
+
+msgid "Delete Purchase Order"
+msgstr "Eliminar Orden de Compra"
+
+msgid "Purchase Orders"
+msgstr "Ordenes de Compra"
+
+msgid "Purchase Order"
+msgstr "Orden de Compra"
+
+msgid "The purchase order has been saved."
+msgstr "La orden de compra está guardada!"
+
+msgid "The purchase order has been deleted."
+msgstr "La orden de compra está eliminada!"
+
+msgid "The purchase order could not be deleted. Please, try again."
+msgstr "La orden de compra no se podía eliminar!"
+
+msgid "Purchase Order Date"
+msgstr "Fecha Orden Compra"
+
+msgid "Purchase Order Code"
+msgstr "# Orden Compra"
+
+msgid "Previous Purchase Order"
+msgstr "Orden Compra Previa"
+
+msgid "Bool Received"
+msgstr "Recibido?"
+
+msgid "Payment Document"
+msgstr "Documento de Pago"
+
+msgid "Planned Delivery Date"
+msgstr "Fecha Prevista Entrega"
+
+msgid "Product Unit Cost"
+msgstr "Costo Unidad"
+
+msgid "Product Total Cost"
+msgstr "Costo Total"
+
+
+msgid "Cost Other Total"
+msgstr "Total Otros Costos"
+
+msgid "Task Description"
+msgstr "Descripción Costo"
+
+msgid "Task Quantity"
+msgstr "Cantidad"
+
+msgid "Task Unit Cost"
+msgstr "Costo Unitario"
+
+msgid "Task Total Cost"
+msgstr "Costo Total"
+
+msgid "Cost Subtotal"
+msgstr "Costo Subtotal"
+
+msgid "Cost Iva"
+msgstr "Costo Iva"
+
+msgid "Cost Total"
+msgstr "Costo Total"
+
+msgid "Bool Iva"
+msgstr "IVA?"
+
+msgid "Remove Product"
+msgstr "Remover Producto"
+
+
+#########################################################################################################
+#: Orders
+
+msgid "Order Date"
+msgstr "Fecha de Orden"
+
+msgid "Purchase Date"
+msgstr "Fecha de Entrada"
+
+msgid "Sale Date"
+msgstr "Fecha de Orden de Salida"
+
+msgid "Invoice Code"
+msgstr "Código de Factura"
+
+msgid "Total Price"
+msgstr "Precio Total"
+
+msgid "Add Purchase"
+msgstr "Crear Nueva Entrada"
+
+msgid "Edit Purchase"
+msgstr "Editar Entrada"
+
+msgid "Delete Purchase"
+msgstr "Eliminar Entrada"
+
+msgid "Products of Purchase"
+msgstr "Productos para esta Entrada"
+
+msgid "Add Purchase Item"
+msgstr "Añadir Producto a esta Entrada"
+
+msgid "Remove Purchase Item"
+msgstr "Eliminar Producto de esta Entrada"
+
+msgid "Purchase Price"
+msgstr "Costo Entrada"
+
+msgid "Cost"
+msgstr "Costo"
+
+msgid "Save as Excel"
+msgstr "Guardar como Excel"
+
+msgid "The purchase has been saved."
+msgstr "La entrada está guardada!"
+
+msgid "The purchase has been deleted."
+msgstr "La entrada está eliminada!"
+
+msgid "Add Stock Movement"
+msgstr "Añadir Producto"
+
+msgid "Lot Identifier"
+msgstr "Identificación Inventario"
+
+msgid "Number of Boxes"
+msgstr "Cantidad de Cajas"
+
+msgid "Product Quantity"
+msgstr "Cantidad Productos"
+
+msgid "Product Price"
+msgstr "Precio Producto"
+
+msgid "Product Type Quantity"
+msgstr "Cantidad"
+
+msgid "Product Type Unit Price"
+msgstr "Precio Unitario"
+
+msgid "Price"
+msgstr "Precio"
+
+msgid "Stock Entry"
+msgstr "Entrada de Materiales"
+
+msgid "New Stock Entry"
+msgstr "Nueva Entrada"
+
+msgid "Movement Date"
+msgstr "Fecha de Movimiento"
+
+msgid "Add Stock Removal"
+msgstr "Sacar Productos de Inventario"
+
+msgid "Result Code"
+msgstr "Código"
+
+msgid "Inventory Total"
+msgstr "Presente"
+
+msgid "Average Unit Price"
+msgstr "Costo Promedio"
+
+msgid "packaging units"
+msgstr "unidades de empaque"
+
+msgid "leftover units"
+msgstr "unidades que sobran"
+
+msgid "and"
+msgstr "y"
+
+msgid "Remaining"
+msgstr "Cantidad En Bodega"
+
+msgid "Remaining A"
+msgstr "Cantidad A"
+
+msgid "Remaining B"
+msgstr "Cantidad B"
+
+msgid "Remaining C"
+msgstr "Cantidad C"
+
+msgid "Total Value"
+msgstr "Valor Total"
+
+msgid "Value A"
+msgstr "Valor Total A"
+
+msgid "Value B"
+msgstr "Valor Total B"
+
+msgid "Value C"
+msgstr "Valor Total C"
+
+msgid "Inventory Date"
+msgstr "Fecha Inventario"
+
+
+#########################################################################################################
+#: Production Runs
+
+msgid "Production Run"
+msgstr "Producción"
+
+msgid "Production Runs"
+msgstr "Procesos de Producción"
+
+msgid "Production Parameters"
+msgstr "Parámetros de Producción"
+
+msgid "Unit Cost"
+msgstr "Costo Unitario"
+
+msgid "Total Cost"
+msgstr "Costo Total"
+
+msgid "Energy Use"
+msgstr "Consumo Eléctrico"
+
+msgid "Production Complete"
+msgstr "Producción Realizada"
+
+msgid "Output Product"
+msgstr "Producto Fabricado"
+
+msgid "Production Run Code"
+msgstr "Código Producción"
+
+msgid "Production Run Date"
+msgstr "Fecha de Producción"
+
+msgid "Meter Start"
+msgstr "Medidor Inicial"
+
+msgid "Meter Finish"
+msgstr "Medidor Final"
+
+msgid "Comment"
+msgstr "Comentario"
+
+msgid "Raw Material Quantity"
+msgstr "Cantidad Materia Prima"
+
+msgid "Available Products"
+msgstr "Productos en Inventario"
+
+msgid "The production run has been saved."
+msgstr "El proceso de producción está guardada!"
+
+msgid "Are you sure you want to delete production run with code %s?"
+msgstr "Estás seguro que quiere borrar la orden de producción con código %s?"
+
+msgid "The production run has been deleted."
+msgstr "El proceso de producción está eliminada!"
+
+msgid "The production run could not be deleted.  Please try again."
+msgstr "El proceso de producción no se podía eliminar!"
+
+msgid "Raw Materials scheduled for Production Run"
+msgstr "Materias Primas programadas"
+
+msgid "Raw Materials used in Production Run"
+msgstr "Materias Primas usadas"
+
+msgid "Products Produced in Production Run"
+msgstr "Productos Terminados"
+
+msgid "Quantity Present"
+msgstr "Cantidad Presente"
+
+msgid "Used Quantity"
+msgstr "Cantidad Usada"
+
+msgid "Produced Quantity"
+msgstr "Cantidad Fabricada"
+
+msgid "Remaining Quantity"
+msgstr "Cantidad que queda"
+
+msgid "Edit Production Run"
+msgstr "Editar Proceso de Producción"
+
+msgid "Raw Materials Used"
+msgstr "Materias Primas para Producción"
+
+msgid "Finished Products"
+msgstr "Productos Fabricados"
+
+msgid "Quantity of quality "
+msgstr "Cantidad de producto calidad "
+
+#########################################################################################################
+#: Client Requests
+
+msgid "Client Requests"
+msgstr "Pedidos"
+
+msgid "Client Request"
+msgstr "Pedido"
+
+msgid "New Client Request"
+msgstr "Nuevo Pedido"
+
+msgid "List Client Requests"
+msgstr "Todos Pedidos"
+
+msgid "Add Client Request"
+msgstr "Crear nuevo Pedido"
+
+msgid "Edit Client Request"
+msgstr "Editar Pedido"
+
+msgid "The client request has been saved."
+msgstr "El pedido se guardó."
+
+msgid "The client request could not be saved. Please, try again."
+msgstr "El pedido no se podía guardar.  Por favor vuelve a intentar."
+
+msgid "Client Request Date"
+msgstr "Fecha Pedido"
+
+msgid "Client Request Code"
+msgstr "Número Pedido"
+
+#########################################################################################################
+#: Purchase Estimations
+
+msgid "Purchase Estimations"
+msgstr "Estimaciones de Compras"
+
+msgid "Purchase Estimation"
+msgstr "Estimación de Compras"
+
+msgid "New Purchase Estimation"
+msgstr "Nueva Estimación de Compras"
+
+msgid "List Purchase Estimations"
+msgstr "Todas Estimaciones de Compras"
+
+msgid "Add Purchase Estimation"
+msgstr "Crear nueva Estimación de Compras"
+
+msgid "Edit Purchase Estimation"
+msgstr "Editar Estimación de Compras"
+
+msgid "The purchase estimation has been saved."
+msgstr "La estimación de compras se guardó."
+
+msgid "The purchase estimation could not be saved. Please, try again."
+msgstr "La estimación de compras no se podía guardar.  Por favor vuelve a intentar."
+
+msgid "Purchase Estimation Date"
+msgstr "Fecha Estimación de Compras"
+
+msgid "Purchase Estimation Code"
+msgstr "Número Estimación de Compras"
+
+#########################################################################################################
+#: Incidences
+
+msgid "Incidences"
+msgstr "Incidencias"
+
+msgid "Incidence"
+msgstr "Incidencia"
+
+msgid "New Incidence"
+msgstr "Nueva Incidencia"
+
+msgid "List Incidences"
+msgstr "Todas Incidencias"
+
+msgid "Add Incidence"
+msgstr "Crear nueva Incidencia"
+
+msgid "Edit Incidence"
+msgstr "Editar Incidencia"
+
+msgid "The incidence has been saved."
+msgstr "La incidencia se guardó."
+
+msgid "The incidence could not be saved. Please, try again."
+msgstr "La incidencia no se podía guardar.  Por favor vuelve a intentar."
+
+msgid "Vendor User"
+msgstr "Vendedor"
+
+msgid "Record User"
+msgstr "Usuario Creador"
+
+msgid "Creating User"
+msgstr "Usuario Creador"
+
+msgid "List Order"
+msgstr "Lugar en Lista"
+
+#########################################################################################################
+#: Sales
+msgid "Sale Price"
+msgstr "Precio de Venta"
+
+msgid "Add Exit"
+msgstr "Crear Nueva Salida"
+
+msgid "Edit Exit"
+msgstr "Editar Salida"
+
+msgid "Delete Exit"
+msgstr "Eliminar Salida"
+
+msgid "Exit"
+msgstr "Salida"
+
+msgid "Exits"
+msgstr "Salidas"
+
+msgid "Exit Date"
+msgstr "Fecha de Salida"
+
+msgid "Edit Exit"
+msgstr "Editar Orden de Salida"
+
+msgid "Add Sale"
+msgstr "Crear Nueva Venta"
+
+msgid "Edit Exit"
+msgstr "Editar Salida"
+
+msgid "Delete Sale"
+msgstr "Eliminar Venta"
+
+msgid "Sale"
+msgstr "Venta"
+
+msgid "Sales"
+msgstr "Ventas"
+
+msgid "Sale Date"
+msgstr "Fecha de Venta"
+
+msgid "Edit Sale"
+msgstr "Editar Venta"
+
+msgid "Delete Sale"
+msgstr "Eliminar Venta"
+
+msgid "Raw Material"
+msgstr "Materia Prima"
+
+#msgid "Related Production Runs for Exit"
+#msgstr "Procesos de Producción de este Orden de Salida"
+
+msgid "Related Production Runs for Sale"
+msgstr "Procesos de Producción de esta Venta"
+
+msgid "The sale has been saved."
+msgstr "La venta está guardada!"
+
+msgid "The sale has been deleted."
+msgstr "La venta está eliminada!"
+
+msgid "The sale could not be deleted. Please, try again."
+msgstr "La venta no se podía eliminar!"
+
+msgid "Products Sold"
+msgstr "Productos en Venta"
+
+msgid "Add Product to Sale"
+msgstr "Añadir Producto a esta Venta"
+
+msgid "Add Sale Item"
+msgstr "Añadir Producto a esta Salida"
+
+msgid "Add Product"
+msgstr "Añadir Producto"
+
+msgid "Remove Sale Item"
+msgstr "Remover Producto"
+
+msgid "The quantity in stock for the following items is not sufficient."
+msgstr "La cantidad en bodega para los productos siguientes no es suficiente:"
+
+#msgid "For product %s the quantity requested (%d) exceeds quantity in stock (%d)!"
+#msgstr "Para producto %s la cantidad requerida (%d) excede la cantidad en bodega (%d)!"
+
+msgid "Choose a Product"
+msgstr "Seleccione"
+
+msgid "Choose a Category"
+msgstr "Código"
+
+msgid "Choose a Raw Material"
+msgstr "Materia Prima"
+
+msgid "Quantity Product"
+msgstr "Cantidad Producto"
+
+msgid "Production Code"
+msgstr "Código"
+
+msgid "Total Price"
+msgstr "Precio Total"
+
+msgid "Please correct and try again!"
+msgstr "Por favor corriga y intente de nuevo!"
+
+msgid "The sale could not be saved. Please, try again.'), 'default',array('class' => 'error-message')); Please, try again."
+msgstr "La salida no se podía guardar.  Por favor intente de nuevo o contacte su administrador de sistema."
+
+msgid "Cashbox Accounting Code"
+msgstr "Cuenta Contable Caja"
+
+msgid "Order Code"
+msgstr "Código de Orden"
+
+msgid "Due Date"
+msgstr "Fecha Vencimiento"
+
+#########################################################################################################
+#: Remissions
+msgid "New Remission"
+msgstr "Nueva Remisión"
+
+msgid "All Remissions"
+msgstr "Todas Remisiones"
+
+msgid "Remission Price"
+msgstr "Precio de Remisión"
+
+msgid "Add Remission"
+msgstr "Crear Nueva Remisión"
+
+msgid "Edit Remission"
+msgstr "Editar Remisión"
+
+msgid "Delete Remission"
+msgstr "Eliminar Remisión"
+
+msgid "Remission"
+msgstr "Remisión"
+
+msgid "Remissions"
+msgstr "Remisións"
+
+msgid "Remission Date"
+msgstr "Fecha de Remisión"
+
+msgid "Edit Remission"
+msgstr "Editar Remisión"
+
+msgid "Delete Remission"
+msgstr "Eliminar Remisión"
+
+#msgid "Related Production Runs for Remission"
+#msgstr "Procesos de Producción de esta Orden de Remisión"
+
+msgid "The remission has been saved."
+msgstr "La remisión está guardada!"
+
+msgid "The remission has been deleted."
+msgstr "La remisión está eliminada!"ad
+
+msgid "The remission could not be deleted. Please, try again."
+msgstr "La remisión no se podía eliminar!"
+
+msgid "Cash Receipt Type Id"
+msgstr "Tipo de Recibo de Caja"
+
+msgid "Cash Receipt Type"
+msgstr "Tipo de Recibo de Caja"
+
+msgid "Currency"
+msgstr "Moneda"
+
+msgid "Concept"
+msgstr "Concepto"
+
+msgid "Observation"
+msgstr "Observación"
+
+msgid "Received From"
+msgstr "Recibido De"
+
+#########################################################################################################
+#: Cash Receipts
+
+msgid "List Cash Receipts"
+msgstr "Todos Recibos de Caja"
+
+msgid "New Cash Receipt"
+msgstr "Nuevo Recibo de Caja"
+
+msgid "All Cash Receipts"
+msgstr "Todos Recibos de Caja"
+
+msgid "Cash Receipt Price"
+msgstr "Precio de Recibo de Caja"
+
+msgid "Add Cash Receipt"
+msgstr "Crear Nuevo Recibo de Caja"
+
+msgid "Edit Cash Receipt"
+msgstr "Editar Recibo de Caja"
+
+msgid "Delete Cash Receipt"
+msgstr "Eliminar Recibo de Caja"
+
+msgid "Cash Receipt"
+msgstr "Recibo de Caja"
+
+msgid "Cash Receipts"
+msgstr "Recibos de Cajas"
+
+msgid "Delete Cash Receipt"
+msgstr "Eliminar Recibo de Caja"
+
+msgid "The cash receipt has been saved."
+msgstr "El recibo de caja está guardado!"
+
+msgid "The cash receipt has been deleted."
+msgstr "El recibo de caja está eliminado!"
+
+msgid "The cash receipt could not be deleted. Please, try again."
+msgstr "El recibo de caja no se podía eliminar!"
+
+msgid "Receipt Date"
+msgstr "Fecha Recibo"
+
+msgid "Receipt Code"
+msgstr "Código Recibo"
+
+msgid "Bool Annulled"
+msgstr "Anulado"
+
+msgid "Credit Accounting Code"
+msgstr "Cuenta Contable HABER"
+
+#########################################################################################################
+#: Exchange Rates
+
+msgid "Exchange Rates"
+msgstr "Tasas de Cambio"
+
+msgid "Exchange Rate"
+msgstr "Tasa de Cambio"
+
+msgid "New Exchange Rate"
+msgstr "Nueva Tasa de Cambio"
+
+msgid "List Exchange Rates"
+msgstr "Todas Tasas de Cambio"
+
+msgid "Add Exchange Rate"
+msgstr "Crear nueva Tasa de Cambio"
+
+msgid "Edit Exchange Rate"
+msgstr "Editar Tasa de Cambio"
+
+msgid "The exchange rate has been saved."
+msgstr "La tasa de cambio se guardó."
+
+msgid "The exchange rate could not be saved. Please, try again.'), 'default',array('class' => 'error-message'));  Please try again."
+msgstr "La tasa de cambio no se podía guardar.  Por favor vuelve a intentar."
+
+msgid "Application Date"
+msgstr "Fecha de Aplicación"
+
+msgid "Conversion Currency"
+msgstr "Moneda a que se Convierte"
+
+msgid "Rate"
+msgstr "Tasa"
+
+msgid "Base Currency"
+msgstr "Moneda Base"
+
+#########################################################################################################
+
+msgid "Accounting Register Types"
+msgstr "Tipos de Comprobante"
+
+msgid "Accounting Register Type"
+msgstr "Tipo de Comprobante"
+
+msgid "New Accounting Register Type"
+msgstr "Nuevo Tipo de Comprobante"
+
+msgid "List Accounting Register Types"
+msgstr "Todos Tipos de Comprobante"
+
+msgid "Add Accounting Register Type"
+msgstr "Crear nuevo Tipo de Comprobante"
+
+msgid "Edit Accounting Register Type"
+msgstr "Editar Tipo de Comprobante"
+
+msgid "The accounting register type has been saved."
+msgstr "El tipo de comprobante se guardó."
+
+msgid "The accounting register type could not be saved. Please, try again.'), 'default',array('class' => 'error-message'));  Please try again."
+msgstr "El tipo de comprobante no se podía guardar.  Por favor vuelve a intentar."
+
+msgid "Related Accounting Registers of this Accounting Register Type"
+msgstr "Comprobantes de este Tipo"
+
+msgid "Abbreviation"
+msgstr "Abreviación"
+
+#########################################################################################################
+msgid "Accounting Registers"
+msgstr "Comprobantes"
+
+msgid "Accounting Register"
+msgstr "Comprobante"
+
+msgid "New Accounting Register"
+msgstr "Nuevo Comprobante"
+
+msgid "List Accounting Registers"
+msgstr "Todos Comprobantes"
+
+msgid "Add Accounting Register"
+msgstr "Crear nuevo Comprobante"
+
+msgid "Edit Accounting Register"
+msgstr "Editar Comprobante"
+
+msgid "The accounting register has been saved."
+msgstr "El comprobante se guardó."
+
+msgid "The accounting register could not be saved. Please, try again.'), 'default',array('class' => 'error-message'));  Please try again."
+msgstr "El comprobante no se podía guardar.  Por favor vuelve a intentar."
+
+msgid "Choose Accounting Code"
+msgstr "Cuenta Contable"
+
+msgid "Select Accounting Code"
+msgstr "Seleccione Cuenta Contable"
+
+msgid "Remove Debit Code"
+msgstr "Remover Debe"
+
+msgid "Remove Credit Code"
+msgstr "Remover Haber"
+
+msgid "Add Debit Code"
+msgstr "Otro Debe"
+
+msgid "Add Credit Code"
+msgstr "Otro Haber"
+
+msgid "Register Date"
+msgstr "Fecha Comprobante"
+
+msgid "Related Accounting Movements"
+msgstr "Movimientos Contables"
+
+msgid "Bool Debit"
+msgstr "Debe/Haber"
+
+msgid "Accounting Code Name"
+msgstr "Nombre Comprobante"
+
+msgid "Current Saldo Bank"
+msgstr "Saldo Cuenta Bancaria"
+
+msgid "Concept"
+msgstr "Concepto"
+
+msgid "Select Currency"
+msgstr "Seleccione Moneda"
+
+msgid "Debit"
+msgstr "Debe"
+
+msgid "Credit"
+msgstr "Haber"
+
+msgid "Code"
+msgstr "Código"
+
+msgid "Credit"
+msgstr "Haber"
+
+msgid "Register Code"
+msgstr "Número Comprobante"
+
+#########################################################################################################
+#: Accounting Codes
+
+msgid "List Accounting Codes"
+msgstr "Todas Cuentas Contables"
+
+msgid "New Accounting Code"
+msgstr "Nueva Cuenta Contable"
+
+msgid "All Accounting Codes"
+msgstr "Todas Cuentas Contables"
+
+msgid "Add Accounting Code"
+msgstr "Crear Nueva Cuenta Contable"
+
+msgid "Edit Accounting Code"
+msgstr "Editar Cuenta Contable"
+
+msgid "Delete Accounting Code"
+msgstr "Eliminar Cuenta Contable"
+
+msgid "Accounting Code"
+msgstr "Cuenta Contable"
+
+msgid "Accounting Codes"
+msgstr "Cuentas Contables"
+
+msgid "The accounting code has been saved."
+msgstr "La cuenta contable está guardada!"
+
+msgid "The accounting code has been deleted."
+msgstr "La cuenta contable está eliminada!"
+
+msgid "The accounting code could not be deleted. Please, try again."
+msgstr "La cuenta contable no se podía eliminar!"
+
+msgid "Bool Main"
+msgstr "Tipo de Cuenta"
+
+msgid "Bool Creditor"
+msgstr "Naturaleza de Cuenta"
+
+msgid "Child Accounting Codes"
+msgstr "Cuentas Contables dependientes"
+
+msgid "Parent Accounting Code"
+msgstr "Cuenta Contable superior"
+
+#########################################################################################################
+#: StockItems
+
+msgid "Unit Price"
+msgstr "Precio Unidad"
+
+msgid "Original Quantity"
+msgstr "Cantidad Original"
+
+msgid "Production Result Code"
+msgstr "Código Resultado"
+
+msgid "Stock Item"
+msgstr "Lote de Inventario"
+
+msgid "Stock Items"
+msgstr "Lotes de Inventario"
+
+msgid "Stock Movements"
+msgstr "Movimientos de Lotes"
+
+msgid "Edit Stock Item"
+msgstr "Editar Producto de Inventario"
+
+msgid "Related Production Movements"
+msgstr "Movimientos de Producción"
+
+msgid "Related Stock Movements"
+msgstr "Movimientos de Inventario"
+
+msgid "The stock movement has been saved."
+msgstr "El movimiento de inventario ha estado guardado!"
+
+msgid "Product Name"
+msgstr "Producto"
+
+msgid "StockItem Remaining Quantity"
+msgstr "Cantidad en Inventario"
+
+msgid "ProductionResultCode Code"
+msgstr "Código"
+
+msgid "RawMaterial Name"
+msgstr "Materia Prima"
+
+msgid "Used in Production Runs"
+msgstr "Usado en Procesos de Producción"
+
+msgid "Produced in Production Run"
+msgstr "Producidos en Proceso de Producción"
+
+msgid "Product Quantity Used"
+msgstr "Cantidad Productos Usados"
+
+msgid "Product Quatity Produced"
+msgstr "Cantidad Productos Producidos"
+
+msgid "Exited in Exit Order"
+msgstr "Ordenes de Salida relacionados"
+
+msgid "Acquired in Purchase"
+msgstr "Adquirido en Entrada"
+
+msgid "Product Quantity Bought"
+msgstr "Cantidad Producto Entrada"
+
+msgid "Product Quatity Sold"
+msgstr "Cantidad Producto Vendido"
+
+
+
+
+#########################################################################################################
+#: Overview
+
+msgid "Overview"
+msgstr "Resumen"
+
+msgid "Start Date"
+msgstr "Fecha Inicio"
+
+msgid "End Date"
+msgstr "Fecha Final"
+
+msgid "Raw Materials"
+msgstr "Materia Prima"
+
+msgid "Initial Stock"
+msgstr "Inventario Inicial"
+
+msgid "Materials Purchased"
+msgstr "Materias Prima Entrados"
+
+msgid "Materials Consumed"
+msgstr "Materias Prima Usados"
+
+msgid "Value"
+msgstr "Valor"
+
+msgid "Final Stock"
+msgstr "Inventario Final"
+
+msgid "Finished Materials"
+msgstr "Productos Terminados"
+
+msgid "Materials Produced"
+msgstr "Productos Producidos"
+
+msgid "Materials Sold"
+msgstr "Productos Vendidos"
+
+
+#########################################################################################################
+#: menu items
+msgid "Production"
+msgstr "Producción"
+
+msgid "Sales"
+msgstr "Ventas"
+
+msgid "Purchases"
+msgstr "Entradas"
+
+msgid "Entries"
+msgstr "Entradas"
+
+msgid "Report"
+msgstr "Reporte"
+
+msgid "Inventory"
+msgstr "Inventario"
+
+msgid "Configuration"
+msgstr "Configuración"
+
+#########################################################################################################
+#: action items
+
+msgid "New Machine"
+msgstr "Nueva Máquina"
+
+msgid "List Machines"
+msgstr "Todas Máquinas"
+
+msgid "New Operator"
+msgstr "Nuevo Operador"
+
+msgid "List Operators"
+msgstr "Todos Operadores"
+
+msgid "New Shift"
+msgstr "Nuevo Turno"
+
+msgid "List Shifts"
+msgstr "Todos Turnos"
+
+
+msgid "New Third Party"
+msgstr "Nuevo Cliente o Proveedor"
+
+msgid "List Third Parties"
+msgstr "Todos Clientes y Proveedores"
+
+msgid "New Client"
+msgstr "Nuevo Cliente"
+
+msgid "List Clients"
+msgstr "Todos Clientes"
+
+msgid "New Provider"
+msgstr "Nuevo Proveedor"
+
+msgid "List Providers"
+msgstr "Todos Proveedores"
+
+msgid "New Production Run"
+msgstr "Nuevo Proceso de Producción"
+
+msgid "List Production Runs"
+msgstr "Todos Procesos de Producción"
+
+msgid "New Product"
+msgstr "Nuevo Producto"
+
+msgid "List Products"
+msgstr "Todos Productos"
+
+msgid "New User"
+msgstr "Nuevo Usuario"
+
+msgid "List Users"
+msgstr "Todos Usuarios"
+
+msgid "New Order"
+msgstr "Nueva Orden"
+
+msgid "List Orders"
+msgstr "Todas Ordenes"
+
+msgid "New Purchase"
+msgstr "Nueva Entrada"
+
+msgid "List Purchases"
+msgstr "Todas Entradas"
+
+msgid "New Sale"
+msgstr "Nueva Venta"
+
+msgid "List Sales"
+msgstr "Todas Ventas"
+
+msgid "New Exit"
+msgstr "Nueva Salida"
+
+msgid "List Exits"
+msgstr "Todas Salidas"
+
+msgid "List User Logs"
+msgstr "Todos Eventos de Usuario"
+
+msgid "New Stock Item"
+msgstr "Nuevo Producto de Inventario"
+
+msgid "List Stock Items"
+msgstr "Todos Productos Inventario"
+
+msgid "New Stock Movement"
+msgstr "Nuevo Movimiento Inventario"
+
+msgid "List Stock Movements"
+msgstr "Todos Movimientos Inventario"
+
+msgid "New Production Result Code"
+msgstr "Nuevo Código Resultado Producción"
+
+msgid "List Production Result Codes"
+msgstr "Todos Códigos Resultado Producción"
+
+msgid "List Production Movements"
+msgstr "Todos Movimientos de Producción"
+
+# Report
+
+msgid "Quantity Initial Stock"
+msgstr "Cantidad Inicial"
+
+msgid "Value Initial Stock"
+msgstr "Valor Inicial"
+
+msgid "Quantity Purchased"
+msgstr "Cantidad Entrada"
+
+msgid "Value Purchased"
+msgstr "Valor Entrada"
+
+msgid "Quantity Used"
+msgstr "Cantidad Usado"
+
+msgid "Value Used"
+msgstr "Valor Usado"
+
+msgid "Quantity Reclassified"
+msgstr "Cantidad Reclasificada"
+
+msgid "Value Reclassified"
+msgstr "Valor Reclasificado"
+
+msgid "Quantity Final Stock"
+msgstr "Cantidad Final"
+
+msgid "Value Final Stock"
+msgstr "Valor Final"
+
+msgid "Report"
+msgstr "Reporte"
+
+msgid "Date"
+msgstr "Fecha"
+
+msgid "Units"
+msgstr "Unidades"
+
+msgid "Exit to Production"
+msgstr "Salida Producción"
+
+msgid "Quantity Produced"
+msgstr "Cantidad Fabricada"
+
+msgid "Value Produced"
+msgstr "Valor Fabricado"
+
+msgid "Produced Materials"
+msgstr "Materiales Fabricados"
+
+msgid "Quantity Sold"
+msgstr "Cantidad Salida"
+
+msgid "Quantity Final Stock"
+msgstr "Cantidad Final"
+
+msgid "Value Sold"
+msgstr "Valor Salida"
+
+msgid "Other Materials"
+msgstr "Otros Materiales"
+
+msgid "Refresh"
+msgstr "Actualizar"
+
+##################
+#Reclassify inventory
+#################
+msgid "Reclassify Inventory"
+msgstr "Reclasificación"
+
+msgid "Product Type to Reclassify"
+msgstr "Producto a Reclasificar"
+
+msgid "Reclassification Date"
+msgstr "Fecha Reclasificación"
+
+msgid "Reclassification Code"
+msgstr "Código de Reclasificación"
+
+msgid "Select Bottle or Cap"
+msgstr "Seleccione Botellas o Tapones"
+
+msgid "Bottle"
+msgstr "Botella"
+
+msgid "Select Bottle"
+msgstr "Seleccione Botella"
+
+msgid "Select Preforma"
+msgstr "Seleccione Preforma"
+
+msgid "Convert from Quality"
+msgstr "Calidad Original"
+
+msgid "Select Original Quality"
+msgstr "Seleccione Calidad Original"
+
+msgid "Convert to Quality"
+msgstr "Calidad Nueva"
+
+msgid "Select Target Quality"
+msgstr "Seleccione Calidad Nueva"
+
+msgid "Quantity of Bottles"
+msgstr "Cantidad Botellas"
+
+msgid "Original Cap Color"
+msgstr "Color Original"
+
+msgid "Select Original Cap Color"
+msgstr "Seleccione Color Original"
+
+msgid "Target Cap Color"
+msgstr "Color Nuevo"
+
+msgid "Select Target Cap Color"
+msgstr "Seleccione Color Nuevo"
+
+msgid "Quantity of Caps"
+msgstr "Cantidad de Tapones"
+
+msgid "Bottles"
+msgstr "Botellas"
+
+msgid "Caps"
+msgstr "Tapones"
+
+msgid "Original Product"
+msgstr "Producto Original"
+
+msgid "Destination Product"
+msgstr "Producto Reclasificado"
+
+msgid "Quantity Created"
+msgstr "Cantidad Reclasificado"
+
+msgid "Convert to Preforma"
+msgstr "Convertir a Preforma"
+
+msgid "Closing Dates"
+msgstr "Fechas de Cierre"
+
+msgid "Closing Date"
+msgstr "Fecha de Cierre"
+
+msgid "New Closing Date"
+msgstr "Nueva Fecha de Cierre"
+
+msgid "List Closing Dates"
+msgstr "Todas Fechas de Cierre"
+
+msgid "Add Closing Date"
+msgstr "Crear Nueva Fecha de Cierre"
+
+msgid "The closing date has been saved."
+msgstr "Se guardó la fecha de cierre"
+
+msgid "The closing date could not be saved. Please, try again.'), 'default',array('class' => 'error-message')); Please, try again."
+msgstr "La fecha de cierre no se podía guardar."
+
+
+
+##################
+#Cheques
+#################
+
+msgid "List Cheques"
+msgstr "Todos Cheques"
+
+msgid "New Cheque"
+msgstr "Nuevo Cheque"
+
+msgid "All Cheques"
+msgstr "Todos Cheques"
+
+msgid "Add Cheque"
+msgstr "Crear Nuevo Cheque"
+
+msgid "Edit Cheque"
+msgstr "Editar Cheque"
+
+msgid "Delete Cheque"
+msgstr "Eliminar Cheque"
+
+msgid "Cheque"
+msgstr "Cheque"
+
+msgid "Cheques"
+msgstr "Cheques"
+
+msgid "The cheque has been saved."
+msgstr "El cheque está guardada!"
+
+msgid "The cheque has been deleted."
+msgstr "El cheque está eliminada!"
+
+msgid "The cheque could not be deleted. Please, try again."
+msgstr "El cheque no se podía eliminar!"
+
+msgid "Cheque Date"
+msgstr "Fecha"
+
+msgid "Cheque Code"
+msgstr "Número Cheque"
+
+msgid "Receiver Name"
+msgstr "Beneficiario"
+
+msgid "Bank Accounting Code"
+msgstr "Cuenta Bancaria"
+
+
+
+
+##################
+#Cheque Types
+#################
+
+msgid "List Cheque Types"
+msgstr "Todos Tipos de Cheque"
+
+msgid "New Cheque Type"
+msgstr "Nuevo Tipo de Cheque"
+
+msgid "All Cheque Types"
+msgstr "Todos Tipos de Cheque"
+
+msgid "Add Cheque Type"
+msgstr "Crear Nuevo Tipo de Cheque"
+
+msgid "Edit Cheque Type"
+msgstr "Editar Tipo de Cheque"
+
+msgid "Delete Cheque Type"
+msgstr "Eliminar Tipo de Cheque"
+
+msgid "Cheque Type"
+msgstr "Tipo de Cheque"
+
+msgid "Cheque Types"
+msgstr "Tipos de Cheque"
+
+msgid "The cheque type has been saved."
+msgstr "El tipo de Cheque está guardada!"
+
+msgid "The cheque type has been deleted."
+msgstr "El tipo de Cheque está eliminada!"
+
+msgid "The cheque type could not be deleted. Please, try again."
+msgstr "El tipo de Cheque no se podía eliminar!"
+
+##################
+#Transfers
+#################
+
+msgid "List Transfers"
+msgstr "Todas Transferencias"
+
+msgid "New Transfer"
+msgstr "Nueva Transferencia"
+
+msgid "All Transfers"
+msgstr "Todas Transferencias"
+
+msgid "Add Transfer"
+msgstr "Crear Nueva Transferencia"
+
+msgid "Edit Transfer"
+msgstr "Editar Transferencia"
+
+msgid "Delete Transfer"
+msgstr "Remover Transferencia"
+
+msgid "Transfers"
+msgstr "Transferencias"
+
+msgid "Transfer"
+msgstr "Transferencias"
+
+msgid "The transfer has been saved."
+msgstr "La transferencia está guardada!"
+
+msgid "The transfer has been deleted."
+msgstr "La transferencia está eliminada!"
+
+msgid "The transfer could not be deleted. Please, try again."
+msgstr "La transferencia no se podía eliminar!"
+
+msgid "Transfer Date"
+msgstr "Fecha"
+
+msgid "Transfer Code"
+msgstr "Número Depósito"
+
+msgid "List Deposits"
+msgstr "Todos Depósitos"
+
+msgid "New Deposit"
+msgstr "Nuevo Depósito"
+
+msgid "All Deposits"
+msgstr "Todos Depósitos"
+
+msgid "Add Deposit"
+msgstr "Crear Nuevo Depósito"
+
+msgid "Edit Deposit"
+msgstr "Editar Depósito"
+
+msgid "Delete Deposit"
+msgstr "Remover Depósito"
+
+msgid "Deposits"
+msgstr "Depósitos"
+
+msgid "Deposit"
+msgstr "Depósito"
+
+msgid "The deposit has been saved."
+msgstr "El depósito está guardada!"
+
+msgid "The deposit has been deleted."
+msgstr "El depósito está eliminada!"
+
+msgid "The deposit could not be deleted. Please, try again."
+msgstr "El depósito no se podía eliminar!"
+
+msgid "Deposit Date"
+msgstr "Fecha Depósito"
+
+msgid "Bank Reference"
+msgstr "Referencia Banco"
+
+##################
+#Employees
+#################
+
+msgid "List Employees"
+msgstr "Todos Empleados"
+
+msgid "New Employee"
+msgstr "Nuevo Empleado"
+
+msgid "All Employees"
+msgstr "Todos Empleados"
+
+msgid "Add Employee"
+msgstr "Crear Nuevo Empleado"
+
+msgid "Edit Employee"
+msgstr "Editar Empleado"
+
+msgid "Delete Employee"
+msgstr "Remover Empleado"
+
+msgid "Employees"
+msgstr "Empleados"
+
+msgid "Employee"
+msgstr "Empleado"
+
+msgid "The employee has been saved."
+msgstr "El empleado está guardada!"
+
+msgid "The employee has been deleted."
+msgstr "El empleado está eliminada!"
+
+msgid "The employee could not be deleted. Please, try again."
+msgstr "El empleado no se podía eliminar!"
+
+msgid "Starting Date"
+msgstr "Fecha Contratación"
+
+msgid "Ending Date"
+msgstr "Fecha de Liquidación"
+
+msgid "Employee Code"
+msgstr "Número Empleado"
+
+msgid "Position"
+msgstr "Cargo"
+
+##################
+#Employee Holidays
+#################
+
+msgid "List Employee Holidays"
+msgstr "Todos Días de Vacaciones"
+
+msgid "New Employee Holiday"
+msgstr "Nuevo Día de Vacaciones"
+
+msgid "All Employee Holidays"
+msgstr "Todos Días de Vacaciones"
+
+msgid "Add Employee Holiday"
+msgstr "Crear Nuevo Día de Vacaciones"
+
+msgid "Edit Employee Holiday"
+msgstr "Editar Día de Vacaciones"
+
+msgid "Delete Employee Holiday"
+msgstr "Remover Día de Vacaciones"
+
+msgid "Employee Holidays"
+msgstr "Días de Vacaciones"
+
+msgid "Employee Holiday"
+msgstr "Día de Vacaciones"
+
+msgid "The employee holiday has been saved."
+msgstr "El día de vacaciones está guardada!"
+
+msgid "The employee holiday has been deleted."
+msgstr "El día de vacaciones está eliminada!"
+
+msgid "The employee holiday could not be deleted. Please, try again."
+msgstr "El día de vacaciones no se podía eliminar!"
+
+msgid "Holiday Date"
+msgstr "Fecha Inicio Vacaciones"
+
+msgid "Days Taken"
+msgstr "# Días de Vacaciones"
+
+##################
+# Holiday Types
+#################
+
+msgid "List Holiday Types"
+msgstr "Todos Motivos de Vacaciones"
+
+msgid "New Holiday Type"
+msgstr "Nuevo Motivo de Vacaciones"
+
+msgid "All Holiday Types"
+msgstr "Todos Motivos de Vacaciones"
+
+msgid "Add Holiday Type"
+msgstr "Crear Nuevo Motivo de Vacaciones"
+
+msgid "Edit Holiday Type"
+msgstr "Editar Motivo de Vacaciones"
+
+msgid "Delete Holiday Type"
+msgstr "Remover Motivo de Vacaciones"
+
+msgid "Holiday Types"
+msgstr "Motivos de Vacaciones"
+
+msgid "Holiday Type"
+msgstr "Motivo de Vacaciones"
+
+msgid "The holiday type has been saved."
+msgstr "El motivo de vacaciones está guardada!"
+
+msgid "The holiday type has been deleted."
+msgstr "El motivo de vacaciones está eliminada!"
+
+msgid "The holiday type could not be deleted. Please, try again."
+msgstr "El motivo de vacaciones no se podía eliminar!"
+
+##################
+# Constants
+#################
+
+msgid "List Constants"
+msgstr "Todos Constantes"
+
+msgid "New Constant"
+msgstr "Nuevo Constante"
+
+msgid "All Constants"
+msgstr "Todos Constantes"
+
+msgid "Add Constant"
+msgstr "Crear Nuevo Constante"
+
+msgid "Edit Constant"
+msgstr "Editar Constante"
+
+msgid "Delete Constant"
+msgstr "Remover Constante"
+
+msgid "Constants"
+msgstr "Constantes"
+
+msgid "Constant"
+msgstr "Constante"
+
+msgid "The constant has been saved."
+msgstr "El constante está guardado!"
+
+msgid "The constant has been deleted."
+msgstr "El constante está eliminado!"
+
+msgid "The constant could not be deleted. Please, try again."
+msgstr "El constante no se podía eliminar!"
+
+##################
+#Quotations
+#################
+
+msgid "List Quotations"
+msgstr "Todas Cotizaciones"
+
+msgid "New Quotation"
+msgstr "Nueva Cotización"
+
+msgid "All Quotations"
+msgstr "Todas Cotizaciones"
+
+msgid "Add Quotation"
+msgstr "Crear Nueva Cotización"
+
+msgid "Edit Quotation"
+msgstr "Editar Cotización"
+
+msgid "Delete Quotation"
+msgstr "Eliminar Cotización"
+
+msgid "Quotations"
+msgstr "Cotizaciones"
+
+msgid "Quotation"
+msgstr "Cotización"
+
+msgid "The quotation has been saved."
+msgstr "La cotización está guardada!"
+
+msgid "The quotation has been deleted."
+msgstr "La cotización está eliminada!"
+
+msgid "The quotation could not be deleted. Please, try again."
+msgstr "La cotización no se podía eliminar!"
+
+msgid "Quotation Date"
+msgstr "Fecha Cotización"
+
+msgid "Quotation Code"
+msgstr "Número Cotización"
+
+msgid "Price Subtotal"
+msgstr "Precio Subtotal"
+
+msgid "Price Iva"
+msgstr "Precio IVA"
+
+msgid "Price Total"
+msgstr "Precio Total"
+
+msgid "Bool Iva"
+msgstr "IVA"
+
+msgid "Related Quotation Products"
+msgstr "Productos en la Cotización"
+
+msgid "Product Description"
+msgstr "Descripción"
+
+msgid "Related Invoices"
+msgstr "Facturas Relacionadas"
+
+msgid "Observations"
+msgstr "Observaciones"
+
+msgid "Remark Datetime"
+msgstr "Fecha Actividad"
+
+msgid "Remark Text"
+msgstr "Actividad"
+
+msgid "Working Days Before Reminder"
+msgstr "Días Laborales ante recordatorio"
+
+msgid "Reminder date"
+msgstr "Fecha recordatorio"
+
+msgid "Action Type"
+msgstr "Tipo Acción"
+
+msgid "Image"
+msgstr "Imagen"
+
+##################
+#Sales Orders
+#################
+
+msgid "List Sales Orders"
+msgstr "Todas Ordenes de Venta"
+
+msgid "New Sales Order"
+msgstr "Nueva Orden de Venta"
+
+msgid "All Sales Orders"
+msgstr "Todas Ordenes de Venta"
+
+msgid "Add Sales Order"
+msgstr "Crear Nueva Orden de Venta"
+
+msgid "Edit Sales Order"
+msgstr "Editar Orden de Venta"
+
+msgid "Delete Sales Order"
+msgstr "Eliminar Orden de Venta"
+
+msgid "Sales Orders"
+msgstr "Ordenes de Venta"
+
+msgid "Sales Order"
+msgstr "Orden de Venta"
+
+msgid "The sales order has been saved."
+msgstr "La orden de venta está guardada!"
+
+msgid "The sales order has been deleted."
+msgstr "La orden de venta está eliminada!"
+
+msgid "The sales order could not be deleted. Please, try again."
+msgstr "La orden de venta no se podía eliminar!"
+
+msgid "Sales Order Date"
+msgstr "Fecha Orden de Venta"
+
+msgid "Sales Order Code"
+msgstr "Número Orden de Venta"
+
+msgid "Status"
+msgstr "Estado"
+
+msgid "Bool Invoice"
+msgstr "Facturado"
+
+msgid "Pending Quantity"
+msgstr "Cantidad Pendiente"
+
+msgid "Reminder Date"
+msgstr "Fecha Recordatorio"
+
+##################
+#Sales Objectives
+#################
+
+msgid "List Sales Objectives"
+msgstr "Todas Metas de Ventas"
+
+msgid "New Sales Objective"
+msgstr "Nueva Meta de Ventas"
+
+msgid "All Sales Objectives"
+msgstr "Todas Metas de Ventas"
+
+msgid "Add Sales Objective"
+msgstr "Crear Nueva Meta de Ventas"
+
+msgid "Edit Sales Objective"
+msgstr "Editar Meta de Ventas"
+
+msgid "Delete Sales Objective"
+msgstr "Eliminar Meta de Ventas"
+
+msgid "Sales Objectives"
+msgstr "Metas de Ventas"
+
+msgid "Sales Objective"
+msgstr "Meta de Ventas"
+
+msgid "The sales objective has been saved."
+msgstr "La meta de ventas está guardada!"
+
+msgid "The sales objective has been deleted."
+msgstr "La meta de ventas está eliminada!"
+
+msgid "The sales objective could not be deleted. Please, try again."
+msgstr "La meta de ventas no se podía eliminar!"
+
+msgid "Minimum Objective"
+msgstr "Meta Mínima"
+
+msgid "Maximum Objective"
+msgstr "Meta Máxima"
+
+msgid "Objective Date"
+msgstr "Fecha Objectivo"
+
+msgid "Percentage Commission"
+msgstr "Porcentaje Comisión"
+
+msgid "Amount Commission"
+msgstr "Valor Comisión (C$)"
+
+##################
+#Product Price Logs
+#################
+
+msgid "Product Price Logs"
+msgstr "Precios de Producto"
+
+msgid "Product Price Log"
+msgstr "Precio de Producto"
+
+##################
+#Product Price Logs
+#################
+
+msgid "Price Client Categories"
+msgstr "Categorías de Precios de Cliente"
+
+msgid "Price Client Category"
+msgstr "Categoría de Precios de Cliente"
+
+msgid "New Price Client Category"
+msgstr "Nueva Categoría de Precios de Cliente"
+
+msgid "List Price Client Categories"
+msgstr "Categorías de Precios de Cliente"
+
+msgid "All Price Client Categories"
+msgstr "Todas Categorías de Precios de Cliente"
+
+msgid "Add Price Client Category"
+msgstr "Crear Nueva Categoría de Precios de Cliente"
+
+msgid "Edit Price Client Category"
+msgstr "Editar Categoría de Precios de Cliente"
+
+msgid "Delete Price Client Category"
+msgstr "Eliminar Categoría de Precios de Cliente"
+
+msgid "Category Number"
+msgstr "# Categoría"
+
+##################
+#Page Rights
+#################
+
+msgid "Page Rights"
+msgstr "Derechos Individuales"
+
+msgid "Page Right"
+msgstr "Derecho Individual"
+
+msgid "New Page Right"
+msgstr "Nuevo Derecho Individual"
+
+msgid "List Page Rights"
+msgstr "Derechos Individuales"
+
+msgid "All Page Rights"
+msgstr "Todos Derechos Individuales"
+
+msgid "Add Page Right"
+msgstr "Crear Nuevo Derecho Individual"
+
+msgid "Edit Page Right"
+msgstr "Editar Derecho Individual"
+
+msgid "Delete Page Right"
+msgstr "Eliminar Derecho Individual"
+
+msgid "Pages"
+msgstr "Pantallas"
+
+##################
+#User Page Rights
+#################
+
+msgid "User Page Rights"
+msgstr "Asignaciones de Derecho Individual"
+
+msgid "User Page Right"
+msgstr "Asignación de Derecho Individual"
+
+msgid "New User Page Right"
+msgstr "Nueva Asignación de Derecho Individual"
+
+msgid "List User Page Rights"
+msgstr "Asignaciones de Derecho Individual"
+
+msgid "All User Page Rights"
+msgstr "Todas Asignaciones de Derecho Individual"
+
+msgid "Add User Page Right"
+msgstr "Crear Nueva Asignación de Derecho Individual"
+
+msgid "Edit User Page Right"
+msgstr "Editar Asignación de Derecho Individual"
+
+msgid "Delete User Page Right"
+msgstr "Eliminar Asignación de Derecho Individual"
+
+msgid "Assignment Datetime"
+msgstr "Fecha Asignado"
+
+msgid "BoolAllowed"
+msgstr "Permitido"
+
+msgid "Bool Allowed"
+msgstr "Permitido"
+
+msgid "Controller"
+msgstr "Controlador"
+
+msgid "Action"
+msgstr "Acción"
+
+
+msgid "Provider Nature"
+msgstr "Naturaleza Proveedor"
+
+##################
+#Deliveries
+#################
+
+msgid "Deliveries"
+msgstr "Entregas a Domicilio"
+
+msgid "Delivery"
+msgstr "Entrega a Domicilio"
+
+msgid "New Delivery"
+msgstr "Nueva Entrega a Domicilio"
+
+msgid "List Deliveries"
+msgstr "Entregas a Domicilio"
+
+msgid "All Deliveries"
+msgstr "Todas Entregas a Domicilio"
+
+msgid "Add Delivery"
+msgstr "Crear Nueva Orden de Entrega a Domicilio"
+
+msgid "Edit Delivery"
+msgstr "Editar Entrega a Domicilio"
+
+msgid "Delete Delivery"
+msgstr "Eliminar Entrega a Domicilio"
+
+msgid "Delivery Code"
+msgstr "Código de Entrega"
+
+msgid "Delivery Status"
+msgstr "Estado de Entrega"
+
+msgid "Delivery Address"
+msgstr "Dirección de Entrega"
+
+msgid "Planned Delivery Datetime"
+msgstr "Tiempo de Entrega Previsto"
+
+msgid "Actual Delivery Datetime"
+msgstr "Tiempo de Entrega Efectivo"
+
+msgid "Client Name"
+msgstr "Nombre Cliente"
+
+msgid "Client Phone"
+msgstr "Teléfono Cliente"

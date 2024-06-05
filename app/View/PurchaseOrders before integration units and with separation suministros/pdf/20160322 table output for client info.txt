@@ -1,0 +1,70 @@
+	table.pagecentered {
+		width:90%;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+	table.rounded {
+		border-collapse: separate !important;
+		border:solid #000000 1px;
+		-moz-border-radius: 20px;
+		-webkit-border-radius: 20px;
+		border-radius: 20px;
+		 -webkit-box-shadow: 0 1px 1px #000000;
+		-moz-box-shadow: 0 1px 1px #000000;
+		box-shadow: 0 1px 1px #000000;
+	}
+	table.rounded tr:last-child td:first-child {
+		-moz-border-radius-bottomleft:20px;
+		-webkit-border-bottom-left-radius:20px;
+		border-bottom-left-radius:20px;
+	}
+	table.rounded tr:last-child td:last-child {
+		-moz-border-radius-bottomright:20px;
+		-webkit-border-bottom-right-radius:20px;
+		border-bottom-right-radius:20px;
+	}
+
+/*
+	$output.="<table class='rounded pagecentered'>";
+		$output.="<tr>";
+			$output.="<td style='width:40%;'>";
+				$output.="<div>Fecha: <span class='underline'>".$quotationDateTime->format('d-m-Y')."</span></div>";
+			$output.="</td>";
+			$output.="<td style='width:40%;'>";
+				$output.="<div>Cot. No.: <span class='underline'>".$quotation['Quotation']['quotation_code']."</span></div>";
+			$output.="</td>";
+		$output.="</tr>";
+		$output.="<tr>";
+			if (!empty($quotation['Contact']['fullname'])){
+				$output.="<td style='width:45%;'>";
+					$output.="<div>Cliente: <span class='underline'>".$quotation['Client']['name']."</span></div>";
+				$output.="</td>";
+				$output.="<td style='width:45%;'>";
+					$output.="<div>Contacto: <span class='underline'>".$quotation['Contact']['fullname']."</span></div>";
+				$output.="</td>";
+			}
+			else {
+				$output.="<td style='width:90%;'>";
+					$output.="<div>Cliente: <span class='underline'>".$quotation['Client']['name']."</span></div>";
+				$output.="</td>";
+			}
+		$output.="</tr>";
+		$output.="<tr>";
+			$output.="<td style='width:90%;'>";
+				$output.="<div>Correo: <span class='underline'>".$quotation['Contact']['email']."</span></div>";
+			$output.="</td>";
+		$output.="</tr>";
+		$output.="<tr style='background:#ff00ff;'>";
+			$output.="<td style='width:30% !important;background:#ff0000;'>";
+				$output.="<div>Teléfono: <span class='underline'>".$phone."</span></div>";
+			$output.="</td>";
+			$output.="<td style='width:30% !important;background:#00ff00;'>";
+				$output.="<div>Celular: <span class='underline'>".$cell."</span></div>";
+			$output.="</td>";
+			$output.="<td style='width:30% !important;background:#0000ff;'>";
+				$output.="<div>RUC No.: <span class='underline'>".$quotation['Client']['ruc']."</span></div>";
+			$output.="</td>";
+		$output.="</tr>";
+	$output.="</table>";
+	*/

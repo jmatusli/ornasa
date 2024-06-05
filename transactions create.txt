@@ -1,0 +1,77 @@
+﻿SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+CREATE SCHEMA IF NOT EXISTS `smallbusiness` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `smallbusiness` ;
+
+-- -----------------------------------------------------
+-- Table `smallbusiness`.`transactions`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `smallbusiness`.`transactions` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `order_id` INT NULL,
+  `amount` FLOAT NOT NULL,
+  `currency_id` INT NOT NULL,
+  `transaction_type_id` INT NOT NULL,
+  `cashregister_id` INT NOT NULL,
+  `transaction_mode_id` INT NOT NULL,
+  `customer_id` INT NULL,
+  `accounting_id` INT NULL,
+  `created` DATETIME NULL,
+  `modified` DATETIME NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_transactions_transaction_modes1_idx` (`transaction_mode_id` ASC),
+  INDEX `fk_transactions_accounting1_idx` (`accounting_id` ASC),
+  INDEX `fk_transactions_currencies1_idx` (`currency_id` ASC),
+  INDEX `fk_transactions_customers1_idx` (`customer_id` ASC),
+  INDEX `fk_transactions_orders1_idx` (`order_id` ASC),
+  INDEX `fk_transactions_users1_idx` (`user_id` ASC),
+  INDEX `fk_transactions_cashregisters1_idx` (`cashregister_id` ASC),
+  CONSTRAINT `fk_transactions_transaction_types1`
+    FOREIGN KEY (`transaction_type_id`)
+    REFERENCES `smallbusiness`.`transaction_types` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transactions_transaction_modes1`
+    FOREIGN KEY (`transaction_mode_id`)
+    REFERENCES `smallbusiness`.`transaction_modes` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transactions_accounting1`
+    FOREIGN KEY (`accounting_id`)
+    REFERENCES `smallbusiness`.`accounting` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transactions_currencies1`
+    FOREIGN KEY (`currency_id`)
+    REFERENCES `smallbusiness`.`currencies` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transactions_customers1`
+    FOREIGN KEY (`customer_id`)
+    REFERENCES `smallbusiness`.`customers` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transactions_orders1`
+    FOREIGN KEY (`order_id`)
+    REFERENCES `smallbusiness`.`orders` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transactions_users1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `smallbusiness`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transactions_cashregisters1`
+    FOREIGN KEY (`cashregister_id`)
+    REFERENCES `smallbusiness`.`cashregisters` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

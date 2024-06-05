@@ -1,0 +1,6430 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-08-23 20:15+0200\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/AccountingCodesController.php:37;69;94
+msgid "Invalid accounting code"
+msgstr ""
+
+#: Controller/AccountingCodesController.php:52;73
+msgid "The accounting code has been saved."
+msgstr ""
+
+#: Controller/AccountingCodesController.php:55;76
+msgid "The accounting code could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/AccountingCodesController.php:98
+msgid "The accounting code has been deleted."
+msgstr ""
+
+#: Controller/AccountingCodesController.php:100
+msgid "The accounting code could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/CashregistersController.php:37;69;94
+msgid "Invalid cashregister"
+msgstr ""
+
+#: Controller/CashregistersController.php:52;73
+msgid "The cashregister has been saved."
+msgstr ""
+
+#: Controller/CashregistersController.php:55;76
+msgid "The cashregister could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/CashregistersController.php:98
+msgid "The cashregister has been deleted."
+msgstr ""
+
+#: Controller/CashregistersController.php:100
+msgid "The cashregister could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/CurrenciesController.php:37;69;94
+msgid "Invalid currency"
+msgstr ""
+
+#: Controller/CurrenciesController.php:52;73
+msgid "The currency has been saved."
+msgstr ""
+
+#: Controller/CurrenciesController.php:55;76
+msgid "The currency could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/CurrenciesController.php:98
+msgid "The currency has been deleted."
+msgstr ""
+
+#: Controller/CurrenciesController.php:100
+msgid "The currency could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/CustomersController.php:37;69;94
+msgid "Invalid customer"
+msgstr ""
+
+#: Controller/CustomersController.php:52;73
+msgid "The customer has been saved."
+msgstr ""
+
+#: Controller/CustomersController.php:55;76
+msgid "The customer could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/CustomersController.php:98
+msgid "The customer has been deleted."
+msgstr ""
+
+#: Controller/CustomersController.php:100
+msgid "The customer could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ExchangeRatesController.php:37;72;100
+msgid "Invalid exchange rate"
+msgstr ""
+
+#: Controller/ExchangeRatesController.php:52;76
+msgid "The exchange rate has been saved."
+msgstr ""
+
+#: Controller/ExchangeRatesController.php:55;79
+msgid "The exchange rate could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ExchangeRatesController.php:104
+msgid "The exchange rate has been deleted."
+msgstr ""
+
+#: Controller/ExchangeRatesController.php:106
+msgid "The exchange rate could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/InvoicesController.php:37;73;102
+msgid "Invalid invoice"
+msgstr ""
+
+#: Controller/InvoicesController.php:52;77
+msgid "The invoice has been saved."
+msgstr ""
+
+#: Controller/InvoicesController.php:55;80
+msgid "The invoice could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/InvoicesController.php:106
+msgid "The invoice has been deleted."
+msgstr ""
+
+#: Controller/InvoicesController.php:108
+msgid "The invoice could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/LocationsController.php:37;69;94
+msgid "Invalid location"
+msgstr ""
+
+#: Controller/LocationsController.php:52;73
+msgid "The location has been saved."
+msgstr ""
+
+#: Controller/LocationsController.php:55;76
+msgid "The location could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/LocationsController.php:98
+msgid "The location has been deleted."
+msgstr ""
+
+#: Controller/LocationsController.php:100
+msgid "The location could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/OrdersController.php:37;75;106
+msgid "Invalid order"
+msgstr ""
+
+#: Controller/OrdersController.php:52;79
+msgid "The order has been saved."
+msgstr ""
+
+#: Controller/OrdersController.php:55;82
+msgid "The order could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/OrdersController.php:110
+msgid "The order has been deleted."
+msgstr ""
+
+#: Controller/OrdersController.php:112
+msgid "The order could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/OrdersProductsController.php:37;72;100
+msgid "Invalid orders product"
+msgstr ""
+
+#: Controller/OrdersProductsController.php:52;76
+msgid "The orders product has been saved."
+msgstr ""
+
+#: Controller/OrdersProductsController.php:55;79
+msgid "The orders product could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/OrdersProductsController.php:104
+msgid "The orders product has been deleted."
+msgstr ""
+
+#: Controller/OrdersProductsController.php:106
+msgid "The orders product could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/PricesController.php:37;71;98
+msgid "Invalid price"
+msgstr ""
+
+#: Controller/PricesController.php:52;75
+msgid "The price has been saved."
+msgstr ""
+
+#: Controller/PricesController.php:55;78
+msgid "The price could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/PricesController.php:102
+msgid "The price has been deleted."
+msgstr ""
+
+#: Controller/PricesController.php:104
+msgid "The price could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ProductCategoriesController.php:37;69;94
+msgid "Invalid product category"
+msgstr ""
+
+#: Controller/ProductCategoriesController.php:52;73
+msgid "The product category has been saved."
+msgstr ""
+
+#: Controller/ProductCategoriesController.php:55;76
+msgid "The product category could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ProductCategoriesController.php:98
+msgid "The product category has been deleted."
+msgstr ""
+
+#: Controller/ProductCategoriesController.php:100
+msgid "The product category could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ProductsController.php:37;73;102
+msgid "Invalid product"
+msgstr ""
+
+#: Controller/ProductsController.php:52;77
+msgid "The product has been saved."
+msgstr ""
+
+#: Controller/ProductsController.php:55;80
+msgid "The product could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ProductsController.php:106
+msgid "The product has been deleted."
+msgstr ""
+
+#: Controller/ProductsController.php:108
+msgid "The product could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ProductsQuotationsController.php:37;72;100
+msgid "Invalid products quotation"
+msgstr ""
+
+#: Controller/ProductsQuotationsController.php:52;76
+msgid "The products quotation has been saved."
+msgstr ""
+
+#: Controller/ProductsQuotationsController.php:55;79
+msgid "The products quotation could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ProductsQuotationsController.php:104
+msgid "The products quotation has been deleted."
+msgstr ""
+
+#: Controller/ProductsQuotationsController.php:106
+msgid "The products quotation could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/QuotationsController.php:37;73;102
+msgid "Invalid quotation"
+msgstr ""
+
+#: Controller/QuotationsController.php:52;77
+msgid "The quotation has been saved."
+msgstr ""
+
+#: Controller/QuotationsController.php:55;80
+msgid "The quotation could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/QuotationsController.php:106
+msgid "The quotation has been deleted."
+msgstr ""
+
+#: Controller/QuotationsController.php:108
+msgid "The quotation could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/RolesController.php:37;69;94
+msgid "Invalid role"
+msgstr ""
+
+#: Controller/RolesController.php:52;73
+msgid "The role has been saved."
+msgstr ""
+
+#: Controller/RolesController.php:55;76
+msgid "The role could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/RolesController.php:98
+msgid "The role has been deleted."
+msgstr ""
+
+#: Controller/RolesController.php:100
+msgid "The role could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/TransactionModesController.php:37;69;94
+msgid "Invalid transaction mode"
+msgstr ""
+
+#: Controller/TransactionModesController.php:52;73
+msgid "The transaction mode has been saved."
+msgstr ""
+
+#: Controller/TransactionModesController.php:55;76
+msgid "The transaction mode could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/TransactionModesController.php:98
+msgid "The transaction mode has been deleted."
+msgstr ""
+
+#: Controller/TransactionModesController.php:100
+msgid "The transaction mode could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/TransactionTypesController.php:37;69;94
+msgid "Invalid transaction type"
+msgstr ""
+
+#: Controller/TransactionTypesController.php:52;73
+msgid "The transaction type has been saved."
+msgstr ""
+
+#: Controller/TransactionTypesController.php:55;76
+msgid "The transaction type could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/TransactionTypesController.php:98
+msgid "The transaction type has been deleted."
+msgstr ""
+
+#: Controller/TransactionTypesController.php:100
+msgid "The transaction type could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/TransactionsController.php:37;78;112
+msgid "Invalid transaction"
+msgstr ""
+
+#: Controller/TransactionsController.php:52;82
+msgid "The transaction has been saved."
+msgstr ""
+
+#: Controller/TransactionsController.php:55;85
+msgid "The transaction could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/TransactionsController.php:116
+msgid "The transaction has been deleted."
+msgstr ""
+
+#: Controller/TransactionsController.php:118
+msgid "The transaction could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/UserlogsController.php:37;71;98
+msgid "Invalid userlog"
+msgstr ""
+
+#: Controller/UserlogsController.php:52;75
+msgid "The userlog has been saved."
+msgstr ""
+
+#: Controller/UserlogsController.php:55;78
+msgid "The userlog could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/UserlogsController.php:102
+msgid "The userlog has been deleted."
+msgstr ""
+
+#: Controller/UserlogsController.php:104
+msgid "The userlog could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:32
+msgid "Invalid username or password, try again"
+msgstr ""
+
+#: Controller/UsersController.php:61;93;118
+msgid "Invalid user"
+msgstr ""
+
+#: Controller/UsersController.php:76;97
+msgid "The user has been saved."
+msgstr ""
+
+#: Controller/UsersController.php:79;100
+msgid "The user could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:122
+msgid "The user has been deleted."
+msgstr ""
+
+#: Controller/UsersController.php:124
+msgid "The user could not be deleted. Please, try again."
+msgstr ""
+
+#: View/AccountingCodes/add.ctp:4
+msgid "Add Accounting Code"
+msgstr ""
+
+#: View/AccountingCodes/add.ctp:11
+#: View/AccountingCodes/edit.ctp:12
+#: View/Cashregisters/add.ctp:11
+#: View/Cashregisters/edit.ctp:12
+#: View/Currencies/add.ctp:11
+#: View/Currencies/edit.ctp:12
+#: View/Customers/add.ctp:12
+#: View/Customers/edit.ctp:13
+#: View/Invoices/add.ctp:18
+#: View/Invoices/edit.ctp:19
+#: View/Locations/add.ctp:11
+#: View/Locations/edit.ctp:12
+#: View/Orders/add.ctp:15
+#: View/Orders/edit.ctp:16
+#: View/OrdersProducts/add.ctp:12
+#: View/OrdersProducts/edit.ctp:13
+#: View/Prices/add.ctp:13
+#: View/Prices/edit.ctp:14
+#: View/ProductCategories/add.ctp:10
+#: View/ProductCategories/edit.ctp:11
+#: View/Products/add.ctp:14
+#: View/Products/edit.ctp:15
+#: View/ProductsQuotations/add.ctp:11
+#: View/ProductsQuotations/edit.ctp:12
+#: View/Quotations/add.ctp:13
+#: View/Quotations/edit.ctp:14
+#: View/Roles/add.ctp:10
+#: View/Roles/edit.ctp:11
+#: View/TransactionModes/add.ctp:10
+#: View/TransactionModes/edit.ctp:11
+#: View/TransactionTypes/add.ctp:10
+#: View/TransactionTypes/edit.ctp:11
+#: View/Transactions/add.ctp:17
+#: View/Transactions/admin_add.ctp:17
+#: View/Transactions/admin_edit.ctp:18
+#: View/Transactions/edit.ctp:18
+#: View/Userlogs/add.ctp:10
+#: View/Userlogs/edit.ctp:11
+#: View/Users/add.ctp:16
+#: View/Users/edit.ctp:17
+#: View/Helper/FormHelper.php:1894
+#: View/Scaffolds/form.ctp:23
+msgid "Submit"
+msgstr ""
+
+#: View/AccountingCodes/add.ctp:14
+#: View/AccountingCodes/edit.ctp:15
+#: View/AccountingCodes/index.ctp:12;48
+#: View/AccountingCodes/view.ctp:37
+#: View/Cashregisters/add.ctp:14
+#: View/Cashregisters/edit.ctp:15
+#: View/Cashregisters/index.ctp:12;48
+#: View/Cashregisters/view.ctp:37;64
+#: View/Currencies/add.ctp:14
+#: View/Currencies/edit.ctp:15
+#: View/Currencies/index.ctp:10;44
+#: View/Currencies/view.ctp:27;54
+#: View/Customers/add.ctp:15
+#: View/Customers/edit.ctp:16
+#: View/Customers/index.ctp:13;50
+#: View/Customers/view.ctp:42;76;123;164;208
+#: View/Invoices/add.ctp:21
+#: View/Invoices/edit.ctp:22
+#: View/Invoices/index.ctp:19;68
+#: View/Invoices/view.ctp:72
+#: View/Locations/add.ctp:14
+#: View/Locations/edit.ctp:15
+#: View/Locations/index.ctp:12;48
+#: View/Locations/view.ctp:37;61
+#: View/Orders/add.ctp:18
+#: View/Orders/edit.ctp:19
+#: View/Orders/index.ctp:15;62
+#: View/Orders/view.ctp:52;92;142;186
+#: View/OrdersProducts/add.ctp:15
+#: View/OrdersProducts/edit.ctp:16
+#: View/OrdersProducts/index.ctp:13;54
+#: View/OrdersProducts/view.ctp:42
+#: View/Prices/add.ctp:16
+#: View/Prices/edit.ctp:17
+#: View/Prices/index.ctp:14;54
+#: View/Prices/view.ctp:47
+#: View/ProductCategories/add.ctp:13
+#: View/ProductCategories/edit.ctp:14
+#: View/ProductCategories/index.ctp:9;42
+#: View/ProductCategories/view.ctp:22;44
+#: View/Products/add.ctp:17
+#: View/Products/edit.ctp:18
+#: View/Products/index.ctp:13;52
+#: View/Products/view.ctp:42;71;113;154
+#: View/ProductsQuotations/add.ctp:14
+#: View/ProductsQuotations/edit.ctp:15
+#: View/ProductsQuotations/index.ctp:12;52
+#: View/ProductsQuotations/view.ctp:37
+#: View/Quotations/add.ctp:16
+#: View/Quotations/edit.ctp:17
+#: View/Quotations/index.ctp:13;54
+#: View/Quotations/view.ctp:42;68
+#: View/Roles/add.ctp:13
+#: View/Roles/edit.ctp:14
+#: View/Roles/index.ctp:11;46
+#: View/Roles/view.ctp:32
+#: View/TransactionModes/add.ctp:13
+#: View/TransactionModes/edit.ctp:14
+#: View/TransactionModes/index.ctp:11;46
+#: View/TransactionModes/view.ctp:32;59
+#: View/TransactionTypes/add.ctp:13
+#: View/TransactionTypes/edit.ctp:14
+#: View/TransactionTypes/index.ctp:11;46
+#: View/TransactionTypes/view.ctp:32;58;104
+#: View/Transactions/add.ctp:20
+#: View/Transactions/admin_add.ctp:20
+#: View/Transactions/admin_edit.ctp:21
+#: View/Transactions/admin_index.ctp:18;76
+#: View/Transactions/admin_view.ctp:67
+#: View/Transactions/edit.ctp:21
+#: View/Transactions/index.ctp:18;76
+#: View/Transactions/view.ctp:67
+#: View/Userlogs/add.ctp:13
+#: View/Userlogs/edit.ctp:14
+#: View/Userlogs/index.ctp:11;48
+#: View/Userlogs/view.ctp:32
+#: View/Users/add.ctp:19
+#: View/Users/edit.ctp:20
+#: View/Users/index.ctp:17;58
+#: View/Users/view.ctp:62;98;145;186;230;272
+#: View/Scaffolds/form.ctp:27
+#: View/Scaffolds/index.ctp:26;77
+#: View/Scaffolds/view.ctp:49
+msgid "Actions"
+msgstr ""
+
+#: View/AccountingCodes/add.ctp:17
+#: View/AccountingCodes/edit.ctp:19
+#: View/AccountingCodes/view.ctp:41
+#: View/Transactions/add.ctp:38
+#: View/Transactions/admin_add.ctp:38
+#: View/Transactions/admin_edit.ctp:40
+#: View/Transactions/admin_index.ctp:93
+#: View/Transactions/admin_view.ctp:87
+#: View/Transactions/edit.ctp:40
+#: View/Transactions/index.ctp:93
+#: View/Transactions/view.ctp:87
+msgid "List Accounting Codes"
+msgstr ""
+
+#: View/AccountingCodes/edit.ctp:4
+#: View/AccountingCodes/view.ctp:39
+msgid "Edit Accounting Code"
+msgstr ""
+
+#: View/AccountingCodes/edit.ctp:18
+#: View/AccountingCodes/index.ctp:27
+#: View/Cashregisters/edit.ctp:18
+#: View/Cashregisters/index.ctp:27
+#: View/Cashregisters/view.ctp:83
+#: View/Currencies/edit.ctp:18
+#: View/Currencies/index.ctp:23
+#: View/Currencies/view.ctp:73
+#: View/Customers/edit.ctp:19
+#: View/Customers/index.ctp:29
+#: View/Customers/view.ctp:96;139;178;227
+#: View/Invoices/edit.ctp:25
+#: View/Invoices/index.ctp:47
+#: View/Locations/edit.ctp:18
+#: View/Locations/index.ctp:27
+#: View/Locations/view.ctp:77
+#: View/Orders/edit.ctp:22
+#: View/Orders/index.ctp:41
+#: View/Orders/view.ctp:112;161;200
+#: View/OrdersProducts/edit.ctp:19
+#: View/OrdersProducts/index.ctp:33
+#: View/Prices/edit.ctp:20
+#: View/Prices/index.ctp:33
+#: View/ProductCategories/edit.ctp:17
+#: View/ProductCategories/index.ctp:21
+#: View/ProductCategories/view.ctp:58
+#: View/Products/edit.ctp:21
+#: View/Products/index.ctp:31
+#: View/Products/view.ctp:86;129;168
+#: View/ProductsQuotations/edit.ctp:18
+#: View/ProductsQuotations/index.ctp:31
+#: View/Quotations/edit.ctp:20
+#: View/Quotations/index.ctp:33
+#: View/Quotations/view.ctp:82
+#: View/Roles/edit.ctp:17
+#: View/Roles/index.ctp:25
+#: View/TransactionModes/edit.ctp:17
+#: View/TransactionModes/index.ctp:25
+#: View/TransactionModes/view.ctp:78
+#: View/TransactionTypes/edit.ctp:17
+#: View/TransactionTypes/index.ctp:25
+#: View/TransactionTypes/view.ctp:74;123
+#: View/Transactions/admin_edit.ctp:24
+#: View/Transactions/admin_index.ctp:55
+#: View/Transactions/edit.ctp:24
+#: View/Transactions/index.ctp:55
+#: View/Userlogs/edit.ctp:17
+#: View/Userlogs/index.ctp:27
+#: View/Users/edit.ctp:23
+#: View/Users/index.ctp:37
+#: View/Users/view.ctp:118;161;200;249;284
+#: View/Scaffolds/form.ctp:31
+#: View/Scaffolds/index.ctp:51
+#: View/Scaffolds/view.ctp:175
+msgid "Delete"
+msgstr ""
+
+#: View/AccountingCodes/edit.ctp:18
+#: View/AccountingCodes/index.ctp:27
+#: View/AccountingCodes/view.ctp:40
+#: View/Cashregisters/edit.ctp:18
+#: View/Cashregisters/index.ctp:27
+#: View/Cashregisters/view.ctp:40;83
+#: View/Currencies/edit.ctp:18
+#: View/Currencies/index.ctp:23
+#: View/Currencies/view.ctp:30;73
+#: View/Customers/edit.ctp:19
+#: View/Customers/index.ctp:29
+#: View/Customers/view.ctp:45;96;139;178;227
+#: View/Invoices/edit.ctp:25
+#: View/Invoices/index.ctp:47
+#: View/Invoices/view.ctp:75
+#: View/Locations/edit.ctp:18
+#: View/Locations/index.ctp:27
+#: View/Locations/view.ctp:40;77
+#: View/Orders/edit.ctp:22
+#: View/Orders/index.ctp:41
+#: View/Orders/view.ctp:55;112;161;200
+#: View/OrdersProducts/edit.ctp:19
+#: View/OrdersProducts/index.ctp:33
+#: View/OrdersProducts/view.ctp:45
+#: View/Prices/edit.ctp:20
+#: View/Prices/index.ctp:33
+#: View/Prices/view.ctp:50
+#: View/ProductCategories/edit.ctp:17
+#: View/ProductCategories/index.ctp:21
+#: View/ProductCategories/view.ctp:25;58
+#: View/Products/edit.ctp:21
+#: View/Products/index.ctp:31
+#: View/Products/view.ctp:45;86;129;168
+#: View/ProductsQuotations/edit.ctp:18
+#: View/ProductsQuotations/index.ctp:31
+#: View/ProductsQuotations/view.ctp:40
+#: View/Quotations/edit.ctp:20
+#: View/Quotations/index.ctp:33
+#: View/Quotations/view.ctp:45;82
+#: View/Roles/edit.ctp:17
+#: View/Roles/index.ctp:25
+#: View/Roles/view.ctp:35
+#: View/TransactionModes/edit.ctp:17
+#: View/TransactionModes/index.ctp:25
+#: View/TransactionModes/view.ctp:35;78
+#: View/TransactionTypes/edit.ctp:17
+#: View/TransactionTypes/index.ctp:25
+#: View/TransactionTypes/view.ctp:35;74;123
+#: View/Transactions/admin_edit.ctp:24
+#: View/Transactions/admin_index.ctp:55
+#: View/Transactions/admin_view.ctp:70
+#: View/Transactions/edit.ctp:24
+#: View/Transactions/index.ctp:55
+#: View/Transactions/view.ctp:70
+#: View/Userlogs/edit.ctp:17
+#: View/Userlogs/index.ctp:27
+#: View/Userlogs/view.ctp:35
+#: View/Users/edit.ctp:23
+#: View/Users/index.ctp:37
+#: View/Users/view.ctp:65;118;161;200;249;284
+#: View/Scaffolds/form.ctp:34
+#: View/Scaffolds/index.ctp:54
+#: View/Scaffolds/view.ctp:57;178
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: View/AccountingCodes/index.ctp:2
+msgid "Accounting Codes"
+msgstr ""
+
+#: View/AccountingCodes/index.ctp:25
+#: View/Cashregisters/index.ctp:25
+#: View/Cashregisters/view.ctp:81
+#: View/Currencies/index.ctp:21
+#: View/Currencies/view.ctp:71
+#: View/Customers/index.ctp:27
+#: View/Customers/view.ctp:94;137;176;225
+#: View/Invoices/index.ctp:45
+#: View/Locations/index.ctp:25
+#: View/Locations/view.ctp:75
+#: View/Orders/index.ctp:39
+#: View/Orders/view.ctp:110;159;198
+#: View/OrdersProducts/index.ctp:31
+#: View/Prices/index.ctp:31
+#: View/ProductCategories/index.ctp:19
+#: View/ProductCategories/view.ctp:56
+#: View/Products/index.ctp:29
+#: View/Products/view.ctp:84;127;166
+#: View/ProductsQuotations/index.ctp:29
+#: View/Quotations/index.ctp:31
+#: View/Quotations/view.ctp:80
+#: View/Roles/index.ctp:23
+#: View/TransactionModes/index.ctp:23
+#: View/TransactionModes/view.ctp:76
+#: View/TransactionTypes/index.ctp:23
+#: View/TransactionTypes/view.ctp:72;121
+#: View/Transactions/admin_index.ctp:53
+#: View/Transactions/index.ctp:53
+#: View/Userlogs/index.ctp:25
+#: View/Users/index.ctp:35
+#: View/Users/view.ctp:116;159;198;247;282
+#: View/Scaffolds/index.ctp:48
+#: View/Scaffolds/view.ctp:163
+msgid "View"
+msgstr ""
+
+#: View/AccountingCodes/index.ctp:26
+#: View/Cashregisters/index.ctp:26
+#: View/Cashregisters/view.ctp:82
+#: View/Currencies/index.ctp:22
+#: View/Currencies/view.ctp:72
+#: View/Customers/index.ctp:28
+#: View/Customers/view.ctp:95;138;177;226
+#: View/Invoices/index.ctp:46
+#: View/Locations/index.ctp:26
+#: View/Locations/view.ctp:76
+#: View/Orders/index.ctp:40
+#: View/Orders/view.ctp:111;160;199
+#: View/OrdersProducts/index.ctp:32
+#: View/Prices/index.ctp:32
+#: View/ProductCategories/index.ctp:20
+#: View/ProductCategories/view.ctp:57
+#: View/Products/index.ctp:30
+#: View/Products/view.ctp:85;128;167
+#: View/ProductsQuotations/index.ctp:30
+#: View/Quotations/index.ctp:32
+#: View/Quotations/view.ctp:81
+#: View/Roles/index.ctp:24
+#: View/TransactionModes/index.ctp:24
+#: View/TransactionModes/view.ctp:77
+#: View/TransactionTypes/index.ctp:24
+#: View/TransactionTypes/view.ctp:73;122
+#: View/Transactions/admin_index.ctp:54
+#: View/Transactions/index.ctp:54
+#: View/Userlogs/index.ctp:26
+#: View/Users/index.ctp:36
+#: View/Users/view.ctp:117;160;199;248;283
+#: View/Scaffolds/index.ctp:49
+#: View/Scaffolds/view.ctp:169
+msgid "Edit"
+msgstr ""
+
+#: View/AccountingCodes/index.ctp:36
+#: View/Cashregisters/index.ctp:36
+#: View/Currencies/index.ctp:32
+#: View/Customers/index.ctp:38
+#: View/Invoices/index.ctp:56
+#: View/Locations/index.ctp:36
+#: View/Orders/index.ctp:50
+#: View/OrdersProducts/index.ctp:42
+#: View/Prices/index.ctp:42
+#: View/ProductCategories/index.ctp:30
+#: View/Products/index.ctp:40
+#: View/ProductsQuotations/index.ctp:40
+#: View/Quotations/index.ctp:42
+#: View/Roles/index.ctp:34
+#: View/TransactionModes/index.ctp:34
+#: View/TransactionTypes/index.ctp:34
+#: View/Transactions/admin_index.ctp:64
+#: View/Transactions/index.ctp:64
+#: View/Userlogs/index.ctp:36
+#: View/Users/index.ctp:46
+#: View/Scaffolds/index.ctp:65
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr ""
+
+#: View/AccountingCodes/index.ctp:41
+#: View/Cashregisters/index.ctp:41
+#: View/Currencies/index.ctp:37
+#: View/Customers/index.ctp:43
+#: View/Invoices/index.ctp:61
+#: View/Locations/index.ctp:41
+#: View/Orders/index.ctp:55
+#: View/OrdersProducts/index.ctp:47
+#: View/Prices/index.ctp:47
+#: View/ProductCategories/index.ctp:35
+#: View/Products/index.ctp:45
+#: View/ProductsQuotations/index.ctp:45
+#: View/Quotations/index.ctp:47
+#: View/Roles/index.ctp:39
+#: View/TransactionModes/index.ctp:39
+#: View/TransactionTypes/index.ctp:39
+#: View/Transactions/admin_index.ctp:69
+#: View/Transactions/index.ctp:69
+#: View/Userlogs/index.ctp:41
+#: View/Users/index.ctp:51
+#: View/Scaffolds/index.ctp:70
+msgid "previous"
+msgstr ""
+
+#: View/AccountingCodes/index.ctp:43
+#: View/Cashregisters/index.ctp:43
+#: View/Currencies/index.ctp:39
+#: View/Customers/index.ctp:45
+#: View/Invoices/index.ctp:63
+#: View/Locations/index.ctp:43
+#: View/Orders/index.ctp:57
+#: View/OrdersProducts/index.ctp:49
+#: View/Prices/index.ctp:49
+#: View/ProductCategories/index.ctp:37
+#: View/Products/index.ctp:47
+#: View/ProductsQuotations/index.ctp:47
+#: View/Quotations/index.ctp:49
+#: View/Roles/index.ctp:41
+#: View/TransactionModes/index.ctp:41
+#: View/TransactionTypes/index.ctp:41
+#: View/Transactions/admin_index.ctp:71
+#: View/Transactions/index.ctp:71
+#: View/Userlogs/index.ctp:43
+#: View/Users/index.ctp:53
+#: View/Scaffolds/index.ctp:72
+msgid "next"
+msgstr ""
+
+#: View/AccountingCodes/index.ctp:50
+#: View/AccountingCodes/view.ctp:42
+#: View/Transactions/add.ctp:39
+#: View/Transactions/admin_add.ctp:39
+#: View/Transactions/admin_edit.ctp:41
+#: View/Transactions/admin_index.ctp:94
+#: View/Transactions/admin_view.ctp:88
+#: View/Transactions/edit.ctp:41
+#: View/Transactions/index.ctp:94
+#: View/Transactions/view.ctp:88
+msgid "New Accounting Code"
+msgstr ""
+
+#: View/AccountingCodes/view.ctp:2
+#: View/Transactions/admin_view.ctp:49
+#: View/Transactions/view.ctp:49
+msgid "Accounting Code"
+msgstr ""
+
+#: View/AccountingCodes/view.ctp:4
+#: View/Cashregisters/view.ctp:4;52
+#: View/Currencies/view.ctp:4;42
+#: View/Customers/view.ctp:4;63;114;157;196
+#: View/Invoices/view.ctp:4
+#: View/Locations/view.ctp:4;52
+#: View/Orders/view.ctp:4;79;130;179
+#: View/OrdersProducts/view.ctp:4
+#: View/Prices/view.ctp:4
+#: View/ProductCategories/view.ctp:4;37
+#: View/Products/view.ctp:4;63;104;147
+#: View/ProductsQuotations/view.ctp:4
+#: View/Quotations/view.ctp:4;61
+#: View/Roles/view.ctp:4
+#: View/TransactionModes/view.ctp:4;47
+#: View/TransactionTypes/view.ctp:4;49;92
+#: View/Transactions/admin_view.ctp:4
+#: View/Transactions/view.ctp:4
+#: View/Userlogs/view.ctp:4
+#: View/Users/view.ctp:4;85;136;179;218;267
+msgid "Id"
+msgstr ""
+
+#: View/AccountingCodes/view.ctp:9
+msgid "Code"
+msgstr ""
+
+#: View/AccountingCodes/view.ctp:14
+#: View/Cashregisters/view.ctp:9
+#: View/Currencies/view.ctp:9
+#: View/Orders/view.ctp:180
+#: View/ProductCategories/view.ctp:9;38
+#: View/Products/view.ctp:9
+#: View/Quotations/view.ctp:62
+#: View/Roles/view.ctp:9
+#: View/TransactionModes/view.ctp:9
+#: View/TransactionTypes/view.ctp:9
+msgid "Name"
+msgstr ""
+
+#: View/AccountingCodes/view.ctp:19
+#: View/Customers/view.ctp:160
+#: View/Locations/view.ctp:9
+#: View/ProductCategories/view.ctp:14
+#: View/Products/view.ctp:150
+#: View/Quotations/view.ctp:19
+#: View/Roles/view.ctp:14
+#: View/TransactionModes/view.ctp:14
+#: View/TransactionTypes/view.ctp:14
+#: View/Users/view.ctp:182
+msgid "Description"
+msgstr ""
+
+#: View/AccountingCodes/view.ctp:24
+#: View/Cashregisters/view.ctp:24;62
+#: View/Currencies/view.ctp:52
+#: View/Customers/view.ctp:29;74;121;162;206
+#: View/Invoices/view.ctp:59
+#: View/Locations/view.ctp:24;59
+#: View/Orders/view.ctp:39;90;140;184
+#: View/OrdersProducts/view.ctp:29
+#: View/Prices/view.ctp:34
+#: View/ProductCategories/view.ctp:42
+#: View/Products/view.ctp:29;69;111;152
+#: View/ProductsQuotations/view.ctp:24
+#: View/Quotations/view.ctp:29;66
+#: View/Roles/view.ctp:19
+#: View/TransactionModes/view.ctp:19;57
+#: View/TransactionTypes/view.ctp:19;56;102
+#: View/Transactions/admin_view.ctp:54
+#: View/Transactions/view.ctp:54
+#: View/Userlogs/view.ctp:19
+#: View/Users/view.ctp:49;96;143;184;228;270
+msgid "Created"
+msgstr ""
+
+#: View/AccountingCodes/view.ctp:29
+#: View/Cashregisters/view.ctp:29;63
+#: View/Currencies/view.ctp:53
+#: View/Customers/view.ctp:34;75;122;163;207
+#: View/Invoices/view.ctp:64
+#: View/Locations/view.ctp:29;60
+#: View/Orders/view.ctp:44;91;141;185
+#: View/OrdersProducts/view.ctp:34
+#: View/Prices/view.ctp:39
+#: View/ProductCategories/view.ctp:43
+#: View/Products/view.ctp:34;70;112;153
+#: View/ProductsQuotations/view.ctp:29
+#: View/Quotations/view.ctp:34;67
+#: View/Roles/view.ctp:24
+#: View/TransactionModes/view.ctp:24;58
+#: View/TransactionTypes/view.ctp:24;57;103
+#: View/Transactions/admin_view.ctp:59
+#: View/Transactions/view.ctp:59
+#: View/Userlogs/view.ctp:24
+#: View/Users/view.ctp:54;97;144;185;229;271
+msgid "Modified"
+msgstr ""
+
+#: View/AccountingCodes/view.ctp:40
+msgid "Delete Accounting Code"
+msgstr ""
+
+#: View/Cashregisters/add.ctp:4
+msgid "Add Cashregister"
+msgstr ""
+
+#: View/Cashregisters/add.ctp:17
+#: View/Cashregisters/edit.ctp:19
+#: View/Cashregisters/view.ctp:41
+#: View/Transactions/add.ctp:32
+#: View/Transactions/admin_add.ctp:32
+#: View/Transactions/admin_edit.ctp:34
+#: View/Transactions/admin_index.ctp:87
+#: View/Transactions/admin_view.ctp:81
+#: View/Transactions/edit.ctp:34
+#: View/Transactions/index.ctp:87
+#: View/Transactions/view.ctp:81
+msgid "List Cashregisters"
+msgstr ""
+
+#: View/Cashregisters/add.ctp:18
+#: View/Cashregisters/edit.ctp:20
+#: View/Cashregisters/index.ctp:51
+#: View/Cashregisters/view.ctp:43
+#: View/Currencies/add.ctp:18
+#: View/Currencies/edit.ctp:20
+#: View/Currencies/index.ctp:47
+#: View/Currencies/view.ctp:33
+#: View/Customers/add.ctp:25
+#: View/Customers/edit.ctp:27
+#: View/Customers/index.ctp:59
+#: View/Customers/view.ctp:54
+#: View/Orders/add.ctp:32
+#: View/Orders/edit.ctp:34
+#: View/Orders/index.ctp:75
+#: View/Orders/view.ctp:68
+#: View/TransactionModes/add.ctp:17
+#: View/TransactionModes/edit.ctp:19
+#: View/TransactionModes/index.ctp:49
+#: View/TransactionModes/view.ctp:38
+#: View/TransactionTypes/add.ctp:19
+#: View/TransactionTypes/edit.ctp:21
+#: View/TransactionTypes/index.ctp:51
+#: View/TransactionTypes/view.ctp:40
+#: View/Transactions/add.ctp:23
+#: View/Transactions/admin_add.ctp:23
+#: View/Transactions/admin_edit.ctp:25
+#: View/Transactions/admin_view.ctp:71
+#: View/Transactions/edit.ctp:25
+#: View/Transactions/view.ctp:71
+#: View/Users/add.ctp:29
+#: View/Users/edit.ctp:31
+#: View/Users/index.ctp:67
+#: View/Users/view.ctp:74
+msgid "List Transactions"
+msgstr ""
+
+#: View/Cashregisters/add.ctp:19
+#: View/Cashregisters/edit.ctp:21
+#: View/Cashregisters/index.ctp:52
+#: View/Cashregisters/view.ctp:44;92
+#: View/Currencies/add.ctp:19
+#: View/Currencies/edit.ctp:21
+#: View/Currencies/index.ctp:48
+#: View/Currencies/view.ctp:34;82
+#: View/Customers/add.ctp:26
+#: View/Customers/edit.ctp:28
+#: View/Customers/index.ctp:60
+#: View/Customers/view.ctp:55;236
+#: View/Orders/add.ctp:33
+#: View/Orders/edit.ctp:35
+#: View/Orders/index.ctp:76
+#: View/Orders/view.ctp:69;170
+#: View/TransactionModes/add.ctp:18
+#: View/TransactionModes/edit.ctp:20
+#: View/TransactionModes/index.ctp:50
+#: View/TransactionModes/view.ctp:39;87
+#: View/TransactionTypes/add.ctp:20
+#: View/TransactionTypes/edit.ctp:22
+#: View/TransactionTypes/index.ctp:52
+#: View/TransactionTypes/view.ctp:41;132
+#: View/Transactions/admin_index.ctp:78
+#: View/Transactions/admin_view.ctp:72
+#: View/Transactions/index.ctp:78
+#: View/Transactions/view.ctp:72
+#: View/Users/add.ctp:30
+#: View/Users/edit.ctp:32
+#: View/Users/index.ctp:68
+#: View/Users/view.ctp:75;258
+msgid "New Transaction"
+msgstr ""
+
+#: View/Cashregisters/edit.ctp:4
+#: View/Cashregisters/view.ctp:39
+msgid "Edit Cashregister"
+msgstr ""
+
+#: View/Cashregisters/index.ctp:2
+msgid "Cashregisters"
+msgstr ""
+
+#: View/Cashregisters/index.ctp:50
+#: View/Cashregisters/view.ctp:42
+#: View/Transactions/add.ctp:33
+#: View/Transactions/admin_add.ctp:33
+#: View/Transactions/admin_edit.ctp:35
+#: View/Transactions/admin_index.ctp:88
+#: View/Transactions/admin_view.ctp:82
+#: View/Transactions/edit.ctp:35
+#: View/Transactions/index.ctp:88
+#: View/Transactions/view.ctp:82
+msgid "New Cashregister"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:2
+#: View/Transactions/admin_view.ctp:34
+#: View/Transactions/view.ctp:34
+msgid "Cashregister"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:14
+#: View/Locations/view.ctp:19
+#: View/OrdersProducts/view.ctp:24
+msgid "Status"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:19
+msgid "Balance"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:40
+msgid "Delete Cashregister"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:48
+#: View/Currencies/view.ctp:38
+#: View/Customers/view.ctp:192
+#: View/Orders/view.ctp:126
+#: View/TransactionModes/view.ctp:43
+#: View/TransactionTypes/view.ctp:88
+#: View/Users/view.ctp:214
+msgid "Related Transactions"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:53
+#: View/Currencies/view.ctp:43
+#: View/Customers/view.ctp:64;115;158;197
+#: View/Locations/view.ctp:53
+#: View/Orders/view.ctp:80;131
+#: View/Products/view.ctp:105;148
+#: View/TransactionModes/view.ctp:48
+#: View/TransactionTypes/view.ctp:50;93
+#: View/Users/view.ctp:86;137;180;219;268
+msgid "User Id"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:54
+#: View/Currencies/view.ctp:44
+#: View/Customers/view.ctp:65;198
+#: View/Orders/view.ctp:81;132
+#: View/TransactionModes/view.ctp:49
+#: View/TransactionTypes/view.ctp:94
+#: View/Users/view.ctp:87;220
+msgid "Order Id"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:55
+#: View/Currencies/view.ctp:45
+#: View/Customers/view.ctp:199
+#: View/Orders/view.ctp:133
+#: View/Prices/view.ctp:14
+#: View/Products/view.ctp:65
+#: View/TransactionModes/view.ctp:50
+#: View/TransactionTypes/view.ctp:95
+#: View/Transactions/admin_view.ctp:19
+#: View/Transactions/view.ctp:19
+#: View/Users/view.ctp:221
+msgid "Amount"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:56
+#: View/Currencies/view.ctp:46
+#: View/Customers/view.ctp:200
+#: View/Orders/view.ctp:134
+#: View/TransactionModes/view.ctp:51
+#: View/TransactionTypes/view.ctp:96
+#: View/Users/view.ctp:222
+msgid "Currency Id"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:57
+#: View/Currencies/view.ctp:47
+#: View/Customers/view.ctp:120;201
+#: View/Locations/view.ctp:58
+#: View/Orders/view.ctp:135
+#: View/Products/view.ctp:110
+#: View/TransactionModes/view.ctp:52
+#: View/TransactionTypes/view.ctp:55;97
+#: View/Users/view.ctp:142;223
+msgid "Transaction Type Id"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:58
+#: View/Currencies/view.ctp:48
+#: View/Customers/view.ctp:202
+#: View/Orders/view.ctp:136
+#: View/TransactionModes/view.ctp:53
+#: View/TransactionTypes/view.ctp:98
+#: View/Users/view.ctp:224
+msgid "Cashregister Id"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:59
+#: View/Currencies/view.ctp:49
+#: View/Customers/view.ctp:203
+#: View/Orders/view.ctp:137
+#: View/TransactionModes/view.ctp:54
+#: View/TransactionTypes/view.ctp:99
+#: View/Users/view.ctp:225
+msgid "Transaction Mode Id"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:60
+#: View/Currencies/view.ctp:50
+#: View/Customers/view.ctp:66;119;159;204
+#: View/Locations/view.ctp:57
+#: View/Orders/view.ctp:82;138
+#: View/Products/view.ctp:109;149
+#: View/TransactionModes/view.ctp:55
+#: View/TransactionTypes/view.ctp:54;100
+#: View/Users/view.ctp:88;141;181;226
+msgid "Customer Id"
+msgstr ""
+
+#: View/Cashregisters/view.ctp:61
+#: View/Currencies/view.ctp:51
+#: View/Customers/view.ctp:205
+#: View/Orders/view.ctp:139
+#: View/TransactionModes/view.ctp:56
+#: View/TransactionTypes/view.ctp:101
+#: View/Users/view.ctp:227
+msgid "Accounting Id"
+msgstr ""
+
+#: View/Currencies/add.ctp:4
+msgid "Add Currency"
+msgstr ""
+
+#: View/Currencies/add.ctp:17
+#: View/Currencies/edit.ctp:19
+#: View/Currencies/view.ctp:31
+#: View/Transactions/add.ctp:28
+#: View/Transactions/admin_add.ctp:28
+#: View/Transactions/admin_edit.ctp:30
+#: View/Transactions/admin_index.ctp:83
+#: View/Transactions/admin_view.ctp:77
+#: View/Transactions/edit.ctp:30
+#: View/Transactions/index.ctp:83
+#: View/Transactions/view.ctp:77
+msgid "List Currencies"
+msgstr ""
+
+#: View/Currencies/edit.ctp:4
+#: View/Currencies/view.ctp:29
+msgid "Edit Currency"
+msgstr ""
+
+#: View/Currencies/index.ctp:2
+msgid "Currencies"
+msgstr ""
+
+#: View/Currencies/index.ctp:46
+#: View/Currencies/view.ctp:32
+#: View/Transactions/add.ctp:29
+#: View/Transactions/admin_add.ctp:29
+#: View/Transactions/admin_edit.ctp:31
+#: View/Transactions/admin_index.ctp:84
+#: View/Transactions/admin_view.ctp:78
+#: View/Transactions/edit.ctp:31
+#: View/Transactions/index.ctp:84
+#: View/Transactions/view.ctp:78
+msgid "New Currency"
+msgstr ""
+
+#: View/Currencies/view.ctp:2
+#: View/Customers/view.ctp:71
+#: View/Invoices/view.ctp:44
+#: View/Orders/view.ctp:87
+#: View/Prices/view.ctp:19
+#: View/Products/view.ctp:66
+#: View/Transactions/admin_view.ctp:24
+#: View/Transactions/view.ctp:24
+#: View/Users/view.ctp:93
+msgid "Currency"
+msgstr ""
+
+#: View/Currencies/view.ctp:14
+msgid "Abbreviation"
+msgstr ""
+
+#: View/Currencies/view.ctp:19
+msgid "Official Name"
+msgstr ""
+
+#: View/Currencies/view.ctp:30
+msgid "Delete Currency"
+msgstr ""
+
+#: View/Customers/add.ctp:4
+msgid "Add Customer"
+msgstr ""
+
+#: View/Customers/add.ctp:18
+#: View/Customers/edit.ctp:20
+#: View/Customers/view.ctp:46
+#: View/Invoices/add.ctp:29
+#: View/Invoices/edit.ctp:31
+#: View/Invoices/index.ctp:75
+#: View/Invoices/view.ctp:82
+#: View/Orders/add.ctp:26
+#: View/Orders/edit.ctp:28
+#: View/Orders/index.ctp:69
+#: View/Orders/view.ctp:62
+#: View/Quotations/add.ctp:22
+#: View/Quotations/edit.ctp:24
+#: View/Quotations/index.ctp:59
+#: View/Quotations/view.ctp:50
+#: View/Transactions/add.ctp:36
+#: View/Transactions/admin_add.ctp:36
+#: View/Transactions/admin_edit.ctp:38
+#: View/Transactions/admin_index.ctp:91
+#: View/Transactions/admin_view.ctp:85
+#: View/Transactions/edit.ctp:38
+#: View/Transactions/index.ctp:91
+#: View/Transactions/view.ctp:85
+msgid "List Customers"
+msgstr ""
+
+#: View/Customers/add.ctp:19
+#: View/Customers/edit.ctp:21
+#: View/Customers/index.ctp:53
+#: View/Customers/view.ctp:48
+#: View/Invoices/add.ctp:24
+#: View/Invoices/edit.ctp:26
+#: View/Invoices/view.ctp:76
+#: View/Orders/add.ctp:30
+#: View/Orders/edit.ctp:32
+#: View/Orders/index.ctp:73
+#: View/Orders/view.ctp:66
+#: View/Users/add.ctp:23
+#: View/Users/edit.ctp:25
+#: View/Users/index.ctp:61
+#: View/Users/view.ctp:68
+msgid "List Invoices"
+msgstr ""
+
+#: View/Customers/add.ctp:20
+#: View/Customers/edit.ctp:22
+#: View/Customers/index.ctp:54
+#: View/Customers/view.ctp:49;105
+#: View/Invoices/index.ctp:70
+#: View/Invoices/view.ctp:77
+#: View/Orders/add.ctp:31
+#: View/Orders/edit.ctp:33
+#: View/Orders/index.ctp:74
+#: View/Orders/view.ctp:67;121
+#: View/Users/add.ctp:24
+#: View/Users/edit.ctp:26
+#: View/Users/index.ctp:62
+#: View/Users/view.ctp:69;127
+msgid "New Invoice"
+msgstr ""
+
+#: View/Customers/add.ctp:21
+#: View/Customers/edit.ctp:23
+#: View/Customers/index.ctp:55
+#: View/Customers/view.ctp:50
+#: View/Invoices/add.ctp:27
+#: View/Invoices/edit.ctp:29
+#: View/Invoices/index.ctp:73
+#: View/Invoices/view.ctp:80
+#: View/Locations/add.ctp:18
+#: View/Locations/edit.ctp:20
+#: View/Locations/index.ctp:51
+#: View/Locations/view.ctp:43
+#: View/Orders/add.ctp:21
+#: View/Orders/edit.ctp:23
+#: View/Orders/view.ctp:56
+#: View/OrdersProducts/add.ctp:19
+#: View/OrdersProducts/edit.ctp:21
+#: View/OrdersProducts/index.ctp:57
+#: View/OrdersProducts/view.ctp:48
+#: View/Products/add.ctp:25
+#: View/Products/edit.ctp:27
+#: View/Products/index.ctp:59
+#: View/Products/view.ctp:52
+#: View/TransactionTypes/add.ctp:17
+#: View/TransactionTypes/edit.ctp:19
+#: View/TransactionTypes/index.ctp:49
+#: View/TransactionTypes/view.ctp:38
+#: View/Transactions/add.ctp:26
+#: View/Transactions/admin_add.ctp:26
+#: View/Transactions/admin_edit.ctp:28
+#: View/Transactions/admin_index.ctp:81
+#: View/Transactions/admin_view.ctp:75
+#: View/Transactions/edit.ctp:28
+#: View/Transactions/index.ctp:81
+#: View/Transactions/view.ctp:75
+#: View/Users/add.ctp:25
+#: View/Users/edit.ctp:27
+#: View/Users/index.ctp:63
+#: View/Users/view.ctp:70
+msgid "List Orders"
+msgstr ""
+
+#: View/Customers/add.ctp:22
+#: View/Customers/edit.ctp:24
+#: View/Customers/index.ctp:56
+#: View/Customers/view.ctp:51;148
+#: View/Invoices/add.ctp:28
+#: View/Invoices/edit.ctp:30
+#: View/Invoices/index.ctp:74
+#: View/Invoices/view.ctp:81
+#: View/Locations/add.ctp:19
+#: View/Locations/edit.ctp:21
+#: View/Locations/index.ctp:52
+#: View/Locations/view.ctp:44;86
+#: View/Orders/index.ctp:64
+#: View/Orders/view.ctp:57
+#: View/OrdersProducts/add.ctp:20
+#: View/OrdersProducts/edit.ctp:22
+#: View/OrdersProducts/index.ctp:58
+#: View/OrdersProducts/view.ctp:49
+#: View/Products/add.ctp:26
+#: View/Products/edit.ctp:28
+#: View/Products/index.ctp:60
+#: View/Products/view.ctp:53;138
+#: View/TransactionTypes/add.ctp:18
+#: View/TransactionTypes/edit.ctp:20
+#: View/TransactionTypes/index.ctp:50
+#: View/TransactionTypes/view.ctp:39;83
+#: View/Transactions/add.ctp:27
+#: View/Transactions/admin_add.ctp:27
+#: View/Transactions/admin_edit.ctp:29
+#: View/Transactions/admin_index.ctp:82
+#: View/Transactions/admin_view.ctp:76
+#: View/Transactions/edit.ctp:29
+#: View/Transactions/index.ctp:82
+#: View/Transactions/view.ctp:76
+#: View/Users/add.ctp:26
+#: View/Users/edit.ctp:28
+#: View/Users/index.ctp:64
+#: View/Users/view.ctp:71;170
+msgid "New Order"
+msgstr ""
+
+#: View/Customers/add.ctp:23
+#: View/Customers/edit.ctp:25
+#: View/Customers/index.ctp:57
+#: View/Customers/view.ctp:52
+#: View/Products/add.ctp:27
+#: View/Products/edit.ctp:29
+#: View/Products/index.ctp:61
+#: View/Products/view.ctp:54
+#: View/ProductsQuotations/add.ctp:20
+#: View/ProductsQuotations/edit.ctp:22
+#: View/ProductsQuotations/index.ctp:57
+#: View/ProductsQuotations/view.ctp:45
+#: View/Quotations/add.ctp:19
+#: View/Quotations/edit.ctp:21
+#: View/Quotations/view.ctp:46
+#: View/Users/add.ctp:27
+#: View/Users/edit.ctp:29
+#: View/Users/index.ctp:65
+#: View/Users/view.ctp:72
+msgid "List Quotations"
+msgstr ""
+
+#: View/Customers/add.ctp:24
+#: View/Customers/edit.ctp:26
+#: View/Customers/index.ctp:58
+#: View/Customers/view.ctp:53;187
+#: View/Products/add.ctp:28
+#: View/Products/edit.ctp:30
+#: View/Products/index.ctp:62
+#: View/Products/view.ctp:55;177
+#: View/ProductsQuotations/add.ctp:21
+#: View/ProductsQuotations/edit.ctp:23
+#: View/ProductsQuotations/index.ctp:58
+#: View/ProductsQuotations/view.ctp:46
+#: View/Quotations/index.ctp:56
+#: View/Quotations/view.ctp:47
+#: View/Users/add.ctp:28
+#: View/Users/edit.ctp:30
+#: View/Users/index.ctp:66
+#: View/Users/view.ctp:73;209
+msgid "New Quotation"
+msgstr ""
+
+#: View/Customers/edit.ctp:4
+#: View/Customers/view.ctp:44
+msgid "Edit Customer"
+msgstr ""
+
+#: View/Customers/index.ctp:2
+msgid "Customers"
+msgstr ""
+
+#: View/Customers/index.ctp:52
+#: View/Customers/view.ctp:47
+#: View/Invoices/add.ctp:30
+#: View/Invoices/edit.ctp:32
+#: View/Invoices/index.ctp:76
+#: View/Invoices/view.ctp:83
+#: View/Orders/add.ctp:27
+#: View/Orders/edit.ctp:29
+#: View/Orders/index.ctp:70
+#: View/Orders/view.ctp:63
+#: View/Quotations/add.ctp:23
+#: View/Quotations/edit.ctp:25
+#: View/Quotations/index.ctp:60
+#: View/Quotations/view.ctp:51
+#: View/Transactions/add.ctp:37
+#: View/Transactions/admin_add.ctp:37
+#: View/Transactions/admin_edit.ctp:39
+#: View/Transactions/admin_index.ctp:92
+#: View/Transactions/admin_view.ctp:86
+#: View/Transactions/edit.ctp:39
+#: View/Transactions/index.ctp:92
+#: View/Transactions/view.ctp:86
+msgid "New Customer"
+msgstr ""
+
+#: View/Customers/view.ctp:2
+#: View/Invoices/view.ctp:19
+#: View/Orders/view.ctp:29
+#: View/Quotations/view.ctp:14
+#: View/Transactions/admin_view.ctp:44
+#: View/Transactions/view.ctp:44
+msgid "Customer"
+msgstr ""
+
+#: View/Customers/view.ctp:9
+#: View/Users/view.ctp:24
+msgid "First Name"
+msgstr ""
+
+#: View/Customers/view.ctp:14
+#: View/Users/view.ctp:29
+msgid "Last Name"
+msgstr ""
+
+#: View/Customers/view.ctp:19
+#: View/Users/view.ctp:34
+msgid "Email"
+msgstr ""
+
+#: View/Customers/view.ctp:24
+#: View/Users/view.ctp:39
+msgid "Phone"
+msgstr ""
+
+#: View/Customers/view.ctp:45
+msgid "Delete Customer"
+msgstr ""
+
+#: View/Customers/view.ctp:59
+#: View/Orders/view.ctp:75
+#: View/Users/view.ctp:81
+msgid "Related Invoices"
+msgstr ""
+
+#: View/Customers/view.ctp:67
+#: View/Invoices/view.ctp:24
+#: View/Orders/view.ctp:83
+#: View/Users/view.ctp:89
+msgid "Subtotal"
+msgstr ""
+
+#: View/Customers/view.ctp:68
+#: View/Invoices/view.ctp:29
+#: View/Orders/view.ctp:84
+#: View/Users/view.ctp:90
+msgid "Taxes"
+msgstr ""
+
+#: View/Customers/view.ctp:69
+#: View/Invoices/view.ctp:34
+#: View/Orders/view.ctp:85
+#: View/Users/view.ctp:91
+msgid "Tips"
+msgstr ""
+
+#: View/Customers/view.ctp:70
+#: View/Invoices/view.ctp:39
+#: View/Orders/view.ctp:86
+#: View/Users/view.ctp:92
+msgid "Total"
+msgstr ""
+
+#: View/Customers/view.ctp:72
+#: View/Invoices/view.ctp:49
+#: View/Orders/view.ctp:88
+#: View/Users/view.ctp:94
+msgid "Receipt"
+msgstr ""
+
+#: View/Customers/view.ctp:73
+#: View/Invoices/view.ctp:2;54
+#: View/Orders/view.ctp:89
+#: View/Users/view.ctp:95
+msgid "Invoice"
+msgstr ""
+
+#: View/Customers/view.ctp:110
+#: View/Locations/view.ctp:48
+#: View/Products/view.ctp:100
+#: View/TransactionTypes/view.ctp:45
+#: View/Users/view.ctp:132
+msgid "Related Orders"
+msgstr ""
+
+#: View/Customers/view.ctp:116;161
+#: View/Locations/view.ctp:54
+#: View/Orders/view.ctp:14
+#: View/Products/view.ctp:106;151
+#: View/Quotations/view.ctp:24
+#: View/TransactionTypes/view.ctp:51
+#: View/Users/view.ctp:138;183
+msgid "Discount"
+msgstr ""
+
+#: View/Customers/view.ctp:117
+#: View/Locations/view.ctp:55
+#: View/Orders/view.ctp:19
+#: View/Products/view.ctp:107
+#: View/TransactionTypes/view.ctp:52
+#: View/Users/view.ctp:139
+msgid "Sale"
+msgstr ""
+
+#: View/Customers/view.ctp:118
+#: View/Locations/view.ctp:56
+#: View/Products/view.ctp:108
+#: View/TransactionTypes/view.ctp:53
+#: View/Users/view.ctp:140
+msgid "Location Id"
+msgstr ""
+
+#: View/Customers/view.ctp:153
+#: View/Products/view.ctp:143
+#: View/Users/view.ctp:175
+msgid "Related Quotations"
+msgstr ""
+
+#: View/Invoices/add.ctp:4
+msgid "Add Invoice"
+msgstr ""
+
+#: View/Invoices/add.ctp:25
+#: View/Invoices/edit.ctp:27
+#: View/Invoices/index.ctp:71
+#: View/Invoices/view.ctp:78
+#: View/Orders/add.ctp:22
+#: View/Orders/edit.ctp:24
+#: View/Orders/index.ctp:65
+#: View/Orders/view.ctp:58
+#: View/Quotations/add.ctp:20
+#: View/Quotations/edit.ctp:22
+#: View/Quotations/index.ctp:57
+#: View/Quotations/view.ctp:48
+#: View/Transactions/add.ctp:24
+#: View/Transactions/admin_add.ctp:24
+#: View/Transactions/admin_edit.ctp:26
+#: View/Transactions/admin_index.ctp:79
+#: View/Transactions/admin_view.ctp:73
+#: View/Transactions/edit.ctp:26
+#: View/Transactions/index.ctp:79
+#: View/Transactions/view.ctp:73
+#: View/Userlogs/add.ctp:17
+#: View/Userlogs/edit.ctp:19
+#: View/Userlogs/index.ctp:51
+#: View/Userlogs/view.ctp:38
+#: View/Users/add.ctp:22
+#: View/Users/edit.ctp:24
+#: View/Users/view.ctp:66
+msgid "List Users"
+msgstr ""
+
+#: View/Invoices/add.ctp:26
+#: View/Invoices/edit.ctp:28
+#: View/Invoices/index.ctp:72
+#: View/Invoices/view.ctp:79
+#: View/Orders/add.ctp:23
+#: View/Orders/edit.ctp:25
+#: View/Orders/index.ctp:66
+#: View/Orders/view.ctp:59
+#: View/Quotations/add.ctp:21
+#: View/Quotations/edit.ctp:23
+#: View/Quotations/index.ctp:58
+#: View/Quotations/view.ctp:49
+#: View/Transactions/add.ctp:25
+#: View/Transactions/admin_add.ctp:25
+#: View/Transactions/admin_edit.ctp:27
+#: View/Transactions/admin_index.ctp:80
+#: View/Transactions/admin_view.ctp:74
+#: View/Transactions/edit.ctp:27
+#: View/Transactions/index.ctp:80
+#: View/Transactions/view.ctp:74
+#: View/Userlogs/add.ctp:18
+#: View/Userlogs/edit.ctp:20
+#: View/Userlogs/index.ctp:52
+#: View/Userlogs/view.ctp:39
+#: View/Users/index.ctp:60
+#: View/Users/view.ctp:67
+msgid "New User"
+msgstr ""
+
+#: View/Invoices/edit.ctp:4
+#: View/Invoices/view.ctp:74
+msgid "Edit Invoice"
+msgstr ""
+
+#: View/Invoices/index.ctp:2
+msgid "Invoices"
+msgstr ""
+
+#: View/Invoices/view.ctp:9
+#: View/Orders/view.ctp:9
+#: View/Quotations/view.ctp:9
+#: View/Transactions/admin_view.ctp:9
+#: View/Transactions/view.ctp:9
+#: View/Userlogs/view.ctp:9
+#: View/Users/view.ctp:2
+msgid "User"
+msgstr ""
+
+#: View/Invoices/view.ctp:14
+#: View/Orders/view.ctp:2
+#: View/OrdersProducts/view.ctp:9
+#: View/Transactions/admin_view.ctp:14
+#: View/Transactions/view.ctp:14
+msgid "Order"
+msgstr ""
+
+#: View/Invoices/view.ctp:75
+msgid "Delete Invoice"
+msgstr ""
+
+#: View/Locations/add.ctp:4
+msgid "Add Location"
+msgstr ""
+
+#: View/Locations/add.ctp:17
+#: View/Locations/edit.ctp:19
+#: View/Locations/view.ctp:41
+#: View/Orders/add.ctp:24
+#: View/Orders/edit.ctp:26
+#: View/Orders/index.ctp:67
+#: View/Orders/view.ctp:60
+msgid "List Locations"
+msgstr ""
+
+#: View/Locations/edit.ctp:4
+#: View/Locations/view.ctp:39
+msgid "Edit Location"
+msgstr ""
+
+#: View/Locations/index.ctp:2
+msgid "Locations"
+msgstr ""
+
+#: View/Locations/index.ctp:50
+#: View/Locations/view.ctp:42
+#: View/Orders/add.ctp:25
+#: View/Orders/edit.ctp:27
+#: View/Orders/index.ctp:68
+#: View/Orders/view.ctp:61
+msgid "New Location"
+msgstr ""
+
+#: View/Locations/view.ctp:2
+#: View/Orders/view.ctp:24
+msgid "Location"
+msgstr ""
+
+#: View/Locations/view.ctp:14
+msgid "Category"
+msgstr ""
+
+#: View/Locations/view.ctp:40
+msgid "Delete Location"
+msgstr ""
+
+#: View/Orders/add.ctp:4
+msgid "Add Order"
+msgstr ""
+
+#: View/Orders/add.ctp:28
+#: View/Orders/edit.ctp:30
+#: View/Orders/index.ctp:71
+#: View/Orders/view.ctp:64
+#: View/TransactionTypes/add.ctp:16
+#: View/TransactionTypes/edit.ctp:18
+#: View/TransactionTypes/view.ctp:36
+#: View/Transactions/add.ctp:30
+#: View/Transactions/admin_add.ctp:30
+#: View/Transactions/admin_edit.ctp:32
+#: View/Transactions/admin_index.ctp:85
+#: View/Transactions/admin_view.ctp:79
+#: View/Transactions/edit.ctp:32
+#: View/Transactions/index.ctp:85
+#: View/Transactions/view.ctp:79
+msgid "List Transaction Types"
+msgstr ""
+
+#: View/Orders/add.ctp:29
+#: View/Orders/edit.ctp:31
+#: View/Orders/index.ctp:72
+#: View/Orders/view.ctp:65
+#: View/TransactionTypes/index.ctp:48
+#: View/TransactionTypes/view.ctp:37
+#: View/Transactions/add.ctp:31
+#: View/Transactions/admin_add.ctp:31
+#: View/Transactions/admin_edit.ctp:33
+#: View/Transactions/admin_index.ctp:86
+#: View/Transactions/admin_view.ctp:80
+#: View/Transactions/edit.ctp:33
+#: View/Transactions/index.ctp:86
+#: View/Transactions/view.ctp:80
+msgid "New Transaction Type"
+msgstr ""
+
+#: View/Orders/add.ctp:34
+#: View/Orders/edit.ctp:36
+#: View/Orders/index.ctp:77
+#: View/Orders/view.ctp:70
+#: View/OrdersProducts/add.ctp:21
+#: View/OrdersProducts/edit.ctp:23
+#: View/OrdersProducts/index.ctp:59
+#: View/OrdersProducts/view.ctp:50
+#: View/Prices/add.ctp:20
+#: View/Prices/edit.ctp:22
+#: View/Prices/index.ctp:57
+#: View/Prices/view.ctp:53
+#: View/ProductCategories/add.ctp:17
+#: View/ProductCategories/edit.ctp:19
+#: View/ProductCategories/index.ctp:45
+#: View/ProductCategories/view.ctp:28
+#: View/Products/add.ctp:20
+#: View/Products/edit.ctp:22
+#: View/Products/view.ctp:46
+#: View/ProductsQuotations/add.ctp:18
+#: View/ProductsQuotations/edit.ctp:20
+#: View/ProductsQuotations/index.ctp:55
+#: View/ProductsQuotations/view.ctp:43
+#: View/Quotations/add.ctp:24
+#: View/Quotations/edit.ctp:26
+#: View/Quotations/index.ctp:61
+#: View/Quotations/view.ctp:52
+msgid "List Products"
+msgstr ""
+
+#: View/Orders/add.ctp:35
+#: View/Orders/edit.ctp:37
+#: View/Orders/index.ctp:78
+#: View/Orders/view.ctp:71;209
+#: View/OrdersProducts/add.ctp:22
+#: View/OrdersProducts/edit.ctp:24
+#: View/OrdersProducts/index.ctp:60
+#: View/OrdersProducts/view.ctp:51
+#: View/Prices/add.ctp:21
+#: View/Prices/edit.ctp:23
+#: View/Prices/index.ctp:58
+#: View/Prices/view.ctp:54
+#: View/ProductCategories/add.ctp:18
+#: View/ProductCategories/edit.ctp:20
+#: View/ProductCategories/index.ctp:46
+#: View/ProductCategories/view.ctp:29;67
+#: View/Products/index.ctp:54
+#: View/Products/view.ctp:47
+#: View/ProductsQuotations/add.ctp:19
+#: View/ProductsQuotations/edit.ctp:21
+#: View/ProductsQuotations/index.ctp:56
+#: View/ProductsQuotations/view.ctp:44
+#: View/Quotations/add.ctp:25
+#: View/Quotations/edit.ctp:27
+#: View/Quotations/index.ctp:62
+#: View/Quotations/view.ctp:53;91
+msgid "New Product"
+msgstr ""
+
+#: View/Orders/edit.ctp:4
+#: View/Orders/view.ctp:54
+msgid "Edit Order"
+msgstr ""
+
+#: View/Orders/index.ctp:2
+msgid "Orders"
+msgstr ""
+
+#: View/Orders/view.ctp:34
+#: View/TransactionTypes/view.ctp:2
+#: View/Transactions/admin_view.ctp:29
+#: View/Transactions/view.ctp:29
+msgid "Transaction Type"
+msgstr ""
+
+#: View/Orders/view.ctp:55
+msgid "Delete Order"
+msgstr ""
+
+#: View/Orders/view.ctp:175
+#: View/ProductCategories/view.ctp:33
+#: View/Quotations/view.ctp:57
+msgid "Related Products"
+msgstr ""
+
+#: View/Orders/view.ctp:181
+#: View/ProductCategories/view.ctp:39
+#: View/Products/view.ctp:14
+#: View/Quotations/view.ctp:63
+msgid "Brand"
+msgstr ""
+
+#: View/Orders/view.ctp:182
+#: View/ProductCategories/view.ctp:40
+#: View/Quotations/view.ctp:64
+msgid "Product Category Id"
+msgstr ""
+
+#: View/Orders/view.ctp:183
+#: View/ProductCategories/view.ctp:41
+#: View/Products/view.ctp:24
+#: View/Quotations/view.ctp:65
+msgid "Model"
+msgstr ""
+
+#: View/OrdersProducts/add.ctp:4
+msgid "Add Orders Product"
+msgstr ""
+
+#: View/OrdersProducts/add.ctp:18
+#: View/OrdersProducts/edit.ctp:20
+#: View/OrdersProducts/view.ctp:46
+msgid "List Orders Products"
+msgstr ""
+
+#: View/OrdersProducts/edit.ctp:4
+#: View/OrdersProducts/view.ctp:44
+msgid "Edit Orders Product"
+msgstr ""
+
+#: View/OrdersProducts/index.ctp:2
+msgid "Orders Products"
+msgstr ""
+
+#: View/OrdersProducts/index.ctp:56
+#: View/OrdersProducts/view.ctp:47
+msgid "New Orders Product"
+msgstr ""
+
+#: View/OrdersProducts/view.ctp:2
+msgid "Orders Product"
+msgstr ""
+
+#: View/OrdersProducts/view.ctp:14
+#: View/Prices/view.ctp:9
+#: View/Products/view.ctp:2
+#: View/ProductsQuotations/view.ctp:9
+msgid "Product"
+msgstr ""
+
+#: View/OrdersProducts/view.ctp:19
+#: View/ProductsQuotations/view.ctp:19
+msgid "Quantity"
+msgstr ""
+
+#: View/OrdersProducts/view.ctp:45
+msgid "Delete Orders Product"
+msgstr ""
+
+#: View/Prices/add.ctp:4
+msgid "Add Price"
+msgstr ""
+
+#: View/Prices/add.ctp:19
+#: View/Prices/edit.ctp:21
+#: View/Prices/view.ctp:51
+#: View/Products/add.ctp:23
+#: View/Products/edit.ctp:25
+#: View/Products/index.ctp:57
+#: View/Products/view.ctp:50
+msgid "List Prices"
+msgstr ""
+
+#: View/Prices/edit.ctp:4
+#: View/Prices/view.ctp:49
+msgid "Edit Price"
+msgstr ""
+
+#: View/Prices/index.ctp:2
+msgid "Prices"
+msgstr ""
+
+#: View/Prices/index.ctp:56
+#: View/Prices/view.ctp:52
+#: View/Products/add.ctp:24
+#: View/Products/edit.ctp:26
+#: View/Products/index.ctp:58
+#: View/Products/view.ctp:51;95
+msgid "New Price"
+msgstr ""
+
+#: View/Prices/view.ctp:2
+msgid "Price"
+msgstr ""
+
+#: View/Prices/view.ctp:24
+#: View/Products/view.ctp:67
+msgid "Active"
+msgstr ""
+
+#: View/Prices/view.ctp:29
+#: View/Products/view.ctp:68
+msgid "Max Discount"
+msgstr ""
+
+#: View/Prices/view.ctp:50
+msgid "Delete Price"
+msgstr ""
+
+#: View/ProductCategories/add.ctp:4
+msgid "Add Product Category"
+msgstr ""
+
+#: View/ProductCategories/add.ctp:16
+#: View/ProductCategories/edit.ctp:18
+#: View/ProductCategories/view.ctp:26
+#: View/Products/add.ctp:21
+#: View/Products/edit.ctp:23
+#: View/Products/index.ctp:55
+#: View/Products/view.ctp:48
+msgid "List Product Categories"
+msgstr ""
+
+#: View/ProductCategories/edit.ctp:4
+#: View/ProductCategories/view.ctp:24
+msgid "Edit Product Category"
+msgstr ""
+
+#: View/ProductCategories/index.ctp:2
+msgid "Product Categories"
+msgstr ""
+
+#: View/ProductCategories/index.ctp:44
+#: View/ProductCategories/view.ctp:27
+#: View/Products/add.ctp:22
+#: View/Products/edit.ctp:24
+#: View/Products/index.ctp:56
+#: View/Products/view.ctp:49
+msgid "New Product Category"
+msgstr ""
+
+#: View/ProductCategories/view.ctp:2
+#: View/Products/view.ctp:19
+msgid "Product Category"
+msgstr ""
+
+#: View/ProductCategories/view.ctp:25
+msgid "Delete Product Category"
+msgstr ""
+
+#: View/Products/add.ctp:4
+msgid "Add Product"
+msgstr ""
+
+#: View/Products/edit.ctp:4
+#: View/Products/view.ctp:44
+msgid "Edit Product"
+msgstr ""
+
+#: View/Products/index.ctp:2
+msgid "Products"
+msgstr ""
+
+#: View/Products/view.ctp:45
+msgid "Delete Product"
+msgstr ""
+
+#: View/Products/view.ctp:59
+msgid "Related Prices"
+msgstr ""
+
+#: View/Products/view.ctp:64
+msgid "Product Id"
+msgstr ""
+
+#: View/ProductsQuotations/add.ctp:4
+msgid "Add Products Quotation"
+msgstr ""
+
+#: View/ProductsQuotations/add.ctp:17
+#: View/ProductsQuotations/edit.ctp:19
+#: View/ProductsQuotations/view.ctp:41
+msgid "List Products Quotations"
+msgstr ""
+
+#: View/ProductsQuotations/edit.ctp:4
+#: View/ProductsQuotations/view.ctp:39
+msgid "Edit Products Quotation"
+msgstr ""
+
+#: View/ProductsQuotations/index.ctp:2
+msgid "Products Quotations"
+msgstr ""
+
+#: View/ProductsQuotations/index.ctp:54
+#: View/ProductsQuotations/view.ctp:42
+msgid "New Products Quotation"
+msgstr ""
+
+#: View/ProductsQuotations/view.ctp:2
+msgid "Products Quotation"
+msgstr ""
+
+#: View/ProductsQuotations/view.ctp:14
+#: View/Quotations/view.ctp:2
+msgid "Quotation"
+msgstr ""
+
+#: View/ProductsQuotations/view.ctp:40
+msgid "Delete Products Quotation"
+msgstr ""
+
+#: View/Quotations/add.ctp:4
+msgid "Add Quotation"
+msgstr ""
+
+#: View/Quotations/edit.ctp:4
+#: View/Quotations/view.ctp:44
+msgid "Edit Quotation"
+msgstr ""
+
+#: View/Quotations/index.ctp:2
+msgid "Quotations"
+msgstr ""
+
+#: View/Quotations/view.ctp:45
+msgid "Delete Quotation"
+msgstr ""
+
+#: View/Roles/add.ctp:4
+msgid "Add Role"
+msgstr ""
+
+#: View/Roles/add.ctp:16
+#: View/Roles/edit.ctp:18
+#: View/Roles/view.ctp:36
+msgid "List Roles"
+msgstr ""
+
+#: View/Roles/edit.ctp:4
+#: View/Roles/view.ctp:34
+msgid "Edit Role"
+msgstr ""
+
+#: View/Roles/index.ctp:2
+msgid "Roles"
+msgstr ""
+
+#: View/Roles/index.ctp:48
+#: View/Roles/view.ctp:37
+msgid "New Role"
+msgstr ""
+
+#: View/Roles/view.ctp:2
+#: View/Users/view.ctp:19
+msgid "Role"
+msgstr ""
+
+#: View/Roles/view.ctp:35
+msgid "Delete Role"
+msgstr ""
+
+#: View/TransactionModes/add.ctp:4
+msgid "Add Transaction Mode"
+msgstr ""
+
+#: View/TransactionModes/add.ctp:16
+#: View/TransactionModes/edit.ctp:18
+#: View/TransactionModes/view.ctp:36
+#: View/Transactions/add.ctp:34
+#: View/Transactions/admin_add.ctp:34
+#: View/Transactions/admin_edit.ctp:36
+#: View/Transactions/admin_index.ctp:89
+#: View/Transactions/admin_view.ctp:83
+#: View/Transactions/edit.ctp:36
+#: View/Transactions/index.ctp:89
+#: View/Transactions/view.ctp:83
+msgid "List Transaction Modes"
+msgstr ""
+
+#: View/TransactionModes/edit.ctp:4
+#: View/TransactionModes/view.ctp:34
+msgid "Edit Transaction Mode"
+msgstr ""
+
+#: View/TransactionModes/index.ctp:2
+msgid "Transaction Modes"
+msgstr ""
+
+#: View/TransactionModes/index.ctp:48
+#: View/TransactionModes/view.ctp:37
+#: View/Transactions/add.ctp:35
+#: View/Transactions/admin_add.ctp:35
+#: View/Transactions/admin_edit.ctp:37
+#: View/Transactions/admin_index.ctp:90
+#: View/Transactions/admin_view.ctp:84
+#: View/Transactions/edit.ctp:37
+#: View/Transactions/index.ctp:90
+#: View/Transactions/view.ctp:84
+msgid "New Transaction Mode"
+msgstr ""
+
+#: View/TransactionModes/view.ctp:2
+#: View/Transactions/admin_view.ctp:39
+#: View/Transactions/view.ctp:39
+msgid "Transaction Mode"
+msgstr ""
+
+#: View/TransactionModes/view.ctp:35
+msgid "Delete Transaction Mode"
+msgstr ""
+
+#: View/TransactionTypes/add.ctp:4
+msgid "Add Transaction Type"
+msgstr ""
+
+#: View/TransactionTypes/edit.ctp:4
+#: View/TransactionTypes/view.ctp:34
+msgid "Edit Transaction Type"
+msgstr ""
+
+#: View/TransactionTypes/index.ctp:2
+msgid "Transaction Types"
+msgstr ""
+
+#: View/TransactionTypes/view.ctp:35
+msgid "Delete Transaction Type"
+msgstr ""
+
+#: View/Transactions/add.ctp:4
+msgid "Add Transaction"
+msgstr ""
+
+#: View/Transactions/admin_add.ctp:4
+msgid "Admin Add Transaction"
+msgstr ""
+
+#: View/Transactions/admin_edit.ctp:4
+msgid "Admin Edit Transaction"
+msgstr ""
+
+#: View/Transactions/admin_index.ctp:2
+#: View/Transactions/index.ctp:2
+msgid "Transactions"
+msgstr ""
+
+#: View/Transactions/admin_view.ctp:2
+#: View/Transactions/view.ctp:2
+msgid "Transaction"
+msgstr ""
+
+#: View/Transactions/admin_view.ctp:69
+#: View/Transactions/edit.ctp:4
+#: View/Transactions/view.ctp:69
+msgid "Edit Transaction"
+msgstr ""
+
+#: View/Transactions/admin_view.ctp:70
+#: View/Transactions/view.ctp:70
+msgid "Delete Transaction"
+msgstr ""
+
+#: View/Userlogs/add.ctp:4
+msgid "Add Userlog"
+msgstr ""
+
+#: View/Userlogs/add.ctp:16
+#: View/Userlogs/edit.ctp:18
+#: View/Userlogs/view.ctp:36
+#: View/Users/add.ctp:31
+#: View/Users/edit.ctp:33
+#: View/Users/index.ctp:69
+msgid "List Userlogs"
+msgstr ""
+
+#: View/Userlogs/edit.ctp:4
+#: View/Userlogs/view.ctp:34
+msgid "Edit Userlog"
+msgstr ""
+
+#: View/Userlogs/index.ctp:2
+msgid "Userlogs"
+msgstr ""
+
+#: View/Userlogs/index.ctp:50
+#: View/Userlogs/view.ctp:37
+#: View/Users/add.ctp:32
+#: View/Users/edit.ctp:34
+#: View/Users/index.ctp:70
+#: View/Users/view.ctp:293
+msgid "New Userlog"
+msgstr ""
+
+#: View/Userlogs/view.ctp:2
+msgid "Userlog"
+msgstr ""
+
+#: View/Userlogs/view.ctp:14
+#: View/Users/view.ctp:269
+msgid "Event"
+msgstr ""
+
+#: View/Userlogs/view.ctp:35
+msgid "Delete Userlog"
+msgstr ""
+
+#: View/Users/add.ctp:4
+msgid "Add User"
+msgstr ""
+
+#: View/Users/edit.ctp:4
+#: View/Users/view.ctp:64
+msgid "Edit User"
+msgstr ""
+
+#: View/Users/index.ctp:2
+msgid "Users"
+msgstr ""
+
+#: View/Users/login.ctp:6
+msgid "Please enter your username and password"
+msgstr ""
+
+#: View/Users/login.ctp:12
+msgid "Login"
+msgstr ""
+
+#: View/Users/view.ctp:9
+msgid "Username"
+msgstr ""
+
+#: View/Users/view.ctp:14
+msgid "Password"
+msgstr ""
+
+#: View/Users/view.ctp:44
+msgid "Identification"
+msgstr ""
+
+#: View/Users/view.ctp:65
+msgid "Delete User"
+msgstr ""
+
+#: View/Users/view.ctp:263
+msgid "Related Userlogs"
+msgstr ""
+
+#: View/ViewBlock.php:80
+msgid "A view block with the name '%s' is already/still open."
+msgstr ""
+
+#: Model/AccountingCode.php:validation for field code;validation for field name
+#: Model/Cashregister.php:validation for field name
+#: Model/Customer.php:validation for field first_name;validation for field last_name
+#: Model/Invoice.php:validation for field currency
+#: Model/Price.php:validation for field currency
+#: Model/Product.php:validation for field name
+#: Model/ProductCategory.php:validation for field name
+#: Model/Role.php:validation for field name
+#: Model/TransactionMode.php:validation for field name
+#: Model/TransactionType.php:validation for field name
+#: Model/User.php:validation for field username;validation for field password
+#: Model/Userlog.php:validation for field event
+msgid "notEmpty"
+msgstr ""
+
+#: Model/ExchangeRate.php:validation for field conversion_currency_id;validation for field base_currency_id;validation for field rate
+#: Model/Invoice.php:validation for field user_id;validation for field order_id;validation for field total
+#: Model/Order.php:validation for field user_id
+#: Model/OrdersProduct.php:validation for field order_id;validation for field product_id
+#: Model/Price.php:validation for field product_id;validation for field amount
+#: Model/Product.php:validation for field product_category_id
+#: Model/ProductsQuotation.php:validation for field product_id;validation for field quotation_id
+#: Model/Transaction.php:validation for field user_id;validation for field amount;validation for field currency_id;validation for field transaction_type_id;validation for field cashregister_id;validation for field transaction_mode_id
+#: Model/User.php:validation for field role
+#: Model/Userlog.php:validation for field user_id
+msgid "numeric"
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/BenchmarkShell.php:41
+msgid "-> Testing :url"
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/BenchmarkShell.php:67
+msgid "Total Requests made: :requests"
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/BenchmarkShell.php:68
+msgid "Total Time elapsed: :duration (seconds)"
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/BenchmarkShell.php:72
+msgid "Requests/Second: :rps req/sec"
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/BenchmarkShell.php:76
+msgid "Average request time: :average-time seconds"
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/BenchmarkShell.php:80
+msgid "Standard deviation of average request time: :std-dev"
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/BenchmarkShell.php:84
+msgid "Longest/shortest request: :longest sec/:shortest sec"
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/BenchmarkShell.php:134
+msgid "Allows you to obtain some rough benchmarking statisticsabout a fully qualified URL."
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/BenchmarkShell.php:139
+msgid "The URL to request."
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/BenchmarkShell.php:144
+msgid "Number of iterations to perform."
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/BenchmarkShell.php:148
+msgid "Maximum total time for all iterations, in seconds.If a single iteration takes more than the timeout, only one request will be made"
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/BenchmarkShell.php:152
+msgid "Example Use: `cake benchmark --n 10 --t 100 http://localhost/testsite`. <info>Note:</info> this benchmark does not include browser render times."
+msgstr ""
+
+#: Plugin/DebugKit/Controller/Component/ToolbarComponent.php:159
+msgid "Component initialization"
+msgstr ""
+
+#: Plugin/DebugKit/Controller/Component/ToolbarComponent.php:281
+msgid "Controller action"
+msgstr ""
+
+#: Plugin/DebugKit/Controller/Component/ToolbarComponent.php:284
+msgid "Controller action start"
+msgstr ""
+
+#: Plugin/DebugKit/Controller/Component/ToolbarComponent.php:304
+msgid "Processing toolbar state"
+msgstr ""
+
+#: Plugin/DebugKit/Controller/Component/ToolbarComponent.php:327
+msgid "Processing toolbar data"
+msgstr ""
+
+#: Plugin/DebugKit/Controller/Component/ToolbarComponent.php:362
+msgid "Controller render start"
+msgstr ""
+
+#: Plugin/DebugKit/Controller/Component/ToolbarComponent.php:446
+msgid "Could not load DebugToolbar panel %s"
+msgstr ""
+
+#: Plugin/DebugKit/Lib/DebugTimer.php:128
+msgid "Core Processing (Derived from $_SERVER[\"REQUEST_TIME\"])"
+msgstr ""
+
+#: Plugin/DebugKit/Lib/FireCake.php:310
+msgid "Headers already sent in %s on line %s. Cannot send log data to FirePHP."
+msgstr ""
+
+#: Plugin/DebugKit/Lib/FireCake.php:331
+msgid "Incorrect parameter count for FireCake::fb()"
+msgstr ""
+
+#: Plugin/DebugKit/Lib/FireCake.php:410
+msgid "Maximum number (99,999) of messages reached!"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/debug_toolbar.ctp:23
+msgid "There are no active panels. You must enable a panel to see its output."
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/environment_panel.ctp:20
+msgid "App Constants"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/environment_panel.ctp:36
+msgid "CakePHP Constants"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/environment_panel.ctp:52
+msgid "PHP Environment"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/environment_panel.ctp:70
+msgid "Hidef Environment"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/history_panel.ctp:19
+msgid "Request History"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/history_panel.ctp:21
+msgid "No previous requests logged."
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/history_panel.ctp:23
+msgid "previous requests available"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/history_panel.ctp:25
+msgid "Restore to current request"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/include_panel.ctp:19
+msgid "Included Files"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/log_panel.ctp:19
+msgid "Logs"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/log_panel.ctp:27
+msgid "Time"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/log_panel.ctp:27
+#: Plugin/DebugKit/View/Elements/timer_panel.ctp:42;66
+msgid "Message"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/log_panel.ctp:38
+msgid "There were no log entries made this request"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/request_panel.ctp:19
+msgid "Request"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/request_panel.ctp:27
+msgid "No post data."
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/request_panel.ctp:36
+msgid "No querystring data."
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/request_panel.ctp:49
+msgid "Current Route"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/session_panel.ctp:19
+msgid "Session"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/sql_log_panel.ctp:24
+msgid "Sql Logs"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/sql_log_panel.ctp:39
+msgid "No query logs when debug < 2."
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/sql_log_panel.ctp:41
+msgid "No query logs."
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/sql_log_panel.ctp:45
+msgid "Total Time: %s ms <br />Total Queries: %s queries"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/sql_log_panel.ctp:54
+msgid "Query Explain:"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/sql_log_panel.ctp:57
+msgid "Click an \"Explain\" link above, to see the query explanation."
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/sql_log_panel.ctp:63
+msgid "No active database connections"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/timer_panel.ctp:35
+msgid "Memory"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/timer_panel.ctp:38
+msgid "Peak Memory Use"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/timer_panel.ctp:42
+msgid "Memory use"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/timer_panel.ctp:55
+msgid "Timers"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/timer_panel.ctp:57
+msgid "%s (ms)"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/timer_panel.ctp:58
+msgid "Total Request Time:"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/timer_panel.ctp:67
+msgid "Time in ms"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/timer_panel.ctp:68
+msgid "Graph"
+msgstr ""
+
+#: Plugin/DebugKit/View/Elements/variables_panel.ctp:19
+msgid "View Variables"
+msgstr ""
+
+#: Plugin/DebugKit/View/Helper/DebugTimerHelper.php:45
+msgid "Rendering View"
+msgstr ""
+
+#: Plugin/DebugKit/View/Helper/DebugTimerHelper.php:60
+msgid "Rendering %s"
+msgstr ""
+
+#: Plugin/DebugKit/View/Helper/DebugTimerHelper.php:86
+msgid "View render complete"
+msgstr ""
+
+#: Plugin/DebugKit/View/Helper/HtmlToolbarHelper.php:226
+msgid "Explain"
+msgstr ""
+
+#: Plugin/DebugKit/View/Helper/SimpleGraphHelper.php:80
+msgid "Starting %sms into the request, taking %sms"
+msgstr ""
+
+#: Plugin/DebugKit/View/Helper/TidyHelper.php:99
+msgid "No markup errors found"
+msgstr ""
+
+#: Plugin/DebugKit/View/Helper/ToolbarHelper.php:189
+msgid "maybe slow"
+msgstr ""
+
+#: Plugin/DebugKit/Console/Command/WhitespaceShell.php:90
+msgid "Absolute path or relative to APP."
+msgstr ""
+
+#: Console/ConsoleErrorHandler.php:57
+msgid "<error>Error:</error> %s\n%s"
+msgstr ""
+
+#: Console/ConsoleErrorHandler.php:81
+msgid "%s in [%s, line %s]"
+msgstr ""
+
+#: Console/ConsoleErrorHandler.php:82
+msgid "<error>%s Error:</error> %s\n"
+msgstr ""
+
+#: Console/ConsoleInputArgument.php:98
+msgid " <comment>(optional)</comment>"
+msgstr ""
+
+#: Console/ConsoleInputArgument.php:101
+#: Console/ConsoleInputOption.php:130
+msgid " <comment>(choices: %s)</comment>"
+msgstr ""
+
+#: Console/ConsoleInputArgument.php:145
+msgid "\"%s\" is not a valid value for %s. Please use one of \"%s\""
+msgstr ""
+
+#: Console/ConsoleInputOption.php:95
+msgid "Short option \"%s\" is invalid, short options must be one letter."
+msgstr ""
+
+#: Console/ConsoleInputOption.php:127
+msgid " <comment>(default: %s)</comment>"
+msgstr ""
+
+#: Console/ConsoleInputOption.php:190
+msgid "\"%s\" is not a valid value for --%s. Please use one of \"%s\""
+msgstr ""
+
+#: Console/ConsoleOptionParser.php:147
+msgid "Display this help."
+msgstr ""
+
+#: Console/ConsoleOptionParser.php:154
+msgid "Enable verbose output."
+msgstr ""
+
+#: Console/ConsoleOptionParser.php:158
+msgid "Enable quiet output."
+msgstr ""
+
+#: Console/ConsoleOptionParser.php:482
+msgid "Missing required arguments. %s is required."
+msgstr ""
+
+#: Console/ConsoleOptionParser.php:566
+msgid "Unknown short option `%s`"
+msgstr ""
+
+#: Console/ConsoleOptionParser.php:582
+msgid "Unknown option `%s`"
+msgstr ""
+
+#: Console/ConsoleOptionParser.php:634
+msgid "Too many arguments."
+msgstr ""
+
+#: Console/HelpFormatter.php:70
+msgid "<info>Usage:</info>"
+msgstr ""
+
+#: Console/HelpFormatter.php:75
+msgid "<info>Subcommands:</info>"
+msgstr ""
+
+#: Console/HelpFormatter.php:86
+msgid "To see help on a subcommand use <info>`cake %s [subcommand] --help`</info>"
+msgstr ""
+
+#: Console/HelpFormatter.php:93
+msgid "<info>Options:</info>"
+msgstr ""
+
+#: Console/HelpFormatter.php:108
+msgid "<info>Arguments:</info>"
+msgstr ""
+
+#: Console/Shell.php:232
+#: Console/Command/ServerShell.php:112
+msgid "<info>Welcome to CakePHP %s Console</info>"
+msgstr ""
+
+#: Console/Shell.php:234
+#: Console/Command/ServerShell.php:114
+msgid "App : %s"
+msgstr ""
+
+#: Console/Shell.php:235
+#: Console/Command/ServerShell.php:115
+#: Console/Command/Task/PluginTask.php:64
+#: Console/Command/Task/TestTask.php:112
+msgid "Path: %s"
+msgstr ""
+
+#: Console/Shell.php:665
+msgid "<error>Error:</error> %s"
+msgstr ""
+
+#: Console/Shell.php:703
+msgid "<warning>File `%s` exists</warning>"
+msgstr ""
+
+#: Console/Shell.php:704
+msgid "Do you want to overwrite?"
+msgstr ""
+
+#: Console/Shell.php:707
+msgid "<error>Quitting</error>."
+msgstr ""
+
+#: Console/Shell.php:710
+msgid "Skip `%s`"
+msgstr ""
+
+#: Console/Shell.php:714
+msgid "Creating file %s"
+msgstr ""
+
+#: Console/Shell.php:721
+msgid "<success>Wrote</success> `%s`"
+msgstr ""
+
+#: Console/Shell.php:725
+msgid "<error>Could not write to `%s`</error>."
+msgstr ""
+
+#: Console/Shell.php:745
+msgid "PHPUnit is not installed. Do you want to bake unit test files anyway?"
+msgstr ""
+
+#: Console/Shell.php:751
+msgid "You can download PHPUnit from %s"
+msgstr ""
+
+#: Console/Command/AclShell.php:77
+msgid "Error: Your current CakePHP configuration is set to an ACL implementation other than DB."
+msgstr ""
+
+#: Console/Command/AclShell.php:78
+msgid "Please change your core config to reflect your decision to use DbAcl before attempting to use this script"
+msgstr ""
+
+#: Console/Command/AclShell.php:80
+msgid "Current ACL Classname: %s"
+msgstr ""
+
+#: Console/Command/AclShell.php:88
+#: Console/Command/BakeShell.php:88
+#: Console/Command/I18nShell.php:54
+msgid "Your database configuration was not found. Take a moment to create one."
+msgstr ""
+
+#: Console/Command/AclShell.php:133
+msgid "/ can not be used as an alias!"
+msgstr ""
+
+#: Console/Command/AclShell.php:133
+msgid "\t/ is the root, please supply a sub alias"
+msgstr ""
+
+#: Console/Command/AclShell.php:139
+msgid "<success>New %s</success> '%s' created."
+msgstr ""
+
+#: Console/Command/AclShell.php:141
+msgid "There was a problem creating a new %s '%s'."
+msgstr ""
+
+#: Console/Command/AclShell.php:161;165
+msgid "Node Not Deleted. "
+msgstr ""
+
+#: Console/Command/AclShell.php:161
+msgid "There was an error deleting the %s."
+msgstr ""
+
+#: Console/Command/AclShell.php:163
+msgid "<success>%s deleted.</success>"
+msgstr ""
+
+#: Console/Command/AclShell.php:165
+msgid "There was an error deleting the %s. Node does not exist."
+msgstr ""
+
+#: Console/Command/AclShell.php:187
+msgid "Error in setting new parent. Please make sure the parent node exists, and is not a descendant of the node specified."
+msgstr ""
+
+#: Console/Command/AclShell.php:189
+msgid "Node parent set to %s"
+msgstr ""
+
+#: Console/Command/AclShell.php:207
+msgid "Supplied Node '%s' not found"
+msgstr ""
+
+#: Console/Command/AclShell.php:208;324;326;534
+msgid "No tree returned."
+msgstr ""
+
+#: Console/Command/AclShell.php:211
+msgid "Path:"
+msgstr ""
+
+#: Console/Command/AclShell.php:245
+msgid "%s is <success>allowed</success>."
+msgstr ""
+
+#: Console/Command/AclShell.php:247
+msgid "%s is <error>not allowed</error>."
+msgstr ""
+
+#: Console/Command/AclShell.php:260
+msgid "Permission <success>granted</success>."
+msgstr ""
+
+#: Console/Command/AclShell.php:262
+msgid "Permission was <error>not granted</error>."
+msgstr ""
+
+#: Console/Command/AclShell.php:275
+msgid "Permission denied."
+msgstr ""
+
+#: Console/Command/AclShell.php:277
+msgid "Permission was not denied."
+msgstr ""
+
+#: Console/Command/AclShell.php:290
+msgid "Permission inherited."
+msgstr ""
+
+#: Console/Command/AclShell.php:292
+msgid "Permission was not inherited."
+msgstr ""
+
+#: Console/Command/AclShell.php:324;326;534
+#: Console/Command/ApiShell.php:92
+#: Console/Command/Task/DbConfigTask.php:254
+#: Utility/Folder.php:655
+msgid "%s not found"
+msgstr ""
+
+#: Console/Command/AclShell.php:376
+msgid "Type of node to create."
+msgstr ""
+
+#: Console/Command/AclShell.php:380
+msgid "A console tool for managing the DbAcl"
+msgstr ""
+
+#: Console/Command/AclShell.php:382
+msgid "Create a new ACL node"
+msgstr ""
+
+#: Console/Command/AclShell.php:384
+msgid "Creates a new ACL object <node> under the parent"
+msgstr ""
+
+#: Console/Command/AclShell.php:385
+msgid "You can use `root` as the parent when creating nodes to create top level nodes."
+msgstr ""
+
+#: Console/Command/AclShell.php:389
+msgid "The node selector for the parent."
+msgstr ""
+
+#: Console/Command/AclShell.php:393
+msgid "The alias to use for the newly created node."
+msgstr ""
+
+#: Console/Command/AclShell.php:399
+msgid "Deletes the ACL object with the given <node> reference"
+msgstr ""
+
+#: Console/Command/AclShell.php:401
+msgid "Delete an ACL node."
+msgstr ""
+
+#: Console/Command/AclShell.php:405
+msgid "The node identifier to delete."
+msgstr ""
+
+#: Console/Command/AclShell.php:411
+msgid "Moves the ACL node under a new parent."
+msgstr ""
+
+#: Console/Command/AclShell.php:413
+msgid "Moves the ACL object specified by <node> beneath <parent>"
+msgstr ""
+
+#: Console/Command/AclShell.php:417
+msgid "The node to move"
+msgstr ""
+
+#: Console/Command/AclShell.php:421
+msgid "The new parent for <node>."
+msgstr ""
+
+#: Console/Command/AclShell.php:427
+msgid "Print out the path to an ACL node."
+msgstr ""
+
+#: Console/Command/AclShell.php:430
+msgid "Returns the path to the ACL object specified by <node>."
+msgstr ""
+
+#: Console/Command/AclShell.php:431
+msgid "This command is useful in determining the inheritance of permissions for a certain object in the tree."
+msgstr ""
+
+#: Console/Command/AclShell.php:436
+msgid "The node to get the path of"
+msgstr ""
+
+#: Console/Command/AclShell.php:442
+msgid "Check the permissions between an ACO and ARO."
+msgstr ""
+
+#: Console/Command/AclShell.php:445
+msgid "Use this command to check ACL permissions."
+msgstr ""
+
+#: Console/Command/AclShell.php:448
+msgid "ARO to check."
+msgstr ""
+
+#: Console/Command/AclShell.php:449
+msgid "ACO to check."
+msgstr ""
+
+#: Console/Command/AclShell.php:450
+msgid "Action to check"
+msgstr ""
+
+#: Console/Command/AclShell.php:454
+msgid "Grant an ARO permissions to an ACO."
+msgstr ""
+
+#: Console/Command/AclShell.php:457
+msgid "Use this command to grant ACL permissions. Once executed, the ARO specified (and its children, if any) will have ALLOW access to the specified ACO action (and the ACO's children, if any)."
+msgstr ""
+
+#: Console/Command/AclShell.php:460
+msgid "ARO to grant permission to."
+msgstr ""
+
+#: Console/Command/AclShell.php:461
+msgid "ACO to grant access to."
+msgstr ""
+
+#: Console/Command/AclShell.php:462
+msgid "Action to grant"
+msgstr ""
+
+#: Console/Command/AclShell.php:466
+msgid "Deny an ARO permissions to an ACO."
+msgstr ""
+
+#: Console/Command/AclShell.php:469
+msgid "Use this command to deny ACL permissions. Once executed, the ARO specified (and its children, if any) will have DENY access to the specified ACO action (and the ACO's children, if any)."
+msgstr ""
+
+#: Console/Command/AclShell.php:472
+msgid "ARO to deny."
+msgstr ""
+
+#: Console/Command/AclShell.php:473
+msgid "ACO to deny."
+msgstr ""
+
+#: Console/Command/AclShell.php:474
+msgid "Action to deny"
+msgstr ""
+
+#: Console/Command/AclShell.php:478
+msgid "Inherit an ARO's parent permissions."
+msgstr ""
+
+#: Console/Command/AclShell.php:481
+msgid "Use this command to force a child ARO object to inherit its permissions settings from its parent."
+msgstr ""
+
+#: Console/Command/AclShell.php:484
+msgid "ARO to have permissions inherit."
+msgstr ""
+
+#: Console/Command/AclShell.php:485
+msgid "ACO to inherit permissions on."
+msgstr ""
+
+#: Console/Command/AclShell.php:486
+msgid "Action to inherit"
+msgstr ""
+
+#: Console/Command/AclShell.php:490
+msgid "View a tree or a single node's subtree."
+msgstr ""
+
+#: Console/Command/AclShell.php:493
+msgid "The view command will return the ARO or ACO tree."
+msgstr ""
+
+#: Console/Command/AclShell.php:494
+msgid "The optional node parameter allows you to return"
+msgstr ""
+
+#: Console/Command/AclShell.php:495
+msgid "only a portion of the requested tree."
+msgstr ""
+
+#: Console/Command/AclShell.php:499
+msgid "The optional node to view the subtree of."
+msgstr ""
+
+#: Console/Command/AclShell.php:503
+msgid "Initialize the DbAcl tables. Uses this command : cake schema create DbAcl"
+msgstr ""
+
+#: Console/Command/AclShell.php:570
+msgid "Could not find node using reference \"%s\""
+msgstr ""
+
+#: Console/Command/ApiShell.php:100
+msgid "%s::%s() could not be found"
+msgstr ""
+
+#: Console/Command/ApiShell.php:117
+msgid "Select a number to see the more information about a specific method. q to quit. l to list."
+msgstr ""
+
+#: Console/Command/ApiShell.php:119
+msgid "Done"
+msgstr ""
+
+#: Console/Command/ApiShell.php:148
+msgid "Lookup doc block comments for classes in CakePHP."
+msgstr ""
+
+#: Console/Command/ApiShell.php:150
+msgid "Either a full path or type of class (model, behavior, controller, component, view, helper)"
+msgstr ""
+
+#: Console/Command/ApiShell.php:152
+msgid "A CakePHP core class name (e.g: Component, HtmlHelper)."
+msgstr ""
+
+#: Console/Command/ApiShell.php:155
+msgid "The specific method you want help on."
+msgstr ""
+
+#: Console/Command/ApiShell.php:194
+msgid "Command %s not found"
+msgstr ""
+
+#: Console/Command/ApiShell.php:211
+#: View/Helper/NumberHelper.php:63
+#: View/Helper/TextHelper.php:78
+#: View/Helper/TimeHelper.php:61
+msgid "%s could not be found"
+msgstr ""
+
+#: Console/Command/BakeShell.php:92
+msgid "Interactive Bake Shell"
+msgstr ""
+
+#: Console/Command/BakeShell.php:94
+msgid "[D]atabase Configuration"
+msgstr ""
+
+#: Console/Command/BakeShell.php:95
+msgid "[M]odel"
+msgstr ""
+
+#: Console/Command/BakeShell.php:96
+msgid "[V]iew"
+msgstr ""
+
+#: Console/Command/BakeShell.php:97
+msgid "[C]ontroller"
+msgstr ""
+
+#: Console/Command/BakeShell.php:98
+msgid "[P]roject"
+msgstr ""
+
+#: Console/Command/BakeShell.php:99
+msgid "[F]ixture"
+msgstr ""
+
+#: Console/Command/BakeShell.php:100
+msgid "[T]est case"
+msgstr ""
+
+#: Console/Command/BakeShell.php:101
+#: Console/Command/I18nShell.php:71
+msgid "[Q]uit"
+msgstr ""
+
+#: Console/Command/BakeShell.php:103
+msgid "What would you like to Bake?"
+msgstr ""
+
+#: Console/Command/BakeShell.php:129
+msgid "You have made an invalid selection. Please choose a type of class to Bake by entering D, M, V, F, T, or C."
+msgstr ""
+
+#: Console/Command/BakeShell.php:197
+msgid "<success>Bake All complete</success>"
+msgstr ""
+
+#: Console/Command/BakeShell.php:200
+msgid "Bake All could not continue without a valid model"
+msgstr ""
+
+#: Console/Command/BakeShell.php:214
+msgid "The Bake script generates controllers, views and models for your application. If run with no command line arguments, Bake guides the user through the class creation process. You can customize the generation process by telling Bake where different parts of your application are using command line arguments."
+msgstr ""
+
+#: Console/Command/BakeShell.php:218
+msgid "Bake a complete MVC. optional <name> of a Model"
+msgstr ""
+
+#: Console/Command/BakeShell.php:220
+msgid "Bake a new app folder in the path supplied or in current directory if no path is specified"
+msgstr ""
+
+#: Console/Command/BakeShell.php:223
+msgid "Bake a new plugin folder in the path supplied or in current directory if no path is specified."
+msgstr ""
+
+#: Console/Command/BakeShell.php:226
+msgid "Bake a database.php file in config directory."
+msgstr ""
+
+#: Console/Command/BakeShell.php:229
+msgid "Bake a model."
+msgstr ""
+
+#: Console/Command/BakeShell.php:232
+msgid "Bake views for controllers."
+msgstr ""
+
+#: Console/Command/BakeShell.php:235
+msgid "Bake a controller."
+msgstr ""
+
+#: Console/Command/BakeShell.php:238
+msgid "Bake a fixture."
+msgstr ""
+
+#: Console/Command/BakeShell.php:241
+msgid "Bake a unit test."
+msgstr ""
+
+#: Console/Command/BakeShell.php:244
+msgid "Database connection to use in conjunction with `bake all`."
+msgstr ""
+
+#: Console/Command/BakeShell.php:249
+#: Console/Command/Task/ControllerTask.php:494
+#: Console/Command/Task/FixtureTask.php:91
+#: Console/Command/Task/ModelTask.php:1020
+#: Console/Command/Task/ProjectTask.php:438
+#: Console/Command/Task/TestTask.php:568
+#: Console/Command/Task/ViewTask.php:438
+msgid "Theme to use when baking code."
+msgstr ""
+
+#: Console/Command/CommandListShell.php:52
+msgid "<info>Current Paths:</info>"
+msgstr ""
+
+#: Console/Command/CommandListShell.php:58
+msgid "<info>Changing Paths:</info>"
+msgstr ""
+
+#: Console/Command/CommandListShell.php:59
+msgid "Your working path should be the same as your application path. To change your path use the '-app' param."
+msgstr ""
+
+#: Console/Command/CommandListShell.php:60
+msgid "Example: %s or %s"
+msgstr ""
+
+#: Console/Command/CommandListShell.php:62
+msgid "<info>Available Shells:</info>"
+msgstr ""
+
+#: Console/Command/CommandListShell.php:90
+msgid "To run an app or core command, type <info>cake shell_name [args]</info>"
+msgstr ""
+
+#: Console/Command/CommandListShell.php:91
+msgid "To run a plugin command, type <info>cake Plugin.shell_name [args]</info>"
+msgstr ""
+
+#: Console/Command/CommandListShell.php:92
+msgid "To get help on a specific command, type <info>cake shell_name --help</info>"
+msgstr ""
+
+#: Console/Command/CommandListShell.php:131
+msgid "Get the list of available shells for this CakePHP application."
+msgstr ""
+
+#: Console/Command/CommandListShell.php:133
+msgid "Does nothing (deprecated)"
+msgstr ""
+
+#: Console/Command/CommandListShell.php:136
+msgid "Get the listing as XML."
+msgstr ""
+
+#: Console/Command/CompletionShell.php:107
+msgid "Used by shells like bash to autocomplete command name, options and arguments"
+msgstr ""
+
+#: Console/Command/CompletionShell.php:109
+msgid "Output a list of available commands"
+msgstr ""
+
+#: Console/Command/CompletionShell.php:111
+msgid "List all availables"
+msgstr ""
+
+#: Console/Command/CompletionShell.php:116
+msgid "Output a list of available subcommands"
+msgstr ""
+
+#: Console/Command/CompletionShell.php:118
+msgid "List subcommands for a command"
+msgstr ""
+
+#: Console/Command/CompletionShell.php:121;132
+msgid "The command name"
+msgstr ""
+
+#: Console/Command/CompletionShell.php:127
+msgid "Output a list of available options"
+msgstr ""
+
+#: Console/Command/CompletionShell.php:129
+msgid "List options"
+msgstr ""
+
+#: Console/Command/CompletionShell.php:138
+msgid "This command is not intended to be called manually"
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:91;249
+msgid "Model classes:"
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:99
+msgid "There was an error loading the routes config. Please check that the file exists and contains no errors."
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:211
+msgid "Invalid command"
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:276
+msgid "Created %s association between %s and %s"
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:279
+msgid "Please verify you are using valid models and association types"
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:313
+msgid "Removed %s association between %s and %s"
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:316
+msgid "Please verify you are using valid models, valid current association, and valid association types"
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:375
+msgid "No result set found"
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:378
+msgid "%s is not a valid model"
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:402
+msgid "Saved record for %s"
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:430
+msgid "Please verify that you selected a valid model"
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:441
+msgid "There was an error loading the routes config. Please check that the file exists and is free of parse errors."
+msgstr ""
+
+#: Console/Command/ConsoleShell.php:443
+msgid "Routes configuration reloaded, %d routes connected"
+msgstr ""
+
+#: Console/Command/I18nShell.php:66
+msgid "<info>I18n Shell</info>"
+msgstr ""
+
+#: Console/Command/I18nShell.php:68
+msgid "[E]xtract POT file from sources"
+msgstr ""
+
+#: Console/Command/I18nShell.php:69
+msgid "[I]nitialize i18n database table"
+msgstr ""
+
+#: Console/Command/I18nShell.php:70
+msgid "[H]elp"
+msgstr ""
+
+#: Console/Command/I18nShell.php:73
+msgid "What would you like to do?"
+msgstr ""
+
+#: Console/Command/I18nShell.php:87
+msgid "You have made an invalid selection. Please choose a command to execute by entering E, I, H, or Q."
+msgstr ""
+
+#: Console/Command/I18nShell.php:111
+msgid "I18n Shell initializes i18n database table for your application and generates .pot files(s) with translations."
+msgstr ""
+
+#: Console/Command/I18nShell.php:113
+msgid "Initialize the i18n table."
+msgstr ""
+
+#: Console/Command/I18nShell.php:115
+msgid "Extract the po translations from your application"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:112
+msgid "Schema file (%s) could not be found."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:123
+msgid "Generating Schema..."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:138
+msgid "Schema file exists.\n [O]verwrite\n [S]napshot\n [Q]uit\nWould you like to do?"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:192;195
+msgid "Schema file: %s generated"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:212
+msgid "Schema could not be loaded"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:236
+msgid "SQL dump file created in %s"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:239
+msgid "SQL dump could not be created"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:282
+msgid "Performing a dry run."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:298
+msgid "The chosen schema could not be loaded. Attempted to load:"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:299
+msgid "File: %s"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:300
+msgid "Name: %s"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:333;399
+msgid "Schema is up to date."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:337
+msgid "The following table(s) will be dropped."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:342
+msgid "Are you sure you want to drop the table(s)?"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:344
+msgid "Dropping table(s)."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:348
+msgid "The following table(s) will be created."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:353
+msgid "Are you sure you want to create the table(s)?"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:355
+msgid "Creating table(s)."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:358
+msgid "End create."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:372
+msgid "Comparing Database to Schema..."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:403
+msgid "The following statements will run."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:407
+msgid "Are you sure you want to alter the tables?"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:410
+msgid "Updating Database..."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:414
+msgid "End update."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:427
+msgid "Sql could not be run"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:435
+msgid "%s is up to date."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:438
+msgid "Dry run for %s :"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:456
+msgid "%s updated."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:473
+msgid "The plugin to use."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:477
+msgid "Set the db config to use."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:481
+msgid "Path to read and write schema.php"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:485
+msgid "File name to read and write."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:489
+msgid "Classname to use. If its Plugin.class, both name and plugin options will be set."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:495
+msgid "Snapshot number to use/make."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:499
+msgid "Specify models as comma separated list."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:502
+msgid "Perform a dry run on create and update commands. Queries will be output instead of run."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:509
+msgid "Force \"generate\" to create a new schema"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:513
+msgid "Write the dumped SQL to a file."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:516
+msgid "Tables to exclude as comma separated list."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:520
+msgid "Do not prompt for confirmation. Be careful!"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:525
+msgid "The Schema Shell generates a schema object from the database and updates the database from the schema."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:527
+msgid "Read and output the contents of a schema file"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:533
+msgid "Reads from --connection and writes to --path. Generate snapshots with -s"
+msgstr ""
+
+#: Console/Command/SchemaShell.php:537
+msgid "Generate a snapshot."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:541
+msgid "Dump database SQL based on a schema file to stdout."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:547
+msgid "Drop and create tables based on the schema file."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:552;565
+msgid "Name of schema to use."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:555;568
+msgid "Only create the specified table."
+msgstr ""
+
+#: Console/Command/SchemaShell.php:560
+msgid "Alter the tables based on the schema file."
+msgstr ""
+
+#: Console/Command/ServerShell.php:116
+msgid "DocumentRoot: %s"
+msgstr ""
+
+#: Console/Command/ServerShell.php:127
+msgid "<warning>This command is available on %s or above</warning>"
+msgstr ""
+
+#: Console/Command/ServerShell.php:139
+msgid "built-in server is running in http://%s%s/"
+msgstr ""
+
+#: Console/Command/ServerShell.php:152
+msgid "PHP Built-in Server for CakePHP"
+msgstr ""
+
+#: Console/Command/ServerShell.php:153
+msgid "<warning>[WARN] Don't use this at the production environment</warning>"
+msgstr ""
+
+#: Console/Command/ServerShell.php:156
+msgid "ServerHost"
+msgstr ""
+
+#: Console/Command/ServerShell.php:159
+msgid "ListenPort"
+msgstr ""
+
+#: Console/Command/ServerShell.php:162
+msgid "DocumentRoot"
+msgstr ""
+
+#: Console/Command/TestShell.php:49
+#: Console/Command/TestsuiteShell.php:43
+msgid "The CakePHP Testsuite allows you to run test cases from the command line"
+msgstr ""
+
+#: Console/Command/TestShell.php:51
+msgid "The category for the test, or test file, to test."
+msgstr ""
+
+#: Console/Command/TestShell.php:54
+msgid "The path to the file, or test file, to test."
+msgstr ""
+
+#: Console/Command/TestShell.php:57
+msgid "<file> Log test execution in JUnit XML format to file."
+msgstr ""
+
+#: Console/Command/TestShell.php:60
+msgid "<file> Log test execution in JSON format to file."
+msgstr ""
+
+#: Console/Command/TestShell.php:63
+msgid "<file> Log test execution in TAP format to file."
+msgstr ""
+
+#: Console/Command/TestShell.php:66
+msgid "Log test execution to DBUS."
+msgstr ""
+
+#: Console/Command/TestShell.php:69
+msgid "<dir> Generate code coverage report in HTML format."
+msgstr ""
+
+#: Console/Command/TestShell.php:72
+msgid "<file> Write code coverage data in Clover XML format."
+msgstr ""
+
+#: Console/Command/TestShell.php:75
+msgid "<file> Write agile documentation in HTML format to file."
+msgstr ""
+
+#: Console/Command/TestShell.php:78
+msgid "<file> Write agile documentation in Text format to file."
+msgstr ""
+
+#: Console/Command/TestShell.php:81
+msgid "<pattern> Filter which tests to run."
+msgstr ""
+
+#: Console/Command/TestShell.php:84
+msgid "<name> Only runs tests from the specified group(s)."
+msgstr ""
+
+#: Console/Command/TestShell.php:87
+msgid "<name> Exclude tests from the specified group(s)."
+msgstr ""
+
+#: Console/Command/TestShell.php:90
+msgid "List available test groups."
+msgstr ""
+
+#: Console/Command/TestShell.php:93
+msgid "TestSuiteLoader implementation to use."
+msgstr ""
+
+#: Console/Command/TestShell.php:96
+msgid "<times> Runs the test(s) repeatedly."
+msgstr ""
+
+#: Console/Command/TestShell.php:99
+msgid "Report test execution progress in TAP format."
+msgstr ""
+
+#: Console/Command/TestShell.php:102
+msgid "Report test execution progress in TestDox format."
+msgstr ""
+
+#: Console/Command/TestShell.php:106
+msgid "Do not use colors in output."
+msgstr ""
+
+#: Console/Command/TestShell.php:109
+msgid "Write to STDERR instead of STDOUT."
+msgstr ""
+
+#: Console/Command/TestShell.php:112
+msgid "Stop execution upon first error or failure."
+msgstr ""
+
+#: Console/Command/TestShell.php:115
+msgid "Stop execution upon first failure."
+msgstr ""
+
+#: Console/Command/TestShell.php:118
+msgid "Stop execution upon first skipped test."
+msgstr ""
+
+#: Console/Command/TestShell.php:121
+msgid "Stop execution upon first incomplete test."
+msgstr ""
+
+#: Console/Command/TestShell.php:124
+msgid "Mark a test as incomplete if no assertions are made."
+msgstr ""
+
+#: Console/Command/TestShell.php:127
+msgid "Waits for a keystroke after each test."
+msgstr ""
+
+#: Console/Command/TestShell.php:130
+msgid "Run each test in a separate PHP process."
+msgstr ""
+
+#: Console/Command/TestShell.php:133
+msgid "Do not backup and restore $GLOBALS for each test."
+msgstr ""
+
+#: Console/Command/TestShell.php:136
+msgid "Backup and restore static attributes for each test."
+msgstr ""
+
+#: Console/Command/TestShell.php:139
+msgid "Try to check source files for syntax errors."
+msgstr ""
+
+#: Console/Command/TestShell.php:142
+msgid "<file> A \"bootstrap\" PHP file that is run before the tests."
+msgstr ""
+
+#: Console/Command/TestShell.php:145
+msgid "<file> Read configuration from XML file."
+msgstr ""
+
+#: Console/Command/TestShell.php:148
+msgid "Ignore default configuration file (phpunit.xml)."
+msgstr ""
+
+#: Console/Command/TestShell.php:151
+msgid "<path(s)> Prepend PHP include_path with given path(s)."
+msgstr ""
+
+#: Console/Command/TestShell.php:154
+msgid "key[=value] Sets a php.ini value."
+msgstr ""
+
+#: Console/Command/TestShell.php:157
+msgid "Choose a custom fixture manager."
+msgstr ""
+
+#: Console/Command/TestShell.php:159
+msgid "More verbose output."
+msgstr ""
+
+#: Console/Command/TestShell.php:250
+#: Console/Command/TestsuiteShell.php:88
+msgid "CakePHP Test Shell"
+msgstr ""
+
+#: Console/Command/TestShell.php:299
+msgid "No test cases available \n\n"
+msgstr ""
+
+#: Console/Command/TestShell.php:313
+msgid "What test case would you like to run?"
+msgstr ""
+
+#: Console/Command/TestsuiteShell.php:44
+msgid "<warning>This shell is for backwards-compatibility only</warning>\nuse the test shell instead"
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:72
+msgid "<warning>Dry-run mode enabled!</warning>"
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:75
+msgid "<warning>No git repository detected!</warning>"
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:90
+msgid "Running %s"
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:139
+msgid "Upgrading locations for plugin %s"
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:144
+msgid "Upgrading locations for app directory"
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:161;617;644;736
+msgid "Moving %s to %s"
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:759
+msgid "Updating %s..."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:800
+msgid " * Updating %s"
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:804
+msgid "Done updating %s"
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:822
+msgid "The plugin to update. Only the specified plugin will be updated."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:826
+msgid "The extension(s) to search. A pipe delimited list, or a preg_match compatible subpattern"
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:831
+msgid "Use git command for moving files around."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:836
+msgid "Dry run the update, no files will actually be modified."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:843
+msgid "A tool to help automate upgrading an application or plugin from CakePHP 1.3 to 2.0. Be sure to have a backup of your application before running these commands."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:847
+msgid "Run all upgrade commands."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:850
+msgid "Update tests class names to FooTest rather than FooTestCase."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:853
+msgid "Move files and folders to their new homes."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:856
+msgid "Update the i18n translation method calls."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:859
+msgid "Update calls to helpers."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:862
+msgid "Update removed basics functions to PHP native functions."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:865
+msgid "Update removed request access, and replace with $this->request."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:868
+msgid "Update Configure::read() to Configure::read('debug')"
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:871
+msgid "Replace Obsolete constants"
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:874
+msgid "Return early on controller redirect calls."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:877
+msgid "Update components to extend Component class."
+msgstr ""
+
+#: Console/Command/UpgradeShell.php:880
+msgid "Replace use of cakeError with exceptions."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:75
+msgid "Baking basic crud methods for "
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:81;121
+msgid "Adding %s methods"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:132
+msgid "No Controllers were baked, Models need to exist before Controllers can be baked."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:144
+msgid "Bake Controller\nPath: %s"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:153
+msgid "Baking %sController"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:163
+msgid "Would you like to build your controller interactively?"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:165
+msgid "Warning: Choosing no will overwrite the %sController."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:172
+msgid "Would you like to use dynamic scaffolding?"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:185
+msgid "Would you like to use Session flash messages?"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:207
+#: Console/Command/Task/DbConfigTask.php:238
+#: Console/Command/Task/ModelTask.php:274
+#: Console/Command/Task/PluginTask.php:105
+#: Console/Command/Task/ProjectTask.php:196
+#: Console/Command/Task/ViewTask.php:332
+msgid "Look okay?"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:236
+msgid "The following controller will be created:"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:238
+msgid "Controller Name:\n\t%s"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:245
+msgid "Helpers:"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:246
+msgid "Components:"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:273
+msgid "Would you like to create some basic class methods \n(index(), add(), view(), edit())?"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:277
+msgid "Would you like to create the basic class methods for admin routing?"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:299
+msgid "You must have a model for this class to build basic methods. Please try again."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:331
+msgid "Baking controller class for %s..."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:375
+msgid "Would you like this controller to use other helpers\nbesides HtmlHelper and FormHelper?"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:376
+msgid "Please provide a comma separated list of the other\nhelper names you'd like to use.\nExample: 'Text, Js, Time'"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:388
+msgid "Would you like this controller to use other components\nbesides PaginatorComponent?"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:389
+msgid "Please provide a comma separated list of the component names you'd like to use.\nExample: 'Acl, Security, RequestHandler'"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:424
+msgid "Possible Controllers based on your current database:"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:448
+msgid "Enter a number from the list above,\ntype in the name of another controller, or 'q' to exit"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:450
+#: Console/Command/Task/ModelTask.php:984
+msgid "Exit"
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:455
+msgid "The Controller name you supplied was empty,\nor the number you selected was not an option. Please try again."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:477
+msgid "Bake a controller for a model. Using options you can bake public, admin or both."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:479
+msgid "Name of the controller to bake. Can use Plugin.name to bake controllers into plugins."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:481
+msgid "Bake a controller with basic crud actions (index, view, add, edit, delete)."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:484
+msgid "Bake a controller with crud actions for one of the Routing.prefixes."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:488
+msgid "Plugin to bake the controller into."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:491
+msgid "The connection the controller's model is on."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:497
+#: Console/Command/Task/FixtureTask.php:94
+#: Console/Command/Task/ModelTask.php:1026
+#: Console/Command/Task/TestTask.php:574
+#: Console/Command/Task/ViewTask.php:444
+msgid "Force overwriting existing files without prompting."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:499
+msgid "Bake all controllers with CRUD methods."
+msgstr ""
+
+#: Console/Command/Task/ControllerTask.php:501
+#: Console/Command/Task/FixtureTask.php:101
+#: Console/Command/Task/ModelTask.php:1028
+#: Console/Command/Task/TestTask.php:576
+#: Console/Command/Task/ViewTask.php:448
+msgid "Omitting all arguments and options will enter into an interactive mode."
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:89
+msgid "Database Configuration:"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:98
+msgid "Name:"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:101
+msgid "The name may only contain unaccented latin characters, numbers or underscores"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:104
+msgid "The name must start with an unaccented latin character or an underscore"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:108
+msgid "Datasource:"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:110
+msgid "Persistent Connection?"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:119
+msgid "Database Host:"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:124
+msgid "Port?"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:133
+msgid "User:"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:139
+msgid "Password:"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:142
+msgid "The password you supplied was empty. Use an empty password?"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:151
+msgid "Database Name:"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:156
+msgid "Table Prefix?"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:164
+msgid "Table encoding?"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:173
+msgid "Table schema?"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:187
+msgid "Do you wish to add another database configuration?"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:210
+msgid "The following database configuration will be created:"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:212
+msgid "Name:         %s"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:213
+msgid "Datasource:   %s"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:214
+msgid "Persistent:   %s"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:215
+msgid "Host:         %s"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:218
+msgid "Port:         %s"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:221
+msgid "User:         %s"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:222
+msgid "Pass:         %s"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:223
+msgid "Database:     %s"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:226
+msgid "Table prefix: %s"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:230
+msgid "Schema:       %s"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:234
+msgid "Encoding:     %s"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:365
+msgid "Use Database Config"
+msgstr ""
+
+#: Console/Command/Task/DbConfigTask.php:379
+msgid "Bake new database configuration settings."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:123
+msgid "Current paths: %s\nWhat is the path you would like to extract?\n[Q]uit [D]one"
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:130;207
+msgid "Extract Aborted"
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:136
+msgid "<warning>No directories selected.</warning> Please choose a directory."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:141;213
+msgid "The directory path you supplied was not found. Please try again."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:175
+msgid "Would you like to extract the messages from the CakePHP core?"
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:203
+msgid "What is the path you would like to output?\n[Q]uit"
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:223
+msgid "Would you like to merge all domain and category strings into the default.pot file?"
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:233
+msgid "The output directory %s was not found or writable."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:279
+msgid "Extracting..."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:281
+msgid "Paths:"
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:285
+msgid "Output Directory: "
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:295
+msgid "Done."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:307
+msgid "CakePHP Language String Extraction:"
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:309
+msgid "Directory where your application is located."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:311
+msgid "Comma separated list of paths."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:313
+msgid "Merge all domain and category strings into the default.po file."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:316
+msgid "Full path to output directory."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:318
+msgid "Comma separated list of files."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:322
+msgid "Ignores all files in plugins if this command is run inside from the same app directory."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:324
+msgid "Extracts tokens only from the plugin specified and puts the result in the plugin's Locale directory."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:328
+msgid "Ignores validation messages in the $validate property. If this flag is not set and the command is run from the same app directory, all messages in model validation rules will be extracted as tokens."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:333
+msgid "If set to a value, the localization domain to be used for model validation messages."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:335
+msgid "Comma separated list of directories to exclude. Any path containing a path segment with the provided values will be skipped. E.g. test,vendors"
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:341
+msgid "Always overwrite existing .pot files."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:343
+msgid "Extract messages from the CakePHP core libs."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:358
+msgid "Processing %s..."
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:633
+msgid "Error: %s already exists in this location. Overwrite? [Y]es, [N]o, [A]ll"
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:640
+msgid "What would you like to name this file?"
+msgstr ""
+
+#: Console/Command/Task/ExtractTask.php:737
+msgid "Invalid marker content in %s:%s\n* %s("
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:71
+msgid "Generate fixtures for use with the test suite. You can use `bake fixture all` to bake all fixtures."
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:73
+msgid "Name of the fixture to bake. Can use Plugin.name to bake plugin fixtures."
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:75
+msgid "When using generated data, the number of records to include in the fixture(s)."
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:79
+msgid "Which database configuration to use for baking."
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:83
+msgid "CamelCased name of the plugin to bake fixtures for."
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:86
+msgid "Importing schema for fixtures rather than hardcoding it."
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:96
+msgid "Used with --count and <name>/all commands to pull [n] records from the live tables, where [n] is either --count or the default of 10."
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:160
+msgid "Bake Fixture\nPath: %s"
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:184
+msgid "Would you like to import schema for this fixture?"
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:192
+msgid "Would you like to use record importing for this fixture?"
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:198
+msgid "Would you like to build this fixture with data from %s's table?"
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:286
+msgid "Baking test fixture for %s..."
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:419
+msgid "Please provide a SQL fragment to use as conditions\nExample: WHERE 1=1"
+msgstr ""
+
+#: Console/Command/Task/FixtureTask.php:423
+msgid "How many records do you want to import?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:128
+msgid "Baking %s"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:176
+msgid "Make a selection from the choices above"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:193
+msgid "Bake Model\nPath: %s"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:208
+msgid "The table %s doesn't exist or could not be automatically detected\ncontinue anyway?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:234
+msgid "Would you like to supply validation criteria \nfor the fields in your model?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:240
+msgid "Would you like to define model associations\n(hasMany, hasOne, belongsTo, etc.)?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:249
+msgid "The following Model will be created:"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:251
+msgid "Name:       %s"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:254
+msgid "DB Config:  %s"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:257
+msgid "DB Table:   %s"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:260
+msgid "Primary Key: %s"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:263
+msgid "Validation: %s"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:266
+msgid "Associations:"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:320
+msgid "What is the primaryKey?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:331
+msgid "A displayField could not be automatically detected\nwould you like to choose one?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:336
+msgid "Choose a field from the options above:"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:411
+msgid "or enter in a valid regex validation string.\nAlternatively [s] skip the rest of the fields.\n"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:420
+msgid "Field: <info>%s</info>"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:421
+msgid "Type: <info>%s</info>"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:423
+msgid "Please select one of the following validation options:"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:435
+msgid "%s - Do not do any validation on this field."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:473
+msgid "You have already chosen that validation rule,\nplease choose again"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:477
+msgid "Please make a valid selection."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:499
+msgid "Would you like to add another validation rule\nor skip the rest of the fields?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:521
+msgid "One moment while the associations are detected."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:551
+msgid "None found."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:553
+msgid "Please confirm the following associations:"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:725
+msgid "Would you like to define some additional model associations?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:730
+msgid "What is the association type?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:731
+msgid "Enter a number"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:733
+msgid "For the following options be very careful to match your setup exactly.\nAny spelling mistakes will cause errors."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:737
+msgid "What is the alias for this association?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:738
+msgid "What className will %s use?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:760
+msgid "What is the table for this model?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:766
+msgid "A helpful List of possible keys"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:767
+msgid "What is the foreignKey?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:771
+msgid "What is the foreignKey? Specify your own."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:774
+msgid "What is the associationForeignKey?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:775
+msgid "What is the joinTable?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:787
+msgid "Define another association?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:859
+msgid "Baking model class for %s..."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:893
+msgid "Possible Models based on your current database:"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:925
+msgid "Given your model named '%s',\nCake would expect a database table named '%s'"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:926
+msgid "Do you want to use this table?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:929
+msgid "What is the name of the table?"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:961
+msgid "Your database does not have any tables."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:980
+msgid "Enter a number from the list above,\ntype in the name of another model, or 'q' to exit"
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:989
+msgid "The model name you supplied was empty,\nor the number you selected was not an option. Please try again."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:1010
+msgid "Bake models."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:1012
+msgid "Name of the model to bake. Can use Plugin.name to bake plugin models."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:1014
+msgid "Bake all model files with associations and validation."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:1017
+msgid "Plugin to bake the model into."
+msgstr ""
+
+#: Console/Command/Task/ModelTask.php:1023
+msgid "The connection the model table is on."
+msgstr ""
+
+#: Console/Command/Task/PluginTask.php:63
+msgid "Plugin: %s already exists, no action taken"
+msgstr ""
+
+#: Console/Command/Task/PluginTask.php:81
+msgid "Enter the name of the plugin in CamelCase format"
+msgstr ""
+
+#: Console/Command/Task/PluginTask.php:85
+msgid "An error occurred trying to bake: %s in %s"
+msgstr ""
+
+#: Console/Command/Task/PluginTask.php:101
+msgid "<info>Plugin Name:</info> %s"
+msgstr ""
+
+#: Console/Command/Task/PluginTask.php:102
+msgid "<info>Plugin Directory:</info> %s"
+msgstr ""
+
+#: Console/Command/Task/PluginTask.php:162
+#: Console/Command/Task/ProjectTask.php:207
+msgid "<success>Created:</success> %s in %s"
+msgstr ""
+
+#: Console/Command/Task/PluginTask.php:204
+msgid "Choose a plugin path from the paths above."
+msgstr ""
+
+#: Console/Command/Task/PluginTask.php:222
+msgid "Create the directory structure, AppModel and AppController classes for a new plugin. Can create plugins in any of your bootstrapped plugin paths."
+msgstr ""
+
+#: Console/Command/Task/PluginTask.php:225
+msgid "CamelCased name of the plugin to create."
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:58
+msgid "What is the path to the project you want to bake?"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:68
+msgid "<warning>A project already exists in this location:</warning> %s Overwrite?"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:80
+msgid " * Random hash key created for 'Security.salt'"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:82
+msgid "Unable to generate random hash for 'Security.salt', you should change it in %s"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:87
+msgid " * Random seed created for 'Security.cipherSeed'"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:89
+msgid "Unable to generate random seed for 'Security.cipherSeed', you should change it in %s"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:94
+msgid " * Cache prefix set"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:96
+msgid "The cache prefix was <error>NOT</error> set"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:101
+msgid " * app/Console/cake.php path set."
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:103
+msgid "Unable to set console path for app/Console."
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:109
+msgid "<info>CakePHP is on your `include_path`. CAKE_CORE_INCLUDE_PATH will be set, but commented out.</info>"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:111
+msgid "<warning>CakePHP is not on your `include_path`, CAKE_CORE_INCLUDE_PATH will be hard coded.</warning>"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:112
+msgid "You can fix this by adding CakePHP to your `include_path`."
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:117;118
+msgid " * CAKE_CORE_INCLUDE_PATH set to %s in %s"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:120
+msgid "Unable to set CAKE_CORE_INCLUDE_PATH, you should change it in %s"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:124
+msgid "   * <warning>Remember to check these values after moving to production server</warning>"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:129
+msgid "Could not set permissions on %s"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:134
+msgid "<success>Project baked successfully!</success>"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:136
+msgid "Project baked but with <warning>some issues.</warning>."
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:173
+msgid "What is the path to the directory layout you wish to copy?"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:178
+msgid "The directory path you supplied was empty. Please try again."
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:182
+msgid "Directory path does not exist please choose another:"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:192
+msgid "<info>Skel Directory</info>: "
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:193
+msgid "<info>Will be copied to</info>: "
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:210
+msgid "<error>Could not create</error> '%s' properly."
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:224
+msgid "<error>Bake Aborted.</error>"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:387
+msgid "You have more than one routing prefix configured"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:396
+msgid "Please choose a prefix to bake with."
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:401;411
+msgid "You need to enable %s in %s to use prefix routing."
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:404
+msgid "What would you like the prefix route to be?"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:405
+msgid "Example: %s"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:407
+msgid "Enter a routing prefix:"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:410
+msgid "<error>Unable to write to</error> %s."
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:430
+msgid "Generate a new CakePHP project skeleton."
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:432
+msgid "Application directory to make, if it starts with \"/\" the path is absolute."
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:435
+msgid "Create empty files in each of the directories. Good if you are using git"
+msgstr ""
+
+#: Console/Command/Task/ProjectTask.php:441
+msgid "The directory layout to use for the new application skeleton. Defaults to cake/Console/Templates/skel of CakePHP used to create the project."
+msgstr ""
+
+#: Console/Command/Task/TemplateTask.php:176
+msgid "You have more than one set of templates installed."
+msgstr ""
+
+#: Console/Command/Task/TemplateTask.php:177
+msgid "Please choose the template set you wish to use:"
+msgstr ""
+
+#: Console/Command/Task/TemplateTask.php:187
+msgid "Which bake theme would you like to use?"
+msgstr ""
+
+#: Console/Command/Task/TemplateTask.php:213
+msgid "Could not find template for %s"
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:111
+msgid "Bake Tests"
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:118
+msgid "Incorrect type provided. Please choose one of %s"
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:144
+msgid "Bake is detecting possible fixtures..."
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:162
+msgid "Baking test case for %s %s ..."
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:188
+msgid "Select an object type:"
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:198
+msgid "Enter the type of object to bake a test for or (q)uit"
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:222
+msgid "Choose a %s class"
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:229
+msgid "Choose an existing class, or enter the name of a class that does not exist"
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:453
+msgid "Bake could not detect fixtures, would you like to add some?"
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:456
+msgid "Please provide a comma separated list of the fixtures names you'd like to use.\nExample: 'app.comment, app.post, plugin.forums.post'"
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:554
+msgid "Bake test case skeletons for classes."
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:556
+msgid "Type of class to bake, can be any of the following: controller, model, helper, component or behavior."
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:565
+msgid "An existing class to bake tests for."
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:571
+msgid "CamelCased name of the plugin to bake tests for."
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:209
+msgid "Would you like bake to build your views interactively?\nWarning: Choosing no will overwrite %s views if it exist."
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:216
+msgid "Would you like to create some CRUD views\n(index, add, view, edit) for this controller?\nNOTE: Before doing so, you'll need to create your controller\nand model classes (including associated models)."
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:219
+msgid "Would you like to create the views for admin routing?"
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:238
+msgid "View Scaffolding Complete.\n"
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:255
+msgid "Controller not found"
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:267
+msgid "The file '%s' could not be found.\nIn order to bake a view, you'll need to first create the controller."
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:319
+msgid "Action Name? (use lowercase_underscored function name)"
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:321
+msgid "The action name you supplied was empty. Please try again."
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:326
+msgid "The following view will be created:"
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:328
+msgid "Controller Name: %s"
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:329
+msgid "Action Name:     %s"
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:330
+msgid "Path:            %s"
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:337
+msgid "Bake Aborted."
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:354
+msgid "Baking `%s` view file..."
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:423
+msgid "Bake views for a controller, using built-in or custom templates."
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:425
+msgid "Name of the controller views to bake. Can be Plugin.name as a shortcut for plugin baking."
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:427
+msgid "Will bake a single action's file. core templates are (index, add, edit, view)"
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:429
+msgid "Will bake the template in <action> but create the filename after <alias>."
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:432
+msgid "Plugin to bake the view into."
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:434
+msgid "Set to only bake views for a prefix in Routing.prefixes"
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:441
+msgid "The connection the connected model is on."
+msgstr ""
+
+#: Console/Command/Task/ViewTask.php:446
+msgid "Bake all CRUD action views for all controllers. Requires models and controllers to exist."
+msgstr ""
+
+#: View/Errors/error400.ctp:21
+#: View/Errors/error500.ctp:21
+#: View/Errors/fatal_error.ctp:22
+#: View/Errors/missing_action.ctp:21;25
+#: View/Errors/missing_behavior.ctp:23;27
+#: View/Errors/missing_component.ctp:23;27
+#: View/Errors/missing_connection.ctp:21;32
+#: View/Errors/missing_controller.ctp:23;27
+#: View/Errors/missing_database.ctp:21;25
+#: View/Errors/missing_datasource.ctp:23
+#: View/Errors/missing_datasource_config.ctp:21
+#: View/Errors/missing_helper.ctp:23;27
+#: View/Errors/missing_layout.ctp:21;25
+#: View/Errors/missing_plugin.ctp:21;25
+#: View/Errors/missing_table.ctp:21
+#: View/Errors/missing_view.ctp:21;25
+#: View/Errors/pdo_error.ctp:21
+#: View/Errors/private_action.ctp:21
+#: View/Errors/scaffold_error.ctp:21
+msgid "Error"
+msgstr ""
+
+#: View/Errors/error400.ctp:23
+msgid "The requested address %s was not found on this server."
+msgstr ""
+
+#: View/Errors/error500.ctp:22
+#: Error/ExceptionRenderer.php:234
+msgid "An Internal Error Has Occurred."
+msgstr ""
+
+#: Controller/Scaffold.php:129
+msgid "Scaffold :: "
+msgstr ""
+
+#: Controller/Scaffold.php:168;235;304
+msgid "Invalid %s"
+msgstr ""
+
+#: Controller/Scaffold.php:223
+msgid "updated"
+msgstr ""
+
+#: Controller/Scaffold.php:226
+msgid "saved"
+msgstr ""
+
+#: Controller/Scaffold.php:246
+msgid "The %1$s has been %2$s"
+msgstr ""
+
+#: Controller/Scaffold.php:256
+msgid "Please correct errors below."
+msgstr ""
+
+#: Controller/Scaffold.php:307
+msgid "The %1$s with id: %2$s has been deleted."
+msgstr ""
+
+#: Controller/Scaffold.php:310
+msgid "There was an error deleting the %1$s with id: %2$s"
+msgstr ""
+
+#: Controller/Component/AuthComponent.php:430
+msgid "You are not authorized to access that location."
+msgstr ""
+
+#: Error/ExceptionRenderer.php:211
+msgid "Not Found"
+msgstr ""
+
+#: Model/Validator/CakeValidationSet.php:286
+msgid "This field cannot be left blank"
+msgstr ""
+
+#: Network/CakeResponse.php:1352
+msgid "The requested file was not found"
+msgstr ""
+
+#: Utility/CakeNumber.php:119
+msgid "%s KB"
+msgstr ""
+
+#: Utility/CakeNumber.php:121
+msgid "%s MB"
+msgstr ""
+
+#: Utility/CakeNumber.php:123
+msgid "%s GB"
+msgstr ""
+
+#: Utility/CakeNumber.php:125
+msgid "%s TB"
+msgstr ""
+
+#: Utility/CakeNumber.php:117
+msgid "%d Byte"
+msgid_plural "%d Bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Utility/CakeTime.php:398
+msgid "Today, %s"
+msgstr ""
+
+#: Utility/CakeTime.php:401
+msgid "Yesterday, %s"
+msgstr ""
+
+#: Utility/CakeTime.php:404
+msgid "Tomorrow, %s"
+msgstr ""
+
+#: Utility/CakeTime.php:409
+msgid "Sunday"
+msgstr ""
+
+#: Utility/CakeTime.php:410
+msgid "Monday"
+msgstr ""
+
+#: Utility/CakeTime.php:411
+msgid "Tuesday"
+msgstr ""
+
+#: Utility/CakeTime.php:412
+msgid "Wednesday"
+msgstr ""
+
+#: Utility/CakeTime.php:413
+msgid "Thursday"
+msgstr ""
+
+#: Utility/CakeTime.php:414
+msgid "Friday"
+msgstr ""
+
+#: Utility/CakeTime.php:415
+msgid "Saturday"
+msgstr ""
+
+#: Utility/CakeTime.php:421
+msgid "On %s %s"
+msgstr ""
+
+#: Utility/CakeTime.php:742
+msgid "%s ago"
+msgstr ""
+
+#: Utility/CakeTime.php:743
+msgid "on %s"
+msgstr ""
+
+#: Utility/CakeTime.php:795
+msgid "just now"
+msgstr ""
+
+#: Utility/CakeTime.php:911
+msgid "about a second ago"
+msgstr ""
+
+#: Utility/CakeTime.php:912
+msgid "about a minute ago"
+msgstr ""
+
+#: Utility/CakeTime.php:913
+msgid "about an hour ago"
+msgstr ""
+
+#: Utility/CakeTime.php:914
+msgid "about a day ago"
+msgstr ""
+
+#: Utility/CakeTime.php:915
+msgid "about a week ago"
+msgstr ""
+
+#: Utility/CakeTime.php:916
+msgid "about a year ago"
+msgstr ""
+
+#: Utility/CakeTime.php:925
+msgid "in about a second"
+msgstr ""
+
+#: Utility/CakeTime.php:926
+msgid "in about a minute"
+msgstr ""
+
+#: Utility/CakeTime.php:927
+msgid "in about an hour"
+msgstr ""
+
+#: Utility/CakeTime.php:928
+msgid "in about a day"
+msgstr ""
+
+#: Utility/CakeTime.php:929
+msgid "in about a week"
+msgstr ""
+
+#: Utility/CakeTime.php:930
+msgid "in about a year"
+msgstr ""
+
+#: Utility/CakeTime.php:952;974
+msgid "days"
+msgstr ""
+
+#: Utility/CakeTime.php:884
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Utility/CakeTime.php:887
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Utility/CakeTime.php:890
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Utility/CakeTime.php:893
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Utility/CakeTime.php:896
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Utility/CakeTime.php:899
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Utility/CakeTime.php:902
+msgid "%d second"
+msgid_plural "%d seconds"
+msgstr[0] ""
+msgstr[1] ""
+
+#: View/Helper/FormHelper.php:733
+msgid "Error in field %s"
+msgstr ""
+
+#: View/Helper/FormHelper.php:922
+#: View/Scaffolds/form.ctp:48
+#: View/Scaffolds/index.ctp:79;94
+#: View/Scaffolds/view.ctp:65;80;190
+msgid "New %s"
+msgstr ""
+
+#: View/Helper/FormHelper.php:928
+#: View/Scaffolds/view.ctp:53;111
+msgid "Edit %s"
+msgstr ""
+
+#: View/Helper/FormHelper.php:1500
+msgid "empty"
+msgstr ""
+
+#: View/Helper/FormHelper.php:2875
+msgid "January"
+msgstr ""
+
+#: View/Helper/FormHelper.php:2876
+msgid "February"
+msgstr ""
+
+#: View/Helper/FormHelper.php:2877
+msgid "March"
+msgstr ""
+
+#: View/Helper/FormHelper.php:2878
+msgid "April"
+msgstr ""
+
+#: View/Helper/FormHelper.php:2879
+msgid "May"
+msgstr ""
+
+#: View/Helper/FormHelper.php:2880
+msgid "June"
+msgstr ""
+
+#: View/Helper/FormHelper.php:2881
+msgid "July"
+msgstr ""
+
+#: View/Helper/FormHelper.php:2882
+msgid "August"
+msgstr ""
+
+#: View/Helper/FormHelper.php:2883
+msgid "September"
+msgstr ""
+
+#: View/Helper/FormHelper.php:2884
+msgid "October"
+msgstr ""
+
+#: View/Helper/FormHelper.php:2885
+msgid "November"
+msgstr ""
+
+#: View/Helper/FormHelper.php:2886
+msgid "December"
+msgstr ""
+
+#: View/Helper/HtmlHelper.php:769
+msgid "Home"
+msgstr ""
+
+#: View/Helper/PaginatorHelper.php:638
+msgid " of "
+msgstr ""
+
+#: View/Scaffolds/form.ctp:37
+msgid "List"
+msgstr ""
+
+#: View/Scaffolds/form.ctp:44
+#: View/Scaffolds/index.ctp:87
+#: View/Scaffolds/view.ctp:61;74
+msgid "List %s"
+msgstr ""
+
+#: View/Scaffolds/view.ctp:20
+msgid "View %s"
+msgstr ""
+
+#: View/Scaffolds/view.ctp:57
+msgid "Delete %s"
+msgstr ""
+
+#: View/Scaffolds/view.ctp:95;135
+msgid "Related %s"
+msgstr ""
+
+#: View/Layouts/default.ctp:19
+#: View/Layouts/error.ctp:19
+msgid "CakePHP: the rapid development php framework"
+msgstr ""
+
+#: View/Layouts/default.ctp:20
+msgid "CakePHP %s"
+msgstr ""
+
+#: View/Pages/home.ctp:16
+msgid "Release Notes for CakePHP %s."
+msgstr ""
+
+#: View/Pages/home.ctp:18
+msgid "Read the changelog"
+msgstr ""
+
+#: View/Pages/home.ctp:29
+msgid "URL rewriting is not properly configured on your server."
+msgstr ""
+
+#: View/Pages/home.ctp:40
+msgid "Your version of PHP is 5.2.8 or higher."
+msgstr ""
+
+#: View/Pages/home.ctp:44
+msgid "Your version of PHP is too low. You need PHP 5.2.8 or higher to use CakePHP."
+msgstr ""
+
+#: View/Pages/home.ctp:53
+msgid "Your tmp directory is writable."
+msgstr ""
+
+#: View/Pages/home.ctp:57
+msgid "Your tmp directory is NOT writable."
+msgstr ""
+
+#: View/Pages/home.ctp:67
+msgid "The %s is being used for core caching. To change the config edit %s"
+msgstr ""
+
+#: View/Pages/home.ctp:71
+msgid "Your cache is NOT working. Please check the settings in %s"
+msgstr ""
+
+#: View/Pages/home.ctp:81
+msgid "Your database configuration file is present."
+msgstr ""
+
+#: View/Pages/home.ctp:86
+msgid "Your database configuration file is NOT present."
+msgstr ""
+
+#: View/Pages/home.ctp:88
+msgid "Rename %s to %s"
+msgstr ""
+
+#: View/Pages/home.ctp:113
+msgid "CakePHP is able to connect to the database."
+msgstr ""
+
+#: View/Pages/home.ctp:117
+msgid "CakePHP is NOT able to connect to the database."
+msgstr ""
+
+#: View/Pages/home.ctp:129
+msgid "PCRE has not been compiled with Unicode support."
+msgstr ""
+
+#: View/Pages/home.ctp:131
+msgid "Recompile PCRE with Unicode support by adding <code>--enable-unicode-properties</code> when configuring"
+msgstr ""
+
+#: View/Pages/home.ctp:140
+msgid "DebugKit plugin is present"
+msgstr ""
+
+#: View/Pages/home.ctp:144
+msgid "DebugKit is not installed. It will help you inspect and debug different aspects of your application."
+msgstr ""
+
+#: View/Pages/home.ctp:146
+msgid "You can install it from %s"
+msgstr ""
+
+#: View/Pages/home.ctp:152
+msgid "Editing this Page"
+msgstr ""
+
+#: View/Pages/home.ctp:155
+msgid "To change the content of this page, edit: %s.<br />\nTo change its layout, edit: %s.<br />\nYou can also add some CSS styles for your pages at: %s."
+msgstr ""
+
+#: View/Pages/home.ctp:162
+msgid "Getting Started"
+msgstr ""
+
+#: View/Pages/home.ctp:166
+msgid "New"
+msgstr ""
+
+#: View/Pages/home.ctp:166
+msgid "CakePHP 2.0 Docs"
+msgstr ""
+
+#: View/Pages/home.ctp:175
+msgid "The 15 min Blog Tutorial"
+msgstr ""
+
+#: View/Pages/home.ctp:182
+msgid "Official Plugins"
+msgstr ""
+
+#: View/Pages/home.ctp:187
+msgid "provides a debugging toolbar and enhanced debugging tools for CakePHP applications."
+msgstr ""
+
+#: View/Pages/home.ctp:191
+msgid "contains various localized validation classes and translations for specific countries"
+msgstr ""
+
+#: View/Pages/home.ctp:196
+msgid "More about CakePHP"
+msgstr ""
+
+#: View/Pages/home.ctp:198
+msgid "CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC."
+msgstr ""
+
+#: View/Pages/home.ctp:201
+msgid "Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility."
+msgstr ""
+
+#: View/Pages/home.ctp:206
+msgid "The Rapid Development Framework"
+msgstr ""
+
+#: View/Pages/home.ctp:207
+msgid "CakePHP Documentation"
+msgstr ""
+
+#: View/Pages/home.ctp:208
+msgid "Your Rapid Development Cookbook"
+msgstr ""
+
+#: View/Pages/home.ctp:209
+msgid "CakePHP API"
+msgstr ""
+
+#: View/Pages/home.ctp:210
+msgid "Quick API Reference"
+msgstr ""
+
+#: View/Pages/home.ctp:211
+msgid "The Bakery"
+msgstr ""
+
+#: View/Pages/home.ctp:212
+msgid "Everything CakePHP"
+msgstr ""
+
+#: View/Pages/home.ctp:213
+msgid "CakePHP Plugins"
+msgstr ""
+
+#: View/Pages/home.ctp:214
+msgid "A comprehensive list of all CakePHP plugins created by the community"
+msgstr ""
+
+#: View/Pages/home.ctp:215
+msgid "CakePHP Community Center"
+msgstr ""
+
+#: View/Pages/home.ctp:216
+msgid "Everything related to the CakePHP community in one place"
+msgstr ""
+
+#: View/Pages/home.ctp:217
+msgid "CakePHP Google Group"
+msgstr ""
+
+#: View/Pages/home.ctp:218
+msgid "Community mailing list"
+msgstr ""
+
+#: View/Pages/home.ctp:220
+msgid "Live chat about CakePHP"
+msgstr ""
+
+#: View/Pages/home.ctp:221
+msgid "CakePHP Code"
+msgstr ""
+
+#: View/Pages/home.ctp:222
+msgid "Find the CakePHP code on GitHub and contribute to the framework"
+msgstr ""
+
+#: View/Pages/home.ctp:223;224
+msgid "CakePHP Issues"
+msgstr ""
+
+#: View/Pages/home.ctp:225;226
+msgid "CakePHP Roadmaps"
+msgstr ""
+
+#: View/Pages/home.ctp:227
+msgid "Training"
+msgstr ""
+
+#: View/Pages/home.ctp:228
+msgid "Join a live session and get skilled with the framework"
+msgstr ""
+
+#: View/Pages/home.ctp:229
+msgid "CakeFest"
+msgstr ""
+
+#: View/Pages/home.ctp:230
+msgid "Don't miss our annual CakePHP conference"
+msgstr ""
+
+#: View/Pages/home.ctp:231
+msgid "Cake Software Foundation"
+msgstr ""
+
+#: View/Pages/home.ctp:232
+msgid "Promoting development related to CakePHP"
+msgstr ""
+
+#: webroot/test.php:93
+msgid "Debug setting does not allow access to this url."
+msgstr ""
+
+#: Cache/Cache.php:173
+msgid "Cache engine %s is not available."
+msgstr ""
+
+#: Cache/Cache.php:177
+msgid "Cache engines must use %s as a base class."
+msgstr ""
+
+#: Cache/Cache.php:181
+msgid "Cache engine %s is not properly configured."
+msgstr ""
+
+#: Cache/Cache.php:316
+msgid "%s cache was unable to write '%s' to %s cache"
+msgstr ""
+
+#: Cache/Cache.php:538
+msgid "Invalid cache group %s"
+msgstr ""
+
+#: Cache/Engine/FileEngine.php:312
+msgid "Files cannot be atomically decremented."
+msgstr ""
+
+#: Cache/Engine/FileEngine.php:324
+msgid "Files cannot be atomically incremented."
+msgstr ""
+
+#: Cache/Engine/FileEngine.php:361
+msgid "Could not apply permission mask \"%s\" on cache file \"%s\""
+msgstr ""
+
+#: Cache/Engine/FileEngine.php:384
+msgid "%s is not writable"
+msgstr ""
+
+#: Cache/Engine/MemcacheEngine.php:166;183
+msgid "Method %s not implemented for compressed cache in %s"
+msgstr ""
+
+#: Cache/Engine/MemcachedEngine.php:126
+msgid "Memcached extension is not build with SASL support"
+msgstr ""
+
+#: Cache/Engine/MemcachedEngine.php:147
+msgid "%s is not a valid serializer engine for Memcached"
+msgstr ""
+
+#: Cache/Engine/MemcachedEngine.php:153
+msgid "Memcached extension is not compiled with %s support"
+msgstr ""
+
+#: Configure/IniReader.php:100
+#: Configure/PhpReader.php:62
+msgid "Cannot load configuration files with ../ in them."
+msgstr ""
+
+#: Configure/IniReader.php:105
+#: Configure/PhpReader.php:67
+msgid "Could not load configuration file: %s"
+msgstr ""
+
+#: Configure/PhpReader.php:72
+msgid "No variable %s found in %s"
+msgstr ""
+
+#: Console/Command/TestShell.php:175
+msgid "Please install PHPUnit framework v3.7 <info>(http://www.phpunit.de)</info>"
+msgstr ""
+
+#: Console/Command/TestShell.php:371
+msgid "Test case %s cannot be run via this shell"
+msgstr ""
+
+#: Console/Command/TestShell.php:384;401
+msgid "Test case %s not found"
+msgstr ""
+
+#: Console/Command/Task/PluginTask.php:180
+msgid "%s modified"
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:322
+msgid "Invalid object type."
+msgstr ""
+
+#: Console/Command/Task/TestTask.php:341
+msgid "Invalid type name"
+msgstr ""
+
+#: Controller/Component/AclComponent.php:67
+msgid "Could not find %s."
+msgstr ""
+
+#: Controller/Component/AclComponent.php:91
+msgid "AclComponent adapters must implement AclInterface"
+msgstr ""
+
+#: Controller/Component/AclComponent.php:162;176
+msgid "%s is deprecated, use %s instead"
+msgstr ""
+
+#: Controller/Component/AuthComponent.php:494
+msgid "Authorization adapter \"%s\" was not found."
+msgstr ""
+
+#: Controller/Component/AuthComponent.php:497
+msgid "Authorization objects must implement an %s method."
+msgstr ""
+
+#: Controller/Component/AuthComponent.php:787
+msgid "Authentication adapter \"%s\" was not found."
+msgstr ""
+
+#: Controller/Component/AuthComponent.php:790
+msgid "Authentication objects must implement an %s method."
+msgstr ""
+
+#: Controller/Component/CookieComponent.php:387
+msgid "You must use cipher, rijndael or aes for cookie encryption type"
+msgstr ""
+
+#: Controller/Component/RequestHandlerComponent.php:757
+msgid "You must give a handler callback."
+msgstr ""
+
+#: Controller/Component/SecurityComponent.php:335;619
+msgid "The request has been black-holed"
+msgstr ""
+
+#: Controller/Component/Acl/PhpAcl.php:104
+msgid "\"roles\" section not found in configuration."
+msgstr ""
+
+#: Controller/Component/Acl/PhpAcl.php:108
+msgid "Neither \"allow\" nor \"deny\" rules were provided in configuration."
+msgstr ""
+
+#: Controller/Component/Acl/PhpAcl.php:528
+msgid "cycle detected when inheriting %s from %s. Path: %s"
+msgstr ""
+
+#: Controller/Component/Auth/BaseAuthenticate.php:154
+msgid "Password hasher class \"%s\" was not found."
+msgstr ""
+
+#: Controller/Component/Auth/BaseAuthenticate.php:157
+msgid "Password hasher must extend AbstractPasswordHasher class."
+msgstr ""
+
+#: Controller/Component/Auth/BaseAuthorize.php:95
+msgid "$controller needs to be an instance of Controller"
+msgstr ""
+
+#: Controller/Component/Auth/ControllerAuthorize.php:49
+msgid "$controller does not implement an %s method."
+msgstr ""
+
+#: Controller/Component/Auth/CrudAuthorize.php:85
+msgid "CrudAuthorize::authorize() - Attempted access of un-mapped action \"%1$s\" in controller \"%2$s\""
+msgstr ""
+
+#: Core/Configure.php:73
+msgid "Can't find application core file. Please create %s, and make sure it is readable by PHP."
+msgstr ""
+
+#: Core/Configure.php:93
+msgid "Can't find application bootstrap file. Please create %s, and make sure it is readable by PHP."
+msgstr ""
+
+#: Core/Configure.php:341
+msgid "There is no \"%s\" adapter."
+msgstr ""
+
+#: Core/Configure.php:344
+msgid "The \"%s\" adapter, does not have a %s method."
+msgstr ""
+
+#: Event/CakeEventManager.php:102
+msgid "The eventKey variable is required"
+msgstr ""
+
+#: I18n/I18n.php:226
+msgid "You cannot use \"\" as a domain."
+msgstr ""
+
+#: I18n/I18n.php:264
+msgid "Missing plural form translation for \"%s\" in \"%s\" domain, \"%s\" locale.  Check your po file for correct plurals and valid Plural-Forms header."
+msgstr ""
+
+#: Log/CakeLog.php:190
+msgid "Invalid key name"
+msgstr ""
+
+#: Log/CakeLog.php:193
+msgid "Missing logger class name"
+msgstr ""
+
+#: Log/CakeLog.php:314;332;351
+msgid "Stream %s not found"
+msgstr ""
+
+#: Log/LogEngineCollection.php:44
+msgid "logger class %s does not implement a %s method."
+msgstr ""
+
+#: Log/LogEngineCollection.php:69
+msgid "Could not load class %s"
+msgstr ""
+
+#: Log/Engine/FileLog.php:150
+msgid "Could not apply permission mask \"%s\" on log file \"%s\""
+msgstr ""
+
+#: Model/AclNode.php:176
+msgid "AclNode::node() - Couldn't find %s node identified by \"%s\""
+msgstr ""
+
+#: Model/BehaviorCollection.php:226
+msgid "%s - Method %s not found in any attached behavior"
+msgstr ""
+
+#: Model/CakeSchema.php:615
+msgid "Schema generation error: invalid column type %s for %s.%s does not exist in DBO"
+msgstr ""
+
+#: Model/Model.php:1383
+msgid "(Model::getColumnTypes) Unable to build model field data. If you are using a model without a database table, try implementing schema()"
+msgstr ""
+
+#: Model/Model.php:3589
+msgid "Invalid join model settings in %s. The association parameter has the wrong type, expecting a string or array, but was passed type: %s"
+msgstr ""
+
+#: Model/Permission.php:86
+msgid "%s - Failed ARO node lookup in permissions check. Node references:\nAro: %s\nAco: %s"
+msgstr ""
+
+#: Model/Permission.php:97
+msgid "%s - Failed ACO node lookup in permissions check. Node references:\nAro: %s\nAco: %s"
+msgstr ""
+
+#: Model/Permission.php:108
+msgid "ACO permissions key %s does not exist in %s"
+msgstr ""
+
+#: Model/Permission.php:179
+msgid "%s - Invalid node"
+msgstr ""
+
+#: Model/Permission.php:197
+msgid "Invalid permission key \"%s\""
+msgstr ""
+
+#: Model/Behavior/AclBehavior.php:66
+msgid "Callback %s not defined in %s"
+msgstr ""
+
+#: Model/Behavior/AclBehavior.php:83
+msgid "AclBehavior is setup with more then one type, please specify type parameter for node()"
+msgstr ""
+
+#: Model/Behavior/ContainableBehavior.php:342
+msgid "Model \"%s\" is not associated with model \"%s\""
+msgstr ""
+
+#: Model/Behavior/TranslateBehavior.php:71
+msgid "Datasource %s for TranslateBehavior of model %s is not connected"
+msgstr ""
+
+#: Model/Behavior/TranslateBehavior.php:601
+msgid "You cannot bind a translation named \"name\"."
+msgstr ""
+
+#: Model/Behavior/TranslateBehavior.php:623
+msgid "Association %s is already bound to model %s"
+msgstr ""
+
+#: Model/Datasource/CakeSession.php:509
+msgid "Unable to configure the session, setting %s failed."
+msgstr ""
+
+#: Model/Datasource/CakeSession.php:568
+msgid "Could not load %s to handle the session."
+msgstr ""
+
+#: Model/Datasource/CakeSession.php:574
+msgid "Chosen SessionHandler does not implement CakeSessionHandlerInterface it cannot be used with an engine key."
+msgstr ""
+
+#: Model/Datasource/DboSource.php:255
+msgid "Selected driver is not enabled"
+msgstr ""
+
+#: Model/Datasource/DboSource.php:1244
+msgid "Error in Model %s"
+msgstr ""
+
+#: Model/Datasource/DboSource.php:3194
+msgid "Invalid schema object"
+msgstr ""
+
+#: Model/Datasource/DboSource.php:3304
+#: Model/Datasource/Database/Sqlite.php:402
+msgid "Column name or type not defined in schema"
+msgstr ""
+
+#: Model/Datasource/DboSource.php:3309
+#: Model/Datasource/Database/Sqlite.php:407
+msgid "Column type %s does not exist"
+msgstr ""
+
+#: Model/Datasource/Database/Mysql.php:341
+#: Model/Datasource/Database/Sqlserver.php:227
+msgid "Could not describe table for %s"
+msgstr ""
+
+#: Model/Validator/CakeValidationRule.php:281
+msgid "Could not find validation handler %s for %s"
+msgstr ""
+
+#: Network/CakeRequest.php:451
+msgid "Method %s does not exist"
+msgstr ""
+
+#: Network/CakeResponse.php:629
+msgid "Unknown status code"
+msgstr ""
+
+#: Network/CakeResponse.php:673
+msgid "Invalid status code"
+msgstr ""
+
+#: Network/CakeResponse.php:1337
+msgid "The requested file contains `..` and will not be read."
+msgstr ""
+
+#: Network/CakeResponse.php:1350
+msgid "The requested file %s was not found or not readable"
+msgstr ""
+
+#: Network/CakeSocket.php:304
+msgid "Connection timed out"
+msgstr ""
+
+#: Network/CakeSocket.php:371
+msgid "Invalid encryption scheme chosen"
+msgstr ""
+
+#: Network/CakeSocket.php:384
+msgid "Unable to perform enableCrypto operation on CakeSocket"
+msgstr ""
+
+#: Network/Email/CakeEmail.php:366
+msgid "From requires only 1 email address."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:382
+msgid "Sender requires only 1 email address."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:398
+msgid "Reply-To requires only 1 email address."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:414
+msgid "Disposition-Notification-To requires only 1 email address."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:430
+msgid "Return-Path requires only 1 email address."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:601
+msgid "Invalid email: \"%s\""
+msgstr ""
+
+#: Network/Email/CakeEmail.php:680;695
+msgid "$headers should be an array."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:907
+msgid "Format not available."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:942
+msgid "Class \"%s\" not found."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:944
+msgid "The \"%s\" does not have a %s method."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:965
+msgid "Invalid format for Message-ID. The text should be something like \"<uuid@server.com>\""
+msgstr ""
+
+#: Network/Email/CakeEmail.php:1044
+msgid "No file or data specified."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:1047
+msgid "No filename specified."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:1054
+msgid "File not found: \"%s\""
+msgstr ""
+
+#: Network/Email/CakeEmail.php:1137
+msgid "From is not specified."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:1140
+msgid "You need to specify at least one destination for to, cc or bcc."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:1215
+msgid "%s not found."
+msgstr ""
+
+#: Network/Email/CakeEmail.php:1219
+msgid "Unknown email configuration \"%s\"."
+msgstr ""
+
+#: Network/Email/SmtpTransport.php:155
+msgid "Unable to connect to SMTP server."
+msgstr ""
+
+#: Network/Email/SmtpTransport.php:176
+msgid "SMTP server did not accept the connection or trying to connect to non TLS SMTP server using TLS."
+msgstr ""
+
+#: Network/Email/SmtpTransport.php:181
+msgid "SMTP server did not accept the connection."
+msgstr ""
+
+#: Network/Email/SmtpTransport.php:197
+msgid "SMTP server did not accept the username."
+msgstr ""
+
+#: Network/Email/SmtpTransport.php:200
+msgid "SMTP server did not accept the password."
+msgstr ""
+
+#: Network/Email/SmtpTransport.php:203
+msgid "SMTP authentication method not allowed, check if SMTP server requires TLS"
+msgstr ""
+
+#: Network/Email/SmtpTransport.php:205
+msgid "SMTP does not require authentication."
+msgstr ""
+
+#: Network/Email/SmtpTransport.php:356
+msgid "SMTP timeout."
+msgstr ""
+
+#: Network/Email/SmtpTransport.php:369
+msgid "SMTP Error: %s"
+msgstr ""
+
+#: Network/Http/HttpResponse.php:21
+msgid "HttpResponse is deprecated due to naming conflicts. Use HttpSocketResponse instead."
+msgstr ""
+
+#: Network/Http/HttpSocket.php:244
+msgid "Invalid resource."
+msgstr ""
+
+#: Network/Http/HttpSocket.php:404
+msgid "Class %s not found."
+msgstr ""
+
+#: Network/Http/HttpSocket.php:602
+msgid "Unknown authentication method."
+msgstr ""
+
+#: Network/Http/HttpSocket.php:605
+msgid "The %s does not support authentication."
+msgstr ""
+
+#: Network/Http/HttpSocket.php:631
+msgid "Unknown authentication method for proxy."
+msgstr ""
+
+#: Network/Http/HttpSocket.php:634
+msgid "The %s does not support proxy authentication."
+msgstr ""
+
+#: Network/Http/HttpSocket.php:886
+msgid "HttpSocket::_buildRequestLine - Passed an invalid request line string. Activate quirks mode to do this."
+msgstr ""
+
+#: Network/Http/HttpSocket.php:904
+msgid "HttpSocket::_buildRequestLine - The \"*\" asterisk character is only allowed for the following methods: %s. Activate quirks mode to work outside of HTTP/1.1 specs."
+msgstr ""
+
+#: Network/Http/HttpSocketResponse.php:151
+msgid "Invalid response."
+msgstr ""
+
+#: Network/Http/HttpSocketResponse.php:155
+msgid "Invalid HTTP response."
+msgstr ""
+
+#: Network/Http/HttpSocketResponse.php:225
+msgid "HttpSocket::_decodeChunkedBody - Could not parse malformed chunk."
+msgstr ""
+
+#: Routing/Router.php:234
+msgid "Route class not found, or route class is not a subclass of CakeRoute"
+msgstr ""
+
+#: Utility/CakeNumber.php:163
+msgid "No unit type."
+msgstr ""
+
+#: Utility/ClassRegistry.php:117
+msgid "(ClassRegistry::init() Attempted to create instance of a class with a numeric name"
+msgstr ""
+
+#: Utility/ClassRegistry.php:149
+msgid "Cannot create instance of %s, as it is abstract or is an interface"
+msgstr ""
+
+#: Utility/ClassRegistry.php:190
+msgid "(ClassRegistry::init() could not create instance of %s"
+msgstr ""
+
+#: Utility/Debugger.php:630
+msgid "Invalid Debugger output format."
+msgstr ""
+
+#: Utility/Debugger.php:846
+msgid "Please change the value of %s in %s to a salt value specific to your application."
+msgstr ""
+
+#: Utility/Debugger.php:850
+msgid "Please change the value of %s in %s to a numeric (digits only) seed value specific to your application."
+msgstr ""
+
+#: Utility/Folder.php:387;410
+msgid "%s changed to %s"
+msgstr ""
+
+#: Utility/Folder.php:391;412
+msgid "%s NOT changed to %s"
+msgstr ""
+
+#: Utility/Folder.php:508
+msgid "%s is a file"
+msgstr ""
+
+#: Utility/Folder.php:519;697
+msgid "%s created"
+msgstr ""
+
+#: Utility/Folder.php:523
+msgid "%s NOT created"
+msgstr ""
+
+#: Utility/Folder.php:595;603;615
+msgid "%s removed"
+msgstr ""
+
+#: Utility/Folder.php:597;605;617
+msgid "%s NOT removed"
+msgstr ""
+
+#: Utility/Folder.php:664
+msgid "%s not writable"
+msgstr ""
+
+#: Utility/Folder.php:680
+msgid "%s copied to %s"
+msgstr ""
+
+#: Utility/Folder.php:682
+msgid "%s NOT copied to %s"
+msgstr ""
+
+#: Utility/Folder.php:701
+msgid "%s not created"
+msgstr ""
+
+#: Utility/Hash.php:405
+msgid "Hash::combine() needs an equal number of keys + values."
+msgstr ""
+
+#: Utility/ObjectCollection.php:124
+msgid "Cannot use modParams with indexes that do not exist."
+msgstr ""
+
+#: Utility/Security.php:159
+msgid "Invalid value, cost must be between %s and %s"
+msgstr ""
+
+#: Utility/Security.php:186;219
+msgid "You cannot use an empty key for %s"
+msgstr ""
+
+#: Utility/Security.php:223
+msgid "You must specify the operation for Security::rijndael(), either encrypt or decrypt"
+msgstr ""
+
+#: Utility/Security.php:227
+msgid "You must use a key larger than 32 bytes for Security::rijndael()"
+msgstr ""
+
+#: Utility/Security.php:286
+msgid "Invalid salt: %s for %s Please visit http://www.php.net/crypt and read the appropriate section for building %s salts."
+msgstr ""
+
+#: Utility/Security.php:339
+msgid "Invalid key for %s, key must be at least 256 bits (32 bytes) long."
+msgstr ""
+
+#: Utility/Security.php:355
+msgid "The data to decrypt cannot be empty."
+msgstr ""
+
+#: Utility/Validation.php:257
+msgid "You must define the $operator parameter for %s"
+msgstr ""
+
+#: Utility/Validation.php:275
+msgid "You must define a regular expression for %s"
+msgstr ""
+
+#: Utility/Validation.php:852
+msgid "Could not find %s class, unable to complete validation."
+msgstr ""
+
+#: Utility/Validation.php:856
+msgid "Method %s does not exist on %s unable to complete validation."
+msgstr ""
+
+#: Utility/Validation.php:950
+msgid "Can not determine the mimetype."
+msgstr ""
+
+#: Utility/Xml.php:108;112;117
+msgid "XML cannot be read."
+msgstr ""
+
+#: Utility/Xml.php:115;194
+msgid "Invalid input."
+msgstr ""
+
+#: Utility/Xml.php:149
+msgid "Xml cannot be read."
+msgstr ""
+
+#: Utility/Xml.php:198
+msgid "The key of input must be alphanumeric"
+msgstr ""
+
+#: Utility/Xml.php:275;288
+msgid "Invalid array"
+msgstr ""
+
+#: Utility/Xml.php:339
+msgid "The input is not instance of SimpleXMLElement, DOMDocument or DOMNode."
+msgstr ""
+
+#: View/Helper.php:192
+msgid "Method %1$s::%2$s does not exist"
+msgstr ""
+
+#: View/View.php:425
+msgid "Element Not Found: %s"
+msgstr ""
+
+#: View/View.php:727
+msgid "You cannot extend an element which does not exist (%s)."
+msgstr ""
+
+#: View/View.php:743
+msgid "You cannot have views extend themselves."
+msgstr ""
+
+#: View/View.php:746
+msgid "You cannot have views extend in a loop."
+msgstr ""
+
+#: View/View.php:929
+msgid "The \"%s\" block was left open. Blocks are not allowed to cross files."
+msgstr ""
+
+#: View/Elements/sql_dump.ctp:81
+msgid "Encountered unexpected %s. Cannot generate SQL log."
+msgstr ""
+
+#: View/Errors/fatal_error.ctp:20
+msgid "Fatal Error"
+msgstr ""
+
+#: View/Errors/fatal_error.ctp:26
+msgid "File"
+msgstr ""
+
+#: View/Errors/fatal_error.ctp:30
+msgid "Line"
+msgstr ""
+
+#: View/Errors/fatal_error.ctp:34
+#: View/Errors/missing_action.ctp:40
+#: View/Errors/missing_behavior.ctp:37
+#: View/Errors/missing_component.ctp:37
+#: View/Errors/missing_connection.ctp:37
+#: View/Errors/missing_controller.ctp:37
+#: View/Errors/missing_database.ctp:29
+#: View/Errors/missing_datasource.ctp:30
+#: View/Errors/missing_datasource_config.ctp:25
+#: View/Errors/missing_helper.ctp:37
+#: View/Errors/missing_layout.ctp:29
+#: View/Errors/missing_plugin.ctp:41
+#: View/Errors/missing_table.ctp:25
+#: View/Errors/missing_view.ctp:29
+#: View/Errors/pdo_error.ctp:35
+#: View/Errors/private_action.ctp:25
+#: View/Errors/scaffold_error.ctp:25
+msgid "Notice"
+msgstr ""
+
+#: View/Errors/fatal_error.ctp:35
+#: View/Errors/missing_action.ctp:41
+#: View/Errors/missing_behavior.ctp:38
+#: View/Errors/missing_component.ctp:38
+#: View/Errors/missing_connection.ctp:38
+#: View/Errors/missing_controller.ctp:38
+#: View/Errors/missing_database.ctp:30
+#: View/Errors/missing_datasource.ctp:31
+#: View/Errors/missing_datasource_config.ctp:26
+#: View/Errors/missing_helper.ctp:38
+#: View/Errors/missing_layout.ctp:30
+#: View/Errors/missing_plugin.ctp:42
+#: View/Errors/missing_table.ctp:26
+#: View/Errors/missing_view.ctp:30
+#: View/Errors/pdo_error.ctp:36
+#: View/Errors/private_action.ctp:26
+#: View/Errors/scaffold_error.ctp:26
+msgid "If you want to customize this error message, create %s"
+msgstr ""
+
+#: View/Errors/missing_action.ctp:20
+msgid "Missing Method in %s"
+msgstr ""
+
+#: View/Errors/missing_action.ctp:22
+msgid "The action %1$s is not defined in controller %2$s"
+msgstr ""
+
+#: View/Errors/missing_action.ctp:26
+msgid "Create %1$s%2$s in file: %3$s."
+msgstr ""
+
+#: View/Errors/missing_behavior.ctp:21
+msgid "Missing Behavior"
+msgstr ""
+
+#: View/Errors/missing_behavior.ctp:24
+#: View/Errors/missing_component.ctp:24
+#: View/Errors/missing_controller.ctp:24
+#: View/Errors/missing_helper.ctp:24
+msgid "%s could not be found."
+msgstr ""
+
+#: View/Errors/missing_behavior.ctp:28
+#: View/Errors/missing_component.ctp:28
+#: View/Errors/missing_controller.ctp:28
+#: View/Errors/missing_helper.ctp:28
+msgid "Create the class %s below in file: %s"
+msgstr ""
+
+#: View/Errors/missing_component.ctp:21
+msgid "Missing Component"
+msgstr ""
+
+#: View/Errors/missing_connection.ctp:19
+#: View/Errors/missing_database.ctp:19
+msgid "Missing Database Connection"
+msgstr ""
+
+#: View/Errors/missing_connection.ctp:22
+msgid "A Database connection using \"%s\" was missing or unable to connect."
+msgstr ""
+
+#: View/Errors/missing_connection.ctp:26
+msgid "The database server returned this error: %s"
+msgstr ""
+
+#: View/Errors/missing_connection.ctp:33
+msgid "%s driver is NOT enabled"
+msgstr ""
+
+#: View/Errors/missing_controller.ctp:21
+msgid "Missing Controller"
+msgstr ""
+
+#: View/Errors/missing_database.ctp:22
+msgid "Scaffold requires a database connection"
+msgstr ""
+
+#: View/Errors/missing_database.ctp:26
+#: View/Errors/missing_layout.ctp:26
+#: View/Errors/missing_view.ctp:26
+msgid "Confirm you have created the file: %s"
+msgstr ""
+
+#: View/Errors/missing_datasource.ctp:21
+msgid "Missing Datasource"
+msgstr ""
+
+#: View/Errors/missing_datasource.ctp:24
+msgid "Datasource class %s could not be found."
+msgstr ""
+
+#: View/Errors/missing_datasource_config.ctp:19
+msgid "Missing Datasource Configuration"
+msgstr ""
+
+#: View/Errors/missing_datasource_config.ctp:22
+msgid "The datasource configuration %1$s was not found in database.php."
+msgstr ""
+
+#: View/Errors/missing_helper.ctp:21
+msgid "Missing Helper"
+msgstr ""
+
+#: View/Errors/missing_layout.ctp:19
+msgid "Missing Layout"
+msgstr ""
+
+#: View/Errors/missing_layout.ctp:22
+msgid "The layout file %s can not be found or does not exist."
+msgstr ""
+
+#: View/Errors/missing_plugin.ctp:19
+msgid "Missing Plugin"
+msgstr ""
+
+#: View/Errors/missing_plugin.ctp:22
+msgid "The application is trying to load a file from the %s plugin"
+msgstr ""
+
+#: View/Errors/missing_plugin.ctp:26
+msgid "Make sure your plugin %s is in the %s directory and was loaded"
+msgstr ""
+
+#: View/Errors/missing_plugin.ctp:34
+msgid "Loading all plugins"
+msgstr ""
+
+#: View/Errors/missing_plugin.ctp:35
+msgid "If you wish to load all plugins at once, use the following line in your %s file"
+msgstr ""
+
+#: View/Errors/missing_table.ctp:19
+msgid "Missing Database Table"
+msgstr ""
+
+#: View/Errors/missing_table.ctp:22
+msgid "Table %1$s for model %2$s was not found in datasource %3$s."
+msgstr ""
+
+#: View/Errors/missing_view.ctp:19
+msgid "Missing View"
+msgstr ""
+
+#: View/Errors/missing_view.ctp:22
+msgid "The view for %1$s%2$s was not found."
+msgstr ""
+
+#: View/Errors/pdo_error.ctp:19
+msgid "Database Error"
+msgstr ""
+
+#: View/Errors/pdo_error.ctp:26
+msgid "SQL Query"
+msgstr ""
+
+#: View/Errors/pdo_error.ctp:31
+msgid "SQL Query Params"
+msgstr ""
+
+#: View/Errors/private_action.ctp:19
+msgid "Private Method in %s"
+msgstr ""
+
+#: View/Errors/private_action.ctp:22
+msgid "%s%s cannot be accessed directly."
+msgstr ""
+
+#: View/Errors/scaffold_error.ctp:19
+msgid "Scaffold Error"
+msgstr ""
+
+#: View/Errors/scaffold_error.ctp:22
+msgid "Method _scaffoldError in was not found in the controller"
+msgstr ""
+
+#: View/Helper/CacheHelper.php:156
+msgid "Unable to write view cache file: \"%s\" for \"%s\""
+msgstr ""
+
+#: View/Helper/FormHelper.php:1627
+msgid "Missing field name for FormHelper::%s"
+msgstr ""
+
+#: View/Helper/HtmlHelper.php:1222
+msgid "Cannot load the configuration file. Wrong \"configFile\" configuration."
+msgstr ""
+
+#: View/Helper/HtmlHelper.php:1228
+msgid "Cannot load the configuration file. Unknown reader."
+msgstr ""
+
+#: View/Helper/JsHelper.php:152
+msgid "JsHelper:: Missing Method %s is undefined"
+msgstr ""
+
+#: View/Helper/MootoolsEngineHelper.php:311
+msgid "%s requires a \"drag\" option to properly function"
+msgstr ""
+
+#: View/Helper/PaginatorHelper.php:99
+msgid "%s does not implement a %s method, it is incompatible with %s"
+msgstr ""
+
+#: Utility/CakeTime.php:152
+msgid "abday"
+msgstr ""
+
+#: Utility/CakeTime.php:158
+msgid "day"
+msgstr ""
+
+#: Utility/CakeTime.php:164
+msgid "d_t_fmt"
+msgstr ""
+
+#: Utility/CakeTime.php:186
+msgid "abmon"
+msgstr ""
+
+#: Utility/CakeTime.php:192
+msgid "mon"
+msgstr ""
+
+#: Utility/CakeTime.php:203
+msgid "am_pm"
+msgstr ""
+
+#: Utility/CakeTime.php:210
+msgid "t_fmt_ampm"
+msgstr ""
+
+#: Utility/CakeTime.php:224
+msgid "d_fmt"
+msgstr ""
+
+#: Utility/CakeTime.php:230
+msgid "t_fmt"
+msgstr ""
+

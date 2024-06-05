@@ -1,0 +1,211 @@
+#ornasa table {
+  font-size:120%;
+  width:100%;
+}
+
+table.bordered {
+  border-collapse:collapse; 
+}
+
+
+table .hidden{
+  display:none;
+}
+  
+div.index table{
+  overflow:hidden;
+}
+
+tr.nomatchwarning
+{
+  background-color:#ffff00 !important;
+}
+
+tr.subaccountheader
+{
+  font-weight:bold;
+  background-color:#FFDCB5 !important;
+}
+tr.subaccountfooter
+{
+  font-weight:bold;
+  background-color:#FFE387 !important;
+}
+
+#ornasa tr.topborder {
+  border-top:3px solid black;
+}
+
+#ornasa tr .amount{
+  width:150px;
+}
+#ornasa tr span.amount{
+  width:70%;
+}
+
+#ornasa th.narrow{
+  width:10%;
+}
+
+#ornasa .report table th, #ornasa .report table td{
+  font-size:12px;
+  border:1px solid black;
+}
+
+#ornasa table.grid th, #ornasa table.grid td{
+  border:1px solid black;
+}
+
+.bordered tr th, 
+.bordered tr td
+{
+  font-size:0.7em;
+  border-width:1px;
+  border-style:solid;
+  border-color:#000000;
+  vertical-align:top;
+}
+
+td.bordered {
+  vertical-align:middle;
+  text-align:center;
+}
+
+.totalrow td{
+  font-weight:bold;
+  background-color:#BFE4FF;
+}
+
+td span.right{
+  font-size:1em;
+  display:inline-block;
+  width:65%;
+  float:right;
+  margin:0em;
+}
+
+#ornasa td div.decimal {
+  width:60%;
+}
+
+#ornasa td div.decimal input{
+  text-align:right;
+  width:100%;
+}
+
+#ornasa td.right{
+  text-align:right;
+}
+
+#ornasa td div.input.decimal{
+  display:inline-block;
+}
+
+#ornasa td div.text input{
+  width:100%;
+}
+
+td.red {
+  color:#ff0000 !important;
+}
+
+.totalrow td{
+  font-weight:bold;
+  background-color:#BFE4FF;
+  border-top:3px solid black;
+}
+.totalrow.green td{
+  background-color:#b6ff88;
+}
+
+.totalcolumn {
+  background-color:#ffffad;
+}
+
+.separator {
+  background-Color:#000;
+}
+
+.separator, .totalrow .separator {
+  background-Color:#000;
+}
+.miniseparator {
+  width:1px;
+}
+
+#ornasa #invoicesForClient td.amount {
+  width:120px;
+}
+
+#ornasa #invoicesForClient td.amount div.input{
+  width:70%;
+  display:inline-block;
+}
+
+#ornasa #invoicesForClient th,
+#ornasa #invoicesForClient td
+{
+  font-size:80%;
+}
+
+
+tr#accountingRegisterTotals.match
+{
+  font-weight:bold;
+  background-color:#00ff00 !important;
+}
+
+
+tr#accountingRegisterTotals.nomatch
+{
+  font-weight:bold;
+  background-color:#ff0000 !important;
+}
+
+#ornasa .sales table#productsForSale,
+#ornasa #salesOrderProducts,
+#ornasa #productsForSale{
+  font-size:0.85em;
+}
+#ornasa #quotationProducts td div.decimal,
+#ornasa #quotationProducts td div.decimal input,
+#ornasa #salesOrderProducts td div.decimal,
+#ornasa #productsForSale td div.decimal {
+  width:100%;
+}
+
+#ornasa #salesOrderProducts td div.decimal input,
+#ornasa #productsForSale td div.decimal input{
+  text-align:right;
+  width:70%;
+}
+
+#ornasa #salesOrderProducts .currencyinput,
+#ornasa #productsForSale .currencyinput{
+  width:120px;
+}
+
+#ornasa #productsForRemission{
+  font-size:0.85em;
+}
+
+#ornasa #productsForRemission td div.decimal {
+  width:100%;
+}
+
+#ornasa #productsForRemission td div.decimal input{
+  text-align:right;
+  width:70%;
+}
+
+#ornasa #productsForRemission .currencyinput{
+  width:120px;
+}
+
+
+#OrderAddSaleForm table select,
+#OrderAddSaleForm table input,
+#OrderEditSaleForm table select,
+#OrderEditSaleForm  table input{
+  width:100%;
+}

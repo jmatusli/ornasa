@@ -1,0 +1,24 @@
+#ornasa #invoicePrint {
+  font-family:Verdana,Tahoma,'Courier New','lucida grande',arial,helvetica,sans-serif;
+  font-size:12px;
+}
+#ornasa #invoicePrint span{
+  margin-left:0px;
+}
+#ornasa #invoicePrint table {
+  font-size:100%;
+  margin-bottom:2px;
+}
+#ornasa #invoicePrint table tr th,
+#ornasa #invoicePrint table tr td
+{
+  padding-left:0;
+  padding-right:0;
+  padding-top:2px;
+  padding-bottom:2px;
+}
+#ornasa #invoicePrint table tbody tr,
+#ornasa #invoicePrint table tbody tr td{
+  background:none;
+  border-color:#fff;
+}
