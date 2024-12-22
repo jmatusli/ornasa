@@ -60,7 +60,7 @@
       $salesTableHeader.="<th class='centered'>".$this->Paginator->sort('# Servicios')."</th>";
       //$salesTableHeader.="<th class='centered'>".$this->Paginator->sort('# Suministros')."</th>";
       $salesTableHeader.="<th class='centered'>".$this->Paginator->sort('# Importados')."</th>";
-      $salesTableHeader.="<th class='centered'>".$this->Paginator->sort('# Inyección')."</th>";
+      $salesTableHeader.="<th class='centered'>".$this->Paginator->sort('# Ingroup')."</th>";
       //$salesTableHeader.="<th class='centered'>".$this->Paginator->sort('# Locales')."</th>";
       if (!empty($salesOtherProductTypes)){
         foreach ($salesOtherProductTypes as $productTypeId=>$productTypeName){
@@ -934,7 +934,7 @@
           $utilityTableRows.="</tr>";
           
           $utilityTableRows.="<tr>";
-            $utilityTableRows.='<td>Ventas<span class="hiddenOnScreen"> Inyección</span>'.$this->Form->Submit('Inyecciones',[
+            $utilityTableRows.='<td>Ventas<span class="hiddenOnScreen"> Ingroup</span>'.$this->Form->Submit('Ingroup',[
               'id'=>'onlyInjection',
               'name'=>'onlyInjection',
               'class'=>'linkStyledText', 

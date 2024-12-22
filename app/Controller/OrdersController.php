@@ -287,7 +287,7 @@ class OrdersController extends AppController {
       //SALE_TYPE_CONSUMIBLE=>'Consumibles',
       SALE_TYPE_IMPORT=>'Importados',
       //SALE_TYPE_LOCAL=>'Locales',
-      SALE_TYPE_INJECTION=>'Inyección',
+      SALE_TYPE_INJECTION=>'ProductosIngroup',
     ];
     $this->set(compact('saleTypeOptions'));
     $paymentOptionId=0;
@@ -569,6 +569,15 @@ class OrdersController extends AppController {
             
             $priceCap+=$stockMovement['product_total_price'];
             $costCap+=$stockMovement['product_quantity']*$stockMovement['StockItem']['product_unit_price'];
+            
+            $qualifiedStockMovement=true;
+          }
+          else if ($stockMovement['Product']['product_type_id'] == PRODUCT_TYPE_INJECTION_OUTPUT){
+            $quantityInjection+=$stockMovement['product_quantity'];
+            $totalQuantityInjection+=$stockMovement['product_quantity'];
+            
+            $priceInjection+=$stockMovement['product_total_price'];
+            $costInjection+=$stockMovement['product_quantity']*$stockMovement['StockItem']['product_unit_price'];
             
             $qualifiedStockMovement=true;
           }
@@ -4956,6 +4965,7 @@ class OrdersController extends AppController {
 		$this->set(compact('orderDate'));
     
     $warehouses=$this->UserWarehouse->getWarehouseListForUser($loggedUserId);
+
     //pr($warehouses);
     $this->set(compact('warehouses'));
     if (count($warehouses) == 1){
@@ -4995,8 +5005,8 @@ class OrdersController extends AppController {
       $productPriceLessThanDefaultPriceError='';
       $boolProductPriceRepresentsBenefit=true;
       $productPriceBenefitError='';
-      
-      
+
+   
       if (!empty($this->request->data['Product'])){
         foreach ($this->request->data['Product'] as $product){
           if (!empty($product['product_id']) && $product['product_quantity'] > 0){
@@ -5929,9 +5939,11 @@ class OrdersController extends AppController {
     //}
     $this->set(compact('users'));
     //pr($users);
-    $productionResultCodes=$this->ProductionResultCode->find('list',[
+    
+	$productionResultCodes=$this->ProductionResultCode->find('list',[
       'conditions'=>['ProductionResultCode.id'=>PRODUCTION_RESULT_CODE_A]
     ]);
+	
     $this->set(compact('productionResultCodes'));
     
 		//if (!empty($inventoryDisplayOptionId)){
@@ -5942,12 +5954,14 @@ class OrdersController extends AppController {
 				'conditions'=>['ProductType.product_category_id'=>$productCategoryId],
 			]);
       $finishedMaterialsInventory =[];
+
 			$finishedMaterialsInventory = $this->StockItem->getInventoryTotalsByDate($productCategoryId,$productTypeIds,$orderDate,$warehouseId);
-			if ($warehouseId != WAREHOUSE_INJECTION){
+	  
+		if ($warehouseId != WAREHOUSE_INJECTION){
         $injectionMaterialsInventory = $this->StockItem->getInventoryTotalsByDate($productCategoryId,$productTypeIds,$orderDate,WAREHOUSE_INJECTION);
         $this->set(compact('injectionMaterialsInventory'));
       }
-      
+          
       //pr($finishedMaterialsInventory);
 			$productCategoryId=CATEGORY_OTHER;
 			$productTypeIds=$this->ProductType->find('list',[
@@ -12948,7 +12962,7 @@ class OrdersController extends AppController {
       //SALE_TYPE_CONSUMIBLE=>'Consumibles',
       SALE_TYPE_IMPORT=>'Importados',
       //SALE_TYPE_LOCAL=>'Locales',
-      SALE_TYPE_INJECTION=>'Inyección',
+      SALE_TYPE_INJECTION=>'ProductosIngroup',
     ];
     $this->set(compact('saleTypeOptions'));
     $paymentOptionId=0;
