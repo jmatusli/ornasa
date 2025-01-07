@@ -13,7 +13,7 @@
 		?>
 		</fieldset>
 	<?php echo $this->Form->end(__('Submit')); ?>
-	<?php echo  $this->Form->button('Cancelar',['class'=>'back btn-danger']); ?>
+	 
 	</div>
 	<div class='col-md-4'>
 	<?php

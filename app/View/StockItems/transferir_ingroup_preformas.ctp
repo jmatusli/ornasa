@@ -16,9 +16,7 @@
 		</fieldset>
 		<div class='row'>
 		<div class='col-md-12'>
-		<div class='col-md-4'>
-		<?php echo  $this->Form->button('Cancelar',['class'=>'back btn-danger']); ?>
-		</div>
+		 
 		<div class='col-md-4'>
 	<?php echo $this->Form->end(__('Submit')); ?>
 	</div>
