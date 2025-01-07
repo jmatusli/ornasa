@@ -2631,6 +2631,12 @@ msgstr "Fecha"
 msgid "Transfer Code"
 msgstr "Número Depósito"
 
+msgid "Transference Date"
+msgstr "Fecha Transferencia"
+
+msgid "Transference Code"
+msgstr "Codigo Transferencia"
+
 msgid "List Deposits"
 msgstr "Todos Depósitos"
 

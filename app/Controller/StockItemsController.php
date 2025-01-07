@@ -5008,7 +5008,130 @@ class StockItemsController extends AppController {
 		$this->set(compact('reclassificationsCaps','reclassificationsBottles','reclassificationsPreformas','startDate','endDate'));
 		
 	}	
+  
+       
+	public function resumenTransferenciasProductos(){
+		$startDate = null;
+		$endDate = null;
+		if ($this->request->is('post')) {
+			$startDateArray=$this->request->data['Report']['startdate'];
+			$startDateString=$startDateArray['year'].'-'.$startDateArray['month'].'-'.$startDateArray['day'];
+			$startDate=date( "Y-m-d", strtotime($startDateString));
+		
+			$endDateArray=$this->request->data['Report']['enddate'];
+			$endDateString=$endDateArray['year'].'-'.$endDateArray['month'].'-'.$endDateArray['day'];
+			$endDate=date("Y-m-d",strtotime($endDateString));
+			$endDatePlusOne=date("Y-m-d",strtotime($endDateString."+1 days"));
+		}
+		if (!isset($startDate)){
+			//$startDate = date("Y-m-d", strtotime( date( "Y-m-d", strtotime( date("Y-m-d") ) ) . "-1 month" ) );
+			$startDate = date("Y-m-01");
+		}
+		//echo $startDate;
+		if (!isset($endDate)){
+			$endDate=date("Y-m-d",strtotime(date("Y-m-d")));
+			$endDatePlusOne= date( "Y-m-d", strtotime( date("Y-m-d")."+1 days" ) );
+		}
+		
+		$_SESSION['startDate']=$startDate;
+		$_SESSION['endDate']=$endDate;
+		
+		 
+		$this->loadModel('StockMovement');
+		
+		$originTransfersIngroup=$this->StockMovement->find('all',array(
+			'fields'=>array('StockMovement.id','Product.id','Product.name','StockMovement.product_quantity','StockMovement.movement_date','StockMovement.transfer_code'),
+			'conditions'=>array(
+				'StockMovement.movement_date >='=>$startDate,
+				'StockMovement.movement_date <'=>$endDatePlusOne,
+				'StockMovement.bool_transfer'=>true,
+				'Product.product_type_id'=>PRODUCT_TYPE_INJECTION_OUTPUT,
+				'StockMovement.bool_input'=>false,
+			),
+			'order'=>'DATE(StockMovement.movement_date) DESC, StockMovement.transfer_code DESC',
+		));
+		
+		$transferIngroups=[];
+		//debug($originTransfersIngroup[0]['StockMovement']['id']);exit;
+		for ($i=0;$i<count($originTransfersIngroup);$i++){
+			$destinationMovement=$this->StockMovement->find('first',array(
+				'fields'=>array('StockMovement.id','Product.id','Product.name','StockMovement.product_quantity','StockMovement.movement_date','StockMovement.comment'),
+				'conditions'=>array(
+					'StockMovement.movement_date >='=>$startDate,
+					'StockMovement.movement_date <'=>$endDatePlusOne,
+					'StockMovement.bool_transfer'=>true,
+					'Product.product_type_id'=>PRODUCT_TYPE_PREFORMA,
+					'StockMovement.bool_input'=>true,
+					'StockMovement.origin_stock_movement_id'=>$originTransfersIngroup[$i]['StockMovement']['id'],
+				),
+			));
+			
+			if (!empty($destinationMovement)){
+				$transferIngroups[$i]['movement_date']=$originTransfersIngroup[$i]['StockMovement']['movement_date'];
+				$transferIngroups[$i]['transfer_code']=$originTransfersIngroup[$i]['StockMovement']['transfer_code'];
+				$transferIngroups[$i]['origin_product_id']=$originTransfersIngroup[$i]['Product']['id'];
+				$transferIngroups[$i]['origin_product_name']=$originTransfersIngroup[$i]['Product']['name'];
+				$transferIngroups[$i]['origin_product_quantity']=$originTransfersIngroup[$i]['StockMovement']['product_quantity'];
+				$transferIngroups[$i]['destination_product_id']=$destinationMovement['Product']['id'];
+				$transferIngroups[$i]['destination_product_name']=$destinationMovement['Product']['name'];
+				$transferIngroups[$i]['destination_product_quantity']=$destinationMovement['StockMovement']['product_quantity'];
+                $transferIngroups[$i]['comment']=$destinationMovement['StockMovement']['comment'];
+			}
+		}
+		//debug($transferIngroups);exit;
+	    $originTransfersPreformas=$this->StockMovement->find('all',array(
+			'fields'=>array('StockMovement.id','Product.id','Product.name','StockMovement.product_quantity','StockMovement.movement_date','StockMovement.transfer_code'),
+			'conditions'=>array(
+				'StockMovement.movement_date >='=>$startDate,
+				'StockMovement.movement_date <'=>$endDatePlusOne,
+				'StockMovement.bool_transfer'=>true,
+				'Product.product_type_id'=>PRODUCT_TYPE_PREFORMA,
+				'StockMovement.bool_input'=>false,
+			),
+			'order'=>'DATE(StockMovement.movement_date) DESC, StockMovement.transfer_code DESC',
+		));
+		
+		$transfersPreformas=[];
+		
+		for ($i=0;$i<count($originTransfersPreformas);$i++){
+			$destinationMovement=$this->StockMovement->find('first',array(
+				'fields'=>array('StockMovement.id','Product.id','Product.name','StockMovement.product_quantity','StockMovement.movement_date','StockMovement.comment'),
+				'conditions'=>array(
+					'StockMovement.movement_date >='=>$startDate,
+					'StockMovement.movement_date <'=>$endDatePlusOne,
+					'StockMovement.bool_transfer'=>true,
+					'Product.product_type_id'=>PRODUCT_TYPE_INJECTION_OUTPUT,
+					'StockMovement.bool_input'=>true,
+					'StockMovement.origin_stock_movement_id'=>$originTransfersPreformas[$i]['StockMovement']['id'],
+				),
+			));
+			
+			if (!empty($destinationMovement)){
+		        
+                $transfersPreformas[$i]['movement_date']=$originTransfersPreformas[$i]['StockMovement']['movement_date'];
+				$transfersPreformas[$i]['transfer_code']=$originTransfersPreformas[$i]['StockMovement']['transfer_code'];
+				$transfersPreformas[$i]['origin_product_id']=$originTransfersPreformas[$i]['Product']['id'];
+				$transfersPreformas[$i]['origin_product_name']=$originTransfersPreformas[$i]['Product']['name'];
+				$transfersPreformas[$i]['origin_product_quantity']=$originTransfersPreformas[$i]['StockMovement']['product_quantity'];
+				$transfersPreformas[$i]['destination_product_id']=$destinationMovement['Product']['id'];
+				$transfersPreformas[$i]['destination_product_name']=$destinationMovement['Product']['name'];
+				$transfersPreformas[$i]['destination_product_quantity']=$destinationMovement['StockMovement']['product_quantity'];
+                $transfersPreformas[$i]['comment']=$destinationMovement['StockMovement']['comment'];
 
+
+
+			}
+		}
+		//debug($transfersPreformas);exit;
+		$this->set(compact('transferIngroups','transfersPreformas','startDate','endDate'));
+		
+	}	
+
+     public function guardarReporteTransferenciasprod() {
+		$exportData=$_SESSION['transferData'];
+		$this->set(compact('exportData'));
+	}	
+    
 	public function guardarReporteReclasificaciones() {
 		$exportData=$_SESSION['reclassificationData'];
 		$this->set(compact('exportData'));
@@ -5524,6 +5647,8 @@ class StockItemsController extends AppController {
     $this->set(compact('plantId'));
 		
 		if ($this->request->is(array('post'))) {
+			
+			
 			//pr($this->request->data);
 			$reclassificationDate=$this->request->data['Reclass']['reclassification_date'];
 			$reclassificationCode=$this->request->data['Reclass']['reclassification_code'];
@@ -5631,7 +5756,7 @@ class StockItemsController extends AppController {
 									$StockMovementData['production_result_code_id']=$original_production_result_code_id;
 									$StockMovementData['bool_reclassification']=true;
 									$StockMovementData['reclassification_code']=$reclassificationCode;
-                  $StockMovementData['comment']=$reclassificationComment;
+                                    $StockMovementData['comment']=$reclassificationComment;
 									
 									$this->StockMovement->clear();
 									$this->StockMovement->create();
@@ -5686,7 +5811,7 @@ class StockItemsController extends AppController {
 									$StockMovementData['bool_reclassification']=true;
 									$StockMovementData['origin_stock_movement_id']=$origin_stock_movement_id;
 									$StockMovementData['reclassification_code']=$reclassificationCode;
-                  $StockMovementData['comment']=$reclassificationComment;
+                                    $StockMovementData['comment']=$reclassificationComment;
 									
 									$this->StockMovement->clear();
 									$this->StockMovement->create();
@@ -5756,7 +5881,569 @@ class StockItemsController extends AppController {
 	
 		$this->set(compact('productTypesNotRaw','allPreformas','allBottles','productionResultCodes','bottleInventory','reclassificationCode'));
 	}	
+
+
 	
+	public function transferirIngroupPreformas() {
+		$this->loadModel('Product');
+		$this->loadModel('StockMovement');
+		$this->loadModel('StockItemLog');
+		
+        $allPreformas=$this->Product->find('list',array('conditions'=>array('Product.product_type_id'=>PRODUCT_TYPE_PREFORMA)));
+		$allPrefingroup=$this->Product->find('list',array('conditions'=>array('Product.product_type_id'=>PRODUCT_TYPE_INJECTION_OUTPUT)));
+		
+		$ingroupInventory = $this->StockItem->getInventoryTotals('',[PRODUCT_TYPE_INJECTION_OUTPUT]);
+		//pr($ingroupInventory);exit;
+        $plantId=PLANT_SANDINO;
+        $this->set(compact('plantId'));
+		
+		if ($this->request->is(array('post'))) {
+			
+			//pr($this->request->data);
+             //pr($this->request->data);
+			$tingroupDate=$this->request->data['Ingrouptrans']['tingroup_date'];
+			$tingroupPrefCode=$this->request->data['Ingrouptrans']['tingroup_pref_Code'];
+		 
+			$tingroupDateString=$tingroupDate['year'].'-'.$tingroupDate['month'].'-'.$tingroupDate['day'];
+			$tingroupDatePlusOne=date("Y-m-d",strtotime($tingroupDateString."+1 days"));
+			
+			if ($tingroupDateString>date('Y-m-d')){
+				$this->Session->setFlash(__('La fecha de transferencia no puede estar en el futuro!  No se realizó la transferencia.'), 'default',array('class' => 'error-message'));
+			}
+			else {
+				 
+			    $preforma_id_origen=$this->request->data['Ingrouptrans']['preforma_id_origen'];
+			    $preforma_id_destino=$this->request->data['Ingrouptrans']['preforma_id_destino'];
+				$quantity=$this->request->data['Ingrouptrans']['quantity'];
+                $transferenciaingroupComment=$this->request->data['Ingrouptrans']['comment'];
+				if ($quantity>0 && $preforma_id_origen>0 && $preforma_id_destino>0){
+						
+						
+						
+						
+						//iniciamos transferencia ingroup preformas
+						$quantityInStock=0;
+					
+					$stockItemsForCap=$this->StockItem->find('all',array(
+						'conditions'=>array(
+							'product_id'=>$preforma_id_origen,
+              'StockItem.stockitem_creation_date <'=> $tingroupDateString,        
+              'StockItem.stockitem_depletion_date >='=> $tingroupDateString,
+						),
+					));
+					foreach ($stockItemsForCap as $stockItemForCap){
+						$lastStockItemLog=$this->StockItemLog->find('first',array(
+							'conditions'=>array(
+								'StockItemLog.stockitem_id'=>$stockItemForCap['StockItem']['id'],
+								'StockItemLog.stockitem_date <'=>$tingroupDatePlusOne,
+							),
+							'order'=>'StockItemLog.id DESC'
+						));
+						//pr($lastStockItemLog);
+						if(!empty($lastStockItemLog['StockItemLog'])){
+							$quantityInStock+=$lastStockItemLog['StockItemLog']['product_quantity'];
+						}
+					}
+					
+					if ($quantityInStock<$quantity){
+						$this->Session->setFlash('Intento de transferir '.$quantity." ".$allPrefingroup[$preforma_id_origen]." pero en bodega únicamente hay ".$quantityInStock, 'default',array('class' => 'error-message'));
+					}
+					else {
+						
+						$currentdate= new DateTime();
+						$usedCapStockItems=$this->StockItem->getOtherMaterialsForSale($preforma_id_origen,$quantity,$tingroupDatePlusOne,0,"DESC");
+						
+						$quantityAvailableForReclassification=0;
+						if (count($usedCapStockItems)){
+							foreach ($usedCapStockItems as $usedCapStockItem){
+								$quantityAvailableForReclassification+=$usedCapStockItem['quantity_present'];
+							}
+						}
+						if ($quantity>$quantityAvailableForReclassification){
+							$this->Session->setFlash('Los lotes presentes en el momento de transferencia ya salieron de bodega', 'default',array('class' => 'error-message'));
+						}
+						else {
+							// reclassify!
+							$newlyCreatedStockItems=[];
+							//pr($usedCapStockItems);
+							$datasource=$this->StockItem->getDataSource();
+							$datasource->begin();
+							try{
+								
+								foreach ($usedCapStockItems as $usedCapStockItem){
+									$stockitem_id=$usedCapStockItem['id'];
+									$quantity_present=$usedCapStockItem['quantity_present'];
+									$quantity_used=$usedCapStockItem['quantity_used'];
+									$quantity_remaining=$usedCapStockItem['quantity_remaining'];
+									$unit_price=$usedCapStockItem['unit_price'];
+									if (!$this->StockItem->exists($stockitem_id)) {
+										throw new NotFoundException(__('Invalid StockItem'));
+									}
+									$linkedStockItem=$this->StockItem->read(null,$stockitem_id);
+									echo "$preforma_id_origen    --   $preforma_id_destino ";
+							 //print_r($allPrefingroup);exit;
+									$message="Transfered ".$quantity_used." of ".$allPrefingroup[$preforma_id_origen]." to ".$allPreformas[$preforma_id_destino]." on ".date("d")."-".date("m")."-".date("Y");
+								
+									// STEP 1: EDIT THE STOCKITEM OF ORIGIN
+									$StockItemData['id']=$stockitem_id;
+									$StockItemData['description']=$linkedStockItem['StockItem']['description']."|".$message;
+									$StockItemData['remaining_quantity']=$quantity_remaining;
+									
+									$this->StockItem->clear();
+									$logsuccess=$this->StockItem->save($StockItemData);
+									
+									if (!$logsuccess) {
+										echo "problema al editor el lote de origen";
+										pr($this->validateErrors($this->StockItem));
+										throw new Exception();
+									}
+									
+									unset($StockItemData);
+									
+									// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
+									 
+									$StockMovementData['movement_date']=$tingroupDate;
+									$StockMovementData['bool_input']=false;
+									$StockMovementData['name']=$message;
+									$StockMovementData['description']=$message;
+									$StockMovementData['order_id']=0;
+									$StockMovementData['stockitem_id']=$stockitem_id;
+									$StockMovementData['product_id']=$preforma_id_origen;
+									$StockMovementData['product_quantity']=$quantity_used;
+									$StockMovementData['product_unit_price']=$unit_price;
+									$StockMovementData['product_total_price']=$unit_price*$quantity_used;
+									$StockMovementData['bool_transfer']=true;
+									$StockMovementData['transfer_code']=$tingroupPrefCode;
+                                    $StockMovementData['comment']=$transferenciaingroupComment;
+									 
+									$this->StockMovement->clear();
+									$this->StockMovement->create();
+									
+									 
+									$logsuccess=$this->StockMovement->save($StockMovementData);
+								//debug($StockMovementData);
+								
+									if (!$logsuccess) {
+										echo "problema al guardar el movimiento de lote";
+										pr($this->validateErrors($this->StockMovement));
+										throw new Exception();
+									}
+									unset($StockMovementData);
+									
+									// STEP 3: SAVE THE TARGET STOCKITEM
+									$StockItemData['name']=$message;
+									$StockItemData['description']=$message;
+									$StockItemData['stockitem_creation_date']=$tingroupDate;
+									$StockItemData['product_id']=$preforma_id_destino;
+									$StockItemData['product_unit_price']=$unit_price;
+									$StockItemData['original_quantity']=$quantity_used;
+									$StockItemData['remaining_quantity']=$quantity_used;
+									$StockItemData['production_result_code_id']=0;
+									
+									$this->StockItem->clear();
+									$this->StockItem->create();
+									// notice that no new stockitem is created because we are taking from an already existing one
+									$logsuccess=$this->StockItem->save($StockItemData);
+									
+									if (!$logsuccess) {
+										echo "problema al guardar el lote de destino";
+										pr($this->validateErrors($this->StockItem));
+										throw new Exception();
+									}
+									unset($StockItemData);
+									
+									// STEP 4: SAVE THE STOCK MOVEMENT FOR THE TARGET STOCKITEM
+									$new_stockitem_id=$this->StockItem->id;
+									$newlyCreatedStockItems[]=$new_stockitem_id;
+									
+									$origin_stock_movement_id=$this->StockMovement->id;
+										
+										
+									$StockMovementData['movement_date']=$tingroupDate;
+									$StockMovementData['bool_input']=true;
+									$StockMovementData['name']=$message;
+									$StockMovementData['description']=$message;
+									$StockMovementData['order_id']=0;
+									$StockMovementData['stockitem_id']=$new_stockitem_id;
+									$StockMovementData['product_id']=$preforma_id_destino;
+									$StockMovementData['product_quantity']=$quantity_used;
+									$StockMovementData['product_unit_price']=$unit_price;
+									$StockMovementData['product_total_price']=$unit_price*$quantity_used;
+									$StockMovementData['bool_transfer']=true;
+									$StockMovementData['origin_stock_movement_id']=$origin_stock_movement_id;
+									$StockMovementData['transfer_code']=$tingroupPrefCode;
+                                    $StockMovementData['comment']=$transferenciaingroupComment;
+									
+									$this->StockMovement->clear();
+									$this->StockMovement->create();
+									$logsuccess=$this->StockMovement->save($StockMovementData);
+									if (!$logsuccess) {
+										echo "problema al guardar el movimiento de lote";
+										pr($this->validateErrors($this->StockMovement));
+										throw new Exception();
+									}
+									unset($StockMovementData);
+											
+									// STEP 5: SAVE THE USERLOG FOR THE STOCK MOVEMENT
+									$this->recordUserActivity($this->Session->read('User.username'),$message);
+								}
+								$datasource->commit();
+								
+								
+								foreach ($usedCapStockItems as $usedCapStockItem){
+									$this->recreateStockItemLogs($usedCapStockItem['id']);
+								}
+								for ($i=0;$i<count($newlyCreatedStockItems);$i++){
+									$this->recreateStockItemLogs($newlyCreatedStockItems[$i]);
+								}
+								
+								$this->Session->setFlash(__('Transferencia exitosa'),'default',array('class' => 'success'));
+								return $this->redirect(array('action' => 'resumenTransferenciasProductos'));
+							}
+							catch(Exception $e){
+								$datasource->rollback();
+								pr($e);
+								$this->Session->setFlash(__('Transferencia falló'), 'default',array('class' => 'error-message'), 'default',array('class' => 'error-message'));
+							}
+						}
+					}
+						
+						
+						
+						
+						
+						//finalizamos transferencia ingroup preformas
+						//$this->Session->setFlash(__('Transferencia exitosa'),'default',array('class' => 'success'));
+						//return $this->redirect(array('action' => 'resumenTransferenciasProductos'));
+				}
+                else {
+					$warning="";
+					
+					if($preforma_id_origen==0){
+						$warning.="Debe seleccionar el producto ingroup origen!<br/>";
+					}
+					
+					if($preforma_id_destino==0){
+						$warning.="Debe seleccionar preforma destino!<br/>";
+					}
+					if($quantity==0){
+						$warning.="Cantidad a transferir debe ser mayor a 0!<br/>";
+					}
+					
+					$this->Session->setFlash($warning, 'default',array('class' => 'error-message'));
+				}				
+					
+			}
+		}
+		
+	/* 	$lastReclassification=$this->StockMovement->find('first',array(
+			'fields'=>array('StockMovement.reclassification_code'),
+			'conditions'=>array(
+				'bool_reclassification'=>true,
+			),
+			'order'=>array('StockMovement.reclassification_code' => 'desc'),
+		));
+		$reclassificationNumber=substr($lastReclassification['StockMovement']['reclassification_code'],6,6)+1; */
+		$lastTransIngroupPref=$this->StockMovement->find('first',array(
+			'fields'=>array('StockMovement.transfer_code'),
+			'conditions'=>array(
+				'bool_transfer'=>true,
+				'transfer_code LIKE'=> "TRANSINGPREF_%",
+			),
+			'order'=>array('StockMovement.transfer_code' => 'desc'),
+		));
+		//debug($lastTransIngroupPref);
+		if(isset($lastTransIngroupPref['StockMovement']))
+		$transferNumber=substr($lastTransIngroupPref['StockMovement']['transfer_code'],13,6)+1;
+	    else
+		$transferNumber=1;	
+		
+		
+		$tingroupPrefCode="TRANSINGPREF_".str_pad($transferNumber,6,"0",STR_PAD_LEFT)."_".$this->Session->read('User.username');
+	
+		$this->set(compact('allPreformas','allPrefingroup','ingroupInventory','tingroupPrefCode'));
+	}	
+	
+
+	public function transferirPreformasIngroup() {
+		$this->loadModel('Product');
+		$this->loadModel('StockMovement');
+		$this->loadModel('StockItemLog');
+		
+		$allPreformas=$this->Product->find('list',array('conditions'=>array('Product.product_type_id'=>PRODUCT_TYPE_PREFORMA)));
+		$allPrefingroup=$this->Product->find('list',array('conditions'=>array('Product.product_type_id'=>PRODUCT_TYPE_INJECTION_OUTPUT)));
+		 
+		$preformaInventory = $this->StockItem->getInventoryTotals('',[PRODUCT_TYPE_PREFORMA]);
+		//pr($preformaInventory);
+        $plantId=PLANT_SANDINO;
+        $this->set(compact('plantId'));
+		
+		if ($this->request->is(array('post'))) {
+			
+			//pr($this->request->data);
+             //pr($this->request->data);
+			$tingroupDate=$this->request->data['Ingrouptrans']['tingroup_date'];
+			$tingroupPrefCode=$this->request->data['Ingrouptrans']['tingroup_pref_Code'];
+		 
+			$tingroupDateString=$tingroupDate['year'].'-'.$tingroupDate['month'].'-'.$tingroupDate['day'];
+			$tingroupDatePlusOne=date("Y-m-d",strtotime($tingroupDateString."+1 days"));
+			
+			if ($tingroupDateString>date('Y-m-d')){
+				$this->Session->setFlash(__('La fecha de transferencia no puede estar en el futuro!  No se realizó la transferencia.'), 'default',array('class' => 'error-message'));
+			}
+			else {
+				 
+			    $preforma_id_origen=$this->request->data['Ingrouptrans']['preforma_id_origen'];
+			    $preforma_id_destino=$this->request->data['Ingrouptrans']['preforma_id_destino'];
+				$quantity=$this->request->data['Ingrouptrans']['quantity'];
+                $transferenciaingroupComment=$this->request->data['Ingrouptrans']['comment'];
+				if ($quantity>0 && $preforma_id_origen>0 && $preforma_id_destino>0){
+						
+						
+						
+						
+						//iniciamos transferencia ingroup preformas
+						$quantityInStock=0;
+					
+					$stockItemsForCap=$this->StockItem->find('all',array(
+						'conditions'=>array(
+							'product_id'=>$preforma_id_origen,
+              'StockItem.stockitem_creation_date <='=> $tingroupDateString,        
+              'StockItem.stockitem_depletion_date >='=> $tingroupDateString,
+						),
+					));
+						//debug($stockItemsForCap);exit; 
+					foreach ($stockItemsForCap as $stockItemForCap){
+						$lastStockItemLog=$this->StockItemLog->find('first',array(
+							'conditions'=>array(
+								'StockItemLog.stockitem_id'=>$stockItemForCap['StockItem']['id'],
+								'StockItemLog.stockitem_date <'=>$tingroupDatePlusOne,
+							),
+							'order'=>'StockItemLog.id DESC'
+						));
+						//pr($lastStockItemLog);
+						if(!empty($lastStockItemLog['StockItemLog'])){
+							$quantityInStock+=$lastStockItemLog['StockItemLog']['product_quantity'];
+						}
+					}
+			
+					if ($quantityInStock<$quantity){
+						$this->Session->setFlash('Intento de Transferir '.$quantity." ".$allPreformas[$preforma_id_origen]." pero en bodega únicamente hay ".$quantityInStock, 'default',array('class' => 'error-message'));
+					}
+					else {
+						
+						$currentdate= new DateTime();
+						$usedCapStockItems=$this->StockItem->getOtherMaterialsForSale($preforma_id_origen,$quantity,$tingroupDatePlusOne,0,"DESC");
+						
+						$quantityAvailableForReclassification=0;
+						if (count($usedCapStockItems)){
+							foreach ($usedCapStockItems as $usedCapStockItem){
+								$quantityAvailableForReclassification+=$usedCapStockItem['quantity_present'];
+							}
+						}
+						if ($quantity>$quantityAvailableForReclassification){
+							$this->Session->setFlash('Los lotes presentes en el momento de transferencia ya salieron de bodega', 'default',array('class' => 'error-message'));
+						}
+						else {
+							// reclassify!
+							$newlyCreatedStockItems=[];
+							//pr($usedCapStockItems);
+							$datasource=$this->StockItem->getDataSource();
+							$datasource->begin();
+							try{
+								
+								foreach ($usedCapStockItems as $usedCapStockItem){
+									$stockitem_id=$usedCapStockItem['id'];
+									$quantity_present=$usedCapStockItem['quantity_present'];
+									$quantity_used=$usedCapStockItem['quantity_used'];
+									$quantity_remaining=$usedCapStockItem['quantity_remaining'];
+									$unit_price=$usedCapStockItem['unit_price'];
+									if (!$this->StockItem->exists($stockitem_id)) {
+										throw new NotFoundException(__('Invalid StockItem'));
+									}
+									$linkedStockItem=$this->StockItem->read(null,$stockitem_id);
+									
+							 
+									$message="Transfered ".$quantity_used." of ".$allPreformas[$preforma_id_origen]." to ".$allPrefingroup[$preforma_id_destino]." on ".date("d")."-".date("m")."-".date("Y");
+								
+									// STEP 1: EDIT THE STOCKITEM OF ORIGIN
+									$StockItemData['id']=$stockitem_id;
+									$StockItemData['description']=$linkedStockItem['StockItem']['description']."|".$message;
+									$StockItemData['remaining_quantity']=$quantity_remaining;
+									
+									$this->StockItem->clear();
+									$logsuccess=$this->StockItem->save($StockItemData);
+									if (!$logsuccess) {
+										echo "problema al editor el lote de origen";
+										pr($this->validateErrors($this->StockItem));
+										throw new Exception();
+									}
+									unset($StockItemData);
+									
+									// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
+									
+									$StockMovementData['movement_date']=$tingroupDate;
+									$StockMovementData['bool_input']=false;
+									$StockMovementData['name']=$message;
+									$StockMovementData['description']=$message;
+									$StockMovementData['order_id']=0;
+									$StockMovementData['stockitem_id']=$stockitem_id;
+									$StockMovementData['product_id']=$preforma_id_origen;
+									$StockMovementData['product_quantity']=$quantity_used;
+									$StockMovementData['product_unit_price']=$unit_price;
+									$StockMovementData['product_total_price']=$unit_price*$quantity_used;
+									$StockMovementData['bool_transfer']=true;
+									$StockMovementData['transfer_code']=$tingroupPrefCode;
+                                    $StockMovementData['comment']=$transferenciaingroupComment;
+									
+									$this->StockMovement->clear();
+									$this->StockMovement->create();
+									$logsuccess=$this->StockMovement->save($StockMovementData);
+									if (!$logsuccess) {
+										echo "problema al guardar el movimiento de lote";
+										pr($this->validateErrors($this->StockMovement));
+										throw new Exception();
+									}
+									unset($StockMovementData);
+									
+									// STEP 3: SAVE THE TARGET STOCKITEM
+									$StockItemData['name']=$message;
+									$StockItemData['description']=$message;
+									$StockItemData['stockitem_creation_date']=$tingroupDate;
+									$StockItemData['product_id']=$preforma_id_destino;
+									$StockItemData['product_unit_price']=$unit_price;
+									$StockItemData['original_quantity']=$quantity_used;
+									$StockItemData['remaining_quantity']=$quantity_used;
+									$StockItemData['production_result_code_id']=0;
+									
+									$this->StockItem->clear();
+									$this->StockItem->create();
+									// notice that no new stockitem is created because we are taking from an already existing one
+									$logsuccess=$this->StockItem->save($StockItemData);
+									
+									if (!$logsuccess) {
+										echo "problema al guardar el lote de destino";
+										pr($this->validateErrors($this->StockItem));
+										throw new Exception();
+									}
+									unset($StockItemData);
+									
+									// STEP 4: SAVE THE STOCK MOVEMENT FOR THE TARGET STOCKITEM
+									$new_stockitem_id=$this->StockItem->id;
+									$newlyCreatedStockItems[]=$new_stockitem_id;
+									
+									$origin_stock_movement_id=$this->StockMovement->id;
+										
+										
+									$StockMovementData['movement_date']=$tingroupDate;
+									$StockMovementData['bool_input']=true;
+									$StockMovementData['name']=$message;
+									$StockMovementData['description']=$message;
+									$StockMovementData['order_id']=0;
+									$StockMovementData['stockitem_id']=$new_stockitem_id;
+									$StockMovementData['product_id']=$preforma_id_destino;
+									$StockMovementData['product_quantity']=$quantity_used;
+									$StockMovementData['product_unit_price']=$unit_price;
+									$StockMovementData['product_total_price']=$unit_price*$quantity_used;
+									$StockMovementData['bool_transfer']=true;
+									$StockMovementData['origin_stock_movement_id']=$origin_stock_movement_id;
+									$StockMovementData['transfer_code']=$tingroupPrefCode;
+                                    $StockMovementData['comment']=$transferenciaingroupComment;
+									
+									$this->StockMovement->clear();
+									$this->StockMovement->create();
+									$logsuccess=$this->StockMovement->save($StockMovementData);
+									if (!$logsuccess) {
+										echo "problema al guardar el movimiento de lote";
+										pr($this->validateErrors($this->StockMovement));
+										throw new Exception();
+									}
+									unset($StockMovementData);
+											
+									// STEP 5: SAVE THE USERLOG FOR THE STOCK MOVEMENT
+									$this->recordUserActivity($this->Session->read('User.username'),$message);
+								}
+								$datasource->commit();
+								
+								
+								foreach ($usedCapStockItems as $usedCapStockItem){
+									$this->recreateStockItemLogs($usedCapStockItem['id']);
+								}
+								for ($i=0;$i<count($newlyCreatedStockItems);$i++){
+									$this->recreateStockItemLogs($newlyCreatedStockItems[$i]);
+								}
+								
+								$this->Session->setFlash(__('Transferencia exitosa'),'default',array('class' => 'success'));
+								return $this->redirect(array('action' => 'resumenTransferenciasProductos'));
+							}
+							catch(Exception $e){
+								$datasource->rollback();
+								pr($e);
+								$this->Session->setFlash(__('Transferencia falló'), 'default',array('class' => 'error-message'), 'default',array('class' => 'error-message'));
+							}
+						}
+					}
+						
+						
+						
+						
+						
+						//finalizamos transferencia ingroup preformas
+						//$this->Session->setFlash(__('Transferencia exitosa'),'default',array('class' => 'success'));
+						//return $this->redirect(array('action' => 'resumenTransferenciasProductos'));
+				}
+                else {
+					$warning="";
+					
+					
+					if($preforma_id_origen==0){
+						$warning.="Debe seleccionar preforma origen!<br/>";
+					}
+					if($preforma_id_destino==0){
+						$warning.="Debe seleccionar el producto ingroup destino!<br/>";
+					}
+					
+					if($quantity==0){
+						$warning.="Cantidad a transferir debe ser mayor a 0!<br/>";
+					}
+					
+					$this->Session->setFlash($warning, 'default',array('class' => 'error-message'));
+				}				
+					
+			}		
+		}
+		
+		/* $lastReclassification=$this->StockMovement->find('first',array(
+			'fields'=>array('StockMovement.reclassification_code'),
+			'conditions'=>array(
+				'bool_reclassification'=>true,
+			),
+			'order'=>array('StockMovement.reclassification_code' => 'desc'),
+		));
+		$reclassificationNumber=substr($lastReclassification['StockMovement']['reclassification_code'],6,6)+1; */
+		
+		$lastTransPrefIngroup=$this->StockMovement->find('first',array(
+			'fields'=>array('StockMovement.transfer_code'),
+			'conditions'=>array(
+				'bool_transfer'=>true,
+				'transfer_code LIKE'=> "TRANSPREFING_%",
+			),
+			'order'=>array('StockMovement.transfer_code' => 'desc'),
+		));
+		//$transferNumber=substr($lastTransPrefIngroup['StockMovement']['transfer_code'],6,6)+1;
+		if(isset($lastTransIngroupPref['StockMovement']))
+		$transferNumber=substr($lastTransIngroupPref['StockMovement']['transfer_code'],13,6)+1;
+		else 
+		$transferNumber=1;
+	
+		$tingroupPrefCode="TRANSPREFING_".str_pad($transferNumber,6,"0",STR_PAD_LEFT)."_".$this->Session->read('User.username');
+	    
+	
+		$this->set(compact('allPreformas','allPrefingroup','preformaInventory','tingroupPrefCode'));
+	}	
+	
+
+		
 	
 /******************** CUADRAR PRECIOS *******************/
 	

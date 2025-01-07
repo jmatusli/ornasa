@@ -253,7 +253,9 @@ class ProductsController extends AppController {
     $this->set(compact('productionTypeId'));
     
     $warehouses=$this->UserWarehouse->getWarehouseListForUser($loggedUserId);
+    
     //pr($warehouses);
+    $this->set(compact('productspref'));
     $this->set(compact('warehouses'));
     if (count($warehouses) == 1){
       $warehouseId=array_keys($warehouses)[0];
@@ -496,6 +498,7 @@ class ProductsController extends AppController {
     
     $warehouses=$this->UserWarehouse->getWarehouseListForUser($loggedUserId);
     //pr($warehouses);
+    
     $this->set(compact('warehouses'));
     $productWarehouses=[];
     foreach ($warehouses as $warehouseId=>$warehouseName){
@@ -1530,16 +1533,24 @@ class ProductsController extends AppController {
 		}
 		
     $warehouses=$this->UserWarehouse->getWarehouseListForUser($loggedUserId);
+	$productspref=$this->Product->getAllPreformas();
     //pr($warehouses);
     $this->set(compact('warehouses'));
+    $this->set(compact('productspref'));
     $productWarehouses=[];
     foreach ($warehouses as $warehouseId=>$warehouseName){
       if ($this->WarehouseProduct->hasWarehouse($id,$warehouseId)){
         $productWarehouses[$warehouseId]=$warehouseName;
       }
     }
+    $productPreform=[];
+    foreach ($productspref as $productId=>$productName){
+         $productPreform[$productId]=$productName;
+       
+    }
     //pr($productWarehouses);
     $this->set(compact('productWarehouses'));
+    $this->set(compact('productPreform'));
     
     $productionTypes=$this->ProductionType->getProductionTypes();
     $this->set(compact('productionTypes'));
@@ -1581,7 +1592,10 @@ class ProductsController extends AppController {
 			'conditions'=>['product_type_id'=>PRODUCT_TYPE_PREFORMA],
 			'order'=>'name ASC',
 		]);
-		$this->set(compact('productTypes','preferredRawMaterials'));
+	//agregado para validar seleccion de tranferible a en edicion de productos de tipo ingroup	
+	  $isingroup=($this->Product->getProductTypeId($id)==PRODUCT_TYPE_INJECTION_OUTPUT);
+	 
+		$this->set(compact('productTypes','preferredRawMaterials','isingroup'));
 		
     $bagProducts=$this->Product->getProductsByProductNature(PRODUCT_NATURE_BAGS);
     $this->set(compact('bagProducts'));

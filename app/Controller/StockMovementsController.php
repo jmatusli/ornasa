@@ -2250,7 +2250,7 @@ class StockMovementsController extends AppController {
       }
 			$rowCounter++;
 		}
-		//pr($resultMatrix);	
+		//pr($resultMatrix);exit;	
     usort($resultMatrix,[$this,'sortByMovementDate']);
     //pr($resultMatrix);
 		$this->set(compact('originalInventory','resultMatrix','currentInventory','startDate','endDate','product','productId'));

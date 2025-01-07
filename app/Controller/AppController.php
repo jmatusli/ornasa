@@ -540,6 +540,12 @@ class AppController extends Controller {
 					'permissions'=>[ROLE_ADMIN,ROLE_ACCOUNTING],
 					'activesetter' => 'transferenciasBodegas',
         ],
+		array(
+          'title' => __('Transferencia entre Productos'),
+          'url' => array('controller' => 'stockItems', 'action' => 'resumenTransferenciasProductos'),
+					'permissions'=>array(ROLE_ADMIN),
+					'activesetter' => 'transferenciasProductos',
+        ),
 				[
           'title' => __('Detalle Costo Producto'),
           'url' => ['controller' => 'stockItems', 'action' => 'detalleCostoProducto'],
@@ -1393,6 +1399,11 @@ class AppController extends Controller {
 		else if ($currentAction=="resumenReclasificaciones"&&$currentController=="stockItems"){
 			$activeMenu="inventory";
 			$activeSub="reclassification";
+			$sub="sub-menu-inventory";
+		}
+		else if ($currentAction=="resumenTransferenciasProductos"&&$currentController=="stockItems"){
+			$activeMenu="inventory";
+			$activeSub="transferenciasProductos";
 			$sub="sub-menu-inventory";
 		}
 		else if (in_array($currentAction,["resumenTransferencias","detalleTransferencia","transferirLote"]) && $currentController=="stockMovements"){
