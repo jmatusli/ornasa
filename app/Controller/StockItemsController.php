@@ -5890,7 +5890,7 @@ class StockItemsController extends AppController {
 		$this->loadModel('StockItemLog');
 		
         $allPreformas=$this->Product->find('list',array('conditions'=>array('Product.product_type_id'=>PRODUCT_TYPE_PREFORMA)));
-		$allPrefingroup=$this->Product->find('list',array('conditions'=>array('Product.product_type_id'=>PRODUCT_TYPE_INJECTION_OUTPUT)));
+		$allPrefingroup=$this->Product->find('list',array('conditions'=>array('Product.product_type_id'=>PRODUCT_TYPE_INJECTION_OUTPUT,'Product.name LIKE'=>'preforma%')));
 		
 		$ingroupInventory = $this->StockItem->getInventoryTotals('',[PRODUCT_TYPE_INJECTION_OUTPUT]);
 		//pr($ingroupInventory);exit;
@@ -6171,7 +6171,7 @@ class StockItemsController extends AppController {
 		$this->loadModel('StockItemLog');
 		
 		$allPreformas=$this->Product->find('list',array('conditions'=>array('Product.product_type_id'=>PRODUCT_TYPE_PREFORMA)));
-		$allPrefingroup=$this->Product->find('list',array('conditions'=>array('Product.product_type_id'=>PRODUCT_TYPE_INJECTION_OUTPUT)));
+		$allPrefingroup=$this->Product->find('list',array('conditions'=>array('Product.product_type_id'=>PRODUCT_TYPE_INJECTION_OUTPUT,'Product.name LIKE'=>'preforma%')));
 		 
 		$preformaInventory = $this->StockItem->getInventoryTotals('',[PRODUCT_TYPE_PREFORMA]);
 		//pr($preformaInventory);

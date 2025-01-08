@@ -356,7 +356,21 @@
             'div'=>['class'=>'div input checkboxleftbig'],
           ]);
         }
+      echo '</div>';    
+      if($isingroup){	//si es producto ingroup mostramos lista de preformas.  
+	  echo "<div class='col-sm-6'>";
+        echo '<h3>'.__('Transferible a ').'</h3>';
+        foreach ($productspref as $productId=>$productName){
+          echo $this->Form->input('Product.'.$productId.'.transferabled',[
+            'label'=>$productName,
+            'type'=>'checkbox',
+            //'checked'=>in_array($productId,array_keys($productPreform)),
+            'div'=>['class'=>'div input checkboxleftbig'],
+          ]);
+        }
       echo '</div>';      
+    echo "</div>";
+    }	  
     echo "</div>";
     
     echo '<div class="row bottle production pet injection hidden">';

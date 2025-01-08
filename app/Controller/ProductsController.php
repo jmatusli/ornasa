@@ -217,6 +217,20 @@ class ProductsController extends AppController {
 		}
 		echo $this->Product->getPreferredRawMaterialId($productid);
 	}
+	
+	
+	 public function getTransferable($productid){
+		//$this->request->onlyAllow('ajax'); // No direct access via browser URL
+		$this->layout = 'ajax';
+		$this->autoRender = false;
+		$this->loadModel('ProductTransferable');
+        
+		if (!$productid){
+			throw new NotFoundException(__(' producto no seleccionado'));
+		}
+		echo json_encode($this->ProductTransferable->getTransferableTo($productid));
+ 
+	}
   
   public function index() {
     $this->loadModel('ProductNature');
@@ -1592,6 +1606,7 @@ class ProductsController extends AppController {
 			'conditions'=>['product_type_id'=>PRODUCT_TYPE_PREFORMA],
 			'order'=>'name ASC',
 		]);
+
 	//agregado para validar seleccion de tranferible a en edicion de productos de tipo ingroup	
 	  $isingroup=($this->Product->getProductTypeId($id)==PRODUCT_TYPE_INJECTION_OUTPUT);
 	 
