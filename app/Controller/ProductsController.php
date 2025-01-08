@@ -1608,7 +1608,7 @@ class ProductsController extends AppController {
 		]);
 
 	//agregado para validar seleccion de tranferible a en edicion de productos de tipo ingroup	
-	  $isingroup=($this->Product->getProductTypeId($id)==PRODUCT_TYPE_INJECTION_OUTPUT);
+	  $isingroup=(($this->Product->getProductTypeId($id)==PRODUCT_TYPE_INJECTION_OUTPUT) && $this->Product->find('first',['conditions'=>['Product.id'=>$id,'Product.name LIKE'=>'preforma%']]));
 	 
 		$this->set(compact('productTypes','preferredRawMaterials','isingroup'));
 		
