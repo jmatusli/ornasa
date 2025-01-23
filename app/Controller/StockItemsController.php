@@ -5927,7 +5927,7 @@ class StockItemsController extends AppController {
 					$stockItemsForCap=$this->StockItem->find('all',array(
 						'conditions'=>array(
 							'product_id'=>$preforma_id_origen,
-              'StockItem.stockitem_creation_date <'=> $tingroupDateString,        
+              'StockItem.stockitem_creation_date <'=> $tingroupDatePlusOne,        
               'StockItem.stockitem_depletion_date >='=> $tingroupDateString,
 						),
 					));
