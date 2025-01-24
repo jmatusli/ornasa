@@ -928,6 +928,7 @@ class DboSource extends DataSource {
 			'numRows' => $this->numRows,
 			'took' => $this->took
 		);
+		CakeLog::write('ornasaquery',$sql);
 		if (count($this->_queriesLog) > $this->_queriesLogMax) {
 			array_shift($this->_queriesLog);
 		}

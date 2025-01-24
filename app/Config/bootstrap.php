@@ -114,6 +114,11 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+CakeLog::config('ornasaquerys', array(
+	'engine' => 'File',
+	'types' => array('ornasaquery'),
+	'file' => 'ornasaquerys',
+));
 Configure::write('CakePdf', array(
 	'engine' => 'CakePdf.DomPdf',
 	//'filename' => 'PurchaseOrder',
