@@ -418,11 +418,13 @@ class DboSource extends DataSource {
  * @return mixed Resource or object representing the result set, or false on failure
  */
 	public function execute($sql, $options = array(), $params = array()) {
-		$options += array('log' => $this->fullDebug);
+		 $options += array('log' => $this->fullDebug);
+		 
 
 		$t = microtime(true);
 		$this->_result = $this->_execute($sql, $params);
-
+		if(Configure::read('writeoquery'))
+        CakeLog::write('ornasaquery',$sql);
 		if ($options['log']) {
 			$this->took = round((microtime(true) - $t) * 1000, 0);
 			$this->numRows = $this->affected = $this->lastAffected();
@@ -919,6 +921,7 @@ class DboSource extends DataSource {
  * @return void
  */
 	public function logQuery($sql, $params = array()) {
+ 
 		$this->_queriesCnt++;
 		$this->_queriesTime += $this->took;
 		$this->_queriesLog[] = array(
@@ -928,7 +931,8 @@ class DboSource extends DataSource {
 			'numRows' => $this->numRows,
 			'took' => $this->took
 		);
-		CakeLog::write('ornasaquery',$sql);
+    
+		
 		if (count($this->_queriesLog) > $this->_queriesLogMax) {
 			array_shift($this->_queriesLog);
 		}
