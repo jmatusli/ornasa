@@ -832,15 +832,15 @@ class ProductsController extends AppController {
 				],
 			]);
 			
-      $warehouseAssigned=false;
+      $warehouseAssigned='0';
       foreach ($this->request->data['Warehouse'] as $warehouseId=>$warehouseData){
         $warehouseAssigned = $warehouseAssigned || $warehouseData['bool_assigned'];
       }
-      //$productionTypeAssigned=false;
+      //$productionTypeAssigned='0';
       //foreach ($this->request->data['ProductionType'] as $productionTypeId=>$productionTypeData){
       //  $productionTypeAssigned = $productionTypeAssigned || $productionTypeData['bool_assigned']; 
       //}
-      $machineAssigned=false;
+      $machineAssigned='0';
       foreach ($this->request->data['MachineProduct'] as $machineId=>$machineData){
         $machineAssigned = $machineAssigned || $machineData['bool_assigned']; 
       }
@@ -1258,17 +1258,17 @@ class ProductsController extends AppController {
         ],
       ]);
     
-			$warehouseAssigned=false;
+			$warehouseAssigned='0';
       foreach ($this->request->data['Warehouse'] as $warehouseId=>$warehouseData){
         $warehouseAssigned = $warehouseAssigned || $warehouseData['bool_assigned'];
       }
     /*  
-      $productionTypeAssigned=false;
+      $productionTypeAssigned='0';
       foreach ($this->request->data['ProductionType'] as $productionTypeId=>$productionTypeData){
         $productionTypeAssigned = $productionTypeAssigned || $productionTypeData['bool_assigned']; 
       }
     */  
-      $machineAssigned=false;
+      $machineAssigned='0';
       foreach ($this->request->data['MachineProduct'] as $machineId=>$machineData){
         $machineAssigned = $machineAssigned || $machineData['bool_assigned']; 
       }
@@ -1685,11 +1685,11 @@ class ProductsController extends AppController {
     
     if (!empty($product['ProductionMovement'])){
       $flashMessage.="Hay movimientos de producción asociados con este producto";
-      $boolDeletionAllowed=false;  
+      $boolDeletionAllowed='0';  
     }
     if (!empty($product['StockMovement'])){
       $flashMessage.="Hay movimientos de lote asociados con este producto";
-      $boolDeletionAllowed=false;  
+      $boolDeletionAllowed='0';  
     }
     
     if (!$boolDeletionAllowed){
@@ -2626,7 +2626,7 @@ class ProductsController extends AppController {
     }
     //pr($productTypes);
 
-    $boolSaved=false;
+    $boolSaved='0';
     if ($this->request->is('post') && empty($this->request->data['changeDate'])) {	      
       $latestClosingDate=$this->ClosingDate->getLatestClosingDate();
       $latestClosingDatePlusOne=date("Y-m-d",strtotime($latestClosingDate."+1 days"));

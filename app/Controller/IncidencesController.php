@@ -203,7 +203,7 @@ class IncidencesController extends AppController {
 		$boolDeletionAllowed=true;
 		
 		if (count($incidence['ProductionRun'])>0){
-			$boolDeletionAllowed=false;
+			$boolDeletionAllowed='0';
 			$flashMessage.="Esta incidencia tiene ordenes de producción correspondientes.  Para poder eliminar la incidencia, primero hay que eliminar o modificar las ordenes de producción ";
 			if (count($incidence['ProductionRun'])==1){
 				$flashMessage.=$incidence['ProductionRun'][0]['production_run_code'].".";

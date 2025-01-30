@@ -313,8 +313,8 @@ class ChequesController extends AppController {
 			
 			$sumDebit=0;
 			$sumCredit=0;
-			$boolMissingDebitAccount=false;
-			$boolMissingCreditAccount=false;
+			$boolMissingDebitAccount='0';
+			$boolMissingCreditAccount='0';
 			foreach ($this->request->data['AccountingMovement'] as $accountingMovement){
 				if (!empty($accountingMovement['debit_amount'])&&$accountingMovement['debit_amount']>0){
 					$sumDebit+=$accountingMovement['debit_amount'];
@@ -522,7 +522,7 @@ class ChequesController extends AppController {
 		
 		$bool_first_load=true;
 		if ($this->request->is(array('post', 'put'))) {
-			$bool_first_load=false;
+			$bool_first_load='0';
 			$this->loadModel('AccountingCode');
 			$this->loadModel('AccountingRegister');
 			$this->loadModel('AccountingMovement');
@@ -554,8 +554,8 @@ class ChequesController extends AppController {
 			
 			$sumDebit=0;
 			$sumCredit=0;
-			$boolMissingDebitAccount=false;
-			$boolMissingCreditAccount=false;
+			$boolMissingDebitAccount='0';
+			$boolMissingCreditAccount='0';
 			foreach ($this->request->data['AccountingMovement'] as $accountingMovement){
 				if (!empty($accountingMovement['debit_amount'])&&$accountingMovement['debit_amount']>0){
 					$sumDebit+=$accountingMovement['debit_amount'];
@@ -594,7 +594,7 @@ class ChequesController extends AppController {
 				
 				try {
 					$datasource->begin();
-					$removedOK=false;
+					$removedOK='0';
 					$oldAccountingRegisterCode="";
 					// first bring back everything to original state
 					$oldCheque=$this->Cheque->find('first',array(

@@ -195,7 +195,7 @@ class InvoicesController extends AppController {
 	}
 
 	public function changePaidStatus($id){
-		$this->autoRender=false;
+		$this->autoRender='0';
 	
 		if (!$this->Invoice->exists($id)) {
 			throw new NotFoundException(__('Factura no válida'));

@@ -540,7 +540,7 @@ class OrdersController extends AppController {
       
 			foreach ($sale['StockMovement'] as $stockMovement){
         //pr ($stockMovement);
-        $qualifiedStockMovement=false;
+        $qualifiedStockMovement='0';
 				if ($stockMovement['Product']['ProductType']['product_category_id']==CATEGORY_PRODUCED){
           if ($stockMovement['Product']['product_type_id'] == PRODUCT_TYPE_INJECTION_OUTPUT){
             $quantityInjection+=$stockMovement['product_quantity'];
@@ -810,7 +810,7 @@ class OrdersController extends AppController {
 			$quantityProducedC=0;
 			$totalCost=0;
 			foreach ($sale['StockMovement'] as $stockMovement){
-        $qualifiedStockMovement=false;
+        $qualifiedStockMovement='0';
 				if ($stockMovement['Product']['ProductType']['product_category_id']==CATEGORY_PRODUCED  && $stockMovement['production_result_code_id']==PRODUCTION_RESULT_CODE_B){
 					$quantityProducedB+=$stockMovement['product_quantity'];
 					$totalQuantityProducedB+=$stockMovement['product_quantity'];
@@ -2222,19 +2222,19 @@ class OrdersController extends AppController {
             $requestInvoices[]['PurchaseOrderInvoice']=$purchaseOrderInvoice;
             
             if ($purchaseOrderInvoice['invoice_subtotal'] > 0 && empty($purchaseOrderInvoice['invoice_code'])){
-              $boolInvoiceNamesOk=false;
+              $boolInvoiceNamesOk='0';
               $invoiceNameError.="Hay una factura con un subtotal de ".$purchaseOrderInvoice['invoice_subtotal']." pero falta el número de la factura.";
             }
             if ($purchaseOrderInvoice['bool_iva'] == 0 && $purchaseOrderInvoice['invoice_iva'] > 0){
-              $boolInvoiceIvaOk=false;
+              $boolInvoiceIvaOk='0';
               $invoiceIvaError.="La factura ".$purchaseOrderInvoice['invoice_code']." no aplica IVA y el IVA es ".$purchaseOrderInvoice['invoice_iva'];
             }
             if ($purchaseOrderInvoice['bool_iva'] && abs($purchaseOrderInvoice['invoice_iva'] - 0.15*$purchaseOrderInvoice['invoice_subtotal'])> 0.01){
-              $boolInvoiceIvaOk=false;
+              $boolInvoiceIvaOk='0';
               $invoiceIvaError.="La factura ".$purchaseOrderInvoice['invoice_code']." aplica IVA, el IVA es ".$purchaseOrderInvoice['invoice_iva'].' y el 15% del subtotal es '.(0.15*$purchaseOrderInvoice['invoice_subtotal']);
             }
             if (abs($purchaseOrderInvoice['invoice_total'] - $purchaseOrderInvoice['invoice_iva']-$purchaseOrderInvoice['invoice_subtotal'])> 0.01){
-              $boolInvoiceLineTotalsOk=false;
+              $boolInvoiceLineTotalsOk='0';
               $invoiceLineTotalsError.="La factura ".$purchaseOrderInvoice['invoice_code']." tiene un total de ".$purchaseOrderInvoice['invoice_total'].' pero la suma del subtotal '.$purchaseOrderInvoice['invoice_subtotal'].' y del IVA '.$purchaseOrderInvoice['invoice_iva'].' es '.($purchaseOrderInvoice['invoice_subtotal'] + $purchaseOrderInvoice['invoice_iva']);
             }
             
@@ -2628,11 +2628,11 @@ class OrdersController extends AppController {
 									//echo $productSummary;
 									
 									if ($product['product_quantity']>($quantityBottleQualityAInStock+MANIPULATION_MAX_VENTA)){
-										$boolReclassificationPossible=false;
+										$boolReclassificationPossible='0';
 										$reasonForNoReclassificationPossible="Se requieren más que ".MANIPULATION_MAX_VENTA." unidades adicionales de  ".$relatedProduct['Product']['name']." ".$relatedRawMaterial['Product']['name']." calidad A para realizar la venta, no se permite reclasificación automática.<br/>";
 									}
 									elseif ($product['product_quantity']>$quantityBottleQualityAInStock+$quantityBottleQualityBInStock+$quantityBottleQualityCInStock){
-										$boolReclassificationPossible=false;
+										$boolReclassificationPossible='0';
 										$reasonForNoReclassificationPossible="No hay suficiente productos en bodega para realizar la venta de ".$relatedProduct['Product']['name']." ".$relatedRawMaterial['Product']['name']." calidad A, incluso reclasificando los productos de calidad B y C.<br/>";	
 									}
 									else {
@@ -2680,7 +2680,7 @@ class OrdersController extends AppController {
                 $quantity=$this->StockItemLog->getStockQuantityAtDateForProduct($product['product_id'],$orderDateAsString,0,true);
                 if ($quantity<$product['product_quantity']){
                   $productSummary.="Para producto ".$relatedProduct['Product']['name']." la cantidad requerida ".$product['product_quantity']." NO está disponible en bodega en esta fecha.<br/>";	
-                  $boolReclassificationPossible=false;
+                  $boolReclassificationPossible='0';
                   $reasonForNoReclassificationPossible="Como para el producto ".$relatedProduct['Product']['name']." la cantidad requerida no es en bodega, no se puede realizar la venta; no se pueden reclasificar tapones.<br/>";
                 }
                 else {
@@ -2892,7 +2892,7 @@ class OrdersController extends AppController {
 									$datasource->rollback();
 									pr($e);
 									$this->Session->setFlash(__('Reclasificación falló'), 'default',['class' => 'error-message'], 'default',['class' => 'error-message']);
-                  $boolReclassificationSuccess=false;
+                  $boolReclassificationSuccess='0';
 								}
 							}
 						}
@@ -3071,7 +3071,7 @@ class OrdersController extends AppController {
 									$datasource->rollback();
 									pr($e);
 									$this->Session->setFlash(__('Reclasificación falló'), 'default',['class' => 'error-message'], 'default',['class' => 'error-message']);
-                  $boolReclassificationSuccess=false;
+                  $boolReclassificationSuccess='0';
 								}
 							}
 						}
@@ -3167,7 +3167,7 @@ class OrdersController extends AppController {
                 
                 //compare the quantity requested and the quantity in stock
                 if ($quantityEntered>$quantityInStock){
-                  $saleItemsOK=false;
+                  $saleItemsOK='0';
                   $exceedingItems.=__("Para producto ".$relatedProduct['Product']['name']." la cantidad requerida (".$quantityEntered.") excede la cantidad en bodega (".$quantityInStock.")!")."<br/>";
                 }
               }
@@ -3785,7 +3785,7 @@ class OrdersController extends AppController {
 		$this->set(compact('orderDate'));
     
     if ($this->request->is('post') && empty($this->request->data['refresh'])){	
-      $boolInitialLoad=false;
+      $boolInitialLoad='0';
       //pr($this->request->data);
       //pr($this->request->data['Order']);
       $salesOrderId=$this->request->data['Order']['sales_order_id'];
@@ -3804,7 +3804,7 @@ class OrdersController extends AppController {
       $sumProductTotals=0;
       $boolProductPricesRegistered=true;
       $productPriceWarning='';
-      $boolProductPriceLessThanDefaultPrice=false;
+      $boolProductPriceLessThanDefaultPrice='0';
       $productPriceLessThanDefaultPriceError='';
       $boolProductPriceRepresentsBenefit=true;
       $productPriceBenefitError='';
@@ -3821,19 +3821,19 @@ class OrdersController extends AppController {
             }
             $multiplicationDifference=abs($product['product_total_price']-$product['product_quantity']*$product['product_unit_price']);
             if ($multiplicationDifference>=0.01){
-              $boolMultiplicationOK=false;
+              $boolMultiplicationOK='0';
               $multiplicationErrorMessage.="Para producto ".$productName." la cantidad indicada es ".$product['product_quantity']." y el precio unitario ".$product['product_unit_price']." lo que da un producto de multiplicación de ".round($product['product_quantity']*$product['product_unit_price'],2)." pero el total calculado por la fila es de ".$product['product_total_price'].".  ";
             };
                    
             if ($this->Product->getProductTypeId($product['product_id']) == PRODUCT_TYPE_BOTTLE){
               if (empty($product['raw_material_id'])){
-                $productRawMaterialPresent=false;  
+                $productRawMaterialPresent='0';  
                 $errorMessage.="Para producto ".$productName." no se indicó la preforma, es obligatorio indicarlo.  ";
               }          
             }
             if ($product['product_id'] != PRODUCT_SERVICE_OTHER){
               if ($product['default_product_unit_price'] <=0) {
-                $boolProductPricesRegistered=false; 
+                $boolProductPricesRegistered='0'; 
                 $productPriceWarning='Producto '.$productName.' no tiene registrado un precio de listado entonces no se podía aplicar un control de precios.  Por favor graba un precio para este producto primero.  ';  
               }
               if ($product['product_unit_price'] < $product['default_product_unit_price']) {
@@ -3841,7 +3841,7 @@ class OrdersController extends AppController {
                 $productPriceLessThanDefaultPriceError='Producto '.$productName.' tiene un precio '.$product['product_unit_price'].' pero el precio mínimo establecido es '.$product['default_product_unit_price'].'.  No se permite vender abajo del precio mínimo establecido.  ';  
               }
               if ($product['product_unit_price'] < $product['product_unit_cost']) {
-                $boolProductPriceRepresentsBenefit=false; 
+                $boolProductPriceRepresentsBenefit='0'; 
                 if ($userRoleId === ROLE_ADMIN){                
                   $productPriceBenefitError='Producto '.$productName.' tiene un precio '.$product['product_unit_price'].' pero el costo es '.$product['product_unit_cost'].'.  No se permite vender con pérdidas.  ';  
                 }
@@ -4057,7 +4057,7 @@ class OrdersController extends AppController {
               
               //compare the quantity requested and the quantity in stock
               if ($quantityEntered>$quantityInStock){
-                $saleItemsOK=false;
+                $saleItemsOK='0';
                 $exceedingItems.=__("Para producto ".$productName." la cantidad requerida (".$quantityEntered.") excede la cantidad en bodega (".$quantityInStock.")!")."<br/>";
               }
             }
@@ -4073,7 +4073,7 @@ class OrdersController extends AppController {
         $unpaidBlocked=true;
         $unpaidBlockMessage="";
         
-        $boolCreditAuthorized=false;
+        $boolCreditAuthorized='0';
         if ($salesOrderId > 0){
           $salesOrder=$this->SalesOrder->find('first',[
             'conditions'=>[
@@ -4090,8 +4090,8 @@ class OrdersController extends AppController {
         } 
         
         if(!$this->request->data['Invoice']['bool_credit']){
-          $creditBlocked=false;
-          $unpaidBlocked=false;
+          $creditBlocked='0';
+          $unpaidBlocked='0';
         }
         else {
           $clientCreditStatus=$this->ThirdParty->getClientCreditStatus($this->request->data['Order']['third_party_id']);
@@ -4109,7 +4109,7 @@ class OrdersController extends AppController {
             $creditBlockMessage.="El cliente ".$clientCreditStatus['ThirdParty']['company_name']." tiene un límite de crédito de ".$creditLimit." y ya tiene pagos pendientes para un total de C$ ".$creditUsedBeforeInvoice.".  Con el total de esta factura (C$ ".$creditUsedWithThisInvoice.") el monto total que se debe (C$ ".$creditUsedAfterInvoice.") excede el límite de crédito.";
           }
           else {
-            $creditBlocked=false;
+            $creditBlocked='0';
           }
           
           $pendingInvoices=$this->Invoice->find('all',[
@@ -4144,12 +4144,12 @@ class OrdersController extends AppController {
             //$unpaidBlockMessage="Revise el ".$this->Html->link('estado de crédito del cliente',['controller'=>'invoices','action'=>'verFacturasPorCobrar',$this->request->data['Order']['third_party_id']])."!";
           }
           else {
-            $unpaidBlocked=false;  
+            $unpaidBlocked='0';  
           }
           
           if ($roleId == ROLE_ADMIN){
-            $creditBlocked=false;
-            $unpaidBlocked=false;  
+            $creditBlocked='0';
+            $unpaidBlocked='0';  
           }
         }
         
@@ -4910,7 +4910,7 @@ class OrdersController extends AppController {
 		// TEMPORARY FIX COLINAS
     //$warehouseId=0;
     $warehouseId= WAREHOUSE_DEFAULT;
-    $boolDelivery=false;
+    $boolDelivery='0';
 		
 		$inventoryDisplayOptions=[
 			'0'=>'No mostrar inventario',
@@ -4930,7 +4930,7 @@ class OrdersController extends AppController {
     $boolInitialLoad=true;
 		$requestProducts=[];
     if ($this->request->is('post')) {
-      $boolInitialLoad=false;
+      $boolInitialLoad='0';
       if (!empty($this->request->data['Product'])){
         foreach ($this->request->data['Product'] as $product){
           if (!empty($product['product_id']) && $product['product_quantity'] > 0){
@@ -5001,7 +5001,7 @@ class OrdersController extends AppController {
       $sumProductTotals=0;
       $boolProductPricesRegistered=true;
       $productPriceWarning='';
-      $boolProductPriceLessThanDefaultPrice=false;
+      $boolProductPriceLessThanDefaultPrice='0';
       $productPriceLessThanDefaultPriceError='';
       $boolProductPriceRepresentsBenefit=true;
       $productPriceBenefitError='';
@@ -5020,19 +5020,19 @@ class OrdersController extends AppController {
             }
             $multiplicationDifference=abs($product['product_total_price']-$product['product_quantity']*$product['product_unit_price']);
             if ($multiplicationDifference>=0.01){
-              $boolMultiplicationOK=false;
+              $boolMultiplicationOK='0';
               $multiplicationErrorMessage.="Para producto ".$productName." la cantidad indicada es ".$product['product_quantity']." y el precio unitario ".$product['product_unit_price']." lo que da un producto de multiplicación de ".round($product['product_quantity']*$product['product_unit_price'],2)." pero el total calculado por la fila es de ".$product['product_total_price'].".  ";
             };
                    
             if ($this->Product->getProductTypeId($product['product_id']) == PRODUCT_TYPE_BOTTLE){
               if (empty($product['raw_material_id'])){
-                $productRawMaterialPresent=false;  
+                $productRawMaterialPresent='0';  
                 $errorMessage.="Para producto ".$productName." no se indicó la preforma, es obligatorio indicarlo.  ";
               }          
             }
             if ($product['product_id'] != PRODUCT_SERVICE_OTHER){
               if ($product['default_product_unit_price'] <=0) {
-                $boolProductPricesRegistered=false; 
+                $boolProductPricesRegistered='0'; 
                 $productPriceWarning='Producto '.$productName.' no tiene registrado un precio de listado entonces no se podía aplicar un control de precios.  Por favor graba un precio para este producto primero.  ';  
               }
               // 20211004 default_product_price could be tricked into accepting volume price by users with bad intentions by increasing and then decreasing prices, that's why the price is calculated afreshe in $acceptableProductPrice
@@ -5043,7 +5043,7 @@ class OrdersController extends AppController {
                 $productPriceLessThanDefaultPriceError='Producto '.$productName.' tiene un precio '.$product['product_unit_price'].' pero el precio mínimo establecido es '.$acceptableProductPrice.'.  No se permite vender abajo del precio mínimo establecido.  ';  
               }
               if ($product['product_unit_price'] < $product['product_unit_cost']) {
-                $boolProductPriceRepresentsBenefit=false; 
+                $boolProductPriceRepresentsBenefit='0'; 
                 if ($userRoleId === ROLE_ADMIN){                
                   $productPriceBenefitError='Producto '.$productName.' tiene un precio '.$product['product_unit_price'].' pero el costo es '.$product['product_unit_cost'].'.  No se permite vender con pérdidas.  ';  
                 }
@@ -5298,7 +5298,7 @@ class OrdersController extends AppController {
                 }
               }
               if ($quantityEntered>$quantityInStock){
-                $saleItemsOK=false;
+                $saleItemsOK='0';
                 $exceedingItems.=__("Para producto ".$productName." la cantidad requerida (".$quantityEntered.") excede la cantidad en bodega (".$quantityInStock.")!")."<br/>";
               }
             }
@@ -5309,7 +5309,7 @@ class OrdersController extends AppController {
         $unpaidBlocked=true;
         $unpaidBlockMessage="";
         
-        $boolCreditAuthorized=false;
+        $boolCreditAuthorized='0';
         if ($salesOrderId > 0){
           $salesOrder=$this->SalesOrder->find('first',[
             'conditions'=>[
@@ -5325,8 +5325,8 @@ class OrdersController extends AppController {
         } 
         
         if(!$this->request->data['Invoice']['bool_credit']){
-          $creditBlocked=false;
-          $unpaidBlocked=false;
+          $creditBlocked='0';
+          $unpaidBlocked='0';
         }
         else {
           $clientCreditStatus=$this->ThirdParty->getClientCreditStatus($this->request->data['Order']['third_party_id']);
@@ -5344,7 +5344,7 @@ class OrdersController extends AppController {
             $creditBlockMessage.="El cliente ".$clientCreditStatus['ThirdParty']['company_name']." tiene un límite de crédito de ".$creditLimit." y ya tiene pagos pendientes para un total de C$ ".$creditUsedBeforeInvoice.".  Con el total de esta factura (C$ ".$creditUsedWithThisInvoice.") el monto total que se debe (C$ ".$creditUsedAfterInvoice.") excede el límite de crédito.";
           }
           else {
-            $creditBlocked=false;
+            $creditBlocked='0';
           }
           
           $pendingInvoices=$this->Invoice->find('all',[
@@ -5379,12 +5379,12 @@ class OrdersController extends AppController {
             //$unpaidBlockMessage="Revise el ".$this->Html->link('estado de crédito del cliente',['controller'=>'invoices','action'=>'verFacturasPorCobrar',$this->request->data['Order']['third_party_id']])."!";
           }
           else {
-            $unpaidBlocked=false;  
+            $unpaidBlocked='0';  
           }
           
           if ($userRoleId == ROLE_ADMIN){
-            $creditBlocked=false;
-            $unpaidBlocked=false;  
+            $creditBlocked='0';
+            $unpaidBlocked='0';  
           }
         }
         if (!empty($exceedingItems)){
@@ -5395,7 +5395,7 @@ class OrdersController extends AppController {
           
           $aco_name="Orders/manipularVenta";		
           $bool_order_manipularventa_permission=$this->hasPermission($this->Auth->User('id'),$aco_name);
-          $salesOrderFromColinas=false;
+          $salesOrderFromColinas='0';
           if ($salesOrderId > 0){
             $salesOrderFromColinas=$this->SalesOrder->getSalesOrderWarehouse($salesOrderId)== WAREHOUSE_INJECTION;
           }
@@ -6136,11 +6136,11 @@ class OrdersController extends AppController {
 									//echo $productSummary;
 									
 									if ($product['product_quantity']>($quantityBottleQualityBInStock+MANIPULATION_MAX_REMISION)){
-										$boolReclassificationPossible=false;
+										$boolReclassificationPossible='0';
 										$reasonForNoReclassificationPossible="Se requieren más que ".MANIPULATION_MAX_REMISION." unidades adicionales de  ".$relatedProduct['Product']['name']." ".$relatedRawMaterial['Product']['name']." calidad B para realizar la remisión, no se permite reclasificación automática.<br/>";
 									}
 									elseif ($product['product_quantity']>$quantityBottleQualityBInStock+$quantityBottleQualityCInStock){
-										$boolReclassificationPossible=false;
+										$boolReclassificationPossible='0';
 										$reasonForNoReclassificationPossible="No hay suficiente productos en bodega para realizar la remisión de ".$relatedProduct['Product']['name']." ".$relatedRawMaterial['Product']['name']." calidad C, incluso reclasificando los productos de calidad C.<br/>";	
 									}
 									else {
@@ -6172,7 +6172,7 @@ class OrdersController extends AppController {
 								$requestedProductInfo['quality_B']=$quantityBottleQualityBInStock;
 								$requestedProductInfo['quality_C']=$quantityBottleQualityCInStock;
                 if ($quantityBottleQualityCInStock < $product['product_quantity']){
-                  $boolReclassificationPossible=false;
+                  $boolReclassificationPossible='0';
                   $reasonForNoReclassificationPossible.="No se pueden hacer reclasificaciones a calidad C, se intentó reclasificar al producto ".$relatedProduct['Product']['name']." ".$relatedRawMaterial['Product']['name']." calidad C.<br/>";	
                 }
               }
@@ -6183,7 +6183,7 @@ class OrdersController extends AppController {
 							$quantity=$this->StockItemLog->getStockQuantityAtDateForProduct($product['product_id'],$orderDateAsString,0,true);
 							if ($quantity<$product['product_quantity']){
 								$productSummary.="Para producto ".$relatedProduct['Product']['name']." la cantidad requerida ".$product['product_quantity']." NO está disponible en bodega en esta fecha.<br/>";	
-								$boolReclassificationPossible=false;
+								$boolReclassificationPossible='0';
 								$reasonForNoReclassificationPossible="Como para el producto ".$relatedProduct['Product']['name']." la cantidad requerida no es en bodega, no se puede realizar la venta; no se pueden reclasificar tapones.<br/>";
 							}
 							else {
@@ -6392,7 +6392,7 @@ class OrdersController extends AppController {
 									$datasource->rollback();
 									pr($e);
 									$this->Session->setFlash(__('Reclasificación falló'), 'default',['class' => 'error-message'], 'default',['class' => 'error-message']);
-                  $boolReclassificationSuccess=false;
+                  $boolReclassificationSuccess='0';
 								}
 							}
 						}
@@ -6540,7 +6540,7 @@ class OrdersController extends AppController {
 							
 							//compare the quantity requested and the quantity in stock
 							if ($quantityEntered>$quantityInStock){
-								$remissionItemsOK=false;
+								$remissionItemsOK='0';
 								$exceedingItems.=__("Para producto ".$relatedProduct['Product']['name']." la cantidad requerida (".$quantityEntered.") excede la cantidad en bodega (".$quantityInStock.")!")."<br/>";
 							}
 						}
@@ -7102,14 +7102,14 @@ class OrdersController extends AppController {
 							
 							//compare the quantity requested and the quantity in stock
 							if ($quantityEntered>$quantityInStock){
-								$remissionItemsOK=false;
+								$remissionItemsOK='0';
 								$exceedingItems.=__("Para producto ".$relatedProduct['Product']['name']." la cantidad requerida (".$quantityEntered.") excede la cantidad en bodega (".$quantityInStock.")!")."<br/>";
 							}
               
               $productMultiplicationBasedOnUnitPriceAndQuantity=$product['product_quantity']*$product['product_unit_price'];
               $productMultiplicationBasedOnTotalPrice=$product['product_total_price'];
               if (abs($productMultiplicationBasedOnUnitPriceAndQuantity-$productMultiplicationBasedOnTotalPrice) > 0.01){
-                $productMultiplicationOk=false;
+                $productMultiplicationOk='0';
                 $productMultiplicationWarning.="Producto ".$relatedProduct['Product']['name']." tiene una cantidad ".$product['product_quantity']." y un precio unitario ".$product['product_unit_price'].", pero el total calculado ".$product['product_total_price']." no es correcto;";
               }
               //echo "product total price is ".$product['product_total_price']."<br/>";
@@ -7677,19 +7677,19 @@ class OrdersController extends AppController {
             $requestInvoices[]['PurchaseOrderInvoice']=$purchaseOrderInvoice;
             
             if ($purchaseOrderInvoice['invoice_subtotal'] > 0 && empty($purchaseOrderInvoice['invoice_code'])){
-              $boolInvoiceNamesOk=false;
+              $boolInvoiceNamesOk='0';
               $invoiceNameError.="Hay una factura con un subtotal de ".$purchaseOrderInvoice['invoice_subtotal']." pero falta el número de la factura.";
             }
             if ($purchaseOrderInvoice['bool_iva'] == 0 && $purchaseOrderInvoice['invoice_iva'] > 0){
-              $boolInvoiceIvaOk=false;
+              $boolInvoiceIvaOk='0';
               $invoiceIvaError.="La factura ".$purchaseOrderInvoice['invoice_code']." no aplica IVA y el IVA es ".$purchaseOrderInvoice['invoice_iva'];
             }
             if ($purchaseOrderInvoice['bool_iva'] && abs($purchaseOrderInvoice['invoice_iva'] - 0.15*$purchaseOrderInvoice['invoice_subtotal'])> 0.01){
-              $boolInvoiceIvaOk=false;
+              $boolInvoiceIvaOk='0';
               $invoiceIvaError.="La factura ".$purchaseOrderInvoice['invoice_code']." aplica IVA, el IVA es ".$purchaseOrderInvoice['invoice_iva'].' y el 15% del subtotal es '.(0.15*$purchaseOrderInvoice['invoice_subtotal']);
             }
             if (abs($purchaseOrderInvoice['invoice_total'] - $purchaseOrderInvoice['invoice_iva']-$purchaseOrderInvoice['invoice_subtotal'])> 0.01){
-              $boolInvoiceLineTotalsOk=false;
+              $boolInvoiceLineTotalsOk='0';
               $invoiceLineTotalsError.="La factura ".$purchaseOrderInvoice['invoice_code']." tiene un total de ".$purchaseOrderInvoice['invoice_total'].' pero la suma del subtotal '.$purchaseOrderInvoice['invoice_subtotal'].' y del IVA '.$purchaseOrderInvoice['invoice_iva'].' es '.($purchaseOrderInvoice['invoice_subtotal'] + $purchaseOrderInvoice['invoice_iva']);
             }
             
@@ -7739,13 +7739,13 @@ class OrdersController extends AppController {
         $dateComparisonOutcome='';
         if ($previousOrder['Order']['order_date'] != $purchaseDate){
           if ($previousPurchaseDateTime->format('Y')<$currentPurchaseDateTime->format('Y')){
-            $newPurchaseDateOlderThanPreviousPurchaseDate=false;
+            $newPurchaseDateOlderThanPreviousPurchaseDate='0';
           }
           elseif ($previousPurchaseDateTime->format('m')<$currentPurchaseDateTime->format('m')){
-            $newPurchaseDateOlderThanPreviousPurchaseDate=false;
+            $newPurchaseDateOlderThanPreviousPurchaseDate='0';
           }
           elseif ($previousPurchaseDateTime->format('d')<$currentPurchaseDateTime->format('d')){
-            $newPurchaseDateOlderThanPreviousPurchaseDate=false;
+            $newPurchaseDateOlderThanPreviousPurchaseDate='0';
           }
           if (!$newPurchaseDateOlderThanPreviousPurchaseDate){
             $dateComparisonOutcome='La fecha nueva de la entrada '.($currentPurchaseDateTime->format('d-m-Y')).' viene después de la fecha anterior '.($previousPurchaseDateTime->format('d-m-Y')).'!';  
@@ -7761,7 +7761,7 @@ class OrdersController extends AppController {
               }
               if (!empty($prohibitiveProductionRuns)){
                 $dateComparisonOutcome.='  Los procesos de producción '.substr($prohibitiveProductionRuns,0,strlen($prohibitiveProductionRuns)-2).' vienen antes de la nueva fecha de entrada.';
-                $dateCanBeEdited=false;
+                $dateCanBeEdited='0';
               }
             }
             if (!empty($deletabilityData['orders'])){
@@ -7776,7 +7776,7 @@ class OrdersController extends AppController {
               }
               if (!empty($prohibitiveOrders)){
                 $dateComparisonOutcome.='  Los ventas '.substr($prohibitiveOrders,0,strlen($prohibitiveOrders)-2).' vienen antes de la nueva fecha de entrada.';
-                $dateCanBeEdited=false;
+                $dateCanBeEdited='0';
               }
             }
             if (!empty($deletabilityData['transfers'])){
@@ -7791,7 +7791,7 @@ class OrdersController extends AppController {
               }
               if (!empty($prohibitiveTransfers)){
                 $dateComparisonOutcome.='  Las transferencias '.substr($prohibitiveTransfers,0,strlen($prohibitiveTransfers)-2).' vienen antes de la nueva fecha de entrada.';
-                $dateCanBeEdited=false;
+                $dateCanBeEdited='0';
               }
             }
           }
@@ -8274,7 +8274,7 @@ class OrdersController extends AppController {
     //$driverUserId=0;
     //$vehicleId=0;
     $warehouseId=0;
-		$boolDelivery=false;
+		$boolDelivery='0';
     
 		$inventoryDisplayOptions=[
 			'0'=>'No mostrar inventario',
@@ -8299,7 +8299,7 @@ class OrdersController extends AppController {
     
     //if (!empty($this->request->data)){
     if ($this->request->is(['post', 'put'])){
-      $boolInitialLoad=false;
+      $boolInitialLoad='0';
       if (!empty($this->request->data['Product'])){
         foreach ($this->request->data['Product'] as $product){
           if (!empty($product['product_id']) && $product['product_quantity'] > 0){
@@ -8344,7 +8344,7 @@ class OrdersController extends AppController {
         $sumProductTotals=0;
         $boolProductPricesRegistered=true;
         $productPriceWarning='';
-        $boolProductPriceLessThanDefaultPrice=false;
+        $boolProductPriceLessThanDefaultPrice='0';
         $productPriceLessThanDefaultPriceError='';
         $boolProductPriceRepresentsBenefit=true;
         $productPriceBenefitError='';
@@ -8362,19 +8362,19 @@ class OrdersController extends AppController {
               }
               $multiplicationDifference=abs($product['product_total_price']-$product['product_quantity']*$product['product_unit_price']);
               if ($multiplicationDifference>=0.01){
-                $boolMultiplicationOK=false;
+                $boolMultiplicationOK='0';
                 $multiplicationErrorMessage.="Para producto ".$productName." la cantidad indicada es ".$product['product_quantity']." y el precio unitario ".$product['product_unit_price']." lo que da un producto de multiplicación de ".round($product['product_quantity']*$product['product_unit_price'],2)." pero el total calculado por la fila es de ".$product['product_total_price'].".  ";
               };
                      
               if ($this->Product->getProductTypeId($product['product_id']) == PRODUCT_TYPE_BOTTLE){
                 if (empty($product['raw_material_id'])){
-                  $productRawMaterialPresent=false;  
+                  $productRawMaterialPresent='0';  
                   $errorMessage.="Para producto ".$productName." no se indicó la preforma, es obligatorio indicarlo.  ";
                 }          
               }
               if ($product['product_id'] != PRODUCT_SERVICE_OTHER){
                 if ($product['default_product_unit_price'] <=0) {
-                  $boolProductPricesRegistered=false; 
+                  $boolProductPricesRegistered='0'; 
                   $productPriceWarning='Producto '.$productName.' no tiene registrado un precio de listado entonces no se podía aplicar un control de precios.  Por favor graba un precio para este producto primero.  ';  
                 }
                 // 20211004 default_product_price could be tricked into accepting volume price by users with bad intentions by increasing and then decreasing prices, that's why the price is calculated afreshe in $acceptableProductPrice
@@ -8385,7 +8385,7 @@ class OrdersController extends AppController {
                   $productPriceLessThanDefaultPriceError='Producto '.$productName.' tiene un precio '.$product['product_unit_price'].' pero el precio mínimo establecido es '.$acceptableProductPrice.'.  No se permite vender abajo del precio mínimo establecido.  '; 
                 }
                 if ($product['product_unit_price'] < $product['product_unit_cost']) {
-                  $boolProductPriceRepresentsBenefit=false; 
+                  $boolProductPriceRepresentsBenefit='0'; 
                   if ($userRoleId === ROLE_ADMIN){                
                     $productPriceBenefitError='Producto '.$productName.' tiene un precio '.$product['product_unit_price'].' pero el costo es '.$product['product_unit_cost'].'.  No se permite vender con pérdidas.  ';  
                   }
@@ -8717,7 +8717,7 @@ class OrdersController extends AppController {
           ]);	
           //pr($stockMovementsOriginalSale);
           //pr($originalInvoice);
-          $oldDataRemoved=false;
+          $oldDataRemoved='0';
           $datasource=$this->Order->getDataSource();
           $datasource->begin();
           try {
@@ -8813,7 +8813,7 @@ class OrdersController extends AppController {
             $saleDate=$this->request->data['Order']['order_date'];
             $orderCode=$this->request->data['Order']['order_code'];		
             
-            $newDataSaved=false;
+            $newDataSaved='0';
             
             $saleItemsOK=true;
             $exceedingItems="";
@@ -8860,7 +8860,7 @@ class OrdersController extends AppController {
                   }
                   //compare the quantity requested and the quantity in stock
                   if ($quantityEntered>$quantityInStock){
-                    $saleItemsOK=false;
+                    $saleItemsOK='0';
                     $exceedingItems.=__("Para producto ".$productName." la cantidad requerida (".$quantityEntered.") excede la cantidad en bodega (".$quantityInStock.")!")."<br/>";
                   }
                 }
@@ -8871,7 +8871,7 @@ class OrdersController extends AppController {
             $unpaidBlocked=true;
             $unpaidBlockMessage="";
             
-            $boolCreditAuthorized=false;
+            $boolCreditAuthorized='0';
             if ($salesOrderId > 0){
               $salesOrder=$this->SalesOrder->find('first',[
                 'conditions'=>[
@@ -8888,8 +8888,8 @@ class OrdersController extends AppController {
             } 
           
             if(!$this->request->data['Invoice']['bool_credit']){
-              $creditBlocked=false;
-              $unpaidBlocked=false;
+              $creditBlocked='0';
+              $unpaidBlocked='0';
             }
             else {
               $clientCreditStatus=$this->ThirdParty->getClientCreditStatus($this->request->data['Order']['third_party_id']);
@@ -8907,7 +8907,7 @@ class OrdersController extends AppController {
                 $creditBlockMessage.="El cliente ".$clientCreditStatus['ThirdParty']['company_name']." tiene un límite de crédito de ".$creditLimit." y ya tiene pagos pendientes para un total de C$ ".$creditUsedBeforeInvoice.".  Con el total de esta factura (C$ ".$creditUsedWithThisInvoice.") el monto total que se debe (C$ ".$creditUsedAfterInvoice.") excede el límite de crédito.";
               }
               else {
-                $creditBlocked=false;
+                $creditBlocked='0';
               }
               
               $pendingInvoices=$this->Invoice->find('all',[
@@ -8942,12 +8942,12 @@ class OrdersController extends AppController {
                 //$unpaidBlockMessage="Revise el ".$this->Html->link('estado de crédito del cliente',['controller'=>'invoices','action'=>'verFacturasPorCobrar',$this->request->data['Order']['third_party_id']])."!";
               }
               else {
-                $unpaidBlocked=false;  
+                $unpaidBlocked='0';  
               }
               
               if ($userRoleId == ROLE_ADMIN){
-                $creditBlocked=false;
-                $unpaidBlocked=false;  
+                $creditBlocked='0';
+                $unpaidBlocked='0';  
               }
             }
             
@@ -9713,7 +9713,7 @@ class OrdersController extends AppController {
 					],
 				]);
 				if (count($cashReceiptsForInvoice)>0){
-					$bool_invoicetype_editable=false;
+					$bool_invoicetype_editable='0';
 				}
 			}
 		}
@@ -10179,7 +10179,7 @@ class OrdersController extends AppController {
 						],
 					]);
 					//pr($originalCashReceipt);
-					$oldDataRemoved=false;
+					$oldDataRemoved='0';
 					try {
 						if (!empty($stockMovementsOriginalRemission)){
 							foreach ($stockMovementsOriginalRemission as $originalStockMovement){						
@@ -10252,7 +10252,7 @@ class OrdersController extends AppController {
 						$remission_date=$this->request->data['Order']['order_date'];
 						$orderCode=$this->request->data['Order']['order_code'];		
 						
-						$newDataSaved=false;
+						$newDataSaved='0';
 						
 						$saleItemsOK=true;
 						$exceedingItems="";
@@ -10295,14 +10295,14 @@ class OrdersController extends AppController {
 								}
 								//compare the quantity requested and the quantity in stock
 								if ($quantityNeeded>$quantityInStock){
-									$saleItemsOK=false;
+									$saleItemsOK='0';
 									$exceedingItems.=__("Para producto ".$relatedProduct['Product']['name']." la cantidad requerida (".$quantityNeeded.") excede la cantidad en bodega (".$quantityInStock.")!")."<br/>";
 								}
                 
                 $productMultiplicationBasedOnUnitPriceAndQuantity=$product['product_quantity']*$product['product_unit_price'];
                 $productMultiplicationBasedOnTotalPrice=$product['product_total_price'];
                 if (abs($productMultiplicationBasedOnUnitPriceAndQuantity-$productMultiplicationBasedOnTotalPrice) > 0.01){
-                  $productMultiplicationOk=false;
+                  $productMultiplicationOk='0';
                   $productMultiplicationWarning.="Producto ".$relatedProduct['Product']['name']." tiene una cantidad ".$product['product_quantity']." y un precio unitario ".$product['product_unit_price'].", pero el total calculado ".$product['product_total_price']." no es correcto;";
                 }
                 //echo "product total price is ".$product['product_total_price']."<br/>";
@@ -10981,10 +10981,10 @@ class OrdersController extends AppController {
 		if (!empty($entry['StockMovement'])){
 			foreach ($entry['StockMovement'] as $stockMovement){
 				if (!empty($stockMovement['StockItem']['ProductionMovement'])){
-					$boolDeletionAllowed=false;
+					$boolDeletionAllowed='0';
 				}
 				if (!empty($stockMovement['StockItem']['StockMovement'])){
-					$boolDeletionAllowed=false;
+					$boolDeletionAllowed='0';
 				}
 			}
 			if (!$boolDeletionAllowed){
@@ -11921,7 +11921,7 @@ class OrdersController extends AppController {
           if ($entryData['payment']){
             $paymentCount++;
             if (empty($entryData['entry_cheque_number'])){
-              $chequeNumbersOK=false;
+              $chequeNumbersOK='0';
               $thisEntry=$this->Order->find('first',[
                 'fields'=>'order_code',
                 'conditions'=>['Order.id'=>$entryId],
@@ -11936,7 +11936,7 @@ class OrdersController extends AppController {
           if ($purchaseOrderInvoiceData['payment']){
             $paymentCount++;
             if (empty($purchaseOrderInvoiceData['invoice_cheque_number'])){
-              $chequeNumbersOK=false;
+              $chequeNumbersOK='0';
               $thisPurchaseOrderInvoice=$this->PurchaseOrderInvoice->find('first',[
                 'fields'=>'invoice_code',
                 'conditions'=>['PurchaseOrderInvoice.id'=>$purchaseOrderInvoiceId],
@@ -12023,7 +12023,7 @@ class OrdersController extends AppController {
             ]);  
             
             foreach ($entriesForPaidPurchaseOrders as $entry){
-              $boolEntryPaid=false;
+              $boolEntryPaid='0';
               if (empty($entry['PurchaseOrderInvoice'])){
                 $boolEntryPaid=true;  
               }
@@ -12372,10 +12372,10 @@ class OrdersController extends AppController {
 	}
 	
 	public function verReporteCierre($startDate = null,$endDate=null) {
-		$bool_bottles=false;
+		$bool_bottles='0';
     //echo "role id is ".$this->Auth->User('role_id')."<br/>";
     if ($this->Auth->User('role_id')!=ROLE_SALES){
-        $bool_bottles=false;
+        $bool_bottles='0';
     }
     else {
       $bool_bottles=true;
@@ -13133,7 +13133,7 @@ class OrdersController extends AppController {
         $salesOtherProductTypes=[];
         foreach ($sale['StockMovement'] as $stockMovement){
           //pr ($stockMovement);
-          $qualifiedStockMovement=false;
+          $qualifiedStockMovement='0';
           if ($stockMovement['Product']['ProductType']['product_category_id'] == CATEGORY_PRODUCED  && !in_array($stockMovement['production_result_code_id'],[PRODUCTION_RESULT_CODE_B,PRODUCTION_RESULT_CODE_C])){
             $quantities['produced']+=$stockMovement['product_quantity'];
             $prices['produced']+=$stockMovement['product_total_price'];
@@ -13349,7 +13349,7 @@ class OrdersController extends AppController {
         $salesOtherProductTypes=[];
         foreach ($sale['StockMovement'] as $stockMovement){
           //pr ($stockMovement);
-          $qualifiedStockMovement=false;
+          $qualifiedStockMovement='0';
           if ($stockMovement['Product']['ProductType']['product_category_id'] == CATEGORY_PRODUCED  && !in_array($stockMovement['production_result_code_id'],[PRODUCTION_RESULT_CODE_B,PRODUCTION_RESULT_CODE_C])){
             $quantities['produced']+=$stockMovement['product_quantity'];
             $prices['produced']+=$stockMovement['product_total_price'];

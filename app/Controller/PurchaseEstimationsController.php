@@ -162,7 +162,7 @@ class PurchaseEstimationsController extends AppController {
             $multiplicationDifference=abs($purchaseEstimationProduct['product_total_price']-$purchaseEstimationProduct['product_quantity']*$purchaseEstimationProduct['product_unit_price']);
             //pr($purchaseEstimationProduct);
             if ($multiplicationDifference>=0.01){
-              $boolMultiplicationOK=false;
+              $boolMultiplicationOK='0';
             };
           }
         }
@@ -335,7 +335,7 @@ class PurchaseEstimationsController extends AppController {
 					$multiplicationDifference=abs($purchaseEstimationProduct['product_total_price']-$purchaseEstimationProduct['product_quantity']*$purchaseEstimationProduct['product_unit_price']);
 					//pr($purchaseEstimationProduct);
 					if ($multiplicationDifference>=0.01){
-						$boolMultiplicationOK=false;
+						$boolMultiplicationOK='0';
 					};
 				}
 			}
@@ -522,7 +522,7 @@ class PurchaseEstimationsController extends AppController {
 		$boolDeletionAllowed=true;
 		/*
 		if (count($quotation['SalesOrder'])>0){
-			$boolDeletionAllowed=false;
+			$boolDeletionAllowed='0';
 			$flashMessage.="Esta cotización tiene ordenes de venta correspondientes.  Para poder eliminar la cotización, primero hay que eliminar o modificar las ordenes de venta ";
 			if (count($quotation['SalesOrder'])==1){
 				$flashMessage.=$quotation['SalesOrder'][0]['sales_order_code'].".";

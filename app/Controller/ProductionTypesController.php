@@ -147,7 +147,7 @@ class ProductionTypesController extends AppController {
     
 		
 		if ($this->request->is(['post', 'put'])) {
-      $plantAssigned=false;
+      $plantAssigned='0';
       foreach ($this->request->data['Plant'] as $plantId=>$plantData){
         $plantAssigned = $plantAssigned || $plantData['bool_assigned'];
       }

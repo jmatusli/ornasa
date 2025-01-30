@@ -2190,7 +2190,7 @@ class StockItemsController extends AppController {
 				}
 				else {
 					if ($displayOptionId==DISPLAY_ALL_WITH_INVENTORY){
-						$boolStockPresent=false;
+						$boolStockPresent='0';
 						
 						$stockItemConditions=[
 							'StockItem.product_id' => $productId,
@@ -3212,21 +3212,21 @@ class StockItemsController extends AppController {
     switch ($dataOptionId){
       case QUANTITY:
         $boolShowQuantity=true;
-        $boolShowProfitCs=false;
-        $boolShowProfitPercent=false;
+        $boolShowProfitCs='0';
+        $boolShowProfitPercent='0';
         $colspan=1;
         $totalColspan=4;
         break;
       case PROFITCS:
-        $boolShowQuantity=false;
+        $boolShowQuantity='0';
         $boolShowProfitCs=true;
-        $boolShowProfitPercent=false;
+        $boolShowProfitPercent='0';
         $colspan=1;
         $totalColspan=4;
         break;
       case PROFITPCT:
-        $boolShowQuantity=false;
-        $boolShowProfitCs=false;
+        $boolShowQuantity='0';
+        $boolShowProfitCs='0';
         $boolShowProfitPercent=true;
         $colspan=1;
         $totalColspan=3;
@@ -3234,19 +3234,19 @@ class StockItemsController extends AppController {
       case QUANTITY_PROFITCS:
         $boolShowQuantity=true;
         $boolShowProfitCs=true;
-        $boolShowProfitPercent=false;
+        $boolShowProfitPercent='0';
         $colspan=2;
         $totalColspan=5;
         break;
       case QUANTITY_PROFITPCT:
         $boolShowQuantity=true;
-        $boolShowProfitCs=false;
+        $boolShowProfitCs='0';
         $boolShowProfitPercent=true;
         $colspan=2;
         $totalColspan=4;
         break;
       case PROFITCS_PROFITPCT:
-        $boolShowQuantity=false;
+        $boolShowQuantity='0';
         $boolShowProfitCs=true;
         $boolShowProfitPercent=true;
         $colspan=2;
@@ -3893,7 +3893,7 @@ class StockItemsController extends AppController {
         
         foreach ($sale['StockMovement'] as $stockMovement){
           //pr ($stockMovement);
-          $qualifiedStockMovement=false;
+          $qualifiedStockMovement='0';
           if ($stockMovement['Product']['ProductType']['product_category_id']==CATEGORY_PRODUCED  && $stockMovement['production_result_code_id']==PRODUCTION_RESULT_CODE_A){
             //$quantityProduced+=$stockMovement['product_quantity'];
 

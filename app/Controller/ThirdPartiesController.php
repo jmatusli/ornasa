@@ -37,7 +37,7 @@ class ThirdPartiesController extends AppController {
         ),
       ));
       if (!empty($existingClientsWithThisName)){
-        $boolClientOK=false;
+        $boolClientOK='0';
       }
     }
     if (!$boolClientOK){
@@ -242,7 +242,7 @@ class ThirdPartiesController extends AppController {
 
 	public function getcreditdays(){
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL
-		$this->autoRender=false;
+		$this->autoRender='0';
 		
 		$clientId=trim($_POST['clientid']);
 		
@@ -259,7 +259,7 @@ class ThirdPartiesController extends AppController {
   
   public function getprovidercreditdays(){
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL
-		$this->autoRender=false;
+		$this->autoRender='0';
 		
 		$providerId=trim($_POST['providerid']);
 		
@@ -277,7 +277,7 @@ class ThirdPartiesController extends AppController {
   public function getcreditstatus($clientId){
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL
 		$this->layout = 'ajax';
-    $this->autoRender=false;
+    $this->autoRender='0';
 		
 		if (!$clientId){
 			throw new NotFoundException(__('Cliente no está presente'));
@@ -1201,7 +1201,7 @@ class ThirdPartiesController extends AppController {
 				'fields'=>['ThirdParty.company_name'],
 			]);
 			
-			$bool_similar=false;
+			$bool_similar='0';
 			$similar_string="";
 			foreach ($allPreviousClients as $existingClientName){
 				similar_text($this->request->data['ThirdParty']['company_name'],$existingClientName['ThirdParty']['company_name'],$percent);
@@ -1211,8 +1211,8 @@ class ThirdPartiesController extends AppController {
 				}
 			}
       
-      $boolAssociationWithVendorPresent=false;
-      $boolAssociationWithPlantPresent=false;
+      $boolAssociationWithVendorPresent='0';
+      $boolAssociationWithPlantPresent='0';
       if (!empty($this->request->data['User'])){
         for ($u=0;$u<count($this->request->data['User']);$u++){
           if ($this->request->data['User'][$u]['id']){
@@ -1508,8 +1508,8 @@ class ThirdPartiesController extends AppController {
 				'conditions'=>['TRIM(UPPER(ThirdParty.company_name))'=>$this->request->data['ThirdParty']['company_name']],
 			]);
       
-      $boolAssociationWithVendorPresent=false;
-      $boolAssociationWithPlantPresent=false;
+      $boolAssociationWithVendorPresent='0';
+      $boolAssociationWithPlantPresent='0';
       if (!empty($this->request->data['User'])){
         for ($u=0;$u<count($this->request->data['User']);$u++){
           if ($this->request->data['User'][$u]['id']){
@@ -1529,7 +1529,7 @@ class ThirdPartiesController extends AppController {
 				'fields'=>['ThirdParty.company_name'],
 			]);
 			
-			$bool_similar=false;
+			$bool_similar='0';
 			$similar_string="";
 			foreach ($allPreviousClients as $existingClientName){
 				similar_text($this->request->data['ThirdParty']['company_name'],$existingClientName['ThirdParty']['company_name'],$percent);
@@ -1890,7 +1890,7 @@ class ThirdPartiesController extends AppController {
 				'fields'=>['ThirdParty.company_name'],
 			]);
 			
-			$bool_similar=false;
+			$bool_similar='0';
 			$similar_string="";
 			foreach ($allPreviousClients as $existingClientName){
 				similar_text($this->request->data['ThirdParty']['company_name'],$existingClientName['ThirdParty']['company_name'],$percent);
@@ -2069,7 +2069,7 @@ class ThirdPartiesController extends AppController {
 				'fields'=>['ThirdParty.company_name'],
 			]);
 			
-			$bool_similar=false;
+			$bool_similar='0';
 			$similar_string="";
 			foreach ($allPreviousProviders as $existingProviderName){
 				similar_text($this->request->data['ThirdParty']['company_name'],$existingProviderName['ThirdParty']['company_name'],$percent);
@@ -2239,7 +2239,7 @@ class ThirdPartiesController extends AppController {
 			$previousClientsWithThisName=[];
 			$previousClient=$this->ThirdParty->read(null,$id);
 			
-			$bool_similar=false;
+			$bool_similar='0';
 			$similar_string="";
 			
 			if ($previousClient['ThirdParty']['company_name']!=$this->request->data['ThirdParty']['company_name']){
@@ -2254,8 +2254,8 @@ class ThirdPartiesController extends AppController {
 				));
 			}
       
-      $boolAssociationWithVendorPresent=false;
-      $boolAssociationWithPlantPresent=false;
+      $boolAssociationWithVendorPresent='0';
+      $boolAssociationWithPlantPresent='0';
       if (!empty($this->request->data['User'])){
         for ($u=0;$u<count($this->request->data['User']);$u++){
           if ($this->request->data['User'][$u]['id']){
@@ -2456,7 +2456,7 @@ class ThirdPartiesController extends AppController {
 			$previousProvidersWithThisName=[];
 			$previousProvider=$this->ThirdParty->getProviderById($id);
 			
-			$bool_similar=false;
+			$bool_similar='0';
 			$similar_string="";
 			
 			if ($previousProvider['ThirdParty']['company_name']!=$this->request->data['ThirdParty']['company_name']){

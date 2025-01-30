@@ -1140,7 +1140,7 @@ class ProductionRunsController extends AppController {
 					$datasource->rollback();
 					pr($e);
 					$this->Session->setFlash(__('Reclasificación falló'), 'default',array('class' => 'error-message'), 'default',array('class' => 'error-message'));
-          $boolReclassificationSuccess=false;
+          $boolReclassificationSuccess='0';
 				}
 			}
 		
@@ -1292,7 +1292,7 @@ class ProductionRunsController extends AppController {
 					$datasource->rollback();
 					pr($e);
 					$this->Session->setFlash(__('Reclasificación falló'), 'default',array('class' => 'error-message'), 'default',array('class' => 'error-message'));
-          $boolReclassificationSuccess=false;
+          $boolReclassificationSuccess='0';
 				}
 			}
 		
@@ -1448,7 +1448,7 @@ class ProductionRunsController extends AppController {
 					$datasource->rollback();
 					pr($e);
 					$this->Session->setFlash(__('Reclasificación falló'), 'default',array('class' => 'error-message'), 'default',array('class' => 'error-message'));
-          $boolReclassificationSuccess=false;
+          $boolReclassificationSuccess='0';
 				}
 				
 				$allPreformas=$this->Product->find('list',array('conditions'=>array('Product.product_type_id'=>PRODUCT_TYPE_PREFORMA)));
@@ -2252,7 +2252,7 @@ class ProductionRunsController extends AppController {
             $quantityPresent=$this->StockItemLog->getStockQuantityAtDateForProduct($rawMaterialId,$productionRunDateAsString,$warehouseId,true);
             
             if ($quantityPlanned>$quantityPresent){
-              $productionItemsOK=false;
+              $productionItemsOK='0';
               $exceedingItems.=__("Para producto ".$rawMaterialName." la cantidad requerida (".$quantityPlanned.") excede la cantidad en bodega (".$quantityPresent.")!")."<br/>";						
             }                
             break;
@@ -2272,7 +2272,7 @@ class ProductionRunsController extends AppController {
               }
             
               if ($ingredientQuantityPlanned > $ingredientQuantityPresent){
-                $productionItemsOK=false;
+                $productionItemsOK='0';
                 $exceedingItems.=__("Para producto ".$ingredientName." la cantidad requerida (".$ingredientQuantityPlanned.") excede la cantidad en bodega (".$ingredientQuantityPresent.")!")."<br/>";						
               }                                  
             }
@@ -2295,7 +2295,7 @@ class ProductionRunsController extends AppController {
         
         // 20211218 BAGS DO NOT PREVENT FROM SAVING
         // if ($bagQuantityPlanned>$bagQuantityPresent){
-          // $bagsOK=false;
+          // $bagsOK='0';
           // $exceedingBags.=__("Para las bolsas la cantidad requerida (".$bagQuantityPlanned.") excede la cantidad en bodega (".$bagQuantityPresent.")!")."<br/>";						
         // }
         // if ($exceedingBags!=""){
@@ -2342,7 +2342,7 @@ class ProductionRunsController extends AppController {
             
             if ($consumableQuantityPlanned > $consumableQuantityPresent){
               $consumablesArray[$consumableMaterialId]=$consumableQuantityPresent;
-              $consumableProductionItemsOK=false;
+              $consumableProductionItemsOK='0';
               $exceedingConsumableItems.=__("Para producto ".$consumableMaterialName." la cantidad requerida (".$consumableQuantityPlanned.") excedió la cantidad en bodega (".$consumableQuantityPresent.")!  Por tal razón, se ha reducido la cantidad utilizado a .".$consumableQuantityPresent.".")."<br/>";
             }
           }
@@ -3572,7 +3572,7 @@ class ProductionRunsController extends AppController {
               $quantityPresent+=$originalProductionRun['ProductionRun']['raw_material_quantity'];
             }
             if ($quantityPlanned>$quantityPresent){
-              $productionItemsOK=false;
+              $productionItemsOK='0';
               $exceedingItems.=__("Para producto ".$rawMaterialName." la cantidad requerida (".$quantityPlanned.") excede la cantidad en bodega (".$quantityPresent.")!")."<br/>";						
             }                
             break;
@@ -3596,7 +3596,7 @@ class ProductionRunsController extends AppController {
                 }
               }
               if ($ingredientQuantityPlanned > $ingredientQuantityPresent){
-                $productionItemsOK=false;
+                $productionItemsOK='0';
                 $exceedingItems.=__("Para producto ".$ingredientName." la cantidad requerida (".$ingredientQuantityPlanned.") excede la cantidad en bodega (".$ingredientQuantityPresent.")!")."<br/>";						
               }                                  
             }
@@ -3617,7 +3617,7 @@ class ProductionRunsController extends AppController {
         }
         // 20211221 BAGS DO NOT PREVENT FROM SAVING
         // if ($bagQuantityPlanned>$bagQuantityPresent){
-          // $bagsOK=false;
+          // $bagsOK='0';
           // $exceedingBags.=__("Para las bolsas la cantidad requerida (".$bagQuantityPlanned.") excede la cantidad en bodega (".$bagQuantityPresent.")!")."<br/>";						
         // }
         // if ($exceedingBags!=""){
@@ -3665,7 +3665,7 @@ class ProductionRunsController extends AppController {
             
             if ($consumableQuantityPlanned > $consumableQuantityPresent){
               $consumablesArray[$consumableMaterialId]=$consumableQuantityPresent;
-              $consumableProductionItemsOK=false;
+              $consumableProductionItemsOK='0';
               $exceedingConsumableItems.=__("Para producto ".$consumableMaterialName." la cantidad requerida (".$consumableQuantityPlanned.") excedió la cantidad en bodega (".$consumableQuantityPresent.")!  Por tal razón, se ha reducido la cantidad utilizado a .".$consumableQuantityPresent.".")."<br/>";
             }
           }
@@ -3757,7 +3757,7 @@ class ProductionRunsController extends AppController {
           catch(Exception $e){
             $datasource->rollback();
             pr($e);					
-            $boolRemovalPreviousData=false;
+            $boolRemovalPreviousData='0';
             $this->Session->setFlash(__('No se podían eliminar los movimientos viejos'), 'default',['class' => 'error-message']);
           }
           if ($boolRemovalPreviousData){
@@ -4390,7 +4390,7 @@ class ProductionRunsController extends AppController {
               $millConversionProductId=$productionMovement['product_id'];
             }
             //if (!empty($productionMovement['StockItem']['StockMovement'])){
-            //  $boolEditable=false;
+            //  $boolEditable='0';
             //}
           }
           else {
@@ -4420,7 +4420,7 @@ class ProductionRunsController extends AppController {
           
             // update the array for unit price calculations in order to take into account already used ingredients  
             //pr($productionMovement);
-            $boolStockItemAdjusted=false;
+            $boolStockItemAdjusted='0';
             if (array_key_exists($productionMovement['product_id'],$rawMaterialStockItems)){
               for ($rmsi=0;$rmsi<count($rawMaterialStockItems[$productionMovement['product_id']]['StockItems']);$rmsi++){
                 if ($rawMaterialStockItems[$productionMovement['product_id']]['StockItems'][$rmsi]['StockItem']['id'] == $productionMovement['stockitem_id']){
@@ -4649,7 +4649,7 @@ class ProductionRunsController extends AppController {
 		foreach ($producedMovements as $producedMovement){
 			$stockItem=$this->StockItem->find('first',array('conditions'=>array('StockItem.id'=>$producedMovement['ProductionMovement']['stockitem_id'])));
 			if ($stockItem['StockItem']['original_quantity']!=$stockItem['StockItem']['remaining_quantity']){
-				$producedStockUntouched=false;
+				$producedStockUntouched='0';
 				$this->loadModel('StockMovement');
 				$this->loadModel('Order');
 				$saleMovementsForStockItem=$this->Order->StockMovement->find('all',array('conditions'=>array('stockitem_id'=>$stockItem['StockItem']['id'])));
@@ -4797,7 +4797,7 @@ class ProductionRunsController extends AppController {
 		foreach ($producedMovements as $producedMovement){
 			$stockItem=$this->StockItem->find('first',array('conditions'=>array('StockItem.id'=>$producedMovement['ProductionMovement']['stockitem_id'])));
 			if ($stockItem['StockItem']['original_quantity']!=$stockItem['StockItem']['remaining_quantity']){
-				$producedStockUntouched=false;
+				$producedStockUntouched='0';
 				$this->loadModel('StockMovement');
 				$this->loadModel('Order');
 				$saleMovementsForStockItem=$this->Order->StockMovement->find('all',array('conditions'=>array('stockitem_id'=>$stockItem['StockItem']['id'])));

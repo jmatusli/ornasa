@@ -797,11 +797,11 @@ class QuotationsController extends AppController {
 		$this->set(compact('quotation'));
     //pr($quotation);
 		
-		//$bool_edit_forbidden_because_salesorder_authorized=false;
+		//$bool_edit_forbidden_because_salesorder_authorized='0';
 		if (!empty($quotation['SalesOrder'])){
 			//pr($quotation['SalesOrder']);
 			//if ($quotation['SalesOrder'][0]['bool_authorized']){
-				$bool_edit_permission=false;
+				$bool_edit_permission='0';
 			//	$bool_edit_forbidden_because_salesorder_authorized=true;
 			//}
 		}
@@ -955,7 +955,7 @@ class QuotationsController extends AppController {
     
 		$requestProducts=[];
     if ($this->request->is('post')) {
-      $boolInitialLoad=false;
+      $boolInitialLoad='0';
       foreach ($this->request->data['QuotationProduct'] as $quotationProduct){
 				if ($quotationProduct['product_id'] > 0 && $quotationProduct['product_quantity'] > 0 && $quotationProduct['product_unit_price'] > 0){
 					$requestProducts[]['QuotationProduct']=$quotationProduct;
@@ -1013,7 +1013,7 @@ class QuotationsController extends AppController {
       $sumProductTotals=0;
       $boolProductPricesRegistered=true;
       $productPriceWarning='';
-      $boolProductPriceLessThanDefaultPrice=false;
+      $boolProductPriceLessThanDefaultPrice='0';
       $productPriceLessThanDefaultPriceError='';
       $boolProductPriceRepresentsBenefit=true;
       $productPriceBenefitError='';
@@ -1031,11 +1031,11 @@ class QuotationsController extends AppController {
             
             $multiplicationDifference=abs($quotationProduct['product_total_price']-$quotationProduct['product_quantity']*$quotationProduct['product_unit_price']);
             if ($multiplicationDifference>=0.01){
-              $boolMultiplicationOK=false;
+              $boolMultiplicationOK='0';
             };
             if ($quotationProduct['product_id'] != PRODUCT_SERVICE_OTHER){
               if ($quotationProduct['default_product_unit_price'] <=0) {
-                $boolProductPricesRegistered=false; 
+                $boolProductPricesRegistered='0'; 
                 $productPriceWarning='Producto '.$productName.' no tiene registrado un precio de listado entonces no se podía aplicar un control de precios.  Por favor graba un precio para este producto primero.  ';  
               }
               // 20211004 default_product_price could be tricked into accepting volume price by users with bad intentions by increasing and then decreasing prices, that's why the price is calculated afreshe in $acceptableProductPrice
@@ -1046,7 +1046,7 @@ class QuotationsController extends AppController {
                 $productPriceLessThanDefaultPriceError='Producto '.$productName.' tiene un precio '.$quotationProduct['product_unit_price'].' pero el precio mínimo establecido es '.$acceptableProductPrice.'.  No se permite vender abajo del precio mínimo establecido.  ';  
               }
               if ($quotationProduct['product_unit_price'] < $quotationProduct['product_unit_cost']) {
-                $boolProductPriceRepresentsBenefit=false; 
+                $boolProductPriceRepresentsBenefit='0'; 
                 if ($userRoleId === ROLE_ADMIN){
                   $productPriceBenefitError='Producto '.$productName.' tiene un precio '.$quotationProduct['product_unit_price'].' pero el costo es '.$quotationProduct['product_unit_cost'].'.  No se permite vender con pérdidas.  ';  
                 }
@@ -1381,7 +1381,7 @@ class QuotationsController extends AppController {
     
 		$requestProducts=[];
 		if ($this->request->is(['post', 'put'])) {
-      $boolInitialLoad=false;
+      $boolInitialLoad='0';
       foreach ($this->request->data['QuotationProduct'] as $quotationProduct){
 				if ($quotationProduct['product_id'] > 0 && $quotationProduct['product_quantity'] > 0 && $quotationProduct['product_unit_price'] > 0){
 					$requestProducts[]['QuotationProduct']=$quotationProduct;
@@ -1415,7 +1415,7 @@ class QuotationsController extends AppController {
         $boolRejectedOK=true;
         if ($this->request->data['Quotation']['bool_rejected']){
           if (!$this->request->data['Quotation']['rejected_reason_id']){
-            $boolRejectedOK=false;
+            $boolRejectedOK='0';
           }
         }
         
@@ -1423,7 +1423,7 @@ class QuotationsController extends AppController {
         $sumProductTotals=0;
         $boolProductPricesRegistered=true;
         $productPriceWarning='';
-        $boolProductPriceLessThanDefaultPrice=false;
+        $boolProductPriceLessThanDefaultPrice='0';
         $productPriceLessThanDefaultPriceError='';
         $boolProductPriceRepresentsBenefit=true;
         $productPriceBenefitError='';
@@ -1436,11 +1436,11 @@ class QuotationsController extends AppController {
               
               $multiplicationDifference=abs($quotationProduct['product_total_price']-$quotationProduct['product_quantity']*$quotationProduct['product_unit_price']);
               if ($multiplicationDifference>=0.01){
-                $boolMultiplicationOK=false;
+                $boolMultiplicationOK='0';
               };
               
               if ($quotationProduct['default_product_unit_price'] <=0) {
-                $boolProductPricesRegistered=false; 
+                $boolProductPricesRegistered='0'; 
                 $productName=$this->Product->getProductName($quotationProduct['product_id']);
                 $rawMaterialName=($quotationProduct['raw_material_id'] > 0?($this->Product->getProductName($quotationProduct['raw_material_id'])):'');
                 if (!empty($rawMaterialName)){
@@ -1461,7 +1461,7 @@ class QuotationsController extends AppController {
                 $productPriceLessThanDefaultPriceError='Producto '.$productName.' tiene un precio '.$quotationProduct['product_unit_price'].' pero el precio mínimo establecido es '.$acceptableProductPrice.'.  No se permite vender abajo del precio mínimo establecido.  ';  
               }
               if ($quotationProduct['product_unit_price'] < $quotationProduct['product_unit_cost']) {
-                $boolProductPriceRepresentsBenefit=false; 
+                $boolProductPriceRepresentsBenefit='0'; 
                 $productName=$this->Product->getProductName($quotationProduct['product_id']);
                 $rawMaterialName=($quotationProduct['raw_material_id'] > 0 ?($this->Product->getProductName($quotationProduct['raw_material_id'])):'');
                 //echo 'rawMaterialId is '.$quotationProduct['raw_material_id'].'<br>';
@@ -1719,7 +1719,7 @@ class QuotationsController extends AppController {
 		]);
 		$this->set(compact('quotationRemarks'));
 		
-    $boolChangeDueDate=false;
+    $boolChangeDueDate='0';
 		if ($userRoleId == ROLE_ADMIN || $canChangeDueDate) { 
 			$boolChangeDueDate=true;
 		}
@@ -1846,7 +1846,7 @@ class QuotationsController extends AppController {
 		$boolDeletionAllowed=true;
 		
 		if (!empty($quotation['SalesOrder']['id'])){
-			$boolDeletionAllowed=false;
+			$boolDeletionAllowed='0';
 			$flashMessage.="Esta cotización tiene una orden de venta asociada.  Para poder eliminar la cotización, primero hay que eliminar la orden de venta ".$quotation['SalesOrder']['sales_order_code'].".";
 		}
 		if (!$boolDeletionAllowed){
@@ -2968,7 +2968,7 @@ class QuotationsController extends AppController {
 		$boolGenerationPossible=true;
 		$flashMessage="";
 		if (count($quotation['SalesOrder'])>0){
-			$boolGenerationPossible=false;
+			$boolGenerationPossible='0';
 			$flashMessage.="Esta cotización ya tiene ordenes de venta correspondientes con números";
 			if (count($quotation['SalesOrder'])==1){
 				$flashMessage.=$quotation['SalesOrder'][0]['sales_order_code'].".";

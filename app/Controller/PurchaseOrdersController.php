@@ -378,7 +378,7 @@ class PurchaseOrdersController extends AppController {
 		$warehouseId=0;
 		
     $requestProducts=[];
-    //$boolRefreshReload=false;
+    //$boolRefreshReload='0';
     
     if ($this->request->is('post')) {
 			$currencyId=$this->request->data['PurchaseOrder']['currency_id'];
@@ -412,7 +412,7 @@ class PurchaseOrdersController extends AppController {
             $multiplicationDifference=abs($purchaseOrderProduct['product_total_cost']-$purchaseOrderProduct['product_quantity']*$purchaseOrderProduct['product_unit_cost']);
             //pr($purchaseOrderProduct);
             if ($multiplicationDifference>=0.01){
-              $boolMultiplicationOK=false;
+              $boolMultiplicationOK='0';
               $this->Product->recursive=-1;
               $relatedProduct=$this->Product->find('first',[
                 'conditions'=>['Product.id'=>$purchaseOrderProduct['product_id'],],
@@ -656,7 +656,7 @@ class PurchaseOrdersController extends AppController {
 					$multiplicationDifference=abs($purchaseOrderProduct['product_total_cost']-$purchaseOrderProduct['product_quantity']*$purchaseOrderProduct['product_unit_cost']);
 					//pr($purchaseOrderProduct);
 					if ($multiplicationDifference>=0.01){
-						$boolMultiplicationOK=false;
+						$boolMultiplicationOK='0';
             $this->Product->recursive=-1;
             $relatedProduct=$this->Product->find('first',[
               'conditions'=>['Product.id'=>$purchaseOrderProduct['product_id'],],

@@ -558,7 +558,7 @@ class ProductPriceLogsController extends AppController {
       ];
     }
     
-    $boolSaved=false;
+    $boolSaved='0';
     if ($this->request->is('post') && empty($this->request->data['changeDate'])) {	      
       $latestClosingDate=$this->ClosingDate->getLatestClosingDate();
       $latestClosingDatePlusOne=date("Y-m-d",strtotime($latestClosingDate."+1 days"));
@@ -1155,7 +1155,7 @@ class ProductPriceLogsController extends AppController {
     }
     //pr($productTypes);
 
-    $boolSaved=false;
+    $boolSaved='0';
     if ($this->request->is('post') && empty($this->request->data['changeDate'])) {	      
       $latestClosingDate=$this->ClosingDate->getLatestClosingDate();
       $latestClosingDatePlusOne=date("Y-m-d",strtotime($latestClosingDate."+1 days"));
@@ -1170,7 +1170,7 @@ class ProductPriceLogsController extends AppController {
       else {
         //pr($this->request->data);
         
-        $pricePresentForClient=$previousPricePresentForClient=false;     
+        $pricePresentForClient=$previousPricePresentForClient='0';     
         foreach ($productTypes as $productTypeId => $productTypeData){
           foreach ($productTypeData['existences']['Product'] as $productId=>$productData){
             if ($productTypeId == PRODUCT_TYPE_BOTTLE){
@@ -1336,7 +1336,7 @@ class ProductPriceLogsController extends AppController {
     }
     $this->set(compact('boolSaved'));
     
-    $pricePresentForClient=$previousPricePresentForClient=false;     
+    $pricePresentForClient=$previousPricePresentForClient='0';     
     if ($clientId > 0){
       foreach ($productTypes as $productTypeId => $productTypeData){
         foreach ($productTypeData['existences']['Product'] as $productId=>$productData){
@@ -1603,7 +1603,7 @@ class ProductPriceLogsController extends AppController {
       }
     }  
     //pr($clientPriceArray);
-    $boolSaved=false;
+    $boolSaved='0';
     if ($this->request->is('post') && empty($this->request->data['changeDate'])) {	      
       $latestClosingDate=$this->ClosingDate->getLatestClosingDate();
       $latestClosingDatePlusOne=date("Y-m-d",strtotime($latestClosingDate."+1 days"));

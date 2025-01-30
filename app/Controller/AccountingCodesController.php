@@ -314,7 +314,7 @@ class AccountingCodesController extends AppController {
 			'order'=>'AccountingRegister.register_date ASC,AccountingRegister.id ASC',
 		));
 		/*
-		$boolBankAccount=false;
+		$boolBankAccount='0';
 		$banksAccountingCode=$this->AccountingCode->read(null,ACCOUNTING_CODE_BANKS);
 		if (($accountingCode['AccountingCode']['lft']>$banksAccountingCode['AccountingCode']['lft'])&&($accountingCode['AccountingCode']['rght']<$banksAccountingCode['AccountingCode']['rght'])){
 			$boolBankAccount=true;
@@ -411,7 +411,7 @@ class AccountingCodesController extends AppController {
 			));
 			//pr($accountingMovements);
 			
-			$boolBankAccount=false;
+			$boolBankAccount='0';
 			$accountingCode['bankaccount']=false;
 			$banksAccountingCode=$this->AccountingCode->read(null,ACCOUNTING_CODE_BANKS);
 			if (($accountingCode['AccountingCode']['lft']>$banksAccountingCode['AccountingCode']['lft'])&&($accountingCode['AccountingCode']['rght']<$banksAccountingCode['AccountingCode']['rght'])){

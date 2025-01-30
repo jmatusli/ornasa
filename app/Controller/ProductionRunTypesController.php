@@ -131,7 +131,7 @@ class ProductionRunTypesController extends AppController {
 		$boolDeletionAllowed=true;
 		
 		if (!empty($productionRunType['ProductionRun'])){
-			$boolDeletionAllowed=false;
+			$boolDeletionAllowed='0';
 			$flashMessage.="Este tipo de producción tiene procesos de producción correspondientes.  Para poder eliminar el tipo de producción, primero hay que eliminar o modificar los procesos de producción ";
 			
 			if (count($productionRunType['ProductionRun'])==1){

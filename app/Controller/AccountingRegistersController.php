@@ -180,8 +180,8 @@ class AccountingRegistersController extends AppController {
 			
 			$sumDebit=0;
 			$sumCredit=0;
-			$boolMissingDebitAccount=false;
-			$boolMissingCreditAccount=false;
+			$boolMissingDebitAccount='0';
+			$boolMissingCreditAccount='0';
 			foreach ($this->request->data['AccountingMovement'] as $accountingMovement){
 				if (!empty($accountingMovement['debit_amount'])&&$accountingMovement['debit_amount']>0){
 					$sumDebit+=$accountingMovement['debit_amount'];
@@ -248,7 +248,7 @@ class AccountingRegistersController extends AppController {
 					}
 					else if (!empty($accountingMovement['credit_amount'])){
 						$accounting_movement_amount = round($accountingMovement['credit_amount'],2);
-						$bool_debit=false;
+						$bool_debit='0';
 					}
 					
 					$accounting_movement_code_id = $accountingMovement['accounting_code_id'];
@@ -358,8 +358,8 @@ class AccountingRegistersController extends AppController {
 			
 			$sumDebit=0;
 			$sumCredit=0;
-			$boolMissingDebitAccount=false;
-			$boolMissingCreditAccount=false;
+			$boolMissingDebitAccount='0';
+			$boolMissingCreditAccount='0';
 			foreach ($this->request->data['AccountingMovement'] as $accountingMovement){
 				if (!empty($accountingMovement['debit_amount'])&&$accountingMovement['debit_amount']>0){
 					$sumDebit+=$accountingMovement['debit_amount'];

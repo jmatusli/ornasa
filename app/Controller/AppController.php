@@ -1760,7 +1760,7 @@ class AppController extends Controller {
 				$bool_add_permission=$this->hasPermission($this->Auth->User('id'),$aco_name);
 			}
 			else {
-				$bool_add_permission=false;
+				$bool_add_permission='0';
 			}
 			$aco_name=Inflector::camelize(Inflector::pluralize($currentController))."/crear";		
 			$userid=$this->Auth->User('id');
@@ -1769,7 +1769,7 @@ class AppController extends Controller {
 				$bool_crear_permission=$this->hasPermission($this->Auth->User('id'),$aco_name);
 			}
 			else {
-				$bool_crear_permission=false;
+				$bool_crear_permission='0';
 			}
 			$bool_add_permission=$bool_add_permission || $bool_crear_permission;
       $this->set(compact('bool_add_permission'));
@@ -1780,7 +1780,7 @@ class AppController extends Controller {
 				$bool_edit_permission=$this->hasPermission($this->Auth->User('id'),$aco_name);
 			}
 			else {
-				$bool_edit_permission=false;
+				$bool_edit_permission='0';
 			}
 			$aco_name=Inflector::camelize(Inflector::pluralize($currentController))."/editar";		
 			//pr($userid);
@@ -1788,7 +1788,7 @@ class AppController extends Controller {
 				$bool_editar_permission=$this->hasPermission($this->Auth->User('id'),$aco_name);
 			}
 			else {
-				$bool_editar_permission=false;
+				$bool_editar_permission='0';
 			}
 			$bool_edit_permission=$bool_edit_permission || $bool_editar_permission;
       $this->set(compact('bool_edit_permission'));
@@ -1799,7 +1799,7 @@ class AppController extends Controller {
 				$bool_delete_permission=$this->hasPermission($this->Auth->User('id'),$aco_name);
 			}
 			else {
-				$bool_delete_permission=false;
+				$bool_delete_permission='0';
 			}
 			//echo "bool delete permission is ".$bool_delete_permission."<br/>";
 			$this->set(compact('bool_delete_permission'));
@@ -1809,13 +1809,13 @@ class AppController extends Controller {
 				$bool_annul_permission=$this->hasPermission($this->Auth->User('id'),$aco_name);
 			}
 			else {
-				$bool_annul_permission=false;
+				$bool_annul_permission='0';
 			}
 			//echo "bool annul permission is ".$bool_annul_permission."<br/>";
 			$this->set(compact('bool_annul_permission'));
 		}
 		
-		$exchangeRateUpdateNeeded=false;
+		$exchangeRateUpdateNeeded='0';
 		$this->loadModel('ExchangeRate');
 		$exchangeRateDuration=$this->ExchangeRate->getLatestExchangeRateDuration();
 		//echo "exchange rate duration is ".$exchangeRateDuration."<br/>";
@@ -2065,9 +2065,9 @@ class AppController extends Controller {
     $adjustmentCreationMovement=[];
 		$movements=array();
 		$exitedrawmovements=array();
-		$stockMovementUsed=false;
-		$productionMovementUsed=false;
-		$productionMovementAndRawExitUsed=false;
+		$stockMovementUsed='0';
+		$productionMovementUsed='0';
+		$productionMovementAndRawExitUsed='0';
 		
 		$categoryid=$stockItem['Product']['ProductType']['product_category_id'];
 		switch ($categoryid){
@@ -2551,7 +2551,7 @@ class AppController extends Controller {
 				}
 				else if (!empty($accountingMovement['credit_amount'])){
 					$accounting_movement_amount = round($accountingMovement['credit_amount'],2);
-					$bool_debit=false;
+					$bool_debit='0';
 				}
 				
 				$accounting_movement_code_id = $accountingMovement['accounting_code_id'];

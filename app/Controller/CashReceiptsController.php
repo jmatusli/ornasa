@@ -1006,7 +1006,7 @@ class CashReceiptsController extends AppController {
 		}
 		//pr($otherPendingInvoicesForClient);
 		if ($this->request->is(['post', 'put'])) {
-			$bool_first_load=false;
+			$bool_first_load='0';
 			
       $plantId=$this->request->data['CashReceipt']['plant_id'];
       
@@ -1156,7 +1156,7 @@ class CashReceiptsController extends AppController {
           $datasource=$this->CashReceipt->getDataSource();
           $datasource->begin();
           // first bring back everything to original state
-          $removedOK=false;
+          $removedOK='0';
           $oldAccountingRegisterCode="";
           try {
             // first remove existing data: invoice, accounting registers, accounting register invoice

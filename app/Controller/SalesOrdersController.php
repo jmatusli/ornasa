@@ -820,7 +820,7 @@ class SalesOrdersController extends AppController {
     //$driverUserId=0;
     //$vehicleId=0;
     $warehouseId=0;
-    $boolDelivery=false;
+    $boolDelivery='0';
     
     if ($userRoleId == ROLE_CLIENT){
       $userForExternalClient=$this->User->find('first',[
@@ -835,7 +835,7 @@ class SalesOrdersController extends AppController {
 		$boolInitialLoad=true;
     $requestProducts=[];
     if ($this->request->is('post')) {
-      $boolInitialLoad=false;
+      $boolInitialLoad='0';
       //pr($this->request->data);
       foreach ($this->request->data['SalesOrderProduct'] as $salesOrderProduct){
         if ($salesOrderProduct['product_id']>0 && $salesOrderProduct['product_quantity']>0 && $salesOrderProduct['product_unit_price']>0){
@@ -905,7 +905,7 @@ class SalesOrdersController extends AppController {
       $sumProductTotals=0;
       $boolProductPricesRegistered=true;
       $productPriceWarning='';
-      $boolProductPriceLessThanDefaultPrice=false;
+      $boolProductPriceLessThanDefaultPrice='0';
       $productPriceLessThanDefaultPriceError='';
       $boolProductPriceRepresentsBenefit=true;
       $productPriceBenefitError='';
@@ -924,12 +924,12 @@ class SalesOrdersController extends AppController {
             
             $multiplicationDifference=abs($salesOrderProduct['product_total_price']-$salesOrderProduct['product_quantity']*$salesOrderProduct['product_unit_price']);
             if ($multiplicationDifference>=0.01){
-              $boolMultiplicationOK=false;
+              $boolMultiplicationOK='0';
             };
             if ($salesOrderProduct['product_id'] != PRODUCT_SERVICE_OTHER){
               if ($salesOrderProduct['default_product_unit_price'] <=0) {
                 //pr($salesOrderProduct);
-                $boolProductPricesRegistered=false; 
+                $boolProductPricesRegistered='0'; 
                 $productPriceWarning='Producto '.$productName.' no tiene registrado un precio de listado entonces no se podía aplicar un control de precios.  Por favor graba un precio para este producto primero.  ';  
               }
               // 20211004 default_product_price could be tricked into accepting volume price by users with bad intentions by increasing and then decreasing prices, that's why the price is calculated afreshe in $acceptableProductPrice
@@ -940,7 +940,7 @@ class SalesOrdersController extends AppController {
                 $productPriceLessThanDefaultPriceError='Producto '.$productName.' tiene un precio '.$salesOrderProduct['product_unit_price'].' pero el precio mínimo establecido es '.$acceptableProductPrice.'.  No se permite vender abajo del precio mínimo establecido.  ';  
               }
               if ($salesOrderProduct['product_unit_price'] < $salesOrderProduct['product_unit_cost']) {
-                $boolProductPriceRepresentsBenefit=false; 
+                $boolProductPriceRepresentsBenefit='0'; 
                 if ($userRoleId === ROLE_ADMIN){
                   $productPriceBenefitError='Producto '.$productName.' tiene un precio '.$salesOrderProduct['product_unit_price'].' pero el costo es '.$salesOrderProduct['product_unit_cost'].'.  No se permite vender con pérdidas.  ';  
                 }
@@ -1311,7 +1311,7 @@ class SalesOrdersController extends AppController {
     $recordUserId=$loggedUserId;
     $creditAuthorizationUserId=$loggedUserId;
     $warehouseId=0;
-    $boolDelivery=false;
+    $boolDelivery='0';
     
     $genericClientIds=$this->ThirdParty->getGenericClientIds();
     $this->set(compact('genericClientIds'));
@@ -1320,7 +1320,7 @@ class SalesOrdersController extends AppController {
     
 		$requestProducts=[];
     if ($this->request->is(['post', 'put'])) {
-      $boolInitialLoad=false;
+      $boolInitialLoad='0';
       //pr($this->request->data);
       foreach ($this->request->data['SalesOrderProduct'] as $salesOrderProduct){
         if ($salesOrderProduct['product_id']>0 && $salesOrderProduct['product_quantity']>0 && $salesOrderProduct['product_unit_price']>0){
@@ -1369,7 +1369,7 @@ class SalesOrdersController extends AppController {
         $sumProductTotals=0;
         $boolProductPricesRegistered=true;
         $productPriceWarning='';
-        $boolProductPriceLessThanDefaultPrice=false;
+        $boolProductPriceLessThanDefaultPrice='0';
         $productPriceLessThanDefaultPriceError='';
         $boolProductPriceRepresentsBenefit=true;
         $productPriceBenefitError='';
@@ -1387,11 +1387,11 @@ class SalesOrdersController extends AppController {
               
               $multiplicationDifference=abs($salesOrderProduct['product_total_price']-$salesOrderProduct['product_quantity']*$salesOrderProduct['product_unit_price']);
               if ($multiplicationDifference>=0.01){
-                $boolMultiplicationOK=false;
+                $boolMultiplicationOK='0';
               };
               if ($salesOrderProduct['product_id'] != PRODUCT_SERVICE_OTHER){
                 if ($salesOrderProduct['default_product_unit_price'] <=0) {
-                  $boolProductPricesRegistered=false; 
+                  $boolProductPricesRegistered='0'; 
                   $productPriceWarning='Producto '.$productName.' no tiene registrado un precio de listado entonces no se podía aplicar un control de precios.  Por favor graba un precio para este producto primero.  ';  
                 }
                 // 20211004 default_product_price could be tricked into accepting volume price by users with bad intentions by increasing and then decreasing prices, that's why the price is calculated afreshe in $acceptableProductPrice
@@ -1402,7 +1402,7 @@ class SalesOrdersController extends AppController {
                   $productPriceLessThanDefaultPriceError='Producto '.$productName.' tiene un precio '.$salesOrderProduct['product_unit_price'].' pero el precio mínimo establecido es '.$acceptableProductPrice.'.  No se permite vender abajo del precio mínimo establecido.  ';  
                 }
                 if ($salesOrderProduct['product_unit_price'] < $salesOrderProduct['product_unit_cost']) {
-                  $boolProductPriceRepresentsBenefit=false; 
+                  $boolProductPriceRepresentsBenefit='0'; 
                   if ($userRoleId === ROLE_ADMIN){
                     $productPriceBenefitError='Producto '.$productName.' tiene un precio '.$salesOrderProduct['product_unit_price'].' pero el costo es '.$salesOrderProduct['product_unit_cost'].'.  No se permite vender con pérdidas.  ';  
                   }
@@ -2054,7 +2054,7 @@ class SalesOrdersController extends AppController {
 		$boolDeletionAllowed=true;
 		
 		if (!empty($salesOrder['Invoice']['id'])){
-			$boolDeletionAllowed=false;
+			$boolDeletionAllowed='0';
 			$flashMessage.="Ya se emitió una factura para esta orden de venta.  Para poder eliminar la orden de venta, primero hay que eliminar o anular la factura ";
 			$flashMessage.=$salesOrder['Invoice']['invoice_code'].".";
 		}
@@ -2407,7 +2407,7 @@ class SalesOrdersController extends AppController {
 					if ($salesOrderProduct['product_id']>0){
 						$multiplicationDifference=abs($salesOrderProduct['product_total_price']-$salesOrderProduct['product_quantity']*$salesOrderProduct['product_unit_price']);
 						if ($multiplicationDifference>=0.01){
-							$boolMultiplicationOK=false;
+							$boolMultiplicationOK='0';
 						};
 					}
 				}
@@ -2418,10 +2418,10 @@ class SalesOrdersController extends AppController {
       ]);
 			$boolTotalOK=true;
 			if (empty($this->request->data['SalesOrder']['price_total'])){
-				$boolTotalOK=false;
+				$boolTotalOK='0';
 			}
 			elseif ($this->request->data['SalesOrder']['price_total']!=$relatedQuotation['Quotation']['price_total']){
-				$boolTotalOK=false;
+				$boolTotalOK='0';
 			}
 			
 			if ($salesOrderDateString>date('Y-m-d')){
@@ -2583,7 +2583,7 @@ class SalesOrdersController extends AppController {
 						$requestProducts[]['SalesOrderProduct']=$salesOrderProduct;
 						$multiplicationDifference=abs($salesOrderProduct['product_total_price']-$salesOrderProduct['product_quantity']*$salesOrderProduct['product_unit_price']);
 						if ($multiplicationDifference>=0.01){
-							$boolMultiplicationOK=false;
+							$boolMultiplicationOK='0';
 						};
 					}
 				}
@@ -2597,10 +2597,10 @@ class SalesOrdersController extends AppController {
 			]);
 			$boolTotalOK=true;
 			if (empty($this->request->data['SalesOrder']['price_total'])){
-				$boolTotalOK=false;
+				$boolTotalOK='0';
 			}
 			elseif ($this->request->data['SalesOrder']['price_total']!=$relatedQuotation['Quotation']['price_total']){
-				$boolTotalOK=false;
+				$boolTotalOK='0';
 			}
 			
 			if ($salesOrderDateString>date('Y-m-d')){

@@ -306,8 +306,8 @@ class TransfersController extends AppController {
 			/*
       $sumDebit=0;
 			$sumCredit=0;
-			$boolMissingDebitAccount=false;
-			$boolMissingCreditAccount=false;
+			$boolMissingDebitAccount='0';
+			$boolMissingCreditAccount='0';
       //pr($this->request->data);
 			
       foreach ($this->request->data['AccountingMovement'] as $accountingMovement){
@@ -602,7 +602,7 @@ class TransfersController extends AppController {
     }
     else {
       $orderDateA=new DateTime($a['CashReceipt']['receipt_date']);
-      $isInvoiceA=false;
+      $isInvoiceA='0';
       $codeA=$a['CashReceipt']['receipt_code'];
     }
     if (!empty($b['Invoice'])){
@@ -612,7 +612,7 @@ class TransfersController extends AppController {
     }
     else {
       $orderDateB=new DateTime($b['CashReceipt']['receipt_date']);
-      $isInvoiceB=false;
+      $isInvoiceB='0';
       $codeB=$b['CashReceipt']['receipt_code'];
     }
     if ($orderDateA==$orderDateB){
@@ -702,7 +702,7 @@ class TransfersController extends AppController {
         $datasource=$this->Transfer->getDataSource();
 				$datasource->begin();
         
-        $originalDepositRemoved=false;
+        $originalDepositRemoved='0';
         //echo  "starting to remove the original deposit <br/>";
         try {
         	if (!empty($originalTransfer['AccountingRegister'])){
@@ -1288,8 +1288,8 @@ class TransfersController extends AppController {
 			$currency_id=$this->request->data['Transfer']['currency_id'];
 			$sumDebit=0;
 			$sumCredit=0;
-			$boolMissingDebitAccount=false;
-			$boolMissingCreditAccount=false;
+			$boolMissingDebitAccount='0';
+			$boolMissingCreditAccount='0';
 			foreach ($this->request->data['AccountingMovement'] as $accountingMovement){
 				if (!empty($accountingMovement['debit_amount'])&&$accountingMovement['debit_amount']>0){
 					$sumDebit+=$accountingMovement['debit_amount'];
@@ -1498,7 +1498,7 @@ class TransfersController extends AppController {
 		
 		$bool_first_load=true;
 		if ($this->request->is(array('post', 'put'))) {
-			$bool_first_load=false;
+			$bool_first_load='0';
 			$this->loadModel('AccountingCode');
 			$this->loadModel('AccountingRegister');
 			$this->loadModel('AccountingMovement');
@@ -1527,8 +1527,8 @@ class TransfersController extends AppController {
 			
 			$sumDebit=0;
 			$sumCredit=0;
-			$boolMissingDebitAccount=false;
-			$boolMissingCreditAccount=false;
+			$boolMissingDebitAccount='0';
+			$boolMissingCreditAccount='0';
 			foreach ($this->request->data['AccountingMovement'] as $accountingMovement){
 				if (!empty($accountingMovement['debit_amount'])&&$accountingMovement['debit_amount']>0){
 					$sumDebit+=$accountingMovement['debit_amount'];
@@ -1578,7 +1578,7 @@ class TransfersController extends AppController {
 				
 				try {
 					$datasource->begin();
-					$removedOK=false;
+					$removedOK='0';
 					$oldAccountingRegisterCode="";
 					// first bring back everything to original state
 					$oldTransfer=$this->Transfer->find('first',array(

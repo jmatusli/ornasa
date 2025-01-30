@@ -316,28 +316,28 @@ class StockMovementsController extends AppController {
         $boolReducedA=true;
         $boolReducedB=true;
         $boolReducedC=true;
-        $boolChangedA=false;
-        $boolChangedB=false;
-        $boolChangedC=false;
+        $boolChangedA='0';
+        $boolChangedB='0';
+        $boolChangedC='0';
         if ($originalQuantityA > $updatedQuantityA){
           $usedMaterialsA= $this->StockItem->getFinishedMaterialsForSale($productId,PRODUCTION_RESULT_CODE_A,$productQuantityA,$rawMaterialId,$adjustmentDate,$warehouseId);		
         }
         elseif ($originalQuantityA < $updatedQuantityA){
-          $boolReducedA=false;
+          $boolReducedA='0';
           $boolChangedA=true;
         }
         if ($originalQuantityB > $updatedQuantityB){
           $usedMaterialsB= $this->StockItem->getFinishedMaterialsForSale($productId,PRODUCTION_RESULT_CODE_B,$productQuantityB,$rawMaterialId,$adjustmentDate,$warehouseId);		
         }
         elseif ($originalQuantityB < $updatedQuantityB){
-          $boolReducedB=false;
+          $boolReducedB='0';
           $boolChangedB=true;
         }
         if ($originalQuantityC > $updatedQuantityC){
           $usedMaterialsC= $this->StockItem->getFinishedMaterialsForSale($productId,PRODUCTION_RESULT_CODE_C,$productQuantityC,$rawMaterialId,$adjustmentDate,$warehouseId);		
         }
         elseif ($originalQuantityC < $updatedQuantityC){
-          $boolReducedC=false;
+          $boolReducedC='0';
           $boolChangedC=true;
         }
         $userName=$this->Session->read('User.username');
@@ -1576,14 +1576,14 @@ class StockMovementsController extends AppController {
     foreach ($transferMovements as $stockMovement){
       if ($stockMovement['StockMovement']['bool_input']){
         if (!empty($stockMovement['StockItem']['StockMovement'])){
-          $boolDeletionAllowed=false;
+          $boolDeletionAllowed='0';
           $flashMessage.="No se puede eliminar la transferencia porque los productos transferidos ya se ocuparon en stockmovements ";
           foreach ($stockMovement['StockItem']['StockMovement'] as $usedStockMovement){
              $flashMessage.=$usedStockMovement['id'].","; 
           }
         }
         if (!empty($stockMovement['StockItem']['ProductionMovement'])){
-          $boolDeletionAllowed=false;
+          $boolDeletionAllowed='0';
           $flashMessage.="No se puede eliminar la transferencia porque los productos transferidos ya se ocuparon en productionmovements ";
           foreach ($stockMovement['StockItem']['ProductionMovement'] as $usedProductionMovement){
              $flashMessage.=$usedProductionMovement['id'].","; 
