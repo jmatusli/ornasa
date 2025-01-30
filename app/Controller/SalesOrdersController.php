@@ -487,7 +487,7 @@ class SalesOrdersController extends AppController {
         $conditions['SalesOrder.bool_invoice']=true;
         break;
       case SALESORDERS_WITHOUT_INVOICE:
-        $conditions['SalesOrder.bool_invoice']=false;
+        $conditions['SalesOrder.bool_invoice']='0';
     }
     switch ($authorizedDisplay){
       case SALESORDERS_ALL:
@@ -496,7 +496,7 @@ class SalesOrdersController extends AppController {
           $conditions['SalesOrder.bool_authorized']=true;
         break;
       case SALESORDERS_WITHOUT_AUTHORIZATION:
-        $conditions['SalesOrder.bool_authorized']=false;
+        $conditions['SalesOrder.bool_authorized']='0';
     }
 		*/
 		$salesOrderCount=$this->SalesOrder->find('count', [

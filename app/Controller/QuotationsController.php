@@ -490,7 +490,7 @@ class QuotationsController extends AppController {
 				$conditions['Quotation.bool_rejected']=true;
 				break;
 			case QUOTATIONS_PENDING:
-				$conditions['Quotation.bool_rejected']=false;
+				$conditions['Quotation.bool_rejected']='0';
 				break;	
 		}
 		
@@ -792,7 +792,7 @@ class QuotationsController extends AppController {
 			$quotation['Quotation']['bool_sales_order']=true;
 		}
 		else {
-			$quotation['Quotation']['bool_sales_order']=false;
+			$quotation['Quotation']['bool_sales_order']='0';
 		}
 		$this->set(compact('quotation'));
     //pr($quotation);
@@ -891,7 +891,7 @@ class QuotationsController extends AppController {
 			$quotation['Quotation']['bool_sales_order']=true;
 		}
 		else {
-			$quotation['Quotation']['bool_sales_order']=false;
+			$quotation['Quotation']['bool_sales_order']='0';
 		}
 		$this->set(compact('quotation'));
     
@@ -1236,7 +1236,7 @@ class QuotationsController extends AppController {
       'order'=>'ThirdParty.company_name'
     ]);
 		//$contacts = $this->Quotation->Contact->find('list',['order'=>'Contact.first_name']);
-    $clientConditions['ThirdParty.bool_active']=false;
+    $clientConditions['ThirdParty.bool_active']='0';
     $inactiveClients=$this->Quotation->ThirdParty->find('list',[
 			'fields'=>['ThirdParty.id'],
 			'conditions'=>$clientConditions,
@@ -2514,7 +2514,7 @@ class QuotationsController extends AppController {
 						$quotations[$q]['Quotation']['sold']=100;
 					}
 					else {
-						$quotations[$q]['Quotation']['bool_sales_order']=false;
+						$quotations[$q]['Quotation']['bool_sales_order']='0';
 						if ($quotations[$q]['Quotation']['bool_rejected']){
 							$quotations[$q]['Quotation']['dropped']=100;
 							$quotations[$q]['Quotation']['sold']=0;
@@ -2711,7 +2711,7 @@ class QuotationsController extends AppController {
 						$quotationProducts[$qp]['QuotationProduct']['sold']=100;
 					}
 					else {
-						$quotationProducts[$qp]['Quotation']['bool_sales_order']=false;
+						$quotationProducts[$qp]['Quotation']['bool_sales_order']='0';
 						if ($quotationProducts[$qp]['Quotation']['bool_rejected']){
 							$quotationProducts[$qp]['QuotationProduct']['dropped']=100;
 							$quotationProducts[$qp]['QuotationProduct']['sold']=0;
@@ -2900,7 +2900,7 @@ class QuotationsController extends AppController {
 						$quotations[$q]['Quotation']['sold']=100;
 					}
 					else {
-						$quotations[$q]['Quotation']['bool_sales_order']=false;
+						$quotations[$q]['Quotation']['bool_sales_order']='0';
 						if ($quotations[$q]['Quotation']['bool_rejected']){
 							$quotations[$q]['Quotation']['dropped']=100;
 							$quotations[$q]['Quotation']['sold']=0;
@@ -2999,7 +2999,7 @@ class QuotationsController extends AppController {
 				$salesOrderArray['SalesOrder']['quotation_id']=$quotationId;	
 				$salesOrderArray['SalesOrder']['sales_order_date']=date('Y-m-d');
 				$salesOrderArray['SalesOrder']['sales_order_code']=$quotation['Quotation']['quotation_code'];
-				$salesOrderArray['SalesOrder']['bool_annulled']=false;
+				$salesOrderArray['SalesOrder']['bool_annulled']='0';
 				$salesOrderArray['SalesOrder']['price_subtotal']=$quotation['Quotation']['price_subtotal'];
 				$salesOrderArray['SalesOrder']['currency_id']=$quotation['Quotation']['currency_id'];
 				$this->SalesOrder->create();

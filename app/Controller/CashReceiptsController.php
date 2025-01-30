@@ -543,7 +543,7 @@ class CashReceiptsController extends AppController {
                     //echo "paid set to true<br/>";
                   }
                   else {
-                    $InvoiceData['Invoice']['bool_paid']=false;
+                    $InvoiceData['Invoice']['bool_paid']='0';
                     //echo "paid set to false<br/>";
                   }
                   
@@ -1068,7 +1068,7 @@ class CashReceiptsController extends AppController {
                 //set bool_paid to false
                 $invoiceArray=[];
                 $invoiceArray['Invoice']['id']=$oldCashReceiptInvoice['CashReceiptInvoice']['invoice_id'];
-                $invoiceArray['Invoice']['bool_paid']=false;
+                $invoiceArray['Invoice']['bool_paid']='0';
                 $this->Invoice->id=$oldCashReceiptInvoice['CashReceiptInvoice']['invoice_id'];
                 $this->Invoice->save($invoiceArray);
                 // remove the CashReceiptInvoice
@@ -1177,7 +1177,7 @@ class CashReceiptsController extends AppController {
                 //set bool_paid to false
                 $invoiceArray=[];
                 $invoiceArray['Invoice']['id']=$oldCashReceiptInvoice['CashReceiptInvoice']['invoice_id'];
-                $invoiceArray['Invoice']['bool_paid']=false;
+                $invoiceArray['Invoice']['bool_paid']='0';
                 $this->Invoice->id=$oldCashReceiptInvoice['CashReceiptInvoice']['invoice_id'];
                 $this->Invoice->save($invoiceArray);
                 // remove the CashReceiptInvoice
@@ -1460,7 +1460,7 @@ class CashReceiptsController extends AppController {
                     //echo "paid set to true<br/>";
                   }
                   else {
-                    $InvoiceData['Invoice']['bool_paid']=false;
+                    $InvoiceData['Invoice']['bool_paid']='0';
                     //echo "paid set to false<br/>";
                   }
                   $this->Invoice->id=$invoice['invoice_id'];
@@ -1647,7 +1647,7 @@ class CashReceiptsController extends AppController {
 					//set bool_paid to false
 					$invoiceArray=[];
 					$invoiceArray['Invoice']['id']=$oldCashReceiptInvoice['CashReceiptInvoice']['invoice_id'];
-					$invoiceArray['Invoice']['bool_paid']=false;
+					$invoiceArray['Invoice']['bool_paid']='0';
 					$this->Invoice->id=$oldCashReceiptInvoice['CashReceiptInvoice']['invoice_id'];
 					$this->Invoice->save($invoiceArray);
 					// remove the CashReceiptInvoice
@@ -1742,7 +1742,7 @@ class CashReceiptsController extends AppController {
 					//set bool_paid to false
 					$invoiceArray=[];
 					$invoiceArray['Invoice']['id']=$oldCashReceiptInvoice['CashReceiptInvoice']['invoice_id'];
-					$invoiceArray['Invoice']['bool_paid']=false;
+					$invoiceArray['Invoice']['bool_paid']='0';
 					$this->Invoice->id=$oldCashReceiptInvoice['CashReceiptInvoice']['invoice_id'];
 					$this->Invoice->save($invoiceArray);
 					// remove the CashReceiptInvoice

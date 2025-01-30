@@ -1853,7 +1853,7 @@ class AppController extends Controller {
       //pr($warehouses);
       /*
       foreach ($warehouses as $warehouseId=>$warehouseName){
-        $priceUpdateNeeded[$enterpriseId]=false;
+        $priceUpdateNeeded[$enterpriseId]='0';
         
         $latestFuelProductPriceLog=$this->ProductPriceLog->getLatestFuelProductPriceLog($enterpriseId);
         //pr($latestFuelProductPriceLog);
@@ -1863,7 +1863,7 @@ class AppController extends Controller {
           $priceUpdateNeeded[$enterpriseId]=true;
         }
         
-        $inventoryMeasurementCorrectionNeeded[$enterpriseId]=false;
+        $inventoryMeasurementCorrectionNeeded[$enterpriseId]='0';
         $inventoryMeasurementStatus=$this->TankMeasurement->getCurrentInventoryTankMeasurementStatus($enterpriseId);
         //pr($inventoryMeasurementStatus);
         if ($inventoryMeasurementStatus['measurements_present'] && !$inventoryMeasurementStatus['adjustments_present'] && $inventoryMeasurementStatus['week_day']>0){

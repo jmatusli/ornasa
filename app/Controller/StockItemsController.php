@@ -5247,7 +5247,7 @@ class StockItemsController extends AppController {
 									// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
 									
 									$StockMovementData['movement_date']=$reclassificationDate;
-									$StockMovementData['bool_input']=false;
+									$StockMovementData['bool_input']='0';
 									$StockMovementData['name']=$message;
 									$StockMovementData['description']=$message;
 									$StockMovementData['order_id']=0;
@@ -5491,7 +5491,7 @@ class StockItemsController extends AppController {
 									
 									// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
 									$StockMovementData['movement_date']=$reclassificationDate;
-									$StockMovementData['bool_input']=false;
+									$StockMovementData['bool_input']='0';
 									$StockMovementData['name']=$message;
 									$StockMovementData['description']=$message;
 									$StockMovementData['order_id']=0;
@@ -5744,7 +5744,7 @@ class StockItemsController extends AppController {
 									
 									// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
 									$StockMovementData['movement_date']=$reclassificationDate;
-									$StockMovementData['bool_input']=false;
+									$StockMovementData['bool_input']='0';
 									$StockMovementData['name']=$message;
 									$StockMovementData['description']=$message;
 									$StockMovementData['order_id']=0;
@@ -6003,7 +6003,7 @@ class StockItemsController extends AppController {
 									// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
 									 
 									$StockMovementData['movement_date']=$tingroupDate;
-									$StockMovementData['bool_input']=false;
+									$StockMovementData['bool_input']='0';
 									$StockMovementData['name']=$message;
 									$StockMovementData['description']=$message;
 									$StockMovementData['order_id']=0;
@@ -6283,7 +6283,7 @@ class StockItemsController extends AppController {
 									// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
 									
 									$StockMovementData['movement_date']=$tingroupDate;
-									$StockMovementData['bool_input']=false;
+									$StockMovementData['bool_input']='0';
 									$StockMovementData['name']=$message;
 									$StockMovementData['description']=$message;
 									$StockMovementData['order_id']=0;

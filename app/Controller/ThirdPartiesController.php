@@ -518,7 +518,7 @@ class ThirdPartiesController extends AppController {
 				$clientConditions['ThirdParty.bool_active']=true;
 			}
 			else {
-				$clientConditions['ThirdParty.bool_active']=false;
+				$clientConditions['ThirdParty.bool_active']='0';
 			}
 		}
 		
@@ -1266,7 +1266,7 @@ class ThirdPartiesController extends AppController {
           }
           
           $this->request->data['ThirdParty']['accounting_code_id']=$this->AccountingCode->id;
-          $this->request->data['ThirdParty']['bool_provider']=false;
+          $this->request->data['ThirdParty']['bool_provider']='0';
           $this->ThirdParty->create();
           if (!$this->ThirdParty->save($this->request->data)) {
             echo "Problema guardando el cliente";
@@ -1579,7 +1579,7 @@ class ThirdPartiesController extends AppController {
             
             $this->request->data['ThirdParty']['accounting_code_id']=$this->AccountingCode->id;
           
-            $this->request->data['ThirdParty']['bool_provider']=false;
+            $this->request->data['ThirdParty']['bool_provider']='0';
             $this->ThirdParty->create();
           }
           else {
@@ -1933,7 +1933,7 @@ class ThirdPartiesController extends AppController {
           else {
             $this->request->data['ThirdParty']['accounting_code_id']=$this->AccountingCode->id;
             $this->ThirdParty->create();
-            $this->request->data['ThirdParty']['bool_provider']=false;
+            $this->request->data['ThirdParty']['bool_provider']='0';
             if (!$this->ThirdParty->save($this->request->data)) {
               echo "Problema guardando el cliente";
               pr($this->validateErrors($this->ThirdParty));
@@ -2296,7 +2296,7 @@ class ThirdPartiesController extends AppController {
 				  $this->ThirdParty->ThirdPartyUser->recursive=-1;
           
           $this->request->data['ThirdParty']['id']=$id;
-          $this->request->data['ThirdParty']['bool_provider']=false;
+          $this->request->data['ThirdParty']['bool_provider']='0';
           $this->ThirdParty->id=$id;
           if (!$this->ThirdParty->save($this->request->data)) {
 						echo "Problema guardando el cliente";

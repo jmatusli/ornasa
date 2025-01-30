@@ -764,11 +764,11 @@ class OrdersController extends AppController {
 						$sales[$rowCounter]['Invoice']['bool_annulled']=true;
 					}
 					else {
-						$sales[$rowCounter]['Invoice']['bool_annulled']=false;
+						$sales[$rowCounter]['Invoice']['bool_annulled']='0';
 					}
 				}
 				else {
-					$sales[$rowCounter]['Invoice']['bool_annulled']=false;
+					$sales[$rowCounter]['Invoice']['bool_annulled']='0';
           $sales[$rowCounter]['Invoice']['bool_credit']=true;
 				}
 				$rowCounter++;
@@ -848,11 +848,11 @@ class OrdersController extends AppController {
 						//pr($remissions[$rowCounter]);
 					}
 					else {
-						$remissions[$rowCounter]['CashReceipt']['bool_annulled']=false;
+						$remissions[$rowCounter]['CashReceipt']['bool_annulled']='0';
 					}
 				}
 				else {
-					$remissions[$rowCounter]['CashReceipt']['bool_annulled']=false;
+					$remissions[$rowCounter]['CashReceipt']['bool_annulled']='0';
 				}
 				$rowCounter++;
 			}
@@ -1063,11 +1063,11 @@ class OrdersController extends AppController {
 						$sales[$rowCounter]['Invoice']['bool_annulled']=true;
 					}
 					else {
-						$sales[$rowCounter]['Invoice']['bool_annulled']=false;
+						$sales[$rowCounter]['Invoice']['bool_annulled']='0';
 					}
 				}
 				else {
-					$sales[$rowCounter]['Invoice']['bool_annulled']=false;
+					$sales[$rowCounter]['Invoice']['bool_annulled']='0';
           //$sales[$rowCounter]['Invoice']['bool_credit']=true;
 				}
 				$rowCounter++;
@@ -1140,11 +1140,11 @@ class OrdersController extends AppController {
 						//pr($remissions[$rowCounter]);
 					}
 					else {
-						$remissions[$rowCounter]['CashReceipt']['bool_annulled']=false;
+						$remissions[$rowCounter]['CashReceipt']['bool_annulled']='0';
 					}
 				}
 				else {
-					$remissions[$rowCounter]['CashReceipt']['bool_annulled']=false;
+					$remissions[$rowCounter]['CashReceipt']['bool_annulled']='0';
 				}
 				$rowCounter++;
 			}
@@ -1334,11 +1334,11 @@ class OrdersController extends AppController {
 						$sales[$rowCounter]['Invoice']['bool_annulled']=true;
 					}
 					else {
-						$sales[$rowCounter]['Invoice']['bool_annulled']=false;
+						$sales[$rowCounter]['Invoice']['bool_annulled']='0';
 					}
 				}
 				else {
-					$sales[$rowCounter]['Invoice']['bool_annulled']=false;
+					$sales[$rowCounter]['Invoice']['bool_annulled']='0';
 				}
 				$rowCounter++;
 			}
@@ -1402,11 +1402,11 @@ class OrdersController extends AppController {
 						//pr($remissions[$rowCounter]);
 					}
 					else {
-						$remissions[$rowCounter]['CashReceipt']['bool_annulled']=false;
+						$remissions[$rowCounter]['CashReceipt']['bool_annulled']='0';
 					}
 				}
 				else {
-					$remissions[$rowCounter]['CashReceipt']['bool_annulled']=false;
+					$remissions[$rowCounter]['CashReceipt']['bool_annulled']='0';
 				}
 				$rowCounter++;
 			}
@@ -1630,11 +1630,11 @@ class OrdersController extends AppController {
 						$sales[$rowCounter]['Invoice']['bool_annulled']=true;
 					}
 					else {
-						$sales[$rowCounter]['Invoice']['bool_annulled']=false;
+						$sales[$rowCounter]['Invoice']['bool_annulled']='0';
 					}
 				}
 				else {
-					$sales[$rowCounter]['Invoice']['bool_annulled']=false;
+					$sales[$rowCounter]['Invoice']['bool_annulled']='0';
 				}
 				$rowCounter++;
 			}
@@ -1698,11 +1698,11 @@ class OrdersController extends AppController {
 						//pr($remissions[$rowCounter]);
 					}
 					else {
-						$remissions[$rowCounter]['CashReceipt']['bool_annulled']=false;
+						$remissions[$rowCounter]['CashReceipt']['bool_annulled']='0';
 					}
 				}
 				else {
-					$remissions[$rowCounter]['CashReceipt']['bool_annulled']=false;
+					$remissions[$rowCounter]['CashReceipt']['bool_annulled']='0';
 				}
 				$rowCounter++;
 			}
@@ -2798,7 +2798,7 @@ class OrdersController extends AppController {
 										// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
 										$StockMovementData=array();
 										$StockMovementData['movement_date']=$orderDateAsString;
-										$StockMovementData['bool_input']=false;
+										$StockMovementData['bool_input']='0';
 										$StockMovementData['name']=$message;
 										$StockMovementData['description']=$message;
 										$StockMovementData['order_id']=0;
@@ -2977,7 +2977,7 @@ class OrdersController extends AppController {
 										// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
 										$StockMovementData=array();
 										$StockMovementData['movement_date']=$orderDateAsString;
-										$StockMovementData['bool_input']=false;
+										$StockMovementData['bool_input']='0';
 										$StockMovementData['name']=$message;
 										$StockMovementData['description']=$message;
 										$StockMovementData['order_id']=0;
@@ -3218,7 +3218,7 @@ class OrdersController extends AppController {
               $this->request->data['Invoice']['invoice_date']=$this->request->data['Order']['order_date'];
               $this->request->data['Invoice']['client_id']=$this->request->data['Order']['third_party_id'];
               if ($this->request->data['Invoice']['bool_credit']){
-                $this->request->data['Invoice']['bool_retention']=false;
+                $this->request->data['Invoice']['bool_retention']='0';
                 $this->request->data['Invoice']['retention_amount']=0;
                 $this->request->data['Invoice']['retention_number']="";
               }
@@ -3506,7 +3506,7 @@ class OrdersController extends AppController {
                     $message="Se vendió ".$productName." (Cantidad:".$quantity_used.", total para venta:".$product_quantity.") para Venta ".$orderCode;
                     $stockMovementData=array();
                     $stockMovementData['movement_date']=$sale_date;
-                    $stockMovementData['bool_input']=false;
+                    $stockMovementData['bool_input']='0';
                     $stockMovementData['name']=$sale_date['day'].$sale_date['month'].$sale_date['year']."_".$orderCode."_".$productName;
                     $stockMovementData['description']=$message;
                     $stockMovementData['order_id']=$order_id;
@@ -3539,7 +3539,7 @@ class OrdersController extends AppController {
                   $message="Se vendió ".$productName." (Cantidad:".$product_quantity.", total para venta:".$product_quantity.") para Venta ".$orderCode;
                   $stockMovementData=[];
                   $stockMovementData['movement_date']=$sale_date;
-                  $stockMovementData['bool_input']=false;
+                  $stockMovementData['bool_input']='0';
                   $stockMovementData['name']=$sale_date['day'].$sale_date['month'].$sale_date['year']."_".$orderCode."_".$productName;
                   $stockMovementData['description']=$message;
                   $stockMovementData['order_id']=$order_id;
@@ -4230,7 +4230,7 @@ class OrdersController extends AppController {
             $this->request->data['Invoice']['retention_amount']=$this->request->data['Order']['retention_amount'];
             
             if ($this->request->data['Invoice']['bool_credit']){
-              $this->request->data['Invoice']['bool_retention']=false;
+              $this->request->data['Invoice']['bool_retention']='0';
               $this->request->data['Invoice']['retention_amount']=0;
               $this->request->data['Invoice']['retention_number']="";
             }
@@ -4509,7 +4509,7 @@ class OrdersController extends AppController {
                   $message="Se vendió ".$productName." (Cantidad:".$quantity_used.", total para venta:".$product_quantity.") para Venta ".$orderCode;
                   $stockMovementData=[];
                   $stockMovementData['movement_date']=$saleDate;
-                  $stockMovementData['bool_input']=false;
+                  $stockMovementData['bool_input']='0';
                   $stockMovementData['name']=$saleDate['day'].$saleDate['month'].$saleDate['year']."_".$orderCode."_".$productName;
                   $stockMovementData['description']=$message;
                   $stockMovementData['order_id']=$order_id;
@@ -4543,7 +4543,7 @@ class OrdersController extends AppController {
                 $message="Se vendió ".$productName." (Cantidad:".$product_quantity.", total para venta:".$product_quantity.") para Venta ".$orderCode;
                 $stockMovementData=[];
                 $stockMovementData['movement_date']=$saleDate;
-                $stockMovementData['bool_input']=false;
+                $stockMovementData['bool_input']='0';
                 $stockMovementData['name']=$saleDate['day'].$saleDate['month'].$saleDate['year']."_".$orderCode."_".$productName;
                 $stockMovementData['description']=$message;
                 $stockMovementData['order_id']=$order_id;
@@ -5457,7 +5457,7 @@ class OrdersController extends AppController {
             $this->request->data['Invoice']['retention_amount']=$this->request->data['Order']['retention_amount'];
             
             if ($this->request->data['Invoice']['bool_credit']){
-              $this->request->data['Invoice']['bool_retention']=false;
+              $this->request->data['Invoice']['bool_retention']='0';
               $this->request->data['Invoice']['retention_amount']=0;
               $this->request->data['Invoice']['retention_number']="";
             }
@@ -6298,7 +6298,7 @@ class OrdersController extends AppController {
 										// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
 										$StockMovementData=[];
 										$StockMovementData['movement_date']=$orderDateAsString;
-										$StockMovementData['bool_input']=false;
+										$StockMovementData['bool_input']='0';
 										$StockMovementData['name']=$message;
 										$StockMovementData['description']=$message;
 										$StockMovementData['order_id']=0;
@@ -6738,7 +6738,7 @@ class OrdersController extends AppController {
 									$message="Se remitió ".$productName." (Cantidad:".$quantity_used.", total para remisión:".$productQuantity.") para Remisión ".$orderCode;
 									$StockMovementData=[];
 									$StockMovementData['movement_date']=$remission_date;
-									$StockMovementData['bool_input']=false;
+									$StockMovementData['bool_input']='0';
 									$StockMovementData['name']=$remission_date['day'].$remission_date['month'].$remission_date['year']."_".$orderCode."_".$productName;
 									$StockMovementData['description']=$message;
 									$StockMovementData['order_id']=$orderId;
@@ -7315,7 +7315,7 @@ class OrdersController extends AppController {
 									$message="Se remitió ".$productName." (Cantidad:".$quantity_used.", total para remisión:".$productQuantity.") para Remisión ".$orderCode;
 									$StockMovementData=[];
 									$StockMovementData['movement_date']=$remission_date;
-									$StockMovementData['bool_input']=false;
+									$StockMovementData['bool_input']='0';
 									$StockMovementData['name']=$remission_date['day'].$remission_date['month'].$remission_date['year']."_".$orderCode."_".$productName;
 									$StockMovementData['description']=$message;
 									$StockMovementData['order_id']=$orderId;
@@ -8986,7 +8986,7 @@ class OrdersController extends AppController {
                 // if all products are in stock, proceed with the sale 
                 $this->Order->create();
                 $this->request->data['Order']['stock_movement_type_id']=MOVEMENT_SALE;
-                $this->request->data['Order']['bool_annulled']=false;
+                $this->request->data['Order']['bool_annulled']='0';
                 // ORDER TOTAL PRICE SHOULD ALWAYS BE IN C$
                 if ($currency_id==CURRENCY_USD){
                   $this->request->data['Order']['total_price']=$sub_total_invoice*$this->request->data['Order']['exchange_rate'];
@@ -9018,7 +9018,7 @@ class OrdersController extends AppController {
                 $this->request->data['Invoice']['retention_amount']=$this->request->data['Order']['retention_amount'];
                 
                 if ($this->request->data['Invoice']['bool_credit']){
-                  $this->request->data['Invoice']['bool_retention']=false;
+                  $this->request->data['Invoice']['bool_retention']='0';
                   $this->request->data['Invoice']['retention_amount']=0;
                   $this->request->data['Invoice']['retention_number']="";
                 }
@@ -10486,7 +10486,7 @@ class OrdersController extends AppController {
 										
 										$newStockMovementData=[];
 										$newStockMovementData['movement_date']=$remission_date;
-										$newStockMovementData['bool_input']=false;
+										$newStockMovementData['bool_input']='0';
 										$newStockMovementData['name']=$remission_date['day'].$remission_date['month'].$remission_date['year']."_".$orderCode."_".$productName;
 										$newStockMovementData['description']=$message;
 										$newStockMovementData['order_id']=$id;
@@ -13266,12 +13266,12 @@ class OrdersController extends AppController {
               $sales[$rowCounter]['Invoice']['bool_annulled']=true;
             }
             else {
-              $sales[$rowCounter]['Invoice']['bool_annulled']=false;
+              $sales[$rowCounter]['Invoice']['bool_annulled']='0';
             }
           }
           else {
             // this implies a remission I think
-            $sales[$rowCounter]['Invoice']['bool_annulled']=false;
+            $sales[$rowCounter]['Invoice']['bool_annulled']='0';
             $sales[$rowCounter]['Invoice']['bool_credit']=true;
            }
           /*  
@@ -13483,12 +13483,12 @@ class OrdersController extends AppController {
               $unconditionalSales[$rowCounter]['Invoice']['bool_annulled']=true;
             }
             else {
-              $unconditionalSales[$rowCounter]['Invoice']['bool_annulled']=false;
+              $unconditionalSales[$rowCounter]['Invoice']['bool_annulled']='0';
             }
           }
           else {
             // this implies a remission I think
-            $unconditionalSales[$rowCounter]['Invoice']['bool_annulled']=false;
+            $unconditionalSales[$rowCounter]['Invoice']['bool_annulled']='0';
             $unconditionalSales[$rowCounter]['Invoice']['bool_credit']=true;
           }
           $rowCounter++;

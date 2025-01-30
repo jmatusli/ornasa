@@ -185,7 +185,7 @@ class StockMovementsController extends AppController {
           
           $stockMovementData=[];
           $stockMovementData['movement_date']=$adjustmentDate;
-          $stockMovementData['bool_input']=false;
+          $stockMovementData['bool_input']='0';
           
           $stockMovementData['name']=$adjustmentDate.$productName;
           $stockMovementData['description']=$message;
@@ -617,7 +617,7 @@ class StockMovementsController extends AppController {
             
             $stockMovementData=[];
             $stockMovementData['movement_date']=$adjustmentDate;
-            $stockMovementData['bool_input']=false;
+            $stockMovementData['bool_input']='0';
             $stockMovementData['name']=$adjustmentDate.$productName;
             $stockMovementData['description']=$message;
             $stockMovementData['order_id']=-1234;
@@ -673,7 +673,7 @@ class StockMovementsController extends AppController {
             
             $stockMovementData=[];
             $stockMovementData['movement_date']=$adjustmentDate;
-            $stockMovementData['bool_input']=false;
+            $stockMovementData['bool_input']='0';
             $stockMovementData['name']=$adjustmentDate.$productName;
             $stockMovementData['description']=$message;
             $stockMovementData['order_id']=-1234;
@@ -729,7 +729,7 @@ class StockMovementsController extends AppController {
             
             $stockMovementData=[];
             $stockMovementData['movement_date']=$adjustmentDate;
-            $stockMovementData['bool_input']=false;
+            $stockMovementData['bool_input']='0';
             $stockMovementData['name']=$adjustmentDate.$productName;
             $stockMovementData['description']=$message;
             $stockMovementData['order_id']=-1234;
@@ -2114,7 +2114,7 @@ class StockMovementsController extends AppController {
             $currentInventory['saldo']['total']+=$stockMovement['StockMovement']['product_quantity'];
           }
           else {
-            $resultMatrix[$rowCounter]['bool_input']=false;
+            $resultMatrix[$rowCounter]['bool_input']='0';
             $resultMatrix[$rowCounter]['incoming']="1";
             $currentInventory['adjustment'][$productionResultCodeId]-=$stockMovement['StockMovement']['product_quantity'];
             $currentInventory['adjustment']['total']-=$stockMovement['StockMovement']['product_quantity'];

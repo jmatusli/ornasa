@@ -412,7 +412,7 @@ class AccountingCodesController extends AppController {
 			//pr($accountingMovements);
 			
 			$boolBankAccount='0';
-			$accountingCode['bankaccount']=false;
+			$accountingCode['bankaccount']='0';
 			$banksAccountingCode=$this->AccountingCode->read(null,ACCOUNTING_CODE_BANKS);
 			if (($accountingCode['AccountingCode']['lft']>$banksAccountingCode['AccountingCode']['lft'])&&($accountingCode['AccountingCode']['rght']<$banksAccountingCode['AccountingCode']['rght'])){
 				$boolBankAccount=true;

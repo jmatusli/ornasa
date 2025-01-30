@@ -729,7 +729,7 @@ class TransfersController extends AppController {
                 $this->Invoice->id=$paymentDeposit['Invoice']['id'];
                 $invoiceArray=[];
                 $invoiceArray['id']=$paymentDeposit['Invoice']['id'];
-                $invoiceArray['bool_deposited']=false;
+                $invoiceArray['bool_deposited']='0';
                 if (!$this->Invoice->save($invoiceArray)){
                   echo "Problema revirtiendo el estado (depositado) de la factura ".$paymentDeposit['Invoice']['invoice_code'];
                   pr($this->validateErrors($this->Invoice));
@@ -741,7 +741,7 @@ class TransfersController extends AppController {
                 $this->CashReceipt->id=$paymentDeposit['CashReceipt']['id'];
                 $cashReceiptArray=[];
                 $cashReceiptArray['id']=$paymentDeposit['CashReceipt']['id'];
-                $cashReceiptArray['bool_deposited']=false;
+                $cashReceiptArray['bool_deposited']='0';
                 if (!$this->CashReceipt->save($cashReceiptArray)){
                   echo "Problema revirtiendo el estado (depositado) del recibo de caja ".$paymentDeposit['CashReceipt']['receipt_code'];
                   pr($this->validateErrors($this->CashReceipt));
@@ -1124,7 +1124,7 @@ class TransfersController extends AppController {
             $this->loadModel('CashReceipt');
             $this->CashReceipt->id=$oldPaymentDeposit['PaymentDeposit']['cash_receipt_id'];
             $cashReceipt=[];
-            $cashReceipt['CashReceipt']['bool_deposited']=false;
+            $cashReceipt['CashReceipt']['bool_deposited']='0';
             if (!$this->CashReceipt->save($cashReceipt)){
               echo "Problema restableciendo el estado  depositado del recibo de caja";
               pr($this->validateErrors($this->CashReceipt));
@@ -1135,7 +1135,7 @@ class TransfersController extends AppController {
             $this->loadModel('Invoice');
             $this->Invoice->id=$oldPaymentDeposit['PaymentDeposit']['invoice_id'];
             $invoice=[];
-            $invoice['Invoice']['bool_deposited']=false;
+            $invoice['Invoice']['bool_deposited']='0';
             if (!$this->Invoice->save($invoice)){
               echo "Problema restableciendo el estado  depositado de la factura";
               pr($this->validateErrors($this->Invoice));

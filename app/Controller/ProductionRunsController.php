@@ -1051,7 +1051,7 @@ class ProductionRunsController extends AppController {
 						// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
 						$StockMovementData=array();
 						$StockMovementData['movement_date']=$reclassificationDateTimeString;
-						$StockMovementData['bool_input']=false;
+						$StockMovementData['bool_input']='0';
 						$StockMovementData['name']=$message;
 						$StockMovementData['description']=$message;
 						$StockMovementData['order_id']=0;
@@ -1204,7 +1204,7 @@ class ProductionRunsController extends AppController {
 						// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
 						$StockMovementData=array();
 						$StockMovementData['movement_date']=$reclassificationDateTimeString;
-						$StockMovementData['bool_input']=false;
+						$StockMovementData['bool_input']='0';
 						$StockMovementData['name']=$message;
 						$StockMovementData['description']=$message;
 						$StockMovementData['order_id']=0;
@@ -1356,7 +1356,7 @@ class ProductionRunsController extends AppController {
 							// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
 							$StockMovementData=array();
 							$StockMovementData['movement_date']=$reclassificationDateTimeString;
-							$StockMovementData['bool_input']=false;
+							$StockMovementData['bool_input']='0';
 							$StockMovementData['name']=$message;
 							$StockMovementData['description']=$message;
 							$StockMovementData['order_id']=0;
@@ -1509,7 +1509,7 @@ class ProductionRunsController extends AppController {
 						// STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
 						$StockMovementData=array();
 						$StockMovementData['movement_date']=$reclassificationDateTimeString;
-						$StockMovementData['bool_input']=false;
+						$StockMovementData['bool_input']='0';
 						$StockMovementData['name']=$message;
 						$StockMovementData['description']=$message;
 						$StockMovementData['order_id']=0;
@@ -1834,7 +1834,7 @@ class ProductionRunsController extends AppController {
               $finishedProductionMovement['ProductionMovement']['name']=$productionruncode."_".$code;
               $finishedProductionMovement['ProductionMovement']['description']=$message;
               $finishedProductionMovement['ProductionMovement']['movement_date']=$movementdate;
-              $finishedProductionMovement['ProductionMovement']['bool_input']=false;
+              $finishedProductionMovement['ProductionMovement']['bool_input']='0';
               $finishedProductionMovement['ProductionMovement']['stockitem_id']=$lateststockitemid;
               $finishedProductionMovement['ProductionMovement']['production_run_id']=$productionRunId;
               $finishedProductionMovement['ProductionMovement']['product_id']=$finishedProductId;
