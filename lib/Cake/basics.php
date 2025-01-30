@@ -28,7 +28,7 @@
 	define('WEEK', 604800);
 	define('MONTH', 2592000);
 	define('YEAR', 31536000);
-
+    ini_set("memory_limit",-1);
 if (!function_exists('config')) {
 
 /**
