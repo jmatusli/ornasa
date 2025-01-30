@@ -513,7 +513,7 @@ class PurchaseEstimationsController extends AppController {
 				'PurchaseEstimationProduct',
         //'SalesOrder'=>array(
 				//	'conditions'=>array(
-				//		'SalesOrder.bool_annulled'=>false,
+				//		'SalesOrder.bool_annulled'=>'0',
 				//	),
 				//),
 			)

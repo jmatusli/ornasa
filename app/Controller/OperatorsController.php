@@ -419,7 +419,7 @@ class OperatorsController extends AppController {
 					),	
 					'conditions'=>array(
 						'ProductionMovement.production_run_id'=> $selectedProductionRuns,
-						'ProductionMovement.bool_input'=>false,
+						'ProductionMovement.bool_input'=>'0',
 						'ProductionMovement.production_result_code_id'=>$productionResultCodes[$j]['ProductionResultCode']['id'],
 					),
 				));
@@ -457,7 +457,7 @@ class OperatorsController extends AppController {
 					),	
 					'conditions'=>array(
 						'ProductionMovement.production_run_id'=> $selectedProductionRuns,
-						'ProductionMovement.bool_input'=>false,
+						'ProductionMovement.bool_input'=>'0',
 						'ProductionMovement.production_result_code_id'=>$productionResultCodes[$j]['ProductionResultCode']['id'],
 					),
 				));
@@ -495,7 +495,7 @@ class OperatorsController extends AppController {
 					),	
 					'conditions'=>array(
 						'ProductionMovement.production_run_id'=> $selectedProductionRuns,
-						'ProductionMovement.bool_input'=>false,
+						'ProductionMovement.bool_input'=>'0',
 						'ProductionMovement.production_result_code_id'=>$productionResultCodes[$j]['ProductionResultCode']['id'],
 					),
 				));

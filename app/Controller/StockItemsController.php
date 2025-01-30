@@ -1060,7 +1060,7 @@ class StockItemsController extends AppController {
               $stockItemArray=[
                 'StockItem'=>[
                   'id'=>$stockItemId,
-                  'bool_active'=>false,
+                  'bool_active'=>'0',
                   'stockitem_depletion_date'=>$stockItemData['stockitem_depletion_date']
                 ],
               ];
@@ -2324,7 +2324,7 @@ class StockItemsController extends AppController {
 					'StockMovement.movement_date >='=>$startDate,
 					'StockMovement.movement_date <'=>$endDatePlusOne,
 					'StockMovement.stockitem_id'=>$stockItemIds,
-					'StockMovement.bool_transfer'=>false,
+					'StockMovement.bool_transfer'=>'0',
 				);
 				$stockMovements=$this->StockMovement->find('all',array(
 					'fields'=>array(
@@ -2598,11 +2598,11 @@ class StockItemsController extends AppController {
     }
     
     $stockMovementConditions=[
-      'StockMovement.bool_input'=>false,
+      'StockMovement.bool_input'=>'0',
       'StockMovement.movement_date >=' =>$startDate,
       'StockMovement.movement_date <' => $endDatePlusOne,
-      'StockMovement.bool_reclassification'=>false,
-      'StockMovement.bool_transfer'=>false,
+      'StockMovement.bool_reclassification'=>'0',
+      'StockMovement.bool_transfer'=>'0',
       'StockMovement.product_quantity > '=>0,
       
     ];
@@ -2901,7 +2901,7 @@ class StockItemsController extends AppController {
 		$this->ThirdParty->recursive=0;
 		$clients=$this->ThirdParty->find('all',[
 			'conditions'=>[
-				'ThirdParty.bool_provider'=>false,
+				'ThirdParty.bool_provider'=>'0',
 				'ThirdParty.bool_active'=>true,
 			],
 			'order'=>'company_name',
@@ -2934,9 +2934,9 @@ class StockItemsController extends AppController {
 					'conditions'=>array(
 						'StockMovement.production_result_code_id'=>PRODUCTION_RESULT_CODE_A,
 						'StockMovement.order_id'=>$salesClientPeriod,
-						'StockMovement.bool_reclassification'=>false,
-            'StockMovement.bool_transfer'=>false,
-						'StockMovement.bool_input'=>false,
+						'StockMovement.bool_reclassification'=>'0',
+            'StockMovement.bool_transfer'=>'0',
+						'StockMovement.bool_input'=>'0',
 						'Product.product_type_id'=>PRODUCT_TYPE_BOTTLE,
 					),
 				));
@@ -2968,9 +2968,9 @@ class StockItemsController extends AppController {
 					'fields'=>array('StockMovement.stockitem_id','StockMovement.product_quantity','StockMovement.product_total_price'),
 					'conditions'=>array(
 						'StockMovement.order_id'=>$salesClientPeriod,
-						'StockMovement.bool_reclassification'=>false,
-            'StockMovement.bool_transfer'=>false,
-						'StockMovement.bool_input'=>false,
+						'StockMovement.bool_reclassification'=>'0',
+            'StockMovement.bool_transfer'=>'0',
+						'StockMovement.bool_input'=>'0',
 						'Product.product_type_id'=>PRODUCT_TYPE_CAP,
 					),
 				));
@@ -3006,7 +3006,7 @@ class StockItemsController extends AppController {
         'StockMovement.production_result_code_id'=>PRODUCTION_RESULT_CODE_A,
         'StockMovement.movement_date >=' =>$startDate,
         'StockMovement.movement_date <' => $endDatePlusOne,
-        'StockMovement.bool_transfer'=>false,
+        'StockMovement.bool_transfer'=>'0',
         'StockMovement.product_quantity > '=>0,
       ],
     ]);
@@ -3020,11 +3020,11 @@ class StockItemsController extends AppController {
           ['bool_adjustment'=>true,],
           ['bool_reclassification'=>true,],
         ],
-        'StockMovement.bool_input'=>false,
+        'StockMovement.bool_input'=>'0',
         'StockMovement.production_result_code_id'=>PRODUCTION_RESULT_CODE_A,
         'StockMovement.movement_date >=' =>$startDate,
         'StockMovement.movement_date <' => $endDatePlusOne,
-        'StockMovement.bool_transfer'=>false,
+        'StockMovement.bool_transfer'=>'0',
         'StockMovement.product_quantity > '=>0,
       ],
     ]);
@@ -3049,7 +3049,7 @@ class StockItemsController extends AppController {
         'StockMovement.product_id'=>$allCapsIds,
         'StockMovement.movement_date >=' =>$startDate,
         'StockMovement.movement_date <' => $endDatePlusOne,
-        'StockMovement.bool_transfer'=>false,
+        'StockMovement.bool_transfer'=>'0',
         'StockMovement.product_quantity > '=>0,
       ],
     ]);
@@ -3063,11 +3063,11 @@ class StockItemsController extends AppController {
           ['bool_adjustment'=>true,],
           ['bool_reclassification'=>true,],
         ],
-        'StockMovement.bool_input'=>false,
+        'StockMovement.bool_input'=>'0',
         'StockMovement.product_id'=>$allCapsIds,
         'StockMovement.movement_date >=' =>$startDate,
         'StockMovement.movement_date <' => $endDatePlusOne,
-        'StockMovement.bool_transfer'=>false,
+        'StockMovement.bool_transfer'=>'0',
         'StockMovement.product_quantity > '=>0,
       ],
     ]);
@@ -3402,9 +3402,9 @@ class StockItemsController extends AppController {
               
               $conditions=[
                 'StockMovement.order_id'=>$warehouseOrderIds,
-                'StockMovement.bool_input'=>false,
-                'StockMovement.bool_reclassification'=>false,
-                'StockMovement.bool_transfer'=>false,
+                'StockMovement.bool_input'=>'0',
+                'StockMovement.bool_reclassification'=>'0',
+                'StockMovement.bool_transfer'=>'0',
                 'StockMovement.stockitem_id'=>$rawMaterialStockItemIds,
                 'StockMovement.product_quantity >'=>0,
                 'StockMovement.production_result_code_id >='=>0,
@@ -3495,9 +3495,9 @@ class StockItemsController extends AppController {
                 if(!empty($warehouseOrderIds)){
                   $conditions=[
                     'StockMovement.order_id'=>$warehouseOrderIds,
-                    'StockMovement.bool_input'=>false,
-                    'StockMovement.bool_reclassification'=>false,
-                    'StockMovement.bool_transfer'=>false,
+                    'StockMovement.bool_input'=>'0',
+                    'StockMovement.bool_reclassification'=>'0',
+                    'StockMovement.bool_transfer'=>'0',
                     'StockMovement.product_id'=>$productId,
                     'StockMovement.product_quantity >'=>0,
                   ];
@@ -3606,9 +3606,9 @@ class StockItemsController extends AppController {
                 //}
                 $conditions=[
                   'StockMovement.order_id'=>$clientOrderIds,
-                  'StockMovement.bool_input'=>false,
-                  'StockMovement.bool_reclassification'=>false,
-                  'StockMovement.bool_transfer'=>false,
+                  'StockMovement.bool_input'=>'0',
+                  'StockMovement.bool_reclassification'=>'0',
+                  'StockMovement.bool_transfer'=>'0',
                   'StockMovement.product_id'=>$productNatureProductIds[$currentProductNatureId],
                   'StockMovement.product_quantity >'=>0,
                   //'Product.product_type_id'=>PRODUCT_TYPE_BOTTLE,
@@ -3797,9 +3797,9 @@ class StockItemsController extends AppController {
               'StockMovement.product_quantity >'=>0,
               'production_result_code_id < '=>PRODUCTION_RESULT_CODE_B,
               
-              'StockMovement.bool_input'=>false,
-              'StockMovement.bool_reclassification'=>false,
-              'StockMovement.bool_transfer'=>false,
+              'StockMovement.bool_input'=>'0',
+              'StockMovement.bool_reclassification'=>'0',
+              'StockMovement.bool_transfer'=>'0',
             ],
           ],
         ],
@@ -3826,9 +3826,9 @@ class StockItemsController extends AppController {
               
               'production_result_code_id < '=>PRODUCTION_RESULT_CODE_B,
               
-              'StockMovement.bool_input'=>false,
-              'StockMovement.bool_reclassification'=>false,
-              'StockMovement.bool_transfer'=>false,
+              'StockMovement.bool_input'=>'0',
+              'StockMovement.bool_reclassification'=>'0',
+              'StockMovement.bool_transfer'=>'0',
             ],
             'StockItem'=>[
               'fields'=>['product_unit_price'],
@@ -4319,7 +4319,7 @@ class StockItemsController extends AppController {
 					'fields'=>['SUM(StockMovement.product_quantity) AS StockMovement__total_reclassified'],
 					'conditions'=>[
 						'StockMovement.bool_reclassification'=>true,
-						'StockMovement.bool_input'=>false,
+						'StockMovement.bool_input'=>'0',
 						'StockMovement.product_id'=>$finishedProduct['Product']['id'],
 						'StockMovement.production_result_code_id'=>$productionResultCodeId,
 						'StockMovement.movement_date >='=>$startDate,
@@ -4411,7 +4411,7 @@ class StockItemsController extends AppController {
 								'ProductionMovement'=>array(
 									'fields'=>array('id','stockitem_id','product_id','product_quantity','product_unit_price','production_run_id'),
 									'conditions'=>array(
-										'bool_input'=>false,
+										'bool_input'=>'0',
 										'ProductionMovement.movement_date >='=> $startDate,
 										'ProductionMovement.movement_date <'=> $endDatePlusOne,
 									),
@@ -4607,7 +4607,7 @@ class StockItemsController extends AppController {
             'fields'=>['StockItem.id, SUM(ProductionMovement.product_quantity) AS total_product_quantity'],
             'conditions'=>[
               'ProductionMovement.stockitem_id'=>$allStockItems[$i]['StockItem']['id'],
-              'bool_input'=>false,
+              'bool_input'=>'0',
             ],
             'group'=>['StockItem.id'],
           ]);
@@ -4652,7 +4652,7 @@ class StockItemsController extends AppController {
             'fields'=>['StockItem.id, SUM(StockMovement.product_quantity) AS total_product_quantity'],
             'conditions'=>[
               'StockMovement.stockitem_id'=>$allStockItems[$i]['StockItem']['id'],
-              'bool_input'=>false,
+              'bool_input'=>'0',
             ],
             'group'=>['StockItem.id'],
           ]);
@@ -4706,7 +4706,7 @@ class StockItemsController extends AppController {
             'fields'=>['StockItem.id, SUM(StockMovement.product_quantity) AS total_product_quantity'],
             'conditions'=>[
               'StockMovement.stockitem_id'=>$allStockItems[$i]['StockItem']['id'],
-              'bool_input'=>false,
+              'bool_input'=>'0',
             ],
             'group'=>['StockItem.id'],
           ]);
@@ -4726,7 +4726,7 @@ class StockItemsController extends AppController {
             'fields'=>['StockItem.id, SUM(ProductionMovement.product_quantity) AS total_product_quantity'],
             'conditions'=>[
               'ProductionMovement.stockitem_id'=>$allStockItems[$i]['StockItem']['id'],
-              'bool_input'=>false,
+              'bool_input'=>'0',
             ],
             'group'=>['StockItem.id'],
           ]);
@@ -4870,7 +4870,7 @@ class StockItemsController extends AppController {
 				'StockMovement.movement_date <'=>$endDatePlusOne,
 				'StockMovement.bool_reclassification'=>true,
 				'Product.product_type_id'=>PRODUCT_TYPE_CAP,
-				'StockMovement.bool_input'=>false,
+				'StockMovement.bool_input'=>'0',
 			),
 			'order'=>'DATE(StockMovement.movement_date) DESC, StockMovement.reclassification_code DESC',
 		));
@@ -4908,7 +4908,7 @@ class StockItemsController extends AppController {
 				'StockMovement.movement_date >='=>$startDate,
 				'StockMovement.movement_date <'=>$endDatePlusOne,
 				'StockMovement.bool_reclassification'=>true,
-				'StockMovement.bool_input'=>false,
+				'StockMovement.bool_input'=>'0',
 				
 			),
 			'contain'=>array(
@@ -5046,7 +5046,7 @@ class StockItemsController extends AppController {
 				'StockMovement.movement_date <'=>$endDatePlusOne,
 				'StockMovement.bool_transfer'=>true,
 				'Product.product_type_id'=>PRODUCT_TYPE_INJECTION_OUTPUT,
-				'StockMovement.bool_input'=>false,
+				'StockMovement.bool_input'=>'0',
 			),
 			'order'=>'DATE(StockMovement.movement_date) DESC, StockMovement.transfer_code DESC',
 		));
@@ -5086,7 +5086,7 @@ class StockItemsController extends AppController {
 				'StockMovement.movement_date <'=>$endDatePlusOne,
 				'StockMovement.bool_transfer'=>true,
 				'Product.product_type_id'=>PRODUCT_TYPE_PREFORMA,
-				'StockMovement.bool_input'=>false,
+				'StockMovement.bool_input'=>'0',
 			),
 			'order'=>'DATE(StockMovement.movement_date) DESC, StockMovement.transfer_code DESC',
 		));
@@ -6513,7 +6513,7 @@ class StockItemsController extends AppController {
 				'fields'=>array('ProductionMovement.stockitem_id, ProductionMovement.product_unit_price,ProductionMovement.production_run_id','ProductionMovement.id'),
 				'conditions'=>array(
 					'ProductionMovement.stockitem_id'=>$allFinishedStockItems[$i]['StockItem']['id'],
-					'ProductionMovement.bool_input'=>false,
+					'ProductionMovement.bool_input'=>'0',
 				),
 			));
 			

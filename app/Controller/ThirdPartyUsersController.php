@@ -99,7 +99,7 @@ class ThirdPartyUsersController extends AppController {
 		$this->set(compact('users'));   
 		//pr($selectedUsers);
 		$clientConditions=[
-      'ThirdParty.bool_provider'=>false,
+      'ThirdParty.bool_provider'=>'0',
 		];
     if ($clientOptionId == CLIENT_OPTION_ACTIVE){
       $clientConditions['ThirdParty.bool_active']=true;

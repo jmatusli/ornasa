@@ -634,7 +634,7 @@ class ProductsController extends AppController {
 				'StockMovement.movement_date <'=>$endDatePlusOne,
 				'StockMovement.bool_reclassification'=>true,
 				'Product.product_type_id'=>PRODUCT_TYPE_CAP,
-				'StockMovement.bool_input'=>false,
+				'StockMovement.bool_input'=>'0',
 			),
 			'order'=>'DATE(StockMovement.movement_date) DESC, StockMovement.reclassification_code DESC',
 		));
@@ -672,7 +672,7 @@ class ProductsController extends AppController {
 				'StockMovement.movement_date >='=>$startDate,
 				'StockMovement.movement_date <'=>$endDatePlusOne,
 				'StockMovement.bool_reclassification'=>true,
-				'StockMovement.bool_input'=>false,
+				'StockMovement.bool_input'=>'0',
 				
 			),
 			'contain'=>array(
@@ -2229,7 +2229,7 @@ class ProductsController extends AppController {
 							'StockMovement.movement_date <'=>$endDatePlusOne,
 							'StockItem.raw_material_id'=> $rawMaterial['Product']['id'],
 							'StockMovement.bool_reclassification'=>true,
-							'StockMovement.bool_input'=>false,
+							'StockMovement.bool_input'=>'0',
 						),
 						'group'=>array('Product.id')
 					));

@@ -2075,7 +2075,7 @@ class AppController extends Controller {
 				$creationmovement=$this->ProductionMovement->find('first',array(
 					'conditions'=>array(
 						'ProductionMovement.stockitem_id'=>$id,
-						'bool_input'=>false,
+						'bool_input'=>'0',
 					),
 					'contain'=>array(
 						'StockItem',
@@ -2120,7 +2120,7 @@ class AppController extends Controller {
 				$movements=$this->StockMovement->find('all',array(
 					'conditions'=>array(
 						'StockMovement.stockitem_id'=>$id,
-						'bool_input'=>false,
+						'bool_input'=>'0',
 					),
 					'contain'=>array(
 						'StockItem',
@@ -2142,7 +2142,7 @@ class AppController extends Controller {
 				$movements=$this->StockMovement->find('all',array(
 					'conditions'=>array(
 						'StockMovement.stockitem_id'=>$id,
-						'bool_input'=>false,
+						'bool_input'=>'0',
 					),
 					'contain'=>array(
 						'StockItem',
@@ -2190,7 +2190,7 @@ class AppController extends Controller {
 				$exitedrawmovements=$this->StockMovement->find('all',array(
 					'conditions'=>array(
 						'StockMovement.stockitem_id'=>$id,
-						'bool_input'=>false,
+						'bool_input'=>'0',
 					),
 					'contain'=>array(
 						'StockItem',

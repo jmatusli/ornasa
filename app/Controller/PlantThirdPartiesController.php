@@ -106,8 +106,8 @@ class PlantThirdPartiesController extends AppController {
     //pr($selectedPlants);
     
     $thirdPartyConditions=[
-      'ThirdParty.bool_provider'=>false,
-      'ThirdParty.bool_generic'=>false,
+      'ThirdParty.bool_provider'=>'0',
+      'ThirdParty.bool_generic'=>'0',
     ];
 		if (!empty($selectedThirdPartyId)){
 			$thirdPartyConditions['ThirdParty.id']=$selectedThirdPartyId;
@@ -250,7 +250,7 @@ class PlantThirdPartiesController extends AppController {
     
     $thirdPartyConditions=[
       'ThirdParty.bool_provider'=>true,
-      'ThirdParty.bool_generic'=>false,
+      'ThirdParty.bool_generic'=>'0',
     ];
 		if (!empty($selectedThirdPartyId)){
 			$thirdPartyConditions['ThirdParty.id']=$selectedThirdPartyId;

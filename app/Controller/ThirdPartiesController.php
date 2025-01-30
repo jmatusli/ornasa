@@ -548,7 +548,7 @@ class ThirdPartiesController extends AppController {
 					'conditions'=>[
 						'Order.order_date >='=>$startDate,
 						'Order.order_date <'=>$endDatePlusOne,
-            'Order.bool_annulled'=>false,
+            'Order.bool_annulled'=>'0',
 					],
           'CashReceipt',
           'Invoice',
@@ -858,7 +858,7 @@ class ThirdPartiesController extends AppController {
 					'conditions'=>[
 						'PurchaseOrder.purchase_order_date >='=>$startDate,
 						'PurchaseOrder.purchase_order_date <'=>$endDatePlusOne,
-            'PurchaseOrder.bool_annulled'=>false,
+            'PurchaseOrder.bool_annulled'=>'0',
 					],
 				],
 			],
@@ -1255,8 +1255,8 @@ class ThirdPartiesController extends AppController {
             'code'=>$this->request->data['ThirdParty']['accounting_code_id'],
             'description'=>$this->request->data['ThirdParty']['company_name'],
             'parent_id'=>ACCOUNTING_CODE_CUENTAS_COBRAR_CLIENTES,
-            'bool_main'=>false,
-            'bool_creditor'=>false,
+            'bool_main'=>'0',
+            'bool_creditor'=>'0',
           ];
           $this->AccountingCode->create();
           if (!$this->AccountingCode->save($accountingCodeArray)) {
@@ -1344,7 +1344,7 @@ class ThirdPartiesController extends AppController {
 		$accountingCodes=$this->AccountingCode->find('list',[
 			'conditions'=>[
 				'AccountingCode.parent_id'=>ACCOUNTING_CODE_CUENTAS_COBRAR_CLIENTES,
-				//'AccountingCode.bool_main'=>false,
+				//'AccountingCode.bool_main'=>'0',
 			],
 			'order'=>'AccountingCode.code ASC',
 		]);
@@ -1567,8 +1567,8 @@ class ThirdPartiesController extends AppController {
               'code'=>$this->request->data['ThirdParty']['accounting_code_id'],
               'description'=>$this->request->data['ThirdParty']['company_name'],
               'parent_id'=>ACCOUNTING_CODE_CUENTAS_COBRAR_CLIENTES,
-              'bool_main'=>false,
-              'bool_creditor'=>false,
+              'bool_main'=>'0',
+              'bool_creditor'=>'0',
             ];
             $this->AccountingCode->create();
             if (!$this->AccountingCode->save($accountingCodeArray)) {
@@ -1812,7 +1812,7 @@ class ThirdPartiesController extends AppController {
 		$accountingCodes=$this->AccountingCode->find('list',[
 			'conditions'=>[
 				'AccountingCode.parent_id'=>ACCOUNTING_CODE_CUENTAS_COBRAR_CLIENTES,
-				//'AccountingCode.bool_main'=>false,
+				//'AccountingCode.bool_main'=>'0',
 			],
 			'order'=>'AccountingCode.code ASC',
 		]);
@@ -1922,8 +1922,8 @@ class ThirdPartiesController extends AppController {
             'code'=>$this->request->data['ThirdParty']['accounting_code_id'],
             'description'=>$this->request->data['ThirdParty']['company_name'],
             'parent_id'=>ACCOUNTING_CODE_CUENTAS_COBRAR_CLIENTES,
-            'bool_main'=>false,
-            'bool_creditor'=>false,
+            'bool_main'=>'0',
+            'bool_creditor'=>'0',
           ];
           if (!$this->AccountingCode->save($accountingCodeArray)) {
             $this->Session->setFlash(__('No se podía guardar la cuenta contable para el cliente nuevo.'), 'default',['class' => 'error-message']);
@@ -1996,7 +1996,7 @@ class ThirdPartiesController extends AppController {
 		$accountingCodes=$this->AccountingCode->find('list',[
 			'conditions'=>[
 				'AccountingCode.parent_id'=>ACCOUNTING_CODE_CUENTAS_COBRAR_CLIENTES,
-				//'AccountingCode.bool_main'=>false,
+				//'AccountingCode.bool_main'=>'0',
 			],
 			'order'=>'AccountingCode.code ASC',
 		]);
@@ -2094,7 +2094,7 @@ class ThirdPartiesController extends AppController {
             'code'=>$this->request->data['ThirdParty']['accounting_code_id'],
             'description'=>$this->request->data['ThirdParty']['company_name'],
             'parent_id'=>ACCOUNTING_CODE_PROVIDERS,
-            'bool_main'=>false,
+            'bool_main'=>'0',
             'bool_creditor'=>true,
           ];
           if (!$this->AccountingCode->save($accountingCodeArray)) {
@@ -2145,7 +2145,7 @@ class ThirdPartiesController extends AppController {
 		$accountingCodes=$this->AccountingCode->find('list',[
 			'conditions'=>[
 				'AccountingCode.parent_id'=>ACCOUNTING_CODE_PROVIDERS,
-				//'AccountingCode.bool_main'=>false,
+				//'AccountingCode.bool_main'=>'0',
 			],
 			'order'=>'AccountingCode.code ASC',
 		]);
@@ -2364,7 +2364,7 @@ class ThirdPartiesController extends AppController {
 		$accountingCodes=$this->AccountingCode->find('list',[
 			'conditions'=>[
 				'AccountingCode.parent_id'=>ACCOUNTING_CODE_CUENTAS_COBRAR_CLIENTES,
-				//'AccountingCode.bool_main'=>false,
+				//'AccountingCode.bool_main'=>'0',
 			],
 			'order'=>'AccountingCode.code ASC',
 		]);
@@ -2539,7 +2539,7 @@ class ThirdPartiesController extends AppController {
 		$accountingCodes=$this->AccountingCode->find('list',[
 			'conditions'=>[
 				'AccountingCode.parent_id'=>ACCOUNTING_CODE_PROVIDERS,
-				//'AccountingCode.bool_main'=>false,
+				//'AccountingCode.bool_main'=>'0',
 			],
 			'order'=>'AccountingCode.code ASC',
 		]);
@@ -2667,7 +2667,7 @@ class ThirdPartiesController extends AppController {
                   'third_party_id'=>$clientId,
                   'user_id'=>$originUserId,
                   'assignment_datetime'=>$currentDateTime->format('Y-m-d H:i:s'),
-                  'bool_assigned'=>false,
+                  'bool_assigned'=>'0',
                 ];
 								$this->ThirdPartyUser->create();
 								if (!$this->ThirdPartyUser->save($clientUserArray)){

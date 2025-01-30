@@ -1522,7 +1522,7 @@ class SalesOrdersController extends AppController {
               $quotationArray=[
                 'Quotation'=>[
                   'id'=>$previousSalesOrder['SalesOrder']['quotation_id'],
-                  'bool_sales_order'=>false,
+                  'bool_sales_order'=>'0',
                   'sales_order_id'=>0,
                 ]
               ];
@@ -2043,7 +2043,7 @@ class SalesOrdersController extends AppController {
         'Quotation',
         'Invoice'=>[
           'conditions'=>[
-            //'Invoice.bool_annulled'=>false,
+            //'Invoice.bool_annulled'=>'0',
           ],
         ],
 				'SalesOrderProduct',
@@ -2082,7 +2082,7 @@ class SalesOrdersController extends AppController {
           $quotationArray=[
             'Quotation'=>[
               'id'=>$salesOrder['Quotation']['id'],
-              'bool_sales_order'=>false,
+              'bool_sales_order'=>'0',
               'sales_order_id'=>null,
             ]
           ];
@@ -2212,7 +2212,7 @@ class SalesOrdersController extends AppController {
 			$salesOrders=$this->SalesOrder->find('all',[
 				'fields'=>['SalesOrder.id','SalesOrder.sales_order_code',],
 				'conditions'=>[				
-					'SalesOrder.bool_invoice'=>false,
+					'SalesOrder.bool_invoice'=>'0',
 					'SalesOrder.quotation_id'=>$quotationsForClient,
 				],
 				'order'=>'LENGTH(SalesOrder.sales_order_code) ASC, SalesOrder.sales_order_code ASC',
@@ -2229,7 +2229,7 @@ class SalesOrdersController extends AppController {
 			$salesOrders=$this->SalesOrder->find('all',[
 				'fields'=>['SalesOrder.id','SalesOrder.sales_order_code',],
 				'conditions'=>[				
-					'SalesOrder.bool_invoice'=>false,
+					'SalesOrder.bool_invoice'=>'0',
 					'SalesOrder.id'=>$salesOrderIdsBasedOnProducts,
 					'SalesOrder.quotation_id'=>$quotationsForClient,
 				],
@@ -2291,7 +2291,7 @@ class SalesOrdersController extends AppController {
 			'conditions'=>[
 				'SalesOrder.sales_order_date >='=>$startDate,
 				'SalesOrder.sales_order_date <'=>$endDatePlusOne,
-				'SalesOrder.bool_annulled'=>false,
+				'SalesOrder.bool_annulled'=>'0',
 			],
 			'contain'=>[
 				'AuthorizingUser', 

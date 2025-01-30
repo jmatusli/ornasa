@@ -341,7 +341,7 @@ class AccountingRegistersController extends AppController {
 			'conditions'=>array(
 				'AccountingMovement.accounting_register_id'=>$id,
 				'AccountingMovement.amount >'=>'0',
-				'AccountingMovement.bool_debit'=>false,
+				'AccountingMovement.bool_debit'=>'0',
 			),
 		));
 		

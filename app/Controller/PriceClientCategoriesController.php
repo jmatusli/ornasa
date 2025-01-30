@@ -104,7 +104,7 @@ class PriceClientCategoriesController extends AppController {
       'fields'=>['ThirdParty.id','ThirdParty.price_client_category_id'],
       'conditions'=>[
         'ThirdParty.bool_active'=>true,
-        'ThirdParty.bool_provider'=>false,
+        'ThirdParty.bool_provider'=>'0',
       ],      
       'order'=>'ThirdParty.company_name ASC',
     ]);

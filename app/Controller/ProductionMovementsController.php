@@ -203,7 +203,7 @@ class ProductionMovementsController extends AppController {
 			$productionEndDatePlusOne=date('Y-m-d',strtotime($nextyear.'-'.$nextmonth.'-'.$start));
 			
       $shiftMachineProductionRunConditions=$productionRunConditions=[
-        'bool_annulled'=>false,
+        'bool_annulled'=>'0',
         'production_run_date >='=> $productionStartDate,
         'production_run_date <'=> $productionEndDatePlusOne,
       ];
@@ -245,7 +245,7 @@ class ProductionMovementsController extends AppController {
 			$productionMovementAForMonth=$this->ProductionMovement->find('first',array(
 				'fields'=>array('SUM(product_quantity*product_unit_price) as ProductionMovement__total_A_cost','SUM(product_quantity) as ProductionMovement__total_A_quantity'),
 				'conditions'=>array(
-					'bool_input'=>false,
+					'bool_input'=>'0',
 					'movement_date >='=> $productionStartDate,
 					'movement_date <='=> $productionEndDate,
 					'production_result_code_id'=>PRODUCTION_RESULT_CODE_A,
@@ -257,7 +257,7 @@ class ProductionMovementsController extends AppController {
 			$productionMovementBForMonth=$this->ProductionMovement->find('first',array(
 				'fields'=>array('SUM(product_quantity*product_unit_price) as ProductionMovement__total_B_cost','SUM(product_quantity) as ProductionMovement__total_B_quantity'),
 				'conditions'=>array(
-					'bool_input'=>false,
+					'bool_input'=>'0',
 					'movement_date >='=> $productionStartDate,
 					'movement_date <='=> $productionEndDate,
 					'production_result_code_id'=>PRODUCTION_RESULT_CODE_B,
@@ -269,7 +269,7 @@ class ProductionMovementsController extends AppController {
 			$productionMovementCForMonth=$this->ProductionMovement->find('first',array(
 				'fields'=>array('SUM(product_quantity*product_unit_price) as ProductionMovement__total_C_cost','SUM(product_quantity) as ProductionMovement__total_C_quantity'),
 				'conditions'=>array(
-					'bool_input'=>false,
+					'bool_input'=>'0',
 					'movement_date >='=> $productionStartDate,
 					'movement_date <='=> $productionEndDate,
 					'production_result_code_id'=>PRODUCTION_RESULT_CODE_C,

@@ -622,7 +622,7 @@ class CashReceiptsController extends AppController {
 		$currencies = $this->CashReceipt->Currency->find('list');
 		$clients = $this->CashReceipt->Client->find('list',[
 			'conditions'=>[
-				'bool_provider'=>false,
+				'bool_provider'=>'0',
 				'bool_active'=>true,
 			],
 			'order'=>'company_name',
@@ -637,8 +637,8 @@ class CashReceiptsController extends AppController {
 					'Invoice.id','Invoice.invoice_code',
 				],
 				'conditions'=>[
-					'Invoice.bool_annulled'=>false,
-					'Invoice.bool_paid'=>false,
+					'Invoice.bool_annulled'=>'0',
+					'Invoice.bool_paid'=>'0',
 					'Invoice.client_id'=>$keys[$c],
 				],
 				'order'=>'Invoice.invoice_date ASC',
@@ -897,8 +897,8 @@ class CashReceiptsController extends AppController {
 				'conditions'=>array(
 					'Invoice.client_id'=>$clientid,
 					'Invoice.bool_credit'=>true,
-					'Invoice.bool_annulled'=>false,
-					'Invoice.bool_paid'=>false,
+					'Invoice.bool_annulled'=>'0',
+					'Invoice.bool_paid'=>'0',
 					'Invoice.id !='=>$invoicesPaidInCashReceipt,
 				),
 				'order'=>'Invoice.invoice_date ASC'
@@ -1547,7 +1547,7 @@ class CashReceiptsController extends AppController {
 		$currencies = $this->CashReceipt->Currency->find('list');
 		$clients = $this->CashReceipt->Client->find('list',array(
 			'conditions'=>array(
-				'bool_provider'=>false,
+				'bool_provider'=>'0',
 				'bool_active'=>true,
 			),
 			'order'=>'company_name',
@@ -1562,8 +1562,8 @@ class CashReceiptsController extends AppController {
 						'Invoice.id','Invoice.invoice_code',
 					),
 					'conditions'=>array(
-						'Invoice.bool_annulled'=>false,
-						'Invoice.bool_paid'=>false,
+						'Invoice.bool_annulled'=>'0',
+						'Invoice.bool_paid'=>'0',
 						'Invoice.client_id'=>$keys[$c],
 					),
 				));

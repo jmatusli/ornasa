@@ -150,7 +150,7 @@ class PurchaseOrderProductsController extends AppController {
 			),
 			'conditions'=>array(
 				'PurchaseOrderProduct.department_id'=>$departmentId,
-				'PurchaseOrderProduct.bool_processed'=>false,
+				'PurchaseOrderProduct.bool_processed'=>'0',
 			),
 			'order'=>'Product.name',
 		));

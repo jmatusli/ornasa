@@ -525,7 +525,7 @@ class QuotationsController extends AppController {
 				'SalesOrder'=>[
 					'fields'=>['SalesOrder.id','SalesOrder.sales_order_code'],
 					'conditions'=>[
-						'SalesOrder.bool_annulled'=>false,
+						'SalesOrder.bool_annulled'=>'0',
 					],
 				],
 				'VendorUser'=>[
@@ -574,13 +574,13 @@ class QuotationsController extends AppController {
 		$quotationIdsWithSalesOrder=$this->SalesOrder->find('list',[
 			'fields'=>['SalesOrder.quotation_id'],
 			'conditions'=>[
-				'SalesOrder.bool_annulled'=>false,
+				'SalesOrder.bool_annulled'=>'0',
 			],
 		]);
 		
 		$conditions=[
 			'Quotation.quotation_date <'=>$startDate,
-			'Quotation.bool_rejected'=>false,
+			'Quotation.bool_rejected'=>'0',
 			'Quotation.id !='=>$quotationIdsWithSalesOrder,
 		];
 		
@@ -619,7 +619,7 @@ class QuotationsController extends AppController {
 				'SalesOrder'=>[
 					'fields'=>['SalesOrder.id','SalesOrder.sales_order_code'],
 					'conditions'=>[
-						'SalesOrder.bool_annulled'=>false,
+						'SalesOrder.bool_annulled'=>'0',
 					],
 				],
 				'VendorUser'=>[
@@ -1837,7 +1837,7 @@ class QuotationsController extends AppController {
         'QuotationRemark',
         'SalesOrder'=>[
 					'conditions'=>[
-						'SalesOrder.bool_annulled'=>false,
+						'SalesOrder.bool_annulled'=>'0',
 					],
 				],
 			],
@@ -2009,7 +2009,7 @@ class QuotationsController extends AppController {
 					'Currency',
 					'SalesOrder'=>[
 						'conditions'=>[
-							'SalesOrder.bool_annulled'=>false,
+							'SalesOrder.bool_annulled'=>'0',
 						],
 						'InvoiceSalesOrder'=>[
 							'Invoice',
@@ -2493,7 +2493,7 @@ class QuotationsController extends AppController {
 					'SalesOrder'=>[
 						'fields'=>'SalesOrder.id',
 						'conditions'=>[
-							'SalesOrder.bool_annulled'=>false,
+							'SalesOrder.bool_annulled'=>'0',
 						],
 					],
 				],
@@ -2687,7 +2687,7 @@ class QuotationsController extends AppController {
 						'SalesOrder'=>[
 							'fields'=>['SalesOrder.id'],
 							'conditions'=>[
-								'SalesOrder.bool_annulled'=>false,
+								'SalesOrder.bool_annulled'=>'0',
 							],
 						],
 					],
@@ -2806,7 +2806,7 @@ class QuotationsController extends AppController {
     $this->loadModel('ThirdParty');
 		$clientConditions=[
       'ThirdParty.bool_active'=>true,
-      'ThirdParty.bool_provider'=>false,
+      'ThirdParty.bool_provider'=>'0',
     ];
 		$clientCount=	$this->ThirdParty->find('count', [
 			'fields'=>['ThirdParty.id'],
@@ -2872,7 +2872,7 @@ class QuotationsController extends AppController {
 					'SalesOrder'=>[
 						'fields'=>'SalesOrder.id',
 						'conditions'=>[
-							'SalesOrder.bool_annulled'=>false,
+							'SalesOrder.bool_annulled'=>'0',
 						],
 					],
 				],

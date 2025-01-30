@@ -1151,8 +1151,8 @@ class PurchaseOrdersController extends AppController {
 					'PurchaseOrder.provider_id',
 				],
 				'conditions'=>[
-					'PurchaseOrder.bool_annulled'=>false,
-					'PurchaseOrder.bool_paid'=>false,
+					'PurchaseOrder.bool_annulled'=>'0',
+					'PurchaseOrder.bool_paid'=>'0',
 					'PurchaseOrder.provider_id'=>$providers[$p]['ThirdParty']['id'],
 				],
         'contain'=>[
@@ -1275,8 +1275,8 @@ class PurchaseOrdersController extends AppController {
 				'PurchaseOrder.purchase_order_date','PurchaseOrder.due_date',
 			],
 			'conditions'=>[
-				'PurchaseOrder.bool_annulled'=>false,
-				'PurchaseOrder.bool_paid'=>false,
+				'PurchaseOrder.bool_annulled'=>'0',
+				'PurchaseOrder.bool_paid'=>'0',
 				'PurchaseOrder.provider_id'=>$providerId,
 			],
       'contain'=>[

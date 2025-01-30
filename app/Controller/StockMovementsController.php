@@ -1259,7 +1259,7 @@ class StockMovementsController extends AppController {
                   // STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
                   $stockMovementData=[
                     'movement_date'=>$transferDateTimeString,
-                    'bool_input'=>false,
+                    'bool_input'=>'0',
                     'name'=>$message,
                     'description'=>$this->request->data['StockMovement']['description'],
                     'order_id'=>0,
@@ -1269,7 +1269,7 @@ class StockMovementsController extends AppController {
                     'product_unit_price'=>$unit_price,
                     'product_total_price'=>$unit_price*$quantity_used,
                     'production_result_code_id'=>$productionResultCodeId,
-                    'bool_reclassification'=>false,
+                    'bool_reclassification'=>'0',
                     'bool_transfer'=>true,
                     'transfer_code'=>$transferCode,
                   ];
@@ -1318,7 +1318,7 @@ class StockMovementsController extends AppController {
                     'product_unit_price'=>$unit_price,
                     'product_total_price'=>$unit_price*$quantity_used,
                     'production_result_code_id'=>$productionResultCodeId,
-                    'bool_reclassification'=>false,
+                    'bool_reclassification'=>'0',
                     'reclassification_code'=>"",
                     'origin_stock_movement_id'=>$originStockMovementId,
                     'bool_transfer'=>true,
@@ -1442,7 +1442,7 @@ class StockMovementsController extends AppController {
                   // STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
                   $stockMovementData=[
                     'movement_date'=>$transferDateTimeString,
-                    'bool_input'=>false,
+                    'bool_input'=>'0',
                     'name'=>$message,
                     'description'=>$this->request->data['StockMovement']['description'],
                     'order_id'=>0,
@@ -1451,7 +1451,7 @@ class StockMovementsController extends AppController {
                     'product_quantity'=>$quantityUsed,
                     'product_unit_price'=>$unitPrice,
                     'product_total_price'=>$unitPrice*$quantityUsed,
-                    'bool_reclassification'=>false,
+                    'bool_reclassification'=>'0',
                     'bool_transfer'=>true,
                     'transfer_code'=>$transferCode,
                   ];
@@ -1498,7 +1498,7 @@ class StockMovementsController extends AppController {
                     'product_quantity'=>$quantityUsed,
                     'product_unit_price'=>$unitPrice,
                     'product_total_price'=>$unitPrice*$quantityUsed,
-                    'bool_reclassification'=>false,
+                    'bool_reclassification'=>'0',
                     'reclassification_code'=>"",
                     'origin_stock_movement_id'=>$originStockMovementId,
                     'bool_transfer'=>true,
@@ -2366,9 +2366,9 @@ class StockMovementsController extends AppController {
 			'StockMovement.movement_date <'=>$endDatePlusOne,
 			'StockMovement.product_quantity >'=>0,
 			'StockMovement.production_result_code_id'=>PRODUCTION_RESULT_CODE_A,
-			'StockMovement.bool_input'=>false,
-			'StockMovement.bool_reclassification'=>false,
-      'StockMovement.bool_adjustment'=>false,
+			'StockMovement.bool_input'=>'0',
+			'StockMovement.bool_reclassification'=>'0',
+      'StockMovement.bool_adjustment'=>'0',
       'StockMovement.order_id'=>$salesIdsForPeriod,
 		];
     
@@ -2520,7 +2520,7 @@ class StockMovementsController extends AppController {
 					$orderConditionsForClient=array(
 						'Order.order_date >='=>$startDate,
 						'Order.order_date <'=>$endDatePlusOne,
-						'Order.bool_annulled'=>false,
+						'Order.bool_annulled'=>'0',
 						'Order.third_party_id'=>$clientId,
 						'Order.stock_movement_type_id'=>MOVEMENT_SALE,
 					);
@@ -2700,9 +2700,9 @@ class StockMovementsController extends AppController {
 			'StockMovement.movement_date <'=>$endDatePlusOne,
 			'StockMovement.product_quantity >'=>0,
 			'StockMovement.production_result_code_id'=>PRODUCTION_RESULT_CODE_A,
-			'StockMovement.bool_input'=>false,
-			'StockMovement.bool_reclassification'=>false,
-      'StockMovement.bool_adjustment'=>false,
+			'StockMovement.bool_input'=>'0',
+			'StockMovement.bool_reclassification'=>'0',
+      'StockMovement.bool_adjustment'=>'0',
 		];
 		$movementsForPeriod=$this->StockMovement->find('all',[
 			'fields'=>[

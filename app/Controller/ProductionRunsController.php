@@ -274,7 +274,7 @@ class ProductionRunsController extends AppController {
           'ProductionMovement'=>[
             'conditions'=>[
               'ProductionMovement.product_quantity >'=>0,
-              'ProductionMovement.bool_input'=>false,
+              'ProductionMovement.bool_input'=>'0',
             ]
           ],
 				],
@@ -579,7 +579,7 @@ class ProductionRunsController extends AppController {
           'ProductionMovement'=>array(
             'conditions'=>array(
               'ProductionMovement.product_quantity >'=>0,
-              'ProductionMovement.bool_input'=>false,
+              'ProductionMovement.bool_input'=>'0',
             )
           )
 				),
@@ -2699,7 +2699,7 @@ class ProductionRunsController extends AppController {
                       'name'=>$productionRunCode."_".$resultCode,
                       'description'=>$message,
                       'movement_date'=>$movementDate,
-                      'bool_input'=>false,
+                      'bool_input'=>'0',
                       'stockitem_id'=>$latestStockItemId,
                       'production_run_id'=>$productionRunId,
                       'product_id'=>$finishedProductId,
@@ -2792,7 +2792,7 @@ class ProductionRunsController extends AppController {
                     'name'=>$productionRunCode."_".PRODUCTION_RESULT_CODE_A,
                     'description'=>$message,
                     'movement_date'=>$movementDate,
-                    'bool_input'=>false,
+                    'bool_input'=>'0',
                     'stockitem_id'=>$latestStockItemId,
                     'production_run_id'=>$productionRunId,
                     'product_id'=>$finishedProductId,
@@ -2862,7 +2862,7 @@ class ProductionRunsController extends AppController {
                       'name'=>$productionRunCode."_".PRODUCTION_RESULT_CODE_MILL,
                       'description'=>$message,
                       'movement_date'=>$movementDate,
-                      'bool_input'=>false,
+                      'bool_input'=>'0',
                       'stockitem_id'=>$millStockItemId,
                       'production_run_id'=>$productionRunId,
                       'product_id'=>$millConversionProductId,
@@ -2958,7 +2958,7 @@ class ProductionRunsController extends AppController {
                       'name'=>$productionRunCode."_".$resultCode,
                       'description'=>$message,
                       'movement_date'=>$movementDate,
-                      'bool_input'=>false,
+                      'bool_input'=>'0',
                       'stockitem_id'=>$latestStockItemId,
                       'production_run_id'=>$productionRunId,
                       'product_id'=>$finishedProductId,
@@ -4091,7 +4091,7 @@ class ProductionRunsController extends AppController {
                         'name'=>$productionRunCode."_".$resultCode,
                         'description'=>$message,
                         'movement_date'=>$movementDate,
-                        'bool_input'=>false,
+                        'bool_input'=>'0',
                         'stockitem_id'=>$latestStockItemId,
                         'production_run_id'=>$productionRunId,
                         'product_id'=>$finishedProductId,
@@ -4182,7 +4182,7 @@ class ProductionRunsController extends AppController {
                       'name'=>$productionRunCode."_".PRODUCTION_RESULT_CODE_A,
                       'description'=>$message,
                       'movement_date'=>$movementDate,
-                      'bool_input'=>false,
+                      'bool_input'=>'0',
                       'stockitem_id'=>$latestStockItemId,
                       'production_run_id'=>$productionRunId,
                       'product_id'=>$finishedProductId,
@@ -4252,7 +4252,7 @@ class ProductionRunsController extends AppController {
                       'name'=>$productionRunCode."_".PRODUCTION_RESULT_CODE_MILL,
                       'description'=>$message,
                       'movement_date'=>$movementDate,
-                      'bool_input'=>false,
+                      'bool_input'=>'0',
                       'stockitem_id'=>$latestStockItemId,
                       'production_run_id'=>$productionRunId,
                       'product_id'=>$millConversionProductId,
@@ -4640,7 +4640,7 @@ class ProductionRunsController extends AppController {
 			'fields'=>array('stockitem_id','product_quantity','ProductionMovement.id'),
 			'conditions'=>array(
 				'production_run_id'=>$id,
-				'bool_input'=>false,
+				'bool_input'=>'0',
 			),
 		));
 		$producedStockUntouched=true;
@@ -4788,7 +4788,7 @@ class ProductionRunsController extends AppController {
 			'fields'=>array('stockitem_id','product_quantity','ProductionMovement.id'),
 			'conditions'=>array(
 				'production_run_id'=>$id,
-				'bool_input'=>false,
+				'bool_input'=>'0',
 			),
 		));
 		$producedStockUntouched=true;

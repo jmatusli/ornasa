@@ -56,8 +56,8 @@ class InvoicesController extends AppController {
 			'conditions'=>array(
 				'Invoice.client_id'=>$clientid,
 				'Invoice.bool_credit'=>true,
-				'Invoice.bool_annulled'=>false,
-				'Invoice.bool_paid'=>false,
+				'Invoice.bool_annulled'=>'0',
+				'Invoice.bool_paid'=>'0',
 			),
 			'order'=>'Invoice.invoice_date ASC'
 		));
@@ -255,7 +255,7 @@ class InvoicesController extends AppController {
         'ThirdParty.phone',
 			],
 			'conditions'=>[
-				'bool_provider'=>false,
+				'bool_provider'=>'0',
 				'bool_active'=>true,
 			],
 			'order'=>'ThirdParty.company_name',
@@ -272,8 +272,8 @@ class InvoicesController extends AppController {
 					'Currency.abbreviation','Currency.id'
 				),
 				'conditions'=>array(
-					'Invoice.bool_annulled'=>false,
-					'Invoice.bool_paid'=>false,
+					'Invoice.bool_annulled'=>'0',
+					'Invoice.bool_paid'=>'0',
 					'Invoice.client_id'=>$clients[$c]['ThirdParty']['id'],
 					
 				),
@@ -425,7 +425,7 @@ class InvoicesController extends AppController {
 		$exchangeRateCurrent=$currentExchangeRate['ExchangeRate']['rate'];
 		
 		$conditions=array(
-			'bool_provider'=>false,
+			'bool_provider'=>'0',
 			'bool_active'=>true,
 		);
 		if ($client_id>0){
@@ -450,7 +450,7 @@ class InvoicesController extends AppController {
 					'Invoice.sub_total_price','Invoice.IVA_price','Invoice.total_price',
 				),
 				'conditions'=>array(
-					'Invoice.bool_annulled'=>false,
+					'Invoice.bool_annulled'=>'0',
 					'Invoice.client_id'=>$selectedClients[$c]['ThirdParty']['id'],
 					'Invoice.invoice_date >='=>$startDate,
 					'Invoice.invoice_date <'=>$endDatePlusOne,
@@ -552,7 +552,7 @@ class InvoicesController extends AppController {
 		$this->set(compact('selectedClients'));
 		$clients=$this->ThirdParty->find('list',array(
 			'conditions'=>array(
-				'bool_provider'=>false,
+				'bool_provider'=>'0',
 				'bool_active'=>true,
 			)
 		));
@@ -592,8 +592,8 @@ class InvoicesController extends AppController {
         'Currency.abbreviation','Currency.id'
 			],
 			'conditions'=>[
-				'Invoice.bool_annulled'=>false,
-				'Invoice.bool_paid'=>false,
+				'Invoice.bool_annulled'=>'0',
+				'Invoice.bool_paid'=>'0',
 				'Invoice.client_id'=>$client_id,
 			],
 			'order'=>'Invoice.invoice_date ASC',
@@ -710,8 +710,8 @@ class InvoicesController extends AppController {
 				'Currency.abbreviation','Currency.id'
 			),
 			'conditions'=>array(
-				'Invoice.bool_annulled'=>false,
-				'Invoice.bool_paid'=>false,
+				'Invoice.bool_annulled'=>'0',
+				'Invoice.bool_paid'=>'0',
 				'Invoice.client_id'=>$clientId,
 			),
 			'order'=>'Invoice.invoice_date ASC',
@@ -820,8 +820,8 @@ class InvoicesController extends AppController {
 				'Currency.abbreviation','Currency.id'
 			),
 			'conditions'=>array(
-				'Invoice.bool_annulled'=>false,
-				'Invoice.bool_paid'=>false,
+				'Invoice.bool_annulled'=>'0',
+				'Invoice.bool_paid'=>'0',
 				'Invoice.due_date >='=>date("Y-m-d"),
 				'Invoice.due_date <='=>$finalDateThisWeek,
 				
@@ -899,8 +899,8 @@ class InvoicesController extends AppController {
 				'Currency.abbreviation','Currency.id'
 			),
 			'conditions'=>array(
-				'Invoice.bool_annulled'=>false,
-				'Invoice.bool_paid'=>false,
+				'Invoice.bool_annulled'=>'0',
+				'Invoice.bool_paid'=>'0',
 				'Invoice.due_date <'=>date("Y-m-d"),
 			),
 			'order'=>'Client.company_name ASC, Invoice.due_date DESC',

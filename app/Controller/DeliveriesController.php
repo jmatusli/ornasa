@@ -146,7 +146,7 @@ class DeliveriesController extends AppController {
         $salesOrderConditions=[
           'SalesOrder.bool_delivery'=>true,
           'SalesOrder.delivery_id'=>0,
-          'SalesOrder.bool_invoice'=>false,
+          'SalesOrder.bool_invoice'=>'0',
         ];
         $salesOrders=$this->SalesOrder->find('all',[
           'conditions'=>$salesOrderConditions,

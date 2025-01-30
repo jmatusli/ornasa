@@ -4123,8 +4123,8 @@ class OrdersController extends AppController {
             ],
             'conditions'=>[
               'Invoice.due_date <'=>date('Y-m-d'),
-              'Invoice.bool_annulled'=>false,
-              'Invoice.bool_paid'=>false,
+              'Invoice.bool_annulled'=>'0',
+              'Invoice.bool_paid'=>'0',
               'Invoice.client_id'=>$this->request->data['Order']['third_party_id'],
             ],
             'order'=>'Invoice.invoice_date ASC',
@@ -5358,8 +5358,8 @@ class OrdersController extends AppController {
             ],
             'conditions'=>[
               'Invoice.due_date <'=>date('Y-m-d'),
-              'Invoice.bool_annulled'=>false,
-              'Invoice.bool_paid'=>false,
+              'Invoice.bool_annulled'=>'0',
+              'Invoice.bool_paid'=>'0',
               'Invoice.client_id'=>$this->request->data['Order']['third_party_id'],
             ],
             'order'=>'Invoice.invoice_date ASC',
@@ -5761,7 +5761,7 @@ class OrdersController extends AppController {
                   $message="Se vendió ".$productName." (Cantidad:".$quantity_used.", total para venta:".$productQuantity.") para Venta ".$orderCode;
                   $stockMovementData=[
                     'movement_date'=>$saleDate,
-                    'bool_input'=>false,
+                    'bool_input'=>'0',
                     'name'=>$saleDate['day'].$saleDate['month'].$saleDate['year']."_".$orderCode."_".$productName,
                     'description'=>$message,
                     'order_id'=>$orderId,
@@ -5795,7 +5795,7 @@ class OrdersController extends AppController {
                 $message="Se vendió ".$productName." (Cantidad:".$productQuantity.", total para venta:".$productQuantity.") para Venta ".$orderCode;
                 $stockMovementData=[
                   'movement_date'=>$saleDate,
-                  'bool_input'=>false,
+                  'bool_input'=>'0',
                   'name'=>$saleDate['day'].$saleDate['month'].$saleDate['year']."_".$orderCode."_".$productName,
                   'description'=>$message,
                   'order_id'=>$orderId,
@@ -8778,7 +8778,7 @@ class OrdersController extends AppController {
                 $salesOrderArray=[
                   'SalesOrder'=>[
                     'id'=>$originalInvoice['Invoice']['sales_order_id'],
-                    'bool_invoice'=>false,
+                    'bool_invoice'=>'0',
                     'invoice_id'=>0,
                   ]
                 ];
@@ -8921,8 +8921,8 @@ class OrdersController extends AppController {
                 ],
                 'conditions'=>[
                   'Invoice.due_date <'=>date('Y-m-d'),
-                  'Invoice.bool_annulled'=>false,
-                  'Invoice.bool_paid'=>false,
+                  'Invoice.bool_annulled'=>'0',
+                  'Invoice.bool_paid'=>'0',
                   'Invoice.client_id'=>$this->request->data['Order']['third_party_id'],
                 ],
                 'order'=>'Invoice.invoice_date ASC',
@@ -9347,7 +9347,7 @@ class OrdersController extends AppController {
                       $message="Se vendió ".$productName." (Cantidad:".$quantity_used.", total para venta:".$productQuantity.") para Venta ".$orderCode;
                       $stockMovementData=[
                         'movement_date'=>$saleDate,
-                        'bool_input'=>false,
+                        'bool_input'=>'0',
                         'name'=>$saleDate['day'].$saleDate['month'].$saleDate['year']."_".$orderCode."_".$productName,
                         'description'=>$message,
                         'order_id'=>$orderId,
@@ -9381,7 +9381,7 @@ class OrdersController extends AppController {
                     $message="Se vendió ".$productName." (Cantidad:".$productQuantity.", total para venta:".$productQuantity.") para Venta ".$orderCode;
                     $stockMovementData=[
                       'movement_date'=>$saleDate,
-                      'bool_input'=>false,
+                      'bool_input'=>'0',
                       'name'=>$saleDate['day'].$saleDate['month'].$saleDate['year']."_".$orderCode."_".$productName,
                       'description'=>$message,
                       'order_id'=>$orderId,
@@ -10703,7 +10703,7 @@ class OrdersController extends AppController {
 			'conditions'=>array(
 				'OR'=>array(
 					array(
-						'ThirdParty.bool_provider'=>false,
+						'ThirdParty.bool_provider'=>'0',
 						'ThirdParty.bool_active'=>true,
 					),
 					array(
@@ -11212,7 +11212,7 @@ class OrdersController extends AppController {
           $salesOrderArray=[
             'SalesOrder'=>[
               'id'=>$linkedSale['Invoice'][0]['sales_order_id'],
-              'bool_invoice'=>false,
+              'bool_invoice'=>'0',
               'invoice_id'=>null,
             ]
           ];
@@ -11783,8 +11783,8 @@ class OrdersController extends AppController {
 					'Order.third_party_id',
 				],
 				'conditions'=>[
-					'Order.bool_annulled'=>false,
-					'Order.bool_entry_paid'=>false,
+					'Order.bool_annulled'=>'0',
+					'Order.bool_entry_paid'=>'0',
 					'Order.third_party_id'=>$providers[$p]['ThirdParty']['id'],
           'Order.order_date >'=>date('2019-06-01'),
 				],
@@ -11793,7 +11793,7 @@ class OrdersController extends AppController {
           //'Currency'=>['fields'=>['abbreviation','id',]],
           'PurchaseOrderInvoice'=>[
             'conditions'=>[
-              'PurchaseOrderInvoice.bool_paid'=>false,
+              'PurchaseOrderInvoice.bool_paid'=>'0',
             ],
           ],
         ],
@@ -12077,15 +12077,15 @@ class OrdersController extends AppController {
 				'Order.order_date',
 			],
 			'conditions'=>[
-				'Order.bool_annulled'=>false,
-				'Order.bool_entry_paid'=>false,
+				'Order.bool_annulled'=>'0',
+				'Order.bool_entry_paid'=>'0',
 				'Order.third_party_id'=>$providerId,
         'Order.order_date >'=>date('2019-06-01'),
 			],
       'contain'=>[
         'PurchaseOrderInvoice'=>[
             'conditions'=>[
-              'PurchaseOrderInvoice.bool_paid'=>false,
+              'PurchaseOrderInvoice.bool_paid'=>'0',
             ],
             'PurchaseOrder',
           ],
@@ -12407,7 +12407,7 @@ class OrdersController extends AppController {
 		$clients=$this->ThirdParty->find('all',[
       'fields'=>['id','company_name'],
       'conditions'=>[
-        'ThirdParty.bool_provider'=>false,
+        'ThirdParty.bool_provider'=>'0',
         'ThirdParty.bool_active'=>true,
       ],
     ]);
@@ -12539,7 +12539,7 @@ class OrdersController extends AppController {
 							'fields'=>array('SUM(product_quantity) as totalBottles'),
 							'conditions'=>array(
 								'StockMovement.production_result_code_id'=>1,
-								'StockMovement.bool_reclassification'=>false,
+								'StockMovement.bool_reclassification'=>'0',
 								'StockMovement.product_quantity >'=>0,
 								'Order.stock_movement_type_id'=>MOVEMENT_SALE,
 								'Order.order_date >='=> $saleStartDate,
@@ -12556,7 +12556,7 @@ class OrdersController extends AppController {
 							// ),
 							// 'conditions'=>array(
 								// 'StockMovement.production_result_code_id'=>1,
-								// 'StockMovement.bool_reclassification'=>false,
+								// 'StockMovement.bool_reclassification'=>'0',
 								// 'StockMovement.product_quantity >'=>0,
 								// 'Order.stock_movement_type_id'=>MOVEMENT_SALE,
 								// 'Order.order_date >='=> $saleStartDate,
@@ -12604,7 +12604,7 @@ class OrdersController extends AppController {
 							'fields'=>array('SUM(product_quantity) as totalBottles'),
 							'conditions'=>array(
 								'StockMovement.production_result_code_id >'=>1,
-								'StockMovement.bool_reclassification'=>false,
+								'StockMovement.bool_reclassification'=>'0',
 								'Order.stock_movement_type_id'=>MOVEMENT_SALE,
 								'Order.order_date >='=> $saleStartDate,
 								'Order.order_date <'=> $saleEndDate,

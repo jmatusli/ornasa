@@ -542,7 +542,7 @@ class ClientRequestsController extends AppController {
 				'ClientRequestProduct',
         //'SalesOrder'=>array(
 				//	'conditions'=>array(
-				//		'SalesOrder.bool_annulled'=>false,
+				//		'SalesOrder.bool_annulled'=>'0',
 				//	),
 				//),
 			)

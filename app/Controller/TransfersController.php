@@ -139,8 +139,8 @@ class TransfersController extends AppController {
   
     $undepositedInvoices=$this->Invoice->find('all',[
       'conditions'=>[
-        'bool_credit'=>false,
-        'bool_deposited'=>false,
+        'bool_credit'=>'0',
+        'bool_deposited'=>'0',
         'sub_total_price >'=>0,
       ],
       'order'=>'invoice_code DESC'
@@ -167,7 +167,7 @@ class TransfersController extends AppController {
     
     $undepositedCashReceipts=$this->CashReceipt->find('all',[
       'conditions'=>[
-        'bool_deposited'=>false,
+        'bool_deposited'=>'0',
         'amount >'=>0
       ],
       'order'=>'receipt_code DESC'
@@ -540,7 +540,7 @@ class TransfersController extends AppController {
 			'conditions'=>array(
 				'BankAccountingCode.lft >'=>$bankAccountingCode['BankAccountingCode']['lft'],
 				'BankAccountingCode.rght <'=>$bankAccountingCode['BankAccountingCode']['rght'],
-				'BankAccountingCode.bool_main'=>false,
+				'BankAccountingCode.bool_main'=>'0',
 			)
 		));
 		$cashboxAccountingCode=$this->Transfer->CashboxAccountingCode->find('first',array(
@@ -554,7 +554,7 @@ class TransfersController extends AppController {
 			'conditions'=>array(
 				'CashboxAccountingCode.lft >'=>$cashboxAccountingCode['CashboxAccountingCode']['lft'],
 				'CashboxAccountingCode.rght <'=>$cashboxAccountingCode['CashboxAccountingCode']['rght'],
-				'CashboxAccountingCode.bool_main'=>false,
+				'CashboxAccountingCode.bool_main'=>'0',
 			)
 		));
 	
@@ -936,8 +936,8 @@ class TransfersController extends AppController {
       'conditions'=>[
         'OR'=>[
           [
-            'bool_credit'=>false,
-            'bool_deposited'=>false,
+            'bool_credit'=>'0',
+            'bool_deposited'=>'0',
             'sub_total_price >'=>0,
           ],
           ['Invoice.id'=>$requestInvoicePaymentIds]
@@ -969,7 +969,7 @@ class TransfersController extends AppController {
       'conditions'=>[
         'OR'=>[
           [
-            'bool_deposited'=>false,
+            'bool_deposited'=>'0',
             'amount >'=>0
           ],
           ['CashReceipt.id'=>$requestCashReceiptPaymentIds]
@@ -1019,7 +1019,7 @@ class TransfersController extends AppController {
 			'conditions'=>array(
 				'BankAccountingCode.lft >'=>$bankAccountingCode['BankAccountingCode']['lft'],
 				'BankAccountingCode.rght <'=>$bankAccountingCode['BankAccountingCode']['rght'],
-				'BankAccountingCode.bool_main'=>false,
+				'BankAccountingCode.bool_main'=>'0',
 			)
 		));
 		$cashboxAccountingCode=$this->Transfer->CashboxAccountingCode->find('first',array(
@@ -1033,7 +1033,7 @@ class TransfersController extends AppController {
 			'conditions'=>array(
 				'CashboxAccountingCode.lft >'=>$cashboxAccountingCode['CashboxAccountingCode']['lft'],
 				'CashboxAccountingCode.rght <'=>$cashboxAccountingCode['CashboxAccountingCode']['rght'],
-				'CashboxAccountingCode.bool_main'=>false,
+				'CashboxAccountingCode.bool_main'=>'0',
 			)
 		));
 	
@@ -1420,7 +1420,7 @@ class TransfersController extends AppController {
 			'conditions'=>array(
 				'BankAccountingCode.lft >'=>$bankAccountingCode['BankAccountingCode']['lft'],
 				'BankAccountingCode.rght <'=>$bankAccountingCode['BankAccountingCode']['rght'],
-				'BankAccountingCode.bool_main'=>false,
+				'BankAccountingCode.bool_main'=>'0',
 			)
 		));
 		$cashboxAccountingCode=$this->Transfer->CashboxAccountingCode->find('first',array(
@@ -1434,7 +1434,7 @@ class TransfersController extends AppController {
 			'conditions'=>array(
 				'CashboxAccountingCode.lft >'=>$cashboxAccountingCode['CashboxAccountingCode']['lft'],
 				'CashboxAccountingCode.rght <'=>$cashboxAccountingCode['CashboxAccountingCode']['rght'],
-				'CashboxAccountingCode.bool_main'=>false,
+				'CashboxAccountingCode.bool_main'=>'0',
 			)
 		));
 	
@@ -1487,7 +1487,7 @@ class TransfersController extends AppController {
 			'conditions'=>array(
 				'AccountingMovement.accounting_register_id'=>$thisTransfer['AccountingRegister']['id'],
 				'AccountingMovement.amount >'=>'0',
-				'AccountingMovement.bool_debit'=>false,
+				'AccountingMovement.bool_debit'=>'0',
 			),
 		));
 		$this->set(compact('debitMovementsAlreadyInAccountingRegister','creditMovementsAlreadyInAccountingRegister'));
@@ -1714,7 +1714,7 @@ class TransfersController extends AppController {
 			'conditions'=>array(
 				'BankAccountingCode.lft >'=>$bankAccountingCode['BankAccountingCode']['lft'],
 				'BankAccountingCode.rght <'=>$bankAccountingCode['BankAccountingCode']['rght'],
-				'BankAccountingCode.bool_main'=>false,
+				'BankAccountingCode.bool_main'=>'0',
 			)
 		));
 		$cashboxAccountingCode=$this->Transfer->CashboxAccountingCode->find('first',array(
@@ -1728,7 +1728,7 @@ class TransfersController extends AppController {
 			'conditions'=>array(
 				'CashboxAccountingCode.lft >'=>$cashboxAccountingCode['CashboxAccountingCode']['lft'],
 				'CashboxAccountingCode.rght <'=>$cashboxAccountingCode['CashboxAccountingCode']['rght'],
-				'CashboxAccountingCode.bool_main'=>false,
+				'CashboxAccountingCode.bool_main'=>'0',
 			)
 		));
 		$accountingRegisters = $this->Transfer->AccountingRegister->find('list');

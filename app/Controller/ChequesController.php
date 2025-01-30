@@ -116,14 +116,14 @@ class ChequesController extends AppController {
 			'conditions'=>array(
 				'BankAccountingCode.lft >'=>$bankAccountingCode['BankAccountingCode']['lft'],
 				'BankAccountingCode.rght <'=>$bankAccountingCode['BankAccountingCode']['rght'],
-				'BankAccountingCode.bool_main'=>false,
+				'BankAccountingCode.bool_main'=>'0',
 			)
 		));
 		$this->set(compact('bankAccountingCodes'));
 		$conditions=array(
 			'BankAccountingCode.lft >'=>$bankAccountingCode['BankAccountingCode']['lft'],
 			'BankAccountingCode.rght <'=>$bankAccountingCode['BankAccountingCode']['rght'],
-			'BankAccountingCode.bool_main'=>false,
+			'BankAccountingCode.bool_main'=>'0',
 		);
 		if ($bank_accounting_code_id>0){
 			$conditions[]=array('BankAccountingCode.id'=> $bank_accounting_code_id);
@@ -443,7 +443,7 @@ class ChequesController extends AppController {
 			'conditions'=>array(
 				'BankAccountingCode.lft >'=>$bankAccountingCode['BankAccountingCode']['lft'],
 				'BankAccountingCode.rght <'=>$bankAccountingCode['BankAccountingCode']['rght'],
-				'BankAccountingCode.bool_main'=>false,
+				'BankAccountingCode.bool_main'=>'0',
 			)
 		));
 		
@@ -512,7 +512,7 @@ class ChequesController extends AppController {
 			'conditions'=>array(
 				'AccountingMovement.accounting_register_id'=>$thisCheque['AccountingRegister']['id'],
 				'AccountingMovement.amount >'=>'0',
-				'AccountingMovement.bool_debit'=>false,
+				'AccountingMovement.bool_debit'=>'0',
 			),
 		));
 		

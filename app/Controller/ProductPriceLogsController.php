@@ -580,7 +580,7 @@ class ProductPriceLogsController extends AppController {
             ],
           ]);
           $clientConditions=[
-            'ThirdParty.bool_provider'=>false,
+            'ThirdParty.bool_provider'=>'0',
             'ThirdParty.bool_active'=>true,
             'ThirdParty.id'=>array_values($clientIdsWithPricesForThisProductType),
           ];
@@ -918,7 +918,7 @@ class ProductPriceLogsController extends AppController {
         ],
       ]);
       $clientConditions=[
-        'ThirdParty.bool_provider'=>false,
+        'ThirdParty.bool_provider'=>'0',
         'ThirdParty.bool_active'=>true,
         'ThirdParty.id'=>array_values($clientIdsWithPricesForThisProductType),
       ];
