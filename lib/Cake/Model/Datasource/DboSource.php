@@ -420,11 +420,14 @@ class DboSource extends DataSource {
 	public function execute($sql, $options = array(), $params = array()) {
 		 $options += array('log' => $this->fullDebug);
 		 
-
+        if(Configure::read('writeoquery'))
+        {   CakeLog::write('ornasaquery',"====Ini Execute=======");
+			CakeLog::write('ornasaquery',$sql);
+		}
 		$t = microtime(true);
 		$this->_result = $this->_execute($sql, $params);
-		if(Configure::read('writeoquery'))
-        CakeLog::write('ornasaquery',$sql);
+		  if(Configure::read('writeoquery'))
+        CakeLog::write('ornasaquery',"====Finish Execute=======");
 		if ($options['log']) {
 			$this->took = round((microtime(true) - $t) * 1000, 0);
 			$this->numRows = $this->affected = $this->lastAffected();
