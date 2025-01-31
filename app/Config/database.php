@@ -73,6 +73,9 @@ class DATABASE_CONFIG {
 		'database' => 'orna1114_ornasa',
 		'prefix' => '',
 		'encoding' => 'utf8',
+		'settings' => array(
+            '@@SESSION.sql_mode' => "'NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'",
+        ),
 	);
 
 	public $test = array(
