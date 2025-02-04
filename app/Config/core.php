@@ -32,7 +32,7 @@
  * In development mode, you need to click the flash message to continue.
  */
 	  Configure::write('debug', 1);
-	  Configure::write('writeoquery',true);
+	  Configure::write('writeoquery',false);
  
 
 /**
