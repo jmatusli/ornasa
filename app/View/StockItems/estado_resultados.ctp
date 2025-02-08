@@ -296,6 +296,65 @@
 			$othermaterialtable.="</tr>";
 		$othermaterialtable.="</tbody>";
 	$othermaterialtable.="</table>";	
+	
+   /*ingroup*/	
+   	$ingrouptable="<table id='tapones'>";
+		$ingrouptable.="<thead>";
+			$ingrouptable.="<tr>";
+				$ingrouptable.="<th class='hidden'>Product Id</th>";
+				$ingrouptable.="<th>".__('Product')."</th>";
+				$ingrouptable.="<th class='centered'>".__('Cantidad')."</th>";
+				$ingrouptable.="<th class='centered'>".__('Precio de Venta')."</th>";
+				$ingrouptable.="<th class='centered'>".__('Costo de Compra')."</th>";
+				$ingrouptable.="<th class='centered'>".__('Utilidad')."</th>";
+				$ingrouptable.="<th class='centered'>".__('Margen Utilidad')."</th>";
+			$ingrouptable.="</tr>";
+		$ingrouptable.="</thead>";
+		$ingrouptable.="<tbody>";
+    $total_quantity_all=0;
+		$total_price_all=0;
+		$total_cost_all=0;
+		$total_gain_all=0;
+		foreach ($productsIngroup as $itemingroup){
+			$total_quantity_all+=$itemingroup['total_quantity'];
+			$total_price_all+=$itemingroup['total_price'];
+			$total_cost_all+=$itemingroup['total_cost']; 
+			$total_gain_all+=$itemingroup['total_gain'];
+
+			$ingrouptable.="<tr>"; 			
+				$ingrouptable.="<td class='hidden'>".$itemingroup['id']."</td>";
+				$ingrouptable.="<td>".$this->Html->link($itemingroup['name'], array('controller' => 'products', 'action' => 'view', $itemingroup['id']))."</td>";
+				$ingrouptable.="<td class='centered number'><span>".$itemingroup['total_quantity']."</span></td>";
+				$ingrouptable.="<td class='centered currency'><span>".$itemingroup['total_price']."</span></td>";
+				$ingrouptable.="<td class='centered currency'><span>".$itemingroup['total_cost']."</span></td>";
+				$ingrouptable.="<td class='centered currency'><span>".$itemingroup['total_gain']."</span></td>";
+				if (!empty($itemingroup['total_price'])){
+					$ingrouptable.="<td class='centered percentage'><span>".(100*$itemingroup['total_gain']/$itemingroup['total_price'])."</span></td>";
+				}
+				else {
+					$ingrouptable.="<td class='centered percentage'><span>0</span></td>";
+				}
+			$ingrouptable.="</tr>";
+		}
+			$ingrouptable.="<tr class='totalrow'>";
+				$ingrouptable.="<td>Total</td>";
+				$ingrouptable.="<td class='centered number'><span>".$total_quantity_all."</span></td>";
+				$ingrouptable.="<td class='centered currency'><span>".$total_price_all."</span></td>";
+				$ingrouptable.="<td class='centered currency'><span>".$total_cost_all."</span></td>";
+				$ingrouptable.="<td class='centered currency'><span>".$total_gain_all."</span></td>";			
+				if (!empty($total_price_all)){
+					$ingrouptable.="<td class='centered percentage'><span>".(100*$total_gain_all/$total_price_all)."</span></td>";
+				}
+				else {
+					$ingrouptable.="<td class='centered percentage'><span>0</span></td>";
+				}
+			$ingrouptable.="</tr>";
+		$ingrouptable.="</tbody>";
+	$ingrouptable.="</table>";
+   /*ingroup*/	
+	
+	
+	
 /*
   $total_quantity_caps=$total_quantity_all;
 	$total_price_caps=$total_price_all;
@@ -655,7 +714,10 @@
 	echo "<h2>".__('Productos Fabricados de Calidad A')."</h2>"; 
 	echo $producedmaterialtable; 
 	echo "<h2>".__('Other Materials')."</h2>"; 
-	echo $othermaterialtable; 
+	echo $othermaterialtable; 	
+	
+	echo "<h2>".__('Categoria Ingroup')."</h2>"; 
+	echo $ingrouptable; 
 	
 	echo "<h2>".__('Utilidad Por Cliente basado en botellas calidad A')."</h2>"; 
 	echo $clientTable; 

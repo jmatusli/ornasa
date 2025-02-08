@@ -2793,7 +2793,95 @@ class StockItemsController extends AppController {
 		}
     //pr($otherMaterials);
     //pr($otherMaterialProductTypes);
-    $this->set(compact('otherMaterialProductTypes'));
+    /******inicio para productos ingroup *****************/
+	    $otherConditions=[
+      //'Product.product_type_id'=> $otherProductTypes,
+      'Product.product_nature_id'=> [PRODUCT_INGROUP],
+      'Product.product_type_id '=> 18,
+    ];
+		if ($warehouseId > 0){
+      $otherConditions['Product.id']=$warehouseProductIds;
+    }
+		//pr($otherProductTypes);
+		$ingroupProducts=$this->Product->find('all',[
+			'fields'=>'Product.id,Product.name',
+			'conditions' => $otherConditions,
+			'contain'=>[
+				'StockMovement'=>[
+          'conditions'=>$stockMovementConditions,
+          'StockItem',
+        ],
+        'ProductType'=>[
+          'fields'=>'ProductType.id,ProductType.name',
+        ],
+			],
+		]);
+		$productsIngroup=[];
+    $otherMaterialProductTypes=[];
+		$i=0;
+		foreach ($ingroupProducts as $itemIngroup){
+			$productId=$itemIngroup['Product']['id'];
+			$productName=$itemIngroup['Product']['name'];
+			
+			$productTotalQuantity=0;
+			$productTotalValuePrice=0;
+			$productTotalValueCost=0;
+			
+			foreach ($itemIngroup['StockMovement'] as $stockMovement){
+        /*
+				if (!$stockMovement['bool_input']){
+					if ($stockMovement['movement_date'] >= $startDate && $stockMovement['movement_date'] <= $endDatePlusOne){
+						if (!$stockMovement['bool_reclassification']){
+							$linkedStockItem=$this->StockItem->find('first',array(
+								'conditions'=>array(
+									'StockItem.id'=>$stockMovement['stockitem_id'],
+								),
+							));
+							$productTotalQuantity+=$stockMovement['product_quantity'];
+							$productTotalValueCost+=$stockMovement['product_quantity']*$linkedStockItem['StockItem']['product_unit_price'];
+							$productTotalValuePrice+=$stockMovement['product_total_price'];
+							
+							//if ($stockMovement['product_id']==4){
+								//pr($stockMovement);
+								//echo $productTotalValueCost;
+								//echo $productTotalValuePrice;
+							//}
+						}
+					}
+				}
+        */
+        //pr($stockMovement);
+        $productTotalQuantity+=$stockMovement['product_quantity'];
+        $productTotalValueCost+=$stockMovement['product_quantity']*$stockMovement['StockItem']['product_unit_price'];
+        $productTotalValuePrice+=$stockMovement['product_total_price'];
+			}
+			
+			$productsIngroup[$i]['id']=$productId;
+			$productsIngroup[$i]['name']=$productName;
+			$productsIngroup[$i]['total_quantity']=$productTotalQuantity;
+			$productsIngroup[$i]['total_price']=$productTotalValuePrice;
+			$productsIngroup[$i]['total_cost']=$productTotalValueCost;
+			$productsIngroup[$i]['total_gain']=$productTotalValuePrice-$productTotalValueCost;
+			
+      
+      $productTypeId=$itemIngroup['ProductType']['id'];
+      //if ($productTypeId != PRODUCT_TYPE_CAP){
+        if (!array_key_exists($productTypeId,$otherMaterialProductTypes)){
+          $otherMaterialProductTypes[$productTypeId]['ProductType']=[
+            'id'=>$productTypeId,
+            'name'=>$itemIngroup['ProductType']['name'],
+          ];
+          $otherMaterialProductTypes[$productTypeId]['Products']=[];
+        }
+        $otherMaterialProductTypes[$productTypeId]['Products'][]=$productsIngroup[$i];
+      //}
+      $i++;
+		}
+    /******fin para productos ingroup *****************/
+	
+	
+	
+	$this->set(compact('otherMaterialProductTypes'));
 /*********************************************************
 		SERVICES
 		*********************************************************/
@@ -2992,7 +3080,7 @@ class StockItemsController extends AppController {
 			$clientutility[$i]['cap_total_gain']=$productTotalValuePrice-$productTotalValueCost;
 		}
 		
-		$this->set(compact('producedMaterials','otherMaterials','startDate','endDate','clientutility'));
+		$this->set(compact('producedMaterials','otherMaterials','productsIngroup','startDate','endDate','clientutility'));
     
     $this->StockMovement->virtualFields['total_in_A']=0;
     $stockMovementsAdjustmentsInA=$this->StockMovement->find('all',[
