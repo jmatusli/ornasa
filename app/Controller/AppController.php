@@ -60,6 +60,7 @@
   define('PRODUCT_NATURE_ACCESORIES','3');
   define('PRODUCT_NATURE_RAW','4');
   define('PRODUCT_NATURE_BAGS','5');
+  define('PRODUCT_INGROUP','6');
   
 	define('CATEGORY_RAW','1');
 	define('CATEGORY_PRODUCED','2');
