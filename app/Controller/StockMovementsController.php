@@ -1231,7 +1231,8 @@ class StockMovementsController extends AppController {
               $datasource->begin();
               try{
                 foreach ($stockItemsForTransfer as $transferStockItem){
-                  if (!$this->StockItem->exists($stockitem_id)) {
+				  $stockItemId=$transferStockItem['id'];	
+                  if (!$this->StockItem->exists($stockItemId)) {
                     throw new NotFoundException(__('Invalid StockItem'));
                   }
                   $stockItemId=$transferStockItem['id'];
