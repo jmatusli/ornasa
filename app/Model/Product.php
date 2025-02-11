@@ -402,7 +402,7 @@ class Product extends AppModel {
 			if ($product['StockItem'] != null){
 				foreach ($product['StockItem'] as $stockItem){
           //pr($stockItem);
-					if ($stockItem['remaining_quantity'] > 0 || in_array($product['Product']['id'],$finishedProductsForEdit)){
+					if ($stockItem['remaining_quantity'] <> 0 || in_array($product['Product']['id'],$finishedProductsForEdit)){
             $productId=$product['Product']['id'];
 						$products[$productId]=substr($product['Product']['name'],0,28).(strlen($product['Product']['name'])>28?"...":"");
             //$products[$productId]=$product['Product']['name'];
