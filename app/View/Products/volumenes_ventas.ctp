@@ -74,6 +74,8 @@
           echo $this->Form->Submit(__('Grabar Volumenes de Venta'),['class'=>'savePrices','style'=>'width:300px;']);
         }
         $volumeDateTime=new DateTime($volumeDateTime);
+		
+		 //pr($productTypes);exit;
         foreach ($productTypes as $productTypeId=>$productTypeData){
           //pr($productTypeData);
           
@@ -111,14 +113,16 @@
             }
             else {
               $tableBody.='<tr>'; 
-                $tableBody.='<td>'.$this->Form->Input('ProductType.'.$productTypeId.'.Product.'.$productId.'.product_id',['label'=>false,'type'=>'number','default'=>$productId,'class'=>'fixed']).'</td>';
+                $tableBody.='<td>'.$this->Form->Input('ProductType.'.$productTypeId.'.Product.'.$productId.'.product_id',['label'=>false,/* 'type'=>'number', */'default'=>$productId,'class'=>'fixed']).'</td>';
+         
                 
-                $tableBody.='<td>'.$this->Form->Input('ProductType.'.$productTypeId.'.Product.'.$productId.'.raw_material_id',['label'=>false,'type'=>'number','default'=>$productData['RawMaterial']['id'],'class'=>'fixed']).'</td>';
-                
-                $tableBody.='<td>'.$this->Form->Input('ProductType.'.$productTypeId.'.Product.'.$productId.'.threshold_volume',['label'=>false,'type'=>'number','default'=>0,'class'=>'threshold']).'</td>';
+                $tableBody.='<td>'.$this->Form->Input('ProductType.'.$productTypeId.'.Product.'.$productId.'.threshold_volume',['label'=>false,'type'=>'number','default'=>$productData['threshold_volume'],'class'=>'threshold']).'</td>';
+				      
+                $tableBody.='<td>'.$this->Form->Input('ProductType.'.$productTypeId.'.Product.'.$productId.'.price_category_one',['label'=>false,'type'=>'number','default'=>$productData['price_category_one'],'class'=>'threshold']).'</td>';
+				
                 $tableBody.='<td>'.$this->Form->Input('ProductType.'.$productTypeId.'.Product.'.$productId.'.price_category_one',['label'=>false,'type'=>'decimal','readonly'=>true]).'</td>';
                 $tableBody.='<td>'.$this->Form->Input('ProductType.'.$productTypeId.'.Product.'.$productId.'.price_category_two',['label'=>false,'type'=>'decimal','readonly'=>true]).'</td>';
-                $tableBody.='<td>'.$this->Form->Input('ProductType.'.$productTypeId.'.Product.'.$productId.'.price_category_volume',['label'=>false,'type'=>'decimal']).'</td>';
+               /* $tableBody.='<td>'.$this->Form->Input('ProductType.'.$productTypeId.'.Product.'.$productId.'.price_category_volume',['label'=>false,'type'=>'decimal']).'</td>';*/
               $tableBody.='</tr>';
             }            
           }
