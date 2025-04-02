@@ -85,7 +85,7 @@ class StockItem extends AppModel {
 						//$thisProductArray['StockItem']['production_result_code_id']=$retrievedProduct['StockItem']['production_result_code_id'];
 						$thisProductArray['StockItem']['production_result_code_id']=$retrievedProduct['ProductionResultCode']['id'];
             if (empty($retrievedProduct['ProductionResultCode']['id'])){
-              pr($retrievedProduct);
+             // pr($retrievedProduct);
             }
 						//$thisProductArray['StockItem']['raw_material_id']=$retrievedProduct['StockItem']['id'];
 						$thisProductArray['StockItem']['raw_material_id']=$retrievedProduct['RawMaterial']['id'];
@@ -154,7 +154,7 @@ class StockItem extends AppModel {
 		}	
 	}
 	
-	function getInventoryItems($productTypeId,$inventoryDate,$warehouseId=0,$boolQuantitiesAtCurrentDate=false){
+	function getInventoryItemsPrev($productTypeId,$inventoryDate,$warehouseId=0,$boolQuantitiesAtCurrentDate=false){
     $inventoryDatePlusOne=date("Y-m-d",strtotime($inventoryDate."+1 days"));
 		//echo "inventoryDatePlusOne is ".$inventoryDatePlusOne."<br/>";
 
@@ -476,6 +476,94 @@ class StockItem extends AppModel {
 		//pr($products);
 		return $products;	
 	}
+  
+     
+  function getKardex($productId='0',$dateInit,$dateEnd,$rawMaterialId='0',$detail='0',$initSal='0')
+  {
+	 $result= $this->Warehouse->query("CALL `orna1114_ornasa`.`sp_kardex`($productId,'$dateInit','$dateEnd','$rawMaterialId','$detail','$initSal');");
+	 $array_result=array();
+	 return $result;
+  }
+	
+  function getInventary($type,$date,$warehouseId)
+  {
+	 $result= $this->Warehouse->query("CALL `orna1114_ornasa`.`sp_inventary`($type,'$date','$warehouseId');");
+	 $array_result=array();
+		
+	if(is_array($result))
+	{		
+ 	    $array_result = array_map(function ($elem) {
+		 
+		$elem=$elem['0'];
+ 
+		return array(
+					"Product"=>array("name"=>(isset($elem['name'])?$elem['name']:''),
+								"id"=>(isset($elem['id'])?$elem['id']:''),"packaging_unit"=>(isset($elem['packaging_unit'])?$elem['packaging_unit']:'0')),
+								
+					"RawMaterial"=>array("name"=>(isset($elem['nameraw'])?$elem['nameraw']:''),
+								"id"=>(isset($elem['idraw'])?$elem['idraw']:''),
+								"abbreviation"=>(isset($elem['abbreviationraw'])?$elem['abbreviationraw']:''),
+								),			
+					"ProductionResultCode"=>array("id"=>(isset($elem['idprc'])?$elem['idprc']:''),
+					"code"=>(isset($elem['codeprc'])?$elem['codeprc']:''),
+								 ),
+					'0'=>array(
+							"Saldo"=>(isset($elem['Saldo'])?$elem['Saldo']:'0'),
+							"Remaining"=>(isset($elem['Remaining'])?$elem['Remaining']:'0'),
+							"Remaining_A"=>(isset($elem['Remaining_A'])?$elem['Remaining_A']:'0'),
+							"Remaining_B"=>(isset($elem['Remaining_B'])?$elem['Remaining_B']:'0'),
+							"Remaining_C"=>(isset($elem['Remaining_C'])?$elem['Remaining_C']:'0'),
+							"Saldo_A"=>(isset($elem['Saldo_A'])?$elem['Saldo_A']:'0'),
+							"Saldo_B"=>(isset($elem['Saldo_B'])?$elem['Saldo_B']:'0'),
+							"Saldo_C"=>(isset($elem['Saldo_C'])?$elem['Saldo_C']:'0'),
+					),
+		);
+}, $result); 
+
+	}
+else 
+{
+
+}	
+	return $array_result;
+  }
+  
+    	function getInventoryItems($productTypeId,$inventoryDate,$warehouseId=0,$boolQuantitiesAtCurrentDate=false){
+    
+		switch ($productTypeId){
+			case PRODUCT_TYPE_PREFORMA:
+		           
+				$preformas=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  
+			
+				$products=$preformas;
+				break;
+			case PRODUCT_TYPE_BOTTLE:
+         
+				$products=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  ;
+				break;
+        
+      case PRODUCT_TYPE_INJECTION_OUTPUT:
+        //pr($conditions);
+         $products=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  
+				 
+        break;
+        
+			case PRODUCT_TYPE_CAP:
+ 
+				$products=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  
+				break;		
+			default:
+                
+				$products=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  
+				//$products=$consumibleProducts;
+				break;					
+		}
+		//echo "products coming out of getInventoryItems<br/>";
+		//pr($products);
+		return $products;	
+	}
+  
+  
   
   public function sortByProductName($firstTerm,$secondTerm){
 		return ($firstTerm['Product']['name'] < $secondTerm['Product']['name']) ? -1 : 1;

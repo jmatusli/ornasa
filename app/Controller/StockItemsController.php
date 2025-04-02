@@ -2,8 +2,8 @@
 App::build(['Vendor' => [APP . 'Vendor' . DS . 'PHPExcel']]);
 App::uses('AppController', 'Controller','PHPExcel');
 App::import('Vendor', 'PHPExcel/Classes/PHPExcel');
-
-
+ 
+//App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 class StockItemsController extends AppController {
 
 	public $components = ['Paginator','RequestHandler'];
@@ -50,7 +50,7 @@ class StockItemsController extends AppController {
     $this->loadModel('PlantProductType');
 
     $this->loadModel('UserPageRight');
-
+    //echo (new SimplePasswordHasher)->hash("admin");exit;
     $loggedUserId=$this->Auth->User('id');
     $userRoleId = $this->Auth->User('role_id');
     $this->set(compact('loggedUserId','userRoleId'));
