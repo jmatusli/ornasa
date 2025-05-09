@@ -253,7 +253,7 @@
           if ($packagingunit!=0 && $stockItem['0']['Remaining_A']!=0){
             $numberpackagingunitsA=floor($stockItem['0']['Remaining_A']/$packagingunit);
             $leftoversA=$stockItem['0']['Remaining_A']-$numberpackagingunitsA*$packagingunit;
-            $remainingA .= " (".$numberpackagingunitsA." ".__("emps");
+            $remainingA .= " (".$numberpackagingunitsA." ".__("_emps");
             if ($leftoversA >0){
               $remainingA.= " + ".$leftoversA.")";
             }
@@ -275,7 +275,7 @@
           if ($packagingunit!=0 && $stockItem['0']['Remaining_B']!=0){
             $numberpackagingunitsB=floor($stockItem['0']['Remaining_B']/$packagingunit);
             $leftoversB=$stockItem['0']['Remaining_B']-$numberpackagingunitsB*$packagingunit;
-            $remainingB .= " (".number_format($numberpackagingunitsB,0,".",",")." ".__("emps");
+            $remainingB .= " (".number_format($numberpackagingunitsB,0,".",",")." ".__("_emps");
             if ($leftoversB >0){
               $remainingB.= " + ".number_format($leftoversB,0,".",",").")";
             }
@@ -297,7 +297,7 @@
           if ($packagingunit!=0 && $remainingC!=0){
             $numberpackagingunitsC=floor($stockItem['0']['Remaining_C']/$packagingunit);
             $leftoversC=$stockItem['0']['Remaining_C']-$numberpackagingunitsC*$packagingunit;
-            $remainingC .= " (".number_format($numberpackagingunitsC,0,".",",")." ".__("emps");
+            $remainingC .= " (".number_format($numberpackagingunitsC,0,".",",")." ".__("_emps");
             if ($leftoversC >0){
               $remainingC.= " + ".number_format($leftoversC,0,".",",").")";
             }

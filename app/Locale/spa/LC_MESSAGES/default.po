@@ -2497,6 +2497,8 @@ msgstr "Se guardó la fecha de cierre"
 msgid "The closing date could not be saved. Please, try again.'), 'default',array('class' => 'error-message')); Please, try again."
 msgstr "La fecha de cierre no se podía guardar."
 
+msgid "_emps"
+msgstr "_emps"
 
 
 ##################
