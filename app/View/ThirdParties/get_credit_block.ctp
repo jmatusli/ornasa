@@ -58,6 +58,7 @@
         $tableHead.='<th>Fecha</th>';
         $tableHead.='<th class="centered">#</th>';
         $tableHead.='<th>Monto</th>';
+        $tableHead.='<th>Dias</th>';
       $tableHead.='</tr>';
     $tableHead.='</thead>';
     
@@ -65,6 +66,13 @@
     $totalPending=0;
     foreach ($clientCreditStatus['ThirdParty']['pending_invoices'] as $pendingInvoice){
       $invoiceDateTime = new DateTime($pendingInvoice['Invoice']['invoice_date']);
+	   $noww = new DateTime();
+	   $now = time();
+	  $current_date=$noww->format('Y-m-d');
+	  $invoice_date=strtotime($invoiceDateTime->format('Y-m-d'));
+	  $datediff= round(($now -$invoice_date) / (60 * 60 * 24))-1;
+	  
+	   
       $totalPending+=$pendingInvoice['Invoice']['total_price'];
       
       $tableRow='';
@@ -72,7 +80,8 @@
         $tableRow.='<td>'.$invoiceDateTime->format('d-m-Y').'</td>';
         $tableRow.='<td>'.$pendingInvoice['Invoice']['invoice_code'].'</td>';
         $tableRow.='<td class="centered"><span class="currency">'.$pendingInvoice['Currency']['abbreviation'].'</span><span class="amountright">'.$pendingInvoice['Invoice']['total_price'].'</span></td>';
-      $tableRow.='</tr>';
+        $tableRow.='<td>'.$datediff.'</td>';     
+	 $tableRow.='</tr>';
       
       $tableBodyRows.=$tableRow;
     }
@@ -82,6 +91,7 @@
       $totalRow.='<td>Total</td>';
       $totalRow.='<td></td>';
       $totalRow.='<td class="centered"><span class="currency"></span><span class="amountright">'.$totalPending.'</span></td>';
+      $totalRow.='<td class="centered"><span class="currency"></td>';
     $totalRow.='</tr>';
       
     $tableBody='<tbody>'.$totalRow.$tableBodyRows.$totalRow.'</tbody>';

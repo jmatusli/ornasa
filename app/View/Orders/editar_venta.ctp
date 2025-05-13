@@ -1357,6 +1357,7 @@
                     echo '<th>Fecha</th>';
                     echo '<th class="centered">#</th>';
                     echo '<th>Monto</th>';
+                    echo '<th>Dias</th>';
                   echo '</tr>';
                 echo '</thead>';
                 echo '<tbody>';
@@ -1365,6 +1366,7 @@
                     echo '<td class="invoiceDate">Fecha</td>';
                     echo '<td class="invoiceCode">#</td>';
                     echo '<td  class="invoiceAmount"><span class="currency"></span><span class="amountright"></span></td>';
+                    echo '<td></td>';
                   echo '</tr>';
                 }
                 echo '</tbody>';
