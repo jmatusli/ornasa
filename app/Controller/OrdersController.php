@@ -4890,7 +4890,10 @@ class OrdersController extends AppController {
     
     $canSeeAllVendors=$this->UserPageRight->hasUserPageRight('VER_TODOS_VENDEDORES',$userRoleId,$loggedUserId,'Orders','resumenVentasRemisiones');
     $this->set(compact('canSeeAllVendors'));
-    
+	
+	$canApplyCredit=$this->UserPageRight->hasUserPageRight('AUTORIZACION_CREDITO',$userRoleId,$loggedUserId,'orders','crearVenta');
+ 
+  
 		$this->Order->recursive=-1;
 		$this->Product->recursive=-1;
 		$this->ProductType->recursive=-1;
@@ -5340,7 +5343,7 @@ class OrdersController extends AppController {
           $creditUsedAfterInvoice= $creditUsedBeforeInvoice + $creditUsedWithThisInvoice;
           $creditLimit=$clientCreditStatus['ThirdParty']['credit_amount'];
           
-          if ($creditLimit < $creditUsedAfterInvoice){
+          if (($creditLimit < $creditUsedAfterInvoice) && $canApplyCredit!=1){
             $creditBlockMessage.="El cliente ".$clientCreditStatus['ThirdParty']['company_name']." tiene un límite de crédito de ".$creditLimit." y ya tiene pagos pendientes para un total de C$ ".$creditUsedBeforeInvoice.".  Con el total de esta factura (C$ ".$creditUsedWithThisInvoice.") el monto total que se debe (C$ ".$creditUsedAfterInvoice.") excede el límite de crédito.";
           }
           else {
@@ -5382,7 +5385,7 @@ class OrdersController extends AppController {
             $unpaidBlocked='0';  
           }
           
-          if ($userRoleId == ROLE_ADMIN){
+          if ($userRoleId == ROLE_ADMIN || $canApplyCredit==1){
             $creditBlocked='0';
             $unpaidBlocked='0';  
           }
@@ -8259,6 +8262,9 @@ class OrdersController extends AppController {
     $canSeeAllVendors=$this->UserPageRight->hasUserPageRight('VER_TODOS_VENDEDORES',$userRoleId,$loggedUserId,'Orders','resumenVentasRemisiones');
     $this->set(compact('canSeeAllVendors'));
     
+	$canApplyCredit=$this->UserPageRight->hasUserPageRight('AUTORIZACION_CREDITO',$userRoleId,$loggedUserId,'orders','crearVenta');
+ 
+	
     $this->Order->recursive=-1;
     $this->StockItem->recursive=-1;
     $this->Product->recursive=-1;
@@ -8903,7 +8909,7 @@ class OrdersController extends AppController {
               $creditUsedAfterInvoice= $creditUsedBeforeInvoice + $creditUsedWithThisInvoice;
               $creditLimit=$clientCreditStatus['ThirdParty']['credit_amount'];
               
-              if ($creditLimit < $creditUsedAfterInvoice){
+              if (($creditLimit < $creditUsedAfterInvoice) && $canApplyCredit!=1){
                 $creditBlockMessage.="El cliente ".$clientCreditStatus['ThirdParty']['company_name']." tiene un límite de crédito de ".$creditLimit." y ya tiene pagos pendientes para un total de C$ ".$creditUsedBeforeInvoice.".  Con el total de esta factura (C$ ".$creditUsedWithThisInvoice.") el monto total que se debe (C$ ".$creditUsedAfterInvoice.") excede el límite de crédito.";
               }
               else {
@@ -8945,7 +8951,7 @@ class OrdersController extends AppController {
                 $unpaidBlocked='0';  
               }
               
-              if ($userRoleId == ROLE_ADMIN){
+              if ($userRoleId == ROLE_ADMIN || $canApplyCredit==1){
                 $creditBlocked='0';
                 $unpaidBlocked='0';  
               }
@@ -12929,6 +12935,8 @@ class OrdersController extends AppController {
     
     $aco_name="Orders/verVenta";		
 		$bool_sale_view_permission=$this->hasPermission($this->Auth->User('id'),$aco_name);
+		
+		 
 		$this->set(compact('bool_sale_view_permission'));
     
     $startDate = null;

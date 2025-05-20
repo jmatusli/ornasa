@@ -291,9 +291,10 @@ class ThirdPartiesController extends AppController {
 	}
   
   public function getCreditBlock(){
-		$this->request->onlyAllow('ajax'); // No direct access via browser URL
+	  	$this->request->onlyAllow('ajax'); // No direct access via browser URL
     $this->layout = "ajax";// just in case to reduce the error message;
-		
+		 
+	
     $this->loadModel('User');  
     $this->loadModel('UserPageRight');
     $userRoleId=$this->Auth->User('role_id');
@@ -303,7 +304,7 @@ class ThirdPartiesController extends AppController {
     $boolCreditApplied=trim($_POST['boolCreditApplied']);
  
        $canApplyCredit=$this->UserPageRight->hasUserPageRight('AUTORIZACION_CREDITO',$userRoleId,$loggedUserId,'orders','crearVenta');
-
+ 
     if(isset($_POST['creditAuthorizationUserId'])) {
       $creditAuthorizationUserId=trim($_POST['creditAuthorizationUserId']);
     }

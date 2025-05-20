@@ -16,7 +16,7 @@
       $creditWarning= "El cliente ".$clientCreditStatus['ThirdParty']['company_name']." no tiene ni una plaza ni un límite de crédito, entonces solamente se pueden emitir facturas de contado. ";  
     }
   }
-  if ($boolCreditExceeded && $boolCreditApplied && !$boolCreditAuthorized){
+  if ($boolCreditExceeded && $boolCreditApplied && !$boolCreditAuthorized && $canApplyCredit!=1){
     $boolSavingAllowed=false;    
     $creditCheckResult="Factura de crédito no permitido.";
   }
@@ -24,6 +24,7 @@
   if (!$boolCreditAuthorized){
     echo '<p class="notallowed" id="creditWarning">'.$creditWarning.'</p>';
   }
+ 
   if ($userRoleId == ROLE_ADMIN || $canApplyCredit==1 ){
     echo $this->Form->input('set_save_allowed',['id'=>'SetSaveAllowed','type'=>'checkbox','label'=>'Guardar Venta','checked'=>$boolSavingAllowed]);
   }
