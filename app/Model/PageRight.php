@@ -7,6 +7,7 @@ class PageRight extends AppModel {
     $pageRight=$this->find('first',[
       'conditions'=>[
         'PageRight.code'=>$code,
+		'PageRight.bool_default_assignment'=>1,									   
       ],
       'recursive'=>-1,
     ]);
