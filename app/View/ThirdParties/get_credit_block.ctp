@@ -11,7 +11,7 @@
   $creditCheckResult='';      
   if ($clientCreditDays == 0){
     $creditCheckResult="Este cliente no tiene ni una plaza ni un límite de crédito, entonces solamente se pueden emitir facturas de contado.  ";
-    if ($userRoleId!= ROLE_ADMIN && $boolCreditApplied){
+    if ($userRoleId!= ROLE_ADMIN && $canApplyCredit!=1 && $boolCreditApplied){
       $boolCreditApplied=false;
       $creditWarning= "El cliente ".$clientCreditStatus['ThirdParty']['company_name']." no tiene ni una plaza ni un límite de crédito, entonces solamente se pueden emitir facturas de contado. ";  
     }
@@ -24,7 +24,7 @@
   if (!$boolCreditAuthorized){
     echo '<p class="notallowed" id="creditWarning">'.$creditWarning.'</p>';
   }
-  if ($userRoleId == ROLE_ADMIN){
+  if ($userRoleId == ROLE_ADMIN || $canApplyCredit==1 ){
     echo $this->Form->input('set_save_allowed',['id'=>'SetSaveAllowed','type'=>'checkbox','label'=>'Guardar Venta','checked'=>$boolSavingAllowed]);
   }
   echo $this->Form->input('save_allowed',['id'=>'SaveAllowed','type'=>'hidden','label'=>'Guardar Venta','readonly'=>'readonly','value'=>($boolSavingAllowed?'1':'0')]);
@@ -37,7 +37,7 @@
   echo $this->Form->input('retention_allowed',['id'=>'RetentionAllowed','type'=>'hidden','readonly'=>'readonly','value'=>1]);
   //echo $this->Form->input('bool_credit',['type'=>'checkbox','id'=>'BoolCredit','label'=>'Crédito','checked'=>($userRoleId == ROLE_ADMIN? $boolCreditApplied:!$boolCreditExceeded && $boolCreditApplied)]);
   echo $this->Form->input('bool_credit',['type'=>'checkbox','id'=>'BoolCredit','label'=>'Crédito','checked'=>$boolCreditApplied]);
-  if ($userRoleId== ROLE_ADMIN){
+  if ($userRoleId== ROLE_ADMIN /* || $canApplyCredit==1 */){
     echo $this->Form->input('Client.credit_days',['label'=>'Días de Crédito','value'=>$clientCreditDays]);
   } 
   else {

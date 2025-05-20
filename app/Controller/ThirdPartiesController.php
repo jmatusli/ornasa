@@ -295,13 +295,15 @@ class ThirdPartiesController extends AppController {
     $this->layout = "ajax";// just in case to reduce the error message;
 		
     $this->loadModel('User');  
-    
+    $this->loadModel('UserPageRight');
     $userRoleId=$this->Auth->User('role_id');
 		$this->set(compact('userRoleId'));
-    
+     $loggedUserId=$this->Auth->User('id');
     $clientId=trim($_POST['clientId']);
     $boolCreditApplied=trim($_POST['boolCreditApplied']);
-    
+ 
+       $canApplyCredit=$this->UserPageRight->hasUserPageRight('AUTORIZACION_CREDITO',$userRoleId,$loggedUserId,'orders','crearVenta');
+
     if(isset($_POST['creditAuthorizationUserId'])) {
       $creditAuthorizationUserId=trim($_POST['creditAuthorizationUserId']);
     }
@@ -312,8 +314,9 @@ class ThirdPartiesController extends AppController {
     if(isset($_POST['boolCreditAuthorized'])) {
       $boolCreditAuthorized=trim($_POST['boolCreditAuthorized']);
     }
-    else {  
-      if ($this->User->getUserRoleId($creditAuthorizationUserId) == ROLE_ADMIN){
+    else { 
+ 
+      if (($this->User->getUserRoleId($creditAuthorizationUserId) == ROLE_ADMIN) || $canApplyCredit==1){
         $boolCreditAuthorized=1;  
       }
       else {
@@ -328,6 +331,7 @@ class ThirdPartiesController extends AppController {
 		//if (!$this->ThirdParty->exists($clientId)) {
 		//	throw new NotFoundException(__('Cliente inválido'));
 		//}
+    $this->set(compact('canApplyCredit'));
     $this->set(compact('boolCreditApplied'));
     $this->set(compact('boolCreditAuthorized'));
     $this->set(compact('creditAuthorizationUserId'));
