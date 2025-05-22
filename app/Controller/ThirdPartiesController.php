@@ -317,7 +317,7 @@ class ThirdPartiesController extends AppController {
     }
     else { 
  
-      if (($this->User->getUserRoleId($creditAuthorizationUserId) == ROLE_ADMIN) || $canApplyCredit==1){
+      if (($this->User->getUserRoleId($creditAuthorizationUserId) == ROLE_ADMIN)){
         $boolCreditAuthorized=1;  
       }
       else {

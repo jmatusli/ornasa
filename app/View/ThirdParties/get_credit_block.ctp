@@ -11,7 +11,7 @@
   $creditCheckResult='';      
   if ($clientCreditDays == 0){
     $creditCheckResult="Este cliente no tiene ni una plaza ni un límite de crédito, entonces solamente se pueden emitir facturas de contado.  ";
-    if ($userRoleId!= ROLE_ADMIN && $canApplyCredit!=1 && $boolCreditApplied){
+    if ($userRoleId!= ROLE_ADMIN  && $boolCreditApplied){
       $boolCreditApplied=false;
       $creditWarning= "El cliente ".$clientCreditStatus['ThirdParty']['company_name']." no tiene ni una plaza ni un límite de crédito, entonces solamente se pueden emitir facturas de contado. ";  
     }
