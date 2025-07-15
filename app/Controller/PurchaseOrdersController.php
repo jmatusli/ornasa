@@ -993,7 +993,7 @@ class PurchaseOrdersController extends AppController {
 	$userRoleId = $this->Auth->User('role_id');
 
 	$loggedUserId=$this->Auth->User('id');
-	$canAutorizePurcharse=$this->UserPageRight->hasUserPageRight('AUTORIZAR_COMPRA',$userRoleId,$loggedUserId,'PurchaseOrders','resumen');
+	$canAutorizePurcharse=$this->UserPageRight->hasUserPageRight('AUTORIZAR_COMPRA',$userRoleId,$loggedUserId,'PurchaseOrders','Autorizar');
 
     $purchaseOrder=$this->PurchaseOrder->find('first',[
       'conditions'=>['PurchaseOrder.id'=>$id],
