@@ -101,7 +101,7 @@ class PurchaseOrdersController extends AppController {
     
     $this->loadModel('Warehouse');
     $this->loadModel('UserWarehouse');
-    
+     $this->loadModel('UserPageRight');
 		$loggedUserId=$this->Auth->User('id');
     $this->set(compact('loggedUserId'));
     $userRoleId = $this->Auth->User('role_id');
@@ -116,7 +116,11 @@ class PurchaseOrdersController extends AppController {
     $purchaseOrderStateColors=$this->PurchaseOrderState->getPurchaseOrderStateColors();
     $this->set(compact('purchaseOrderStateColors'));
     //pr($purchaseOrderStateColors);
-    
+	
+	$canAutorizePurcharse=$this->UserPageRight->hasUserPageRight('AUTORIZAR_COMPRA',$userRoleId,$loggedUserId,'PurchaseOrders','Autorizar');
+	
+    $this->set(compact('canAutorizePurcharse'));
+	
     $purchaseOrderStateId=0;
     $currencyId=CURRENCY_USD;
     
@@ -378,7 +382,7 @@ class PurchaseOrdersController extends AppController {
 		$warehouseId=0;
 		
     $requestProducts=[];
-    //$boolRefreshReload='0';
+    //$boolRefreshReload=false;
     
     if ($this->request->is('post')) {
 			$currencyId=$this->request->data['PurchaseOrder']['currency_id'];
@@ -412,7 +416,7 @@ class PurchaseOrdersController extends AppController {
             $multiplicationDifference=abs($purchaseOrderProduct['product_total_cost']-$purchaseOrderProduct['product_quantity']*$purchaseOrderProduct['product_unit_cost']);
             //pr($purchaseOrderProduct);
             if ($multiplicationDifference>=0.01){
-              $boolMultiplicationOK='0';
+              $boolMultiplicationOK=false;
               $this->Product->recursive=-1;
               $relatedProduct=$this->Product->find('first',[
                 'conditions'=>['Product.id'=>$purchaseOrderProduct['product_id'],],
@@ -656,7 +660,7 @@ class PurchaseOrdersController extends AppController {
 					$multiplicationDifference=abs($purchaseOrderProduct['product_total_cost']-$purchaseOrderProduct['product_quantity']*$purchaseOrderProduct['product_unit_cost']);
 					//pr($purchaseOrderProduct);
 					if ($multiplicationDifference>=0.01){
-						$boolMultiplicationOK='0';
+						$boolMultiplicationOK=false;
             $this->Product->recursive=-1;
             $relatedProduct=$this->Product->find('first',[
               'conditions'=>['Product.id'=>$purchaseOrderProduct['product_id'],],
@@ -985,13 +989,18 @@ class PurchaseOrdersController extends AppController {
 			throw new NotFoundException(__('Orden de Compra inválida'));
 		}
 		$this->request->allowMethod('get');
-    
+     $this->loadModel('UserPageRight');
+	$userRoleId = $this->Auth->User('role_id');
+
+	$loggedUserId=$this->Auth->User('id');
+	$canAutorizePurcharse=$this->UserPageRight->hasUserPageRight('AUTORIZAR_COMPRA',$userRoleId,$loggedUserId,'PurchaseOrders','resumen');
+
     $purchaseOrder=$this->PurchaseOrder->find('first',[
       'conditions'=>['PurchaseOrder.id'=>$id],
       'recursive'=>-1,
     ]);
 		
-    if ($this->Auth->User('role_id') === ROLE_ADMIN){
+    if ($this->Auth->User('role_id') === ROLE_ADMIN || $canAutorizePurcharse){
       $datasource=$this->PurchaseOrder->getDataSource();
       $datasource->begin();
       try {
@@ -1151,8 +1160,8 @@ class PurchaseOrdersController extends AppController {
 					'PurchaseOrder.provider_id',
 				],
 				'conditions'=>[
-					'PurchaseOrder.bool_annulled'=>'0',
-					'PurchaseOrder.bool_paid'=>'0',
+					'PurchaseOrder.bool_annulled'=>false,
+					'PurchaseOrder.bool_paid'=>false,
 					'PurchaseOrder.provider_id'=>$providers[$p]['ThirdParty']['id'],
 				],
         'contain'=>[
@@ -1275,8 +1284,8 @@ class PurchaseOrdersController extends AppController {
 				'PurchaseOrder.purchase_order_date','PurchaseOrder.due_date',
 			],
 			'conditions'=>[
-				'PurchaseOrder.bool_annulled'=>'0',
-				'PurchaseOrder.bool_paid'=>'0',
+				'PurchaseOrder.bool_annulled'=>false,
+				'PurchaseOrder.bool_paid'=>false,
 				'PurchaseOrder.provider_id'=>$providerId,
 			],
       'contain'=>[

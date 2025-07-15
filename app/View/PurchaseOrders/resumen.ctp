@@ -211,7 +211,7 @@
             if ($bool_edit_permission && $stateId < PURCHASE_ORDER_STATE_RECEIVED_COMPLETELY ){
               $tableRow.=$this->Html->link(__('Edit'), ['action' => 'editar', $purchaseOrder['PurchaseOrder']['id']]);
             }
-            if ($stateId == PURCHASE_ORDER_STATE_AWAITING_AUTHORIZATION && $userRoleId === ROLE_ADMIN){
+            if ($stateId == PURCHASE_ORDER_STATE_AWAITING_AUTHORIZATION && ($userRoleId === ROLE_ADMIN || $canAutorizePurcharse)){
               $tableRow.=$this->Html->link(__('Autorizar'), ['action' => 'autorizar', $purchaseOrder['PurchaseOrder']['id']]);
             }
             if ($stateId == PURCHASE_ORDER_STATE_AUTHORIZED && $bool_confirmar_permission){
