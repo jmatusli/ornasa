@@ -12,6 +12,131 @@ class StockItem extends AppModel {
     ]);
   }
   
+   function getResultCodes($productId)
+  {
+	$codes= $this->Warehouse->query("select distinct  production_result_code_id from `orna1114_ornasa`.`stock_movements` where production_result_code_id is not null;");
+ 
+	return $codes;
+ 
+	  
+  }
+     
+  function getSaldo($productId='0',$warehouseId,$dateInit,$rawMaterialId='0',$returnv=1)
+  {
+	  
+	$result_initial= $this->Warehouse->query("CALL `orna1114_ornasa`.`sp_saldo`($productId,$warehouseId,'$dateInit','$rawMaterialId','$returnv');");
+ 
+	if($rawMaterialId>0){
+
+	$result['total']=(isset($result_initial[0][0]['Remaining'])?$result_initial[0][0]['Remaining']:0);
+	$result[1]=(isset($result_initial[0][0]['Remaining_A'])?$result_initial[0][0]['Remaining_A']:0);
+	$result[2]=(isset($result_initial[0][0]['Remaining_B'])?$result_initial[0][0]['Remaining_B']:0);
+	$result[3]=(isset($result_initial[0][0]['Remaining_C'])?$result_initial[0][0]['Remaining_C']:0);
+	}
+	else
+	{
+    $result[0]=(isset($result_initial[0][0]['Remaining'])?$result_initial[0][0]['Remaining']:0);
+	$result['total']=(isset($result_initial[0][0]['Remaining'])?$result_initial[0][0]['Remaining']:0);
+		
+	}
+	    
+	return $result;
+ 
+	  
+  }
+
+	
+  function getInventary($type,$date,$warehouseId)
+  {
+	 $result= $this->Warehouse->query("CALL `orna1114_ornasa`.`sp_inventary`($type,'$date','$warehouseId');");
+	 $array_result=array();
+		
+	if(is_array($result))
+	{		
+ 	    $array_result = array_map(function ($elem) {
+		 
+		$elem=$elem['0'];
+ 
+		$_products= array(
+					"Product"=>array("name"=>(isset($elem['name'])?$elem['name']:''),
+								"id"=>(isset($elem['id'])?$elem['id']:''),"packaging_unit"=>(isset($elem['packaging_unit'])?$elem['packaging_unit']:'0'),"product_type_id"=>(isset($elem['product_type_id'])?$elem['product_type_id']:'0')),
+								
+					"RawMaterial"=>array("name"=>(isset($elem['nameraw'])?$elem['nameraw']:''),
+								"id"=>(isset($elem['idraw'])?$elem['idraw']:''),
+								"abbreviation"=>(isset($elem['abbreviationraw'])?$elem['abbreviationraw']:''),
+								),			
+					"ProductionResultCode"=>array("id"=>(isset($elem['idprc'])?$elem['idprc']:''),
+					"code"=>(isset($elem['codeprc'])?$elem['codeprc']:''),
+								 ),
+					'0'=>array(
+							"Saldo"=>(isset($elem['Saldo'])?$elem['Saldo']:'0'),
+							"Remaining"=>(isset($elem['Remaining'])?$elem['Remaining']:'0'),
+							"Remaining_A"=>(isset($elem['Remaining_A'])?$elem['Remaining_A']:'0'),
+							"Remaining_B"=>(isset($elem['Remaining_B'])?$elem['Remaining_B']:'0'),
+							"Remaining_C"=>(isset($elem['Remaining_C'])?$elem['Remaining_C']:'0'),
+							"Saldo_A"=>(isset($elem['Saldo_A'])?$elem['Saldo_A']:'0'),
+							"Saldo_B"=>(isset($elem['Saldo_B'])?$elem['Saldo_B']:'0'),
+							"Saldo_C"=>(isset($elem['Saldo_C'])?$elem['Saldo_C']:'0'),
+					),
+		);
+		
+		return $_products;
+}, $result); 
+ 	 
+	}
+else 
+{
+
+}	
+	return $array_result;
+  }
+  
+    	function getInventoryItems($productTypeId,$inventoryDate,$warehouseId=0,$boolQuantitiesAtCurrentDate=false){
+    
+		switch ($productTypeId){
+			case PRODUCT_TYPE_PREFORMA:
+		           
+				$preformas=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  
+			    usort($preformas,[$this,'sortByProductName']);
+				$products=$preformas;
+				
+				break;
+			case PRODUCT_TYPE_BOTTLE:
+         
+				$products=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId"); 
+				 
+     // pr($products[0]);exit;
+                usort($products,[$this,'sortByRawMaterialNameFinishedProductName']);
+       
+		  
+				break;
+        
+      case PRODUCT_TYPE_INJECTION_OUTPUT:
+        //pr($conditions);
+         $products=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  
+		 usort($products,[$this,'sortByRawMaterialNameFinishedProductName']);		 
+        break;
+        
+			case PRODUCT_TYPE_CAP:
+ 
+				$products=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  
+				usort($products,array($this,'sortByProductName'));
+				break;		
+			default:
+                
+				$products=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  
+				 usort($products,[$this,'sortByProductName']);
+				//$products=$consumibleProducts;
+				break;					
+		}
+		//echo "products coming out of getInventoryItems<br/>";
+		//pr($products);
+		return $products;	
+	}
+  
+  
+  
+  
 	function getInventoryTotals($productCategoryId,$productTypeIds,$warehouseId=0){
 		//echo "warehouse id is ".$warehouseId."<br/>";
 		return $this->getInventoryTotalsByDate($productCategoryId,$productTypeIds,date('Y-m-d'),$warehouseId);
@@ -133,7 +258,7 @@ class StockItem extends AppModel {
 			foreach ($productTypeIds as $productTypeId){
 				//echo "productTypeId is ".$productTypeId."<br/>";
 				$productsOfProductType=$this->getInventoryItems($productTypeId,$inventoryDate,$warehouseId,false);
-				//pr($productsOfProductType);
+				//pr($warehouseId);exit;
 				foreach ($productsOfProductType as $retrievedProduct){
 					//echo "iteration of products coming out of getInventoryItems: retrievedProduct<br/>";
 					//pr($retrievedProduct);
@@ -155,14 +280,23 @@ class StockItem extends AppModel {
 	}
 	
 	function getInventoryItemsPrev($productTypeId,$inventoryDate,$warehouseId=0,$boolQuantitiesAtCurrentDate=false){
+		
     $inventoryDatePlusOne=date("Y-m-d",strtotime($inventoryDate."+1 days"));
 		//echo "inventoryDatePlusOne is ".$inventoryDatePlusOne."<br/>";
-
+         /*  $productTypeId=18;
+		 $products=$this->exfunction($productTypeId,"$inventoryDate","$warehouseId");   
+		  print_r($products);
+		  exit; */
+		  /* if($productTypeId==18)
+			  $condition=['Product.id'=>128];
+		  else */
+			  $condition=['Product.product_type_id'=>$productTypeId];
 		$this->recursive=-1;
 		$productModel=ClassRegistry::init('Product');
 		$productIds=$productModel->find('list',[
 			'fields'=>['Product.id'],
-			'conditions'=>['Product.product_type_id'=>$productTypeId],    
+			//'conditions'=>['Product.product_type_id'=>$productTypeId],    
+			'conditions'=>$condition,    
 		]);
     
 		$conditions=[
@@ -188,6 +322,8 @@ class StockItem extends AppModel {
 		if ($warehouseId>0){
 			$conditions['StockItem.warehouse_id']=$warehouseId;
 		}
+		
+			
 		switch ($productTypeId){
 			case PRODUCT_TYPE_PREFORMA:
 				$preformaCount=	$this->find('count',[
@@ -260,6 +396,7 @@ class StockItem extends AppModel {
         
         //pr($productos[0]);
         usort($productos,[$this,'sortByRawMaterialNameFinishedProductName']);
+			
         
 				// now overwrite based on StockItemLogs
 				for ($i=0;$i<count($productos);$i++){
@@ -267,17 +404,25 @@ class StockItem extends AppModel {
             $stockItemConditions=$conditions;
             $stockItemConditions['StockItem.product_id']=$productos[$i]['Product']['id'];
             $stockItemConditions['StockItem.production_result_code_id']=$productionResultCode;
+			if($productos[$i]['Product']['id']==30)
             $stockItemConditions['StockItem.raw_material_id']=$productos[$i]['RawMaterial']['id'];
-              
+            else 
+			 $stockItemConditions['StockItem.raw_material_id']=$productos[$i]['RawMaterial']['id'];	
             $allStockItems=$this->find('all',[
               'fields'=>['StockItem.id'],
               'conditions'=>$stockItemConditions,
               'recursive'=>-1,
             ]);
+			$this->StockItemLog->condi=$stockItemConditions;
             $totalStockInventoryDate=0;
             $totalValueInventoryDate=0;
             if (count($allStockItems)>0){
               foreach ($allStockItems as $stockItem){	
+			        if($productos[$i]['Product']['id']==30)
+					{
+						file_put_contents("ultimoevaluado.log","evaluando ({$productos[$i]['Product']['id']}) el item ".$stockItem['StockItem']['id']."\n",FILE_APPEND);
+						
+					}
                 $lastStockItemLog=$this->StockItemLog->getLastStockItemLog($stockItem['StockItem']['id'],$inventoryDate,$warehouseId,$boolQuantitiesAtCurrentDate=false);
 							  if (!empty($lastStockItemLog)){
                   $totalStockInventoryDate+=$lastStockItemLog['StockItemLog']['product_quantity'];
@@ -301,11 +446,11 @@ class StockItem extends AppModel {
             }
           }    
 				}					
-			
 				$products=$productos;
 				break;
         
       case PRODUCT_TYPE_INJECTION_OUTPUT:
+	 
         //pr($conditions);
         $itemCount =$this->find('count', [
 					'fields'=>[
@@ -331,13 +476,15 @@ class StockItem extends AppModel {
         usort($productos,[$this,'sortByRawMaterialNameFinishedProductName']);
         //pr($productos);
 				// now overwrite based on StockItemLogs
+			
 				for ($i=0;$i<count($productos);$i++){
           $injectionProductionResultCodes=[PRODUCTION_RESULT_CODE_A,PRODUCTION_RESULT_CODE_MILL];
           foreach ($injectionProductionResultCodes as $injectionProductionResultCode){
             $stockItemConditions=$conditions;
             $stockItemConditions['StockItem.product_id']=$productos[$i]['Product']['id'];
-            $stockItemConditions['StockItem.production_result_code_id']=$injectionProductionResultCode;
-            $stockItemConditions['StockItem.raw_material_id']=$productos[$i]['RawMaterial']['id'];
+           // $stockItemConditions['StockItem.production_result_code_id']=$injectionProductionResultCode;
+			
+            //$stockItemConditions['StockItem.raw_material_id']=$productos[$i]['RawMaterial']['id'];
               
             $allStockItems=$this->find('all',[
               'fields'=>['StockItem.id'],
@@ -346,6 +493,7 @@ class StockItem extends AppModel {
             ]);
             $totalStockInventoryDate=0;
             $totalValueInventoryDate=0;
+				
             if (count($allStockItems)>0){
               foreach ($allStockItems as $stockItem){	
                 $lastStockItemLog=$this->StockItemLog->getLastStockItemLog($stockItem['StockItem']['id'],$inventoryDate,$warehouseId,$boolQuantitiesAtCurrentDate=false);
@@ -355,19 +503,22 @@ class StockItem extends AppModel {
                 }
               }
             }
-            switch ($injectionProductionResultCode){
-              case PRODUCTION_RESULT_CODE_A:
-                $productos[$i][0]['Remaining_A']=$totalStockInventoryDate;
-                $productos[$i][0]['Saldo_A']=$totalValueInventoryDate;
-                break;
+			 
+           // switch ($injectionProductionResultCode){
+             // case PRODUCTION_RESULT_CODE_A:
+               /*  $productos[$i][0]['Remaining_A']=$totalStockInventoryDate;
+                $productos[$i][0]['Saldo_A']=$totalValueInventoryDate; */
+				$productos[$i][0]['Remaining']=$totalStockInventoryDate;
+                $productos[$i][0]['Saldo']=$totalValueInventoryDate;
+              /*   break;
               case PRODUCTION_RESULT_CODE_MILL:
                 $productos[$i][0]['Remaining_Mill']=$totalStockInventoryDate;
                 $productos[$i][0]['Saldo_Mill']=$totalValueInventoryDate;
-                break;
-            }
+                break; */
+            //}
           }    
 				}					
-			
+			//print_r($productos);exit;
 				$products=$productos;
         break;
         
@@ -405,6 +556,7 @@ class StockItem extends AppModel {
 					
 					$totalStockInventoryDate=0;
 					$totalValueInventoryDate=0;
+				
 					if (count($allStockItems)>0){
 						foreach ($allStockItems as $stockItem){		
 							$lastStockItemLog=$this->StockItemLog->getLastStockItemLog($stockItem['StockItem']['id'],$inventoryDate,$warehouseId,$boolQuantitiesAtCurrentDate=false);
@@ -420,6 +572,7 @@ class StockItem extends AppModel {
 				$products=$tapones;
 				break;		
 			default:
+		
         //if ($productTypeId === PRODUCT_TYPE_INJECTION_GRAIN){
         //  pr($conditions);
         //}
@@ -440,6 +593,7 @@ class StockItem extends AppModel {
 					'group'=>'StockItem.product_id',
 					'limit'=>$consumibleProductsCount,
 				]);
+					//print_r($consumibleProducts);exit;
         usort($consumibleProducts,[$this,'sortByProductName']);
 				for ($i=0;$i<count($consumibleProducts);$i++){
 					$stockItemConditions['StockItem.product_id']=$consumibleProducts[$i]['Product']['id'];
@@ -477,95 +631,7 @@ class StockItem extends AppModel {
 		return $products;	
 	}
   
-     
-  function getKardex($productId='0',$dateInit,$dateEnd,$rawMaterialId='0',$detail='0',$initSal='0')
-  {
-	 $result= $this->Warehouse->query("CALL `orna1114_ornasa`.`sp_kardex`($productId,'$dateInit','$dateEnd','$rawMaterialId','$detail','$initSal');");
-	 $array_result=array();
-	 return $result;
-  }
-	
-  function getInventary($type,$date,$warehouseId)
-  {
-	 $result= $this->Warehouse->query("CALL `orna1114_ornasa`.`sp_inventary`($type,'$date','$warehouseId');");
-	 $array_result=array();
-		
-	if(is_array($result))
-	{		
- 	    $array_result = array_map(function ($elem) {
-		 
-		$elem=$elem['0'];
- 
-		return array(
-					"Product"=>array("name"=>(isset($elem['name'])?$elem['name']:''),
-								"id"=>(isset($elem['id'])?$elem['id']:''),"packaging_unit"=>(isset($elem['packaging_unit'])?$elem['packaging_unit']:'0')),
-								
-					"RawMaterial"=>array("name"=>(isset($elem['nameraw'])?$elem['nameraw']:''),
-								"id"=>(isset($elem['idraw'])?$elem['idraw']:''),
-								"abbreviation"=>(isset($elem['abbreviationraw'])?$elem['abbreviationraw']:''),
-								),			
-					"ProductionResultCode"=>array("id"=>(isset($elem['idprc'])?$elem['idprc']:''),
-					"code"=>(isset($elem['codeprc'])?$elem['codeprc']:''),
-								 ),
-					'0'=>array(
-							"Saldo"=>(isset($elem['Saldo'])?$elem['Saldo']:'0'),
-							"Remaining"=>(isset($elem['Remaining'])?$elem['Remaining']:'0'),
-							"Remaining_A"=>(isset($elem['Remaining_A'])?$elem['Remaining_A']:'0'),
-							"Remaining_B"=>(isset($elem['Remaining_B'])?$elem['Remaining_B']:'0'),
-							"Remaining_C"=>(isset($elem['Remaining_C'])?$elem['Remaining_C']:'0'),
-							"Saldo_A"=>(isset($elem['Saldo_A'])?$elem['Saldo_A']:'0'),
-							"Saldo_B"=>(isset($elem['Saldo_B'])?$elem['Saldo_B']:'0'),
-							"Saldo_C"=>(isset($elem['Saldo_C'])?$elem['Saldo_C']:'0'),
-					),
-		);
-}, $result); 
-
-	}
-else 
-{
-
-}	
-	return $array_result;
-  }
-  
-    	function getInventoryItems($productTypeId,$inventoryDate,$warehouseId=0,$boolQuantitiesAtCurrentDate=false){
-    
-		switch ($productTypeId){
-			case PRODUCT_TYPE_PREFORMA:
-		           
-				$preformas=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  
-			
-				$products=$preformas;
-				break;
-			case PRODUCT_TYPE_BOTTLE:
-         
-				$products=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  ;
-				break;
-        
-      case PRODUCT_TYPE_INJECTION_OUTPUT:
-        //pr($conditions);
-         $products=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  
-				 
-        break;
-        
-			case PRODUCT_TYPE_CAP:
- 
-				$products=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  
-				break;		
-			default:
-                
-				$products=$this->getInventary($productTypeId,"$inventoryDate","$warehouseId");  
-				//$products=$consumibleProducts;
-				break;					
-		}
-		//echo "products coming out of getInventoryItems<br/>";
-		//pr($products);
-		return $products;	
-	}
-  
-  
-  
-  public function sortByProductName($firstTerm,$secondTerm){
+ public function sortByProductName($firstTerm,$secondTerm){
 		return ($firstTerm['Product']['name'] < $secondTerm['Product']['name']) ? -1 : 1;
 	}
 	

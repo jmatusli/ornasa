@@ -159,7 +159,7 @@
           $tableRows.= "<tr>";
           if($userRoleId == ROLE_ADMIN || $canSeeFinanceData) {
           
-            $tableRows.= "<td>".$this->Html->link($stockItem['Product']['name'], array('controller' => 'stockMovements', 'action' => 'verKardex', $stockItem['Product']['id']))."</td>";
+            $tableRows.= "<td>".$this->Html->link($stockItem['Product']['name'], array('controller' => 'stockItems', 'action' => 'verReporteProducto', $stockItem['Product']['id']))."</td>";
             $tableRows.= "<td class='centered currency'><span class='currency'></span><span class='amountright'>".$average."</span></td>";
           }
           else {
