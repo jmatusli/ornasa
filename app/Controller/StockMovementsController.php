@@ -185,7 +185,7 @@ class StockMovementsController extends AppController {
           
           $stockMovementData=[];
           $stockMovementData['movement_date']=$adjustmentDate;
-          $stockMovementData['bool_input']='0';
+          $stockMovementData['bool_input']=false;
           
           $stockMovementData['name']=$adjustmentDate.$productName;
           $stockMovementData['description']=$message;
@@ -316,28 +316,28 @@ class StockMovementsController extends AppController {
         $boolReducedA=true;
         $boolReducedB=true;
         $boolReducedC=true;
-        $boolChangedA='0';
-        $boolChangedB='0';
-        $boolChangedC='0';
+        $boolChangedA=false;
+        $boolChangedB=false;
+        $boolChangedC=false;
         if ($originalQuantityA > $updatedQuantityA){
           $usedMaterialsA= $this->StockItem->getFinishedMaterialsForSale($productId,PRODUCTION_RESULT_CODE_A,$productQuantityA,$rawMaterialId,$adjustmentDate,$warehouseId);		
         }
         elseif ($originalQuantityA < $updatedQuantityA){
-          $boolReducedA='0';
+          $boolReducedA=false;
           $boolChangedA=true;
         }
         if ($originalQuantityB > $updatedQuantityB){
           $usedMaterialsB= $this->StockItem->getFinishedMaterialsForSale($productId,PRODUCTION_RESULT_CODE_B,$productQuantityB,$rawMaterialId,$adjustmentDate,$warehouseId);		
         }
         elseif ($originalQuantityB < $updatedQuantityB){
-          $boolReducedB='0';
+          $boolReducedB=false;
           $boolChangedB=true;
         }
         if ($originalQuantityC > $updatedQuantityC){
           $usedMaterialsC= $this->StockItem->getFinishedMaterialsForSale($productId,PRODUCTION_RESULT_CODE_C,$productQuantityC,$rawMaterialId,$adjustmentDate,$warehouseId);		
         }
         elseif ($originalQuantityC < $updatedQuantityC){
-          $boolReducedC='0';
+          $boolReducedC=false;
           $boolChangedC=true;
         }
         $userName=$this->Session->read('User.username');
@@ -617,7 +617,7 @@ class StockMovementsController extends AppController {
             
             $stockMovementData=[];
             $stockMovementData['movement_date']=$adjustmentDate;
-            $stockMovementData['bool_input']='0';
+            $stockMovementData['bool_input']=false;
             $stockMovementData['name']=$adjustmentDate.$productName;
             $stockMovementData['description']=$message;
             $stockMovementData['order_id']=-1234;
@@ -673,7 +673,7 @@ class StockMovementsController extends AppController {
             
             $stockMovementData=[];
             $stockMovementData['movement_date']=$adjustmentDate;
-            $stockMovementData['bool_input']='0';
+            $stockMovementData['bool_input']=false;
             $stockMovementData['name']=$adjustmentDate.$productName;
             $stockMovementData['description']=$message;
             $stockMovementData['order_id']=-1234;
@@ -729,7 +729,7 @@ class StockMovementsController extends AppController {
             
             $stockMovementData=[];
             $stockMovementData['movement_date']=$adjustmentDate;
-            $stockMovementData['bool_input']='0';
+            $stockMovementData['bool_input']=false;
             $stockMovementData['name']=$adjustmentDate.$productName;
             $stockMovementData['description']=$message;
             $stockMovementData['order_id']=-1234;
@@ -1231,8 +1231,7 @@ class StockMovementsController extends AppController {
               $datasource->begin();
               try{
                 foreach ($stockItemsForTransfer as $transferStockItem){
-				  $stockItemId=$transferStockItem['id'];	
-                  if (!$this->StockItem->exists($stockItemId)) {
+                  if (!$this->StockItem->exists($stockitem_id)) {
                     throw new NotFoundException(__('Invalid StockItem'));
                   }
                   $stockItemId=$transferStockItem['id'];
@@ -1260,7 +1259,7 @@ class StockMovementsController extends AppController {
                   // STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
                   $stockMovementData=[
                     'movement_date'=>$transferDateTimeString,
-                    'bool_input'=>'0',
+                    'bool_input'=>false,
                     'name'=>$message,
                     'description'=>$this->request->data['StockMovement']['description'],
                     'order_id'=>0,
@@ -1270,7 +1269,7 @@ class StockMovementsController extends AppController {
                     'product_unit_price'=>$unit_price,
                     'product_total_price'=>$unit_price*$quantity_used,
                     'production_result_code_id'=>$productionResultCodeId,
-                    'bool_reclassification'=>'0',
+                    'bool_reclassification'=>false,
                     'bool_transfer'=>true,
                     'transfer_code'=>$transferCode,
                   ];
@@ -1319,7 +1318,7 @@ class StockMovementsController extends AppController {
                     'product_unit_price'=>$unit_price,
                     'product_total_price'=>$unit_price*$quantity_used,
                     'production_result_code_id'=>$productionResultCodeId,
-                    'bool_reclassification'=>'0',
+                    'bool_reclassification'=>false,
                     'reclassification_code'=>"",
                     'origin_stock_movement_id'=>$originStockMovementId,
                     'bool_transfer'=>true,
@@ -1443,7 +1442,7 @@ class StockMovementsController extends AppController {
                   // STEP 2: SAVE THE STOCK MOVEMENT FOR THE STOCKITEM OF ORIGIN
                   $stockMovementData=[
                     'movement_date'=>$transferDateTimeString,
-                    'bool_input'=>'0',
+                    'bool_input'=>false,
                     'name'=>$message,
                     'description'=>$this->request->data['StockMovement']['description'],
                     'order_id'=>0,
@@ -1452,7 +1451,7 @@ class StockMovementsController extends AppController {
                     'product_quantity'=>$quantityUsed,
                     'product_unit_price'=>$unitPrice,
                     'product_total_price'=>$unitPrice*$quantityUsed,
-                    'bool_reclassification'=>'0',
+                    'bool_reclassification'=>false,
                     'bool_transfer'=>true,
                     'transfer_code'=>$transferCode,
                   ];
@@ -1499,7 +1498,7 @@ class StockMovementsController extends AppController {
                     'product_quantity'=>$quantityUsed,
                     'product_unit_price'=>$unitPrice,
                     'product_total_price'=>$unitPrice*$quantityUsed,
-                    'bool_reclassification'=>'0',
+                    'bool_reclassification'=>false,
                     'reclassification_code'=>"",
                     'origin_stock_movement_id'=>$originStockMovementId,
                     'bool_transfer'=>true,
@@ -1577,14 +1576,14 @@ class StockMovementsController extends AppController {
     foreach ($transferMovements as $stockMovement){
       if ($stockMovement['StockMovement']['bool_input']){
         if (!empty($stockMovement['StockItem']['StockMovement'])){
-          $boolDeletionAllowed='0';
+          $boolDeletionAllowed=false;
           $flashMessage.="No se puede eliminar la transferencia porque los productos transferidos ya se ocuparon en stockmovements ";
           foreach ($stockMovement['StockItem']['StockMovement'] as $usedStockMovement){
              $flashMessage.=$usedStockMovement['id'].","; 
           }
         }
         if (!empty($stockMovement['StockItem']['ProductionMovement'])){
-          $boolDeletionAllowed='0';
+          $boolDeletionAllowed=false;
           $flashMessage.="No se puede eliminar la transferencia porque los productos transferidos ya se ocuparon en productionmovements ";
           foreach ($stockMovement['StockItem']['ProductionMovement'] as $usedProductionMovement){
              $flashMessage.=$usedProductionMovement['id'].","; 
@@ -1881,7 +1880,7 @@ class StockMovementsController extends AppController {
     
     $this->loadModel('Warehouse');
     $this->loadModel('UserWarehouse');
-    
+    $this->loadModel('StockItem');
     $this->loadModel('Plant');
     $this->loadModel('UserPlant');
     
@@ -1952,7 +1951,10 @@ class StockMovementsController extends AppController {
     $rawMaterial=$this->StockMovement->Product->getProductById($rawMaterialId);
     $this->set(compact('rawMaterial','rawMaterialId'));
     
-    $stockItemConditions=[
+	$saldos=$this->StockItem->getSaldo($productId,$warehouseId,$startDate,$rawMaterialId);
+ 
+
+   /* $stockItemConditions=[
       'StockItem.product_id'=> $productId,
       'StockItem.warehouse_id'=> $warehouseId,
     ];
@@ -1966,11 +1968,16 @@ class StockMovementsController extends AppController {
     //pr($allStockItemsForProduct);
     $productInitialStock=[
       'total'=>0,
-    ];
+    ];*/
     $productionResultCodeIds=[
       'total'=>0,
     ];
-    foreach ($allStockItemsForProduct as $stockItemForProduct){
+	$codes=$this->StockItem->getResultCodes($productId);
+	foreach($codes as $codeIds)
+	{
+	    $productionResultCodeIds[$codeIds['stock_movements']['production_result_code_id']]=0;	
+	}
+    /*foreach ($allStockItemsForProduct as $stockItemForProduct){
       $stockItemProductionResultCodeId=$stockItemForProduct['StockItem']['production_result_code_id'];
       if (!array_key_exists($stockItemProductionResultCodeId,$productInitialStock)){
         $productInitialStock[$stockItemProductionResultCodeId]=0;
@@ -1990,12 +1997,12 @@ class StockMovementsController extends AppController {
         $productInitialStock[$stockItemProductionResultCodeId]+=$initialStockItemLogForStockItem['StockItemLog']['product_quantity'];
         $productInitialStock['total']+=$initialStockItemLogForStockItem['StockItemLog']['product_quantity'];
       }
-    }
+    }*/
     $originalInventory=[
       'entry'=>$productionResultCodeIds,
       'exit'=>$productionResultCodeIds,
       'adjustment'=>$productionResultCodeIds,
-      'saldo'=>$productInitialStock,
+      'saldo'=>$saldos,
     ];
     $currentInventory=$originalInventory;
 		//pr($originalInventory);
@@ -2079,8 +2086,8 @@ class StockMovementsController extends AppController {
             $resultMatrix[$rowCounter]['exit'][$productionResultCodeId]=$stockMovement['StockMovement']['product_quantity'];
             $resultMatrix[$rowCounter]['exit']['total']=$stockMovement['StockMovement']['product_quantity'];
             $resultMatrix[$rowCounter]['adjustment']['total']=0;
-            
-            $currentInventory['exit'][$productionResultCodeId]+=$stockMovement['StockMovement']['product_quantity'];
+			
+		    $currentInventory['exit'][$productionResultCodeId]+=$stockMovement['StockMovement']['product_quantity'];
             $currentInventory['exit']['total']+=$stockMovement['StockMovement']['product_quantity'];
             $currentInventory['saldo'][$productionResultCodeId]-=$stockMovement['StockMovement']['product_quantity'];
             $currentInventory['saldo']['total']-=$stockMovement['StockMovement']['product_quantity'];
@@ -2115,7 +2122,7 @@ class StockMovementsController extends AppController {
             $currentInventory['saldo']['total']+=$stockMovement['StockMovement']['product_quantity'];
           }
           else {
-            $resultMatrix[$rowCounter]['bool_input']='0';
+            $resultMatrix[$rowCounter]['bool_input']=false;
             $resultMatrix[$rowCounter]['incoming']="1";
             $currentInventory['adjustment'][$productionResultCodeId]-=$stockMovement['StockMovement']['product_quantity'];
             $currentInventory['adjustment']['total']-=$stockMovement['StockMovement']['product_quantity'];
@@ -2178,6 +2185,10 @@ class StockMovementsController extends AppController {
       'order'=>'movement_date ASC'
     ]);
 		$rowCounter=count($resultMatrix);
+		 //	pr($originalInventory);
+			//pr($allStockMovements);
+			//pr($allProductionMovements);
+		//exit; 
     foreach($allProductionMovements as $productionMovement){
       //pr($productionMovement);
       $productionResultCodeId=$productionMovement['StockItem']['production_result_code_id'];
@@ -2251,7 +2262,7 @@ class StockMovementsController extends AppController {
       }
 			$rowCounter++;
 		}
-		//pr($resultMatrix);exit;	
+		//pr($resultMatrix);	
     usort($resultMatrix,[$this,'sortByMovementDate']);
     //pr($resultMatrix);
 		$this->set(compact('originalInventory','resultMatrix','currentInventory','startDate','endDate','product','productId'));
@@ -2367,9 +2378,9 @@ class StockMovementsController extends AppController {
 			'StockMovement.movement_date <'=>$endDatePlusOne,
 			'StockMovement.product_quantity >'=>0,
 			'StockMovement.production_result_code_id'=>PRODUCTION_RESULT_CODE_A,
-			'StockMovement.bool_input'=>'0',
-			'StockMovement.bool_reclassification'=>'0',
-      'StockMovement.bool_adjustment'=>'0',
+			'StockMovement.bool_input'=>false,
+			'StockMovement.bool_reclassification'=>false,
+      'StockMovement.bool_adjustment'=>false,
       'StockMovement.order_id'=>$salesIdsForPeriod,
 		];
     
@@ -2521,7 +2532,7 @@ class StockMovementsController extends AppController {
 					$orderConditionsForClient=array(
 						'Order.order_date >='=>$startDate,
 						'Order.order_date <'=>$endDatePlusOne,
-						'Order.bool_annulled'=>'0',
+						'Order.bool_annulled'=>false,
 						'Order.third_party_id'=>$clientId,
 						'Order.stock_movement_type_id'=>MOVEMENT_SALE,
 					);
@@ -2593,18 +2604,20 @@ class StockMovementsController extends AppController {
       foreach ($soldProducts as $product){
         $movementConditionsForPeriodAndProduct=$movementConditions;
         $movementConditionsForPeriodAndProduct[]=['StockMovement.product_id'=>$product['Product']['id']];
-        if (empty($product['RawMaterials'])){
+        
+        foreach ($product['RawMaterials'] as $rawMaterial){
           $rawMaterialStockItemIds=$this->StockItem->find('list',[
             'fields'=>['StockItem.id'],
             'conditions'=>[
               'StockItem.id'=>$stockItemIds,
+              'StockItem.raw_material_id'=>$rawMaterial['Product']['id'],
               'StockItem.product_id'=>$product['Product']['id'],
             ],
           ]);
           $movementConditionsForPeriodAndProductAndRawMaterial=$movementConditionsForPeriodAndProduct;
-          //$movementConditionsForPeriodAndProductAndRawMaterial[]=['StockMovement.stockitem_id'=>$rawMaterialStockItemIds];
+          $movementConditionsForPeriodAndProductAndRawMaterial[]=['StockMovement.stockitem_id'=>$rawMaterialStockItemIds];
           $movementConditionsForPeriodAndProductAndRawMaterialAndClient=$movementConditionsForPeriodAndProductAndRawMaterial;
-          $movementConditionsForPeriodAndProductAndRawMaterialAndClient[]=['StockMovement.order_id'=>$orderIdsForClient];
+					$movementConditionsForPeriodAndProductAndRawMaterialAndClient[]=['StockMovement.order_id'=>$orderIdsForClient];
           $this->StockMovement->virtualFields['product_total'] = 0;
           $quantityPurchasedForClient = $this->StockMovement->find('all', [
             'fields' => ['SUM(StockMovement.product_quantity) AS StockMovement__product_total'],
@@ -2615,33 +2628,6 @@ class StockMovementsController extends AppController {
           }
           else {
             $buyingClients[$c]['quantities'][]=['product_quantity'=>0];
-          }
-        }
-        else {
-          foreach ($product['RawMaterials'] as $rawMaterial){
-            $rawMaterialStockItemIds=$this->StockItem->find('list',[
-              'fields'=>['StockItem.id'],
-              'conditions'=>[
-                'StockItem.id'=>$stockItemIds,
-                'StockItem.raw_material_id'=>$rawMaterial['Product']['id'],
-                'StockItem.product_id'=>$product['Product']['id'],
-              ],
-            ]);
-            $movementConditionsForPeriodAndProductAndRawMaterial=$movementConditionsForPeriodAndProduct;
-            $movementConditionsForPeriodAndProductAndRawMaterial[]=['StockMovement.stockitem_id'=>$rawMaterialStockItemIds];
-            $movementConditionsForPeriodAndProductAndRawMaterialAndClient=$movementConditionsForPeriodAndProductAndRawMaterial;
-            $movementConditionsForPeriodAndProductAndRawMaterialAndClient[]=['StockMovement.order_id'=>$orderIdsForClient];
-            $this->StockMovement->virtualFields['product_total'] = 0;
-            $quantityPurchasedForClient = $this->StockMovement->find('all', [
-              'fields' => ['SUM(StockMovement.product_quantity) AS StockMovement__product_total'],
-              'conditions'=>$movementConditionsForPeriodAndProductAndRawMaterialAndClient,
-            ]);
-            if (!empty($quantityPurchasedForClient['0']['StockMovement']['product_total'])){
-              $buyingClients[$c]['quantities'][]=['product_quantity'=>$quantityPurchasedForClient['0']['StockMovement']['product_total']];
-            }
-            else {
-              $buyingClients[$c]['quantities'][]=['product_quantity'=>0];
-            }
           }
         }
       }
@@ -2701,9 +2687,9 @@ class StockMovementsController extends AppController {
 			'StockMovement.movement_date <'=>$endDatePlusOne,
 			'StockMovement.product_quantity >'=>0,
 			'StockMovement.production_result_code_id'=>PRODUCTION_RESULT_CODE_A,
-			'StockMovement.bool_input'=>'0',
-			'StockMovement.bool_reclassification'=>'0',
-      'StockMovement.bool_adjustment'=>'0',
+			'StockMovement.bool_input'=>false,
+			'StockMovement.bool_reclassification'=>false,
+      'StockMovement.bool_adjustment'=>false,
 		];
 		$movementsForPeriod=$this->StockMovement->find('all',[
 			'fields'=>[
