@@ -1,7 +1,8 @@
- 
+
 -- DROP PROCEDURE `orna1114_ornasa`.`sp_inventary`; 
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `orna1114_ornasa`.`sp_inventary`(in productType int,in pdate datetime,in warehouseid INT)
+
+CREATE  PROCEDURE `orna1114_ornasa`.`sp_inventary`(in productType int,in pdate datetime,in warehouseid INT)
 begin 
   select * from (
    select `Productos`.id idraw,`Productos`.name nameraw,`Productos`.abbreviation  abbreviationraw,`rsf`.* from ( 
@@ -52,7 +53,17 @@ begin
   join `orna1114_ornasa`.`products` AS `Producto` on `Producto`.id=`StockItemLog`.`product_id`
   where `Producto`.product_type_id=productType
   and (case when productType<>11 AND `StockItemLog`.product_quantity<>0 then true else case when productType=11 then true else false end end)
-  and `StockItem`.`warehouse_id` = warehouseid
+    and (
+    case when warehouseid >  0 then
+    
+    case when `StockItem`.`warehouse_id` = warehouseid then true else false end
+  
+    else 
+    true 
+    end
+    )
+    
+ 
   group by `StockItemLog`.product_id,`StockItem`.raw_material_id
  )sd 
   -- group by  name,product_type_id,product_id,packaging_unit, raw_material_id) `rsf`
