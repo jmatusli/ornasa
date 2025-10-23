@@ -932,8 +932,8 @@ class QuotationsController extends AppController {
     $this->set(compact('loggedUserId'));
     $userRoleId = $this->Auth->User('role_id');
     $this->set(compact('userRoleId'));
-    
-    $canSeeInventoryCost=$this->UserPageRight->hasUserPageRight('VER_COSTO_INVENTARIO',$userRoleId,$loggedUserId,'All','All');
+	
+	$canSeeInventoryCost=$this->UserPageRight->hasUserPageRight('VER_COSTO_INVENTARIO',$userRoleId,$loggedUserId,'All','All');
     $this->set(compact('canSeeInventoryCost'));
     
     $canSeeAllUsers=$this->UserPageRight->hasUserPageRight('VER_TODOS_USUARIOS',$userRoleId,$loggedUserId,'Quotations','resumen');
@@ -1259,7 +1259,7 @@ class QuotationsController extends AppController {
 		
 		$actionTypes=$this->ActionType->find('list',['order'=>'ActionType.list_order ASC']);
 		$this->set(compact('actionTypes'));
-    
+    $this->Product->isQuotation=false;
     $availableProductsForSale=$this->Product->getAvailableProductsForSale($quotationDate,$warehouseId,false);
     $products=$availableProductsForSale['products'];
     //pr($products);
@@ -1754,7 +1754,8 @@ class QuotationsController extends AppController {
         $rawMaterialsForEdit[]=$requestProduct['QuotationProduct']['raw_material_id'];
       }
     }
-    $availableProductsForSale=$this->Product->getAvailableProductsForSale($quotationDate,$warehouseId,false);
+	$this->Product->isQuotation=false;
+	$availableProductsForSale=$this->Product->getAvailableProductsForSale($quotationDate,$warehouseId,false);
     $products=$availableProductsForSale['products'];
     if ($warehouseId != WAREHOUSE_INJECTION){
       $availableInjectionProductsForSale=$this->Product->getAvailableProductsForSale($quotationDate,WAREHOUSE_INJECTION,false);

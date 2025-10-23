@@ -396,13 +396,14 @@ class Product extends AppModel {
 		$products = [];
 		$rawMaterialIds=[];
     $rawMaterialsAvailablePerFinishedProduct=[];
+	$isQuotation=(isset($this->isQuotation)?$this->isQuotation:false);
 
 		foreach ($productsAll as $product){
 			// only show products that are in inventory AT CURRENT DATE
 			if ($product['StockItem'] != null){
 				foreach ($product['StockItem'] as $stockItem){
           //pr($stockItem);
-					if ($stockItem['remaining_quantity'] <> 0 || in_array($product['Product']['id'],$finishedProductsForEdit)){
+					if ((isset($stockItem['remaining_quantity']) && $isQuotation==true)||($stockItem['remaining_quantity']<>0 && $isQuotation==false  ) || in_array($product['Product']['id'],$finishedProductsForEdit)){
             $productId=$product['Product']['id'];
 						$products[$productId]=substr($product['Product']['name'],0,28).(strlen($product['Product']['name'])>28?"...":"");
             //$products[$productId]=$product['Product']['name'];
