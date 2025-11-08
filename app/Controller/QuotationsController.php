@@ -1259,7 +1259,7 @@ class QuotationsController extends AppController {
 		
 		$actionTypes=$this->ActionType->find('list',['order'=>'ActionType.list_order ASC']);
 		$this->set(compact('actionTypes'));
-    $this->Product->isQuotation=false;
+    $this->Product->isQuotation=true;
     $availableProductsForSale=$this->Product->getAvailableProductsForSale($quotationDate,$warehouseId,false);
     $products=$availableProductsForSale['products'];
     //pr($products);
@@ -1754,7 +1754,7 @@ class QuotationsController extends AppController {
         $rawMaterialsForEdit[]=$requestProduct['QuotationProduct']['raw_material_id'];
       }
     }
-	$this->Product->isQuotation=false;
+	$this->Product->isQuotation=true;
 	$availableProductsForSale=$this->Product->getAvailableProductsForSale($quotationDate,$warehouseId,false);
     $products=$availableProductsForSale['products'];
     if ($warehouseId != WAREHOUSE_INJECTION){

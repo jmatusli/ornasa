@@ -4,7 +4,8 @@ App::uses('AppModel', 'Model');
 class Product extends AppModel {
 
   var $displayField="name";
-
+  public $isQuotation = false;
+  
   function getProductById($productId){
     $product=$this->find('first',[
       'conditions'=>[
