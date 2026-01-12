@@ -20,6 +20,18 @@ class StockItem extends AppModel {
  
 	  
   }
+   function getLastOrder($product_id,$date)
+  {
+	$orders= $this->Warehouse->query(" select *from  `orna1114_ornasa`.`stock_movements` AS `StockMovement` 
+	where `StockMovement`.`movement_date` < '$date' and `StockMovement`.bool_input=1
+	and `StockMovement`.product_id =$product_id
+	and order_id  > 0  order by id desc limit 1;");
+  
+  $order_id=(isset($orders[0]['StockMovement']['order_id'])?$orders[0]['StockMovement']['order_id']:'0');
+	return $order_id;
+ 
+	  
+  }
      
   function getSaldo($productId='0',$warehouseId,$dateInit,$rawMaterialId='0',$returnv=1)
   {
