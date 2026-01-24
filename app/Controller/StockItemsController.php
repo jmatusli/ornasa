@@ -6004,7 +6004,7 @@ class StockItemsController extends AppController {
 				if ($quantity>0 && $preforma_id_origen>0 && $preforma_id_destino>0){
 						
 						
-			    $order_id=$this->StockItem->getLastOrder($preforma_id_destino,$tingroupDateString);						
+			    $order_id=$this->StockItem->getLastOrder($preforma_id_origen,$tingroupDateString);						
 						
 						//iniciamos transferencia ingroup preformas
 						$quantityInStock=0;
