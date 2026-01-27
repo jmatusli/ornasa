@@ -1668,7 +1668,7 @@ class StockMovementsController extends AppController {
 		if (!$this->StockMovement->Product->exists($id)) {
 			throw new NotFoundException(__('Invalid product'));
 		}
-	
+	    $this->loadModel('StockItem');
 		if ($this->request->is('post')) {
 			$startDateArray=$this->request->data['Report']['startdate'];
 			$startDateString=$startDateArray['year'].'-'.$startDateArray['month'].'-'.$startDateArray['day'];
@@ -1696,6 +1696,7 @@ class StockMovementsController extends AppController {
 		$this->StockMovement->Product->recursive=1;
 		$allOtherMaterials=$this->StockMovement->Product->find('all',array('conditions'=>array('ProductType.product_category_id'=>CATEGORY_OTHER,'Product.id'=>$id)));
 		$materialPosition=[];
+		
 		$positionCounter=0;
 		
 		foreach ($allOtherMaterials as $tapon){
@@ -1713,17 +1714,19 @@ class StockMovementsController extends AppController {
 		for ($i=0;$i<4*count($allOtherMaterials);$i++){
 			$originalInventory[$i]=0;
 		}
-		$this->StockMovement->StockItem->StockItemLog->recursive=0;
+		//$this->StockMovement->StockItem->StockItemLog->recursive=0;
 		foreach ($allOtherMaterials as $tapon){
-			$this->StockMovement->StockItem->recursive=-1;
+			/* $this->StockMovement->StockItem->recursive=-1;
 			$allStockItemsForProduct = $this->StockMovement->StockItem->find('all', array(
 				'conditions' => array(
 					'StockItem.product_id'=> $tapon['Product']['id'],
 				),
-			));
+			)); */
+			$saldo=$this->StockItem->getSaldo($tapon['Product']['id'],1,$startDate,"");
+			 
 			//pr($allStockItemsForProduct);
-			$productInitialStock=0;
-			foreach ($allStockItemsForProduct as $stockItemForProduct){
+			$productInitialStock=$saldo['total'];
+			/* foreach ($allStockItemsForProduct as $stockItemForProduct){
 				$stockItemId=$stockItemForProduct['StockItem']['id'];
 				$this->StockMovement->StockItem->StockItemLog->recursive=-1;
 				$initialStockItemLogForStockItem=$this->StockMovement->StockItem->StockItemLog->find('first',array(
@@ -1739,7 +1742,9 @@ class StockMovementsController extends AppController {
 					}
 					$productInitialStock+=$initialStockItemLogForStockItem['StockItemLog']['product_quantity'];
 				}
-			}
+			} */
+			
+			
 			$originalInventory[$materialPosition[$tapon['Product']['id']]['Saldo']]=$productInitialStock;
 		}
 		//pr($originalInventory);

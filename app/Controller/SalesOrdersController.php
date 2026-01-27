@@ -864,7 +864,7 @@ class SalesOrdersController extends AppController {
       
       $boolDelivery=$this->request->data['SalesOrder']['bool_delivery'];
     }
-    
+ 
     $salesOrderDatePlusOne=date( "Y-m-d", strtotime($salesOrderDate."+1 days"));
     
     $warehouses=$this->UserWarehouse->getWarehouseListForUser($loggedUserId);
@@ -1189,8 +1189,9 @@ class SalesOrdersController extends AppController {
 		
 		$actionTypes=$this->ActionType->find('list',['order'=>'ActionType.list_order ASC']);
 		$this->set(compact('actionTypes'));
-    
+    $this->Product->isQuotation=false;
     $availableProductsForSale=$this->Product->getAvailableProductsForSale($salesOrderDate,$warehouseId,false);
+ 
     $products=$availableProductsForSale['products'];
     //pr($availableProductsForSale);
     if ($warehouseId != WAREHOUSE_INJECTION){
