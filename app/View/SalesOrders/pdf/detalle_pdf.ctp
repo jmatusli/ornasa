@@ -193,7 +193,7 @@
 	$header.="<table>";
 		$header.="<tr>";
       $header.="<td class='title bold left'>";
-				$header.="<div><span><img src='".$imageurl."' class='resize'></img></span></div>";
+				$header.="<div><span><img src='".$url."' class='resize'></img></span></div>";
 			$header.="</td>";
 			$header.="<td class='bold right'>";
         $header.="<div><span>".strtoupper("orden de venta")."</span></div>";

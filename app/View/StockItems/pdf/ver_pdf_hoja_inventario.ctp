@@ -78,11 +78,12 @@
 	$output="";
 	
 	$url="img/ornasa_logo.jpg";
-	$imageurl=$this->App->assetUrl($url);
+	//$imageurl=$this->App->assetUrl($url);
+	//$imageurl = $this->Html->url($url, true);
 	//$output.="<div>".$imageurl."</div";
 	$output.="<table>";
 		$output.="<tr>";
-			$output.="<td class='bold' style='width:30%;'><img src='".$imageurl."' class='resize'></img></td>";		
+			$output.="<td class='bold' style='width:30%;'><img src='".$url."' class='resize'></img></td>";		
 			$output.="<td class='centered big' style='width:40%;'>".strtoupper(COMPANY_NAME)."<br/>CONTROL DE INVENTARIO<br/>".$inventoryDateTime->format('d-m-Y')."</td>";
 			$output.="<td class='bold' style='width:30%;'>MANAGUA, ".$nowDateTime->format('d-m-Y')."</td>";
 		$output.="</tr>";
