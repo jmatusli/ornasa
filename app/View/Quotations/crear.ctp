@@ -312,7 +312,7 @@
     $('#SaveAllowed').val(allowSaving?1:0)
     if (allowSaving){
       $('#CreditAuthorizationUserId').val(<?php echo $loggedUserId; ?>)
-      $('#CreditUsername').val("<?php echo $users[$loggedUserId]; ?>")
+      $('#CreditUsername').val("<?php echo (isset($users[$loggedUserId])?$users[$loggedUserId]:"Crédito de cliente"); ?>")
     }
     else {
       $('#CreditAuthorizationUserId').val(0)
