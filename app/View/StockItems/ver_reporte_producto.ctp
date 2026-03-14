@@ -138,12 +138,13 @@
       
       
       $productionRunIds=[];
-      
+      $totalStok=$initialStock;
       foreach ($thisProductOrders as $productOrder){
         foreach ($productOrder['StockMovement'] as $purchaseMovement){
           if ($productOrder['Order']['order_date']>=$startDate && $productOrder['Order']['order_date']<$endDatePlusOne){
             $totalEntrada+=$purchaseMovement['product_quantity'];
             $totalSaldo+=$purchaseMovement['product_quantity']*$purchaseMovement['product_unit_price'];
+            $totalStok-=$purchaseMovement['product_quantity'];
             $orderDateTime=new DateTime($productOrder['Order']['order_date']);
                         
             // get the purchase specific data
@@ -160,7 +161,8 @@
               $productTableBody.="<td class='centered'>".$numboxes."</td>";
               $productTableBody.="<td class='centered number'>".$purchaseMovement['product_quantity']."</td>";
               $productTableBody.="<td></td>";
-              $productTableBody.="<td class='centered currency'><span>".$purchaseMovement['product_quantity']*$purchaseMovement['product_unit_price']."</span></td>";
+             // $productTableBody.="<td class='centered currency'><span>".$purchaseMovement['product_quantity']*$purchaseMovement['product_unit_price']."</span></td>";
+              $productTableBody.="<td class='centered number'><span>".$totalStok."</span></td>";
               $productTableBody.="<td></td>";
               $productTableBody.="<td class='separator'>&nbsp;</td>";
             $productTableBody.="</tr>";
@@ -171,6 +173,7 @@
             //pr ($productionMovementAndRun);
             if ($productionMovementAndRun['ProductionMovement']['product_quantity']>0 && $productionMovementAndRun['ProductionRun']['production_run_date']>=$startDate && $productionMovementAndRun['ProductionRun']['production_run_date']<$endDatePlusOne){
               $totalSalida+=$productionMovementAndRun['ProductionMovement']['product_quantity'];
+			  $totalStok-=$productionMovementAndRun['ProductionMovement']['product_quantity'];
               $productTableBody.="<tr>";
               
               $productionrundate=new DateTime($productionMovementAndRun['ProductionRun']['production_run_date']);
@@ -180,7 +183,8 @@
               $productTableBody.="<td></td>";
               $productTableBody.="<td></td>";
               $productTableBody.="<td class='centered number'>".$productionMovementAndRun['ProductionMovement']['product_quantity']."</td>";
-              $productTableBody.="<td class='centered currency'><span>".$purchaseMovement['product_unit_price']*$productionMovementAndRun['ProductionMovement']['product_quantity']."</span></td>";
+             // $productTableBody.="<td class='centered currency'><span>".$purchaseMovement['product_unit_price']*$productionMovementAndRun['ProductionMovement']['product_quantity']."</span></td>";
+              $productTableBody.="<td class='centered number'><span>".$totalStok."</span></td>";
               $totalSaldo-=$purchaseMovement['product_unit_price']*$productionMovementAndRun['ProductionMovement']['product_quantity'];
               $productTableBody.="<td>".$productionMovementAndRun['ProductionRun']['production_run_code']."</td>";
               $productTableBody.="<td class='separator'>&nbsp;</td>";
@@ -246,7 +250,7 @@
         $totalrow.="<td></td>";
         $totalrow.="<td class='centered number'>".($initialStock+$totalEntrada+$rawReclassified)."</td>";
         $totalrow.="<td class='centered number'>".$totalSalida."</td>";
-        $totalrow.="<td class='centered currency'><span>".$totalSaldo."</span></td>";
+        $totalrow.="<td class='centered number'><span>".$totalStok."</span></td>";
         $totalrow.="<td></td>";
         $totalrow.="<td class='separator'>&nbsp;</td>";
 
