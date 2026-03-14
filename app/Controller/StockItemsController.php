@@ -4309,6 +4309,7 @@ class StockItemsController extends AppController {
 			$startDate=$_SESSION['startDate'];
 			$endDate=$_SESSION['endDate'];
 			$endDatePlusOne=date("Y-m-d",strtotime($endDate."+1 days"));
+			
 		}
 		else{
 			$startDate = date("Y-m-01");
@@ -4347,7 +4348,7 @@ class StockItemsController extends AppController {
 		$productionResultCodes=$this->PlantProductionResultCode->getProductionResultCodesForPlant($plantId);
 
 		$initialStock=0;
-		
+	/* 	
 		$this->StockItem->recursive=0;
 		$initialStockItems=$this->StockItem->find('all',[
 			'fields'=>'StockItem.id',
@@ -4373,8 +4374,10 @@ class StockItemsController extends AppController {
 				//pr ($initialStockItemLogs);
 				$initialStock+=$initialStockItemLogs['StockItemLog']['product_quantity'];
 			}
-		}
-		
+		} */
+		$startDateSald=date("Y-m-d",strtotime($startDate."-1 days"));
+		$initialStocktmp=$this->StockItem->getSaldo($id,1,$startDateSald,0);
+		$initialStock=$initialStocktmp['total'];
 		$reclassified=0;
 		
 		$this->StockMovement->virtualFields['total_reclassified']=0;
