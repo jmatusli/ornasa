@@ -389,7 +389,7 @@ class StockItemsController extends AppController {
 		}
 		
 		*/
-		
+	 
     $otherProducts=[];
     if ($warehouseId >0){
       for ($pc=0;$pc<count($productCategories);$pc++){
@@ -4267,6 +4267,7 @@ class StockItemsController extends AppController {
 		}
     
 		$this->loadModel('Order');
+		$this->loadModel('Product');
 		$this->loadModel('ProductionMovement');
 		$this->loadModel('ProductionResultCode');
 		$this->loadModel('ProductionRun');
@@ -4346,7 +4347,7 @@ class StockItemsController extends AppController {
       'order'=>'name ASC'
     ]);
 		$productionResultCodes=$this->PlantProductionResultCode->getProductionResultCodesForPlant($plantId);
-
+   
 		$initialStock=0;
 	/* 	
 		$this->StockItem->recursive=0;
@@ -4376,6 +4377,7 @@ class StockItemsController extends AppController {
 			}
 		} */
 		$startDateSald=date("Y-m-d",strtotime($startDate."-1 days"));
+		//echo $startDateSald;exit;
 		$initialStocktmp=$this->StockItem->getSaldo($id,1,$startDateSald,0);
 		$initialStock=$initialStocktmp['total'];
 		$reclassified=0;
@@ -4454,6 +4456,33 @@ class StockItemsController extends AppController {
 			],
 		]);
 		
+		
+		
+		$transferIngroupStockMovements=$this->StockMovement->find('list',[
+					'fields'=>['StockMovement.stockitem_id'],
+					'conditions'=>[
+						'StockMovement.bool_transfer'=>true,
+						'StockMovement.bool_input'=>true,
+						'StockMovement.product_id'=>$id,
+						'StockMovement.movement_date >='=>$startDate,
+						'StockMovement.movement_date <'=>$endDatePlusOne
+					],
+				]);
+				
+		 $transferIngroupsStockMovements=$this->StockMovement->find('all',[
+					'fields'=>['StockMovement.stockitem_id','StockMovement.stockitem_id','StockMovement.movement_date','StockMovement.product_quantity',
+					'StockMovement.product_unit_price','StockMovement.transfer_code'],
+					'conditions'=>[
+						'StockMovement.bool_transfer'=>true,
+						'StockMovement.bool_input'=>true,
+						'StockMovement.product_id'=>$id,
+						'StockMovement.movement_date >='=>$startDate,
+						'StockMovement.movement_date <'=>$endDatePlusOne
+					],
+				]);
+				
+		 
+		
 		$stockItemsWithoutProductionRun=$this->StockItem->find('list', [
 			'fields'=>['id'],
 			'conditions'=>[
@@ -4463,7 +4492,7 @@ class StockItemsController extends AppController {
 			],
 		]);
 		
-		$stockItemsForPeriod=array_merge($stockItemsForPeriodWithProductionRuns,$stockItemsWithoutProductionRun);
+		$stockItemsForPeriod=array_merge($stockItemsForPeriodWithProductionRuns,$stockItemsWithoutProductionRun,$transferIngroupStockMovements);
 		
 		//pr($stockItemsForPeriod);
 		
@@ -4556,7 +4585,7 @@ class StockItemsController extends AppController {
 		}
 		
 		
-		$this->set(compact('productData','thisProductOrders','startDate','endDate','endDatePlusOne','allFinishedProducts','productionResultCodes','finalStock','initialStock','rawReclassified','finishedReclassified'));
+		$this->set(compact('productData','thisProductOrders','startDate','endDate','endDatePlusOne','allFinishedProducts','productionResultCodes','finalStock','initialStock','rawReclassified','finishedReclassified','transferIngroupsStockMovements'));
 
 	}
 	

@@ -139,12 +139,20 @@
       
       $productionRunIds=[];
       $totalStok=$initialStock;
+	  $flagTransfers=0;
       foreach ($thisProductOrders as $productOrder){
         foreach ($productOrder['StockMovement'] as $purchaseMovement){
-          if ($productOrder['Order']['order_date']>=$startDate && $productOrder['Order']['order_date']<$endDatePlusOne){
-            $totalEntrada+=$purchaseMovement['product_quantity'];
+		//print_r($productData);exit;
+		 $orderingroupDateTime=new DateTime("2024-11-28"); //primera compra de producto ingroup
+		 $fecha2 = new DateTime($endDatePlusOne); 
+		 $fecha1 = new DateTime($startDate); 
+		// echo "{$fecha1->format('d-m-Y')}<={$orderingroupDateTime->format('d-m-Y')}"."<br/>";
+          if (($productOrder['ThirdParty']['company_name']!="INGRUP-GRUPO LATINOAMERICANO DE EMPAQUES, S.A" && $productOrder['Order']['order_date']>=$startDate && $productOrder['Order']['order_date']<$endDatePlusOne/*  && $productData['Product']['product_type_id']!=10 */) 
+	  	  ){
+		 	//  echo "order: ".$productOrder['Order']['id']."<br/>";
+             $totalEntrada+=$purchaseMovement['product_quantity'];
             $totalSaldo+=$purchaseMovement['product_quantity']*$purchaseMovement['product_unit_price'];
-            $totalStok-=$purchaseMovement['product_quantity'];
+            $totalStok+=$purchaseMovement['product_quantity'];
             $orderDateTime=new DateTime($productOrder['Order']['order_date']);
                         
             // get the purchase specific data
@@ -165,9 +173,39 @@
               $productTableBody.="<td class='centered number'><span>".$totalStok."</span></td>";
               $productTableBody.="<td></td>";
               $productTableBody.="<td class='separator'>&nbsp;</td>";
-            $productTableBody.="</tr>";
+            $productTableBody.="</tr>";  
           }
-          
+          else
+		  {	
+	       if($flagTransfers=='0')
+	       { 
+	       foreach($transferIngroupsStockMovements as $transIngrousItem)
+		   {
+			 $transIngrous=$transIngrousItem['StockMovement'];
+			$transferDateTime=new DateTime($transIngrous['movement_date']);   
+			   
+            $totalEntrada+=$transIngrous['product_quantity'];
+            $totalSaldo+=$transIngrous['product_quantity']*$transIngrous['product_unit_price'];
+            $totalStok+=$transIngrous['product_quantity'];
+         
+	  
+	            $productTableBody.="<tr>";
+              $productTableBody.="<td>{$transferDateTime->format('d-m-Y')}</td>";
+              $productTableBody.="<td>{$transIngrous['transfer_code']}</td>";
+              $productTableBody.="<td>--</td>";
+               
+              $productTableBody.="<td class='centered'>-</td>";
+              $productTableBody.="<td class='centered number'>{$transIngrous['product_quantity']}</td>";
+              $productTableBody.="<td></td>";
+             // $productTableBody.="<td class='centered currency'><span>".$purchaseMovement['product_quantity']*$purchaseMovement['product_unit_price']."</span></td>";
+              $productTableBody.="<td class='centered number'><span>".$totalStok."</span></td>";
+              $productTableBody.="<td></td>";
+              $productTableBody.="<td class='separator'>&nbsp;</td>";
+            $productTableBody.="</tr>";
+		   }
+          $flagTransfers=1;
+		   }		   
+		  }
           // get the consumption data
           foreach ($purchaseMovement[0] as $productionMovementAndRun){
             //pr ($productionMovementAndRun);
