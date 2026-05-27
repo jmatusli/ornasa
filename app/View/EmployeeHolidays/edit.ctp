@@ -3,9 +3,10 @@
 	<fieldset>
 		<legend><?php echo __('Edit Employee Holiday'); ?></legend>
 	<?php
+		$year = date('Y');
 		echo $this->Form->input('id');
 		echo $this->Form->input('employee_id');
-		echo $this->Form->input('holiday_date',array('dateFormat'=>'DMY','minYear'=>'2014','maxYear'=>'2025'));
+		echo $this->Form->input('holiday_date',array('dateFormat'=>'DMY','minYear'=>'2014','maxYear'=>$year));
 		echo $this->Form->input('days_taken');
 		echo $this->Form->input('holiday_type_id');
 		echo $this->Form->input('observation');

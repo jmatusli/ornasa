@@ -48,9 +48,9 @@
   echo $this->Form->create('EmployeeHoliday'); 
 	echo "<fieldset id='mainform'>";
 		echo "<legend>".__('Add Employee Holiday')."</legend>";
-	
+	    $year = date('Y');
 		echo $this->Form->input('employee_id');
-		echo $this->Form->input('holiday_date',array('dateFormat'=>'DMY','minYear'=>'2014','maxYear'=>'2073'));
+		echo $this->Form->input('holiday_date',array('dateFormat'=>'DMY','minYear'=>'2014','maxYear'=>$year));
 		echo $this->Form->input('days_taken',array('default'=>'1'));
 		echo $this->Form->input('holiday_type_id');
 		echo $this->Form->input('observation');
