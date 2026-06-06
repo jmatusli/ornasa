@@ -91,15 +91,15 @@
               $output.="<td style='width:60%;font-size:14px;'>
                 <div>
                   <span class='left'>Cliente:</span>
-                  <span class='left'>".(!empty($order['Order']['client_name']) || $order['ThirdParty']['bool_generic']?$order['Order']['client_name']:$order['ThirdParty']['company_name'])."</span>
+                  <span class='left'  style='font-size:18px!important;'>".(!empty($order['Order']['client_name']) || $order['ThirdParty']['bool_generic']?$order['Order']['client_name']:$order['ThirdParty']['company_name'])."</span>
                 </div>
                 <div>
                   <span class='left'>Dirección:</span>
-                  <span class='left'>".(!empty($order['Order']['client_address']) || $order['ThirdParty']['bool_generic']?$order['Order']['client_address']:$order['ThirdParty']['address'])."</span>
+                  <span class='left'  style='font-size:18px!important;'>".(!empty($order['Order']['client_address']) || $order['ThirdParty']['bool_generic']?$order['Order']['client_address']:$order['ThirdParty']['address'])."</span>
                 </div>
                 <div>
                   <span class='left'>Teléfono:</span>
-                  <span class='left'>".(!empty($order['Order']['client_phone']) || $order['ThirdParty']['bool_generic']?$order['Order']['client_phone']:$order['ThirdParty']['phone'])."</span>
+                  <span class='left'  style='font-size:18px!important;'>".(!empty($order['Order']['client_phone']) || $order['ThirdParty']['bool_generic']?$order['Order']['client_phone']:$order['ThirdParty']['phone'])."</span>
                  </div>
                  <div>
                   <span class='left'>RUC:</span>
@@ -110,7 +110,7 @@
               $output.="<td style='width:40%;font-size:14px;'>
                 <div>
                   <span class='left'>Fecha: </span>
-                  <span class='right'>".$invoiceDateTime->format('d')." de ".monthOfYear($invoiceDateTime->format('m')) ." ".$invoiceDateTime->format('Y')."</span>
+                  <span class='right' style='font-size:21px!important;'>".$invoiceDateTime->format('d')." de ".monthOfYear($invoiceDateTime->format('m')) ." ".$invoiceDateTime->format('Y')."</span>
                 </div>
                 <div>
                   <span class='left'>Grabado por: </span>
