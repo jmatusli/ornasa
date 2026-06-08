@@ -1905,6 +1905,7 @@ class StockMovementsController extends AppController {
 			$startDateArray=$this->request->data['Report']['startdate'];
 			$startDateString=$startDateArray['year'].'-'.$startDateArray['month'].'-'.$startDateArray['day'];
 			$startDate=date( "Y-m-d", strtotime($startDateString));
+			$startDateinv=date("Y-m-d",strtotime($startDateString."-1 days"));
 		
 			$endDateArray=$this->request->data['Report']['enddate'];
 			$endDateString=$endDateArray['year'].'-'.$endDateArray['month'].'-'.$endDateArray['day'];
@@ -1916,12 +1917,18 @@ class StockMovementsController extends AppController {
 		else if (!empty($_SESSION['startDate']) && !empty($_SESSION['endDate'])){
 			$startDate=$_SESSION['startDate'];
 			$endDate=$_SESSION['endDate'];
+			 
 			$endDatePlusOne=date("Y-m-d",strtotime($endDate."+1 days"));
+			
+			$startDateinv=date("Y-m-d",strtotime($startDate."-1 days"));
 		}
 		else{
 			$startDate = date("Y-m-01");
 			$endDate=date("Y-m-d",strtotime(date("Y-m-d")));
 			$endDatePlusOne= date( "Y-m-d", strtotime( date("Y-m-d")."+1 days" ) );
+				
+			$startDateinv=date("Y-m-d",strtotime($startDate."-1 days"));
+	
 		}
 		
 		$_SESSION['startDate']=$startDate;
@@ -1962,7 +1969,8 @@ class StockMovementsController extends AppController {
     $rawMaterial=$this->StockMovement->Product->getProductById($rawMaterialId);
     $this->set(compact('rawMaterial','rawMaterialId'));
     
-	$saldos=$this->StockItem->getSaldo($productId,$warehouseId,$startDate,$rawMaterialId);
+
+	$saldos=$this->StockItem->getSaldo($productId,$warehouseId,$startDateinv,$rawMaterialId);
  
 
    /* $stockItemConditions=[
