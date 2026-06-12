@@ -1728,7 +1728,7 @@ class StockMovementsController extends AppController {
 					'StockItem.product_id'=> $tapon['Product']['id'],
 				),
 			)); */
-			$saldo=$this->StockItem->getSaldo($tapon['Product']['id'],1,$startDate,0);
+			$saldo=$this->StockItem->getSaldo($tapon['Product']['id'],1,$startDateInv,0);
 			 
 			//pr($allStockItemsForProduct);
 			$productInitialStock=$saldo['total'];
