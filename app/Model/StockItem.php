@@ -1258,6 +1258,13 @@ else
 		$rawMaterialsComplete=false;
 		$usedRawMaterials=null;
 		
+		
+		$date = new DateTime($productionRunDate);
+		$date->setTime(23, 59, 59); // Cambia la hora a las 23:59:59
+
+		$productionRunDate = $date->format('Y-m-d H:i:s');
+
+		
     //echo "product id is ".$productId."<br/>";
     //echo "quantityNeeded is ".$quantityNeeded."<br/>";
     //echo "productionRunDate is ".$productionRunDate."<br/>";
