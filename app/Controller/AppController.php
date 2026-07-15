@@ -2017,7 +2017,7 @@ class AppController extends Controller {
 		return strtr($s, $replace);
 	}	
 	
-	public function recreateStockItemLogs($id = null) {
+	public function recreateStockItemLogs($id = null, $manageTransaction = true) {
 		$this->StockItem->id = $id;
 		if (!$this->StockItem->exists()) {
 			throw new NotFoundException(__('Invalid stock item'));
@@ -2037,7 +2037,9 @@ class AppController extends Controller {
 		));
 		//pr($stockItem);
 		$datasource=$this->StockItem->getDataSource();
-		$datasource->begin();
+		if ($manageTransaction){
+			$datasource->begin();
+		}
 		try{
 			foreach ($stockItem['StockItemLog'] as $stockItemLog){
 				//pr($stockItemLog);
@@ -2049,12 +2051,17 @@ class AppController extends Controller {
 					throw new Exception();
 				}
 			}
-			$datasource->commit();
+			if ($manageTransaction){
+				$datasource->commit();
+			}
 		}
 		catch(Exception $e){
-			$datasource->rollback();
-			pr($e);
-			return false;
+			if ($manageTransaction){
+				$datasource->rollback();
+				pr($e);
+				return false;
+			}
+			throw $e;
 		}
 		// recreate all stockitemlogs
 		$this->loadModel('StockMovement');
@@ -2209,7 +2216,9 @@ class AppController extends Controller {
 		
 		$StockItemLogData=[];
 		$datasource=$this->StockItem->getDataSource();
-		$datasource->begin();
+		if ($manageTransaction){
+			$datasource->begin();
+		}
 		try {
 			switch ($categoryid){
         case CATEGORY_RAW:
@@ -2229,7 +2238,8 @@ class AppController extends Controller {
           else {
             $StockItemLogData=[
               'stockitem_id'=>$id,
-              'stock_movement_id'=>$creationmovement['ProductionMovement']['id'],
+              'stock_movement_id'=>null,
+              'production_movement_id'=>$creationmovement['ProductionMovement']['id'],
               'stockitem_date'=>$creationmovement['ProductionMovement']['movement_date'],
               'product_id'=>$creationmovement['ProductionMovement']['product_id'],
               'product_quantity'=>$creationmovement['ProductionMovement']['product_quantity'],
@@ -2269,7 +2279,8 @@ class AppController extends Controller {
 						if (!empty($reclassificationcreationmovement)){					
 							$StockItemLogData=array();
 							$StockItemLogData['stockitem_id']=$id;
-							$StockItemLogData['production_movement_id']=$reclassificationcreationmovement['StockMovement']['id'];
+							$StockItemLogData['stock_movement_id']=$reclassificationcreationmovement['StockMovement']['id'];
+							$StockItemLogData['production_movement_id']=null;
 							$StockItemLogData['stockitem_date']=$reclassificationcreationmovement['StockMovement']['movement_date'];
 							$StockItemLogData['product_id']=$reclassificationcreationmovement['StockMovement']['product_id'];
 							$StockItemLogData['product_quantity']=$reclassificationcreationmovement['StockMovement']['product_quantity'];
@@ -2288,7 +2299,8 @@ class AppController extends Controller {
 						elseif (!empty($transfercreationmovement)){					
               $stockItemLogData=[
                 'stockitem_id'=>$id,
-                'production_movement_id'=>$transfercreationmovement['StockMovement']['id'],
+                'stock_movement_id'=>$transfercreationmovement['StockMovement']['id'],
+                'production_movement_id'=>null,
                 'stockitem_date'=>$transfercreationmovement['StockMovement']['movement_date'],
                 'product_id'=>$transfercreationmovement['StockMovement']['product_id'],
                 'product_quantity'=>$transfercreationmovement['StockMovement']['product_quantity'],
@@ -2307,7 +2319,8 @@ class AppController extends Controller {
             elseif (!empty($adjustmentCreationMovement)){					
               $stockItemLogData=[
                 'stockitem_id'=>$id,
-                'production_movement_id'=>$adjustmentCreationMovement['StockMovement']['id'],
+                'stock_movement_id'=>$adjustmentCreationMovement['StockMovement']['id'],
+                'production_movement_id'=>null,
                 'stockitem_date'=>$adjustmentCreationMovement['StockMovement']['movement_date'],
                 'product_id'=>$adjustmentCreationMovement['StockMovement']['product_id'],
                 'product_quantity'=>$adjustmentCreationMovement['StockMovement']['product_quantity'],
@@ -2480,13 +2493,18 @@ class AppController extends Controller {
 					}
 				}
 			}
-			$datasource->commit();
+			if ($manageTransaction){
+				$datasource->commit();
+			}
 			return true;
 		}
 		catch(Exception $e){
-			$datasource->rollback();
-			pr($e);
-			return false;
+			if ($manageTransaction){
+				$datasource->rollback();
+				pr($e);
+				return false;
+			}
+			throw $e;
 		}
 	}
 

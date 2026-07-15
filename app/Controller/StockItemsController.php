@@ -5448,15 +5448,13 @@ class StockItemsController extends AppController {
 									// STEP 5: SAVE THE USERLOG FOR THE STOCK MOVEMENT
 									$this->recordUserActivity($this->Session->read('User.username'),$message);
 								}
-								$datasource->commit();
-								
-								
 								foreach ($usedCapStockItems as $usedCapStockItem){
-									$this->recreateStockItemLogs($usedCapStockItem['id']);
+									$this->recreateStockItemLogs($usedCapStockItem['id'], false);
 								}
 								for ($i=0;$i<count($newlyCreatedStockItems);$i++){
-									$this->recreateStockItemLogs($newlyCreatedStockItems[$i]);
+									$this->recreateStockItemLogs($newlyCreatedStockItems[$i], false);
 								}
+								$datasource->commit();
 								
 								$this->Session->setFlash(__('Reclasificación exitosa'),'default',array('class' => 'success'));
 								return $this->redirect(array('action' => 'resumenReclasificaciones'));
@@ -5694,14 +5692,13 @@ class StockItemsController extends AppController {
 									// STEP 5: SAVE THE USERLOG FOR THE STOCK MOVEMENT
 									$this->recordUserActivity($this->Session->read('User.username'),$message);
 								}
-								$datasource->commit();
-								
 								foreach ($usedBottleStockItems as $usedBottleStockItem){
-									$this->recreateStockItemLogs($usedBottleStockItem['id']);
+									$this->recreateStockItemLogs($usedBottleStockItem['id'], false);
 								}
 								for ($i=0;$i<count($newlyCreatedStockItems);$i++){
-									$this->recreateStockItemLogs($newlyCreatedStockItems[$i]);
+									$this->recreateStockItemLogs($newlyCreatedStockItems[$i], false);
 								}
+								$datasource->commit();
 								
 								$this->Session->setFlash(__('Reclasificación exitosa'),'default',array('class' => 'success'));
 								return $this->redirect(array('action' => 'resumenReclasificaciones'));
@@ -5945,14 +5942,13 @@ class StockItemsController extends AppController {
 									// STEP 5: SAVE THE USERLOG FOR THE STOCK MOVEMENT
 									$this->recordUserActivity($this->Session->read('User.username'),$message);
 								}
-								$datasource->commit();
-								
 								foreach ($usedBottleStockItems as $usedBottleStockItem){
-									$this->recreateStockItemLogs($usedBottleStockItem['id']);
+									$this->recreateStockItemLogs($usedBottleStockItem['id'], false);
 								}
 								for ($i=0;$i<count($newlyCreatedStockItems);$i++){
-									$this->recreateStockItemLogs($newlyCreatedStockItems[$i]);
+									$this->recreateStockItemLogs($newlyCreatedStockItems[$i], false);
 								}
+								$datasource->commit();
 								
 								$this->Session->setFlash(__('Reclasificación exitosa'),'default',array('class' => 'success'));
 								return $this->redirect(array('action' => 'resumenReclasificaciones'));

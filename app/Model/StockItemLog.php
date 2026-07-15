@@ -26,17 +26,21 @@ class StockItemLog extends AppModel {
   }					
 
 	public function getStockQuantityAtDateForFinishedProduct($productId,$rawMaterialId,$productionResultCodeId,$inventoryDate,$warehouseId=0,$boolReturnQuantityOnCurrentDate=false){
-	
-		$inventoryDatePlusOne=date("Y-m-d",strtotime($inventoryDate."+1 days"));
-		$quantityInStock=0;
-		
-			//obtenemos el saldo actual
-		$saldo=  $this->StockItem->getSaldo($productId,$warehouseId,$inventoryDate,$rawMaterialId);
-		
-			
-       $quantityInStock= $saldo['total'];
-	   
-	   return $quantityInStock;
+		// getSaldo maps Remaining_A, Remaining_B and Remaining_C to indexes 1, 2 and 3.
+		$saldo=$this->StockItem->getSaldo($productId,$warehouseId,$inventoryDate,$rawMaterialId);
+		$productionResultCodeId=(int)$productionResultCodeId;
+
+		switch ($productionResultCodeId){
+			case PRODUCTION_RESULT_CODE_A:
+			case PRODUCTION_RESULT_CODE_B:
+			case PRODUCTION_RESULT_CODE_C:
+				return isset($saldo[$productionResultCodeId])
+					? (float)$saldo[$productionResultCodeId]
+					: 0;
+			default:
+				// Do not validate an unknown classification against the aggregate balance.
+				return 0;
+		}
 	}
 	
 	public function getStockQuantityAtDateForProduct($productId,$inventoryDate,$warehouseId=0,$boolReturnQuantityOnCurrentDate=false){

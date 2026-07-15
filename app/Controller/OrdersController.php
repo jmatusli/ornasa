@@ -2874,14 +2874,13 @@ class OrdersController extends AppController {
 										$this->recordUserActivity($this->Session->read('User.username'),$message);
 									}
 									
-									$datasource->commit();
-									
 									foreach ($usedBottleStockItems as $usedBottleStockItem){
-										$this->recreateStockItemLogs($usedBottleStockItem['id']);
+										$this->recreateStockItemLogs($usedBottleStockItem['id'], false);
 									}
 									for ($i=0;$i<count($newlyCreatedStockItems);$i++){
-										$this->recreateStockItemLogs($newlyCreatedStockItems[$i]);
+										$this->recreateStockItemLogs($newlyCreatedStockItems[$i], false);
 									}
+									$datasource->commit();
 									
 									$reclassificationNumber=substr($reclassificationCode,6,6)+1;
 									$reclassificationCode="RECLA_".str_pad($reclassificationNumber,6,"0",STR_PAD_LEFT)."_".$this->Session->read('User.username');
@@ -3053,14 +3052,13 @@ class OrdersController extends AppController {
 										$this->recordUserActivity($this->Session->read('User.username'),$message);
 									}
 									
-									$datasource->commit();
-									
 									foreach ($usedBottleStockItems as $usedBottleStockItem){
-										$this->recreateStockItemLogs($usedBottleStockItem['id']);
+										$this->recreateStockItemLogs($usedBottleStockItem['id'], false);
 									}
 									for ($i=0;$i<count($newlyCreatedStockItems);$i++){
-										$this->recreateStockItemLogs($newlyCreatedStockItems[$i]);
+										$this->recreateStockItemLogs($newlyCreatedStockItems[$i], false);
 									}
+									$datasource->commit();
 									
 									$reclassificationNumber=substr($reclassificationCode,6,6)+1;
 									$reclassificationCode="RECLA_".str_pad($reclassificationNumber,6,"0",STR_PAD_LEFT)."_".$this->Session->read('User.username');
@@ -6377,14 +6375,13 @@ class OrdersController extends AppController {
 										$this->recordUserActivity($this->Session->read('User.username'),$message);
 									}
 									
-									$datasource->commit();
-									
 									foreach ($usedBottleStockItems as $usedBottleStockItem){
-										$this->recreateStockItemLogs($usedBottleStockItem['id']);
+										$this->recreateStockItemLogs($usedBottleStockItem['id'], false);
 									}
 									for ($i=0;$i<count($newlyCreatedStockItems);$i++){
-										$this->recreateStockItemLogs($newlyCreatedStockItems[$i]);
+										$this->recreateStockItemLogs($newlyCreatedStockItems[$i], false);
 									}
+									$datasource->commit();
 									
 									$reclassificationNumber=substr($reclassificationCode,6,6)+1;
 									$reclassificationCode="RECLA_".str_pad($reclassificationNumber,6,"0",STR_PAD_LEFT)."_".$this->Session->read('User.username');
@@ -11493,7 +11490,7 @@ class OrdersController extends AppController {
 			//recreate stockitemlogs
 			foreach ($linkedSale['StockMovement'] as $stockMovement){
         if (!empty($stockMovement['stockitem_id'])){
-          $this->recreateStockItemLogs($stockMovement['stockitem_id']);
+          $this->recreateStockItemLogs($stockMovement['stockitem_id'], false);
         }
 			}
 		}
@@ -11501,6 +11498,7 @@ class OrdersController extends AppController {
 			$datasource->rollback();
 			pr($e);
 			$this->Session->setFlash(__('Problema al eliminar los datos viejos.'), 'default',['class' => 'error-message']);
+			return $this->redirect(['action' => 'verVenta',$id]);
 		}
 		// then save the minimum data for the annulled invoice/order				
 
@@ -11588,6 +11586,7 @@ class OrdersController extends AppController {
 		$this->request->allowMethod('post', 'delete');
 		
 		$datasource=$this->Order->getDataSource();
+		$datasource->begin();
 		$oldCashReceipt=$this->CashReceipt->find('first',array(
 			'conditions'=>array(
 				'CashReceipt.order_id'=>$id,
@@ -11659,17 +11658,16 @@ class OrdersController extends AppController {
 			
 			//recreate stockitemlogs
 			foreach ($stockMovements as $stockMovement){
-				$this->recreateStockItemLogs($stockMovement['StockMovement']['stockitem_id']);
+				$this->recreateStockItemLogs($stockMovement['StockMovement']['stockitem_id'], false);
 			}
 		}
 		catch(Exception $e){
 			$datasource->rollback();
 			pr($e);
 			$this->Session->setFlash(__('Problema al eliminar los datos viejos.'), 'default',['class' => 'error-message']);
+			return $this->redirect(['action' => 'resumenVentasRemisiones']);
 		}
 		// then save the minimum data for the annulled invoice/order				
-		$datasource=$this->Order->getDataSource();
-		$datasource->begin();
 		try {
 			//pr($this->request->data);
 			
