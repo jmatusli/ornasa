@@ -593,7 +593,7 @@
               echo $this->PlantFilter->displayPlantFilter($plants, $userRoleId,$plantId);  
               echo $this->Form->input('id',['hidden'=>'hidden']);
               echo $this->Form->input('production_run_code',['readonly'=>'readonly', 'style'=>'min-width:250px;font-size:16px;']);
-              echo $this->Form->input('production_run_date',['dateFormat'=>'DMY','minYear'=>2014,'maxYear'=>(date('Y')+1)]);
+              echo $this->Form->input('production_run_date',['dateFormat'=>'DMY','timeFormat'=>24,'minYear'=>2014,'maxYear'=>(date('Y')+1)]);
               echo $this->Form->Submit('Actualizar Planta y/o Fecha',['id'=>'refresh','name'=>'refresh','style'=>'min-width:300px;']);
             echo '</div>';
             echo '<div class="col-sm-4">';

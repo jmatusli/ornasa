@@ -233,7 +233,13 @@
 		echo "<legend>".__('Edit Production Run')." ".$this->request->data['ProductionRun']['production_run_code']."</legend>";
 		echo $this->Form->input('id',array('hidden'=>'hidden'));
 		echo $this->Form->input('production_run_code',array('readonly'=>'readonly'));
-		echo $this->Form->input('production_run_date',array('dateFormat'=>'DMY','minYear'=>2012,'maxYear'=>(date('Y')+1)));
+		echo $this->Form->input('production_run_date',array('type' => 'datetime',
+                  'dateFormat'=>'DMY',
+				  'interval' => 1,  
+                  'timeFormat'=>24,
+                  'selected' => date('Y-m-d H:i:s'),
+                  'minYear'=>2014,
+                  'maxYear'=>(date('Y')+1)));
 		echo $this->Form->Submit('Actualizar Inventario para fecha',array('id'=>'refresh','name'=>'refresh'));
 		
 		echo "<div class='container-fluid'>";

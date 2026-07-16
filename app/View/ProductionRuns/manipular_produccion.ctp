@@ -29,11 +29,6 @@
 		});
 	});	
 	
-	$(document).ready(function(){
-		$('#ProductionRunProductionRunDateHour').val('08');
-		$('#ProductionRunProductionRunDateMin').val('00');
-		$('#ProductionRunProductionRunDateMeridian').val('am');
-	});
 </script>
 <div class="productionRuns manipular">
 <?php
@@ -43,7 +38,32 @@
     echo "<dt>Código de Producción</dt>";
     echo "<dd>".$requestData['ProductionRun']['production_run_code']."</dd>";
     echo "<dt>Fecha de Producción</dt>";
-    echo "<dd>".$requestData['ProductionRun']['production_run_date']['day']."-".$requestData['ProductionRun']['production_run_date']['month']."-".$requestData['ProductionRun']['production_run_date']['year']."</dd>";
+    $productionRunDateValue=$requestData['ProductionRun']['production_run_date'];
+    if (is_array($productionRunDateValue)){
+      $productionRunHour=isset($productionRunDateValue['hour'])?intval($productionRunDateValue['hour']):0;
+      if (isset($productionRunDateValue['meridian'])){
+        if ($productionRunDateValue['meridian']==='pm' && $productionRunHour<12){
+          $productionRunHour+=12;
+        }
+        elseif ($productionRunDateValue['meridian']==='am' && $productionRunHour===12){
+          $productionRunHour=0;
+        }
+      }
+      $productionRunMinute=isset($productionRunDateValue['min'])?intval($productionRunDateValue['min']):0;
+      $productionRunDateTime=sprintf(
+        '%04d-%02d-%02d %02d:%02d:00',
+        $productionRunDateValue['year'],
+        $productionRunDateValue['month'],
+        $productionRunDateValue['day'],
+        $productionRunHour,
+        $productionRunMinute
+      );
+    }
+    else {
+      $productionRunDateTimeObject=new DateTime($productionRunDateValue);
+      $productionRunDateTime=$productionRunDateTimeObject->format('Y-m-d H:i:s');
+    }
+    echo "<dd>".date('d-m-Y H:i',strtotime($productionRunDateTime))."</dd>";
   echo "</dl>"; 
   echo "<div class='container-fluid'>";
 			echo "<div class='row'>";	
@@ -181,10 +201,9 @@
 		echo $this->Form->create('ProductionRun'); 
 		echo "<fieldset>";
 		//pr($requestData['ProductionRun']['production_run_date']);
-    $reclassificationDate=$requestData['ProductionRun']['production_run_date']['year'].'-'.$requestData['ProductionRun']['production_run_date']['month'].'-'.$requestData['ProductionRun']['production_run_date']['day'];
+    $reclassificationDate=$productionRunDateTime;
     //echo "reclassificationDate is ".$reclassificationDate."<br/>";
 		echo $this->Form->input('production_run_code',array('default'=>$requestData['ProductionRun']['production_run_code'],'label'=>false,'type'=>'hidden'));
-		//echo $this->Form->input('production_run_date',array('value'=>$reclassificationDate,'label'=>false,'type'=>'hidden','div'=>array('id'=>'productionRunDateManipulation')));
     echo $this->Form->input('production_run_date',array('value'=>$reclassificationDate,'label'=>false,'type'=>'hidden'));
 		echo $this->Form->input('machine_id',array('default'=>$requestData['ProductionRun']['machine_id'],'label'=>false,'type'=>'hidden'));
 		echo $this->Form->input('operator_id',array('default'=>$requestData['ProductionRun']['operator_id'],'label'=>false,'type'=>'hidden'));

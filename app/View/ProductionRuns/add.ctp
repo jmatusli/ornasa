@@ -246,9 +246,6 @@
 	$(document).ready(function(){
     formatNumbers();
 		
-		$('#ProductionRunProductionRunDateHour').val('08');
-		$('#ProductionRunProductionRunDateMin').val('00');
-		$('#ProductionRunProductionRunDateMeridian').val('am');
     
     $('#saving').addClass('hidden');
     
@@ -298,7 +295,15 @@
     echo "<fieldset>";
       echo "<legend>".__('New Production Run')."</legend>";
         echo $this->Form->input('production_run_code',['default'=>$newProductionRunCode,'readonly'=>'readonly']);
-        echo $this->Form->input('production_run_date',['dateFormat'=>'DMY','minYear'=>2012,'maxYear'=>(date('Y')+1)]);
+        echo $this->Form->input('production_run_date',[
+                  'type' => 'datetime',
+                  'dateFormat'=>'DMY',
+				  'interval' => 1,  
+                  'timeFormat'=>24,
+                  'selected' => date('Y-m-d H:i:s'),
+                  'minYear'=>2014,
+                  'maxYear'=>(date('Y')+1)
+        ]);
         echo $this->Form->Submit('Actualizar Inventario para fecha',['id'=>'refresh','name'=>'refresh']);
         
         

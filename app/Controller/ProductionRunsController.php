@@ -981,9 +981,10 @@ class ProductionRunsController extends AppController {
 			//reclassify C
       //$reclassificationDate=$this->request->data['ProductionRun']['production_run_date'];
       //$reclassificationDateString=$reclassificationDate['year'].'-'.$reclassificationDate['month'].'-'.$reclassificationDate['day'];
-      $reclassificationDate=$reclassificationDateString=$this->request->data['ProductionRun']['production_run_date'];
-      $reclassificationDateTimeString=$this->request->data['ProductionRun']['production_run_date']." 08:00:00";
-      $reclassificationDatePlusOne=date("Y-m-d",strtotime($reclassificationDateString."+1 days"));
+      $reclassificationDateTime=new DateTime($this->request->data['ProductionRun']['production_run_date']);
+      $reclassificationDate=$reclassificationDateTime->format('Y-m-d');
+      $reclassificationDateString=$reclassificationDateTimeString=$reclassificationDateTime->format('Y-m-d H:i:s');
+      $reclassificationDatePlusOne=date("Y-m-d",strtotime($reclassificationDate."+1 days"));
       //pr($this->request->data); 
       $this->request->data['ProductionRun']['comment']= str_replace("[carriagereturn]","\r",$this->request->data['ProductionRun']['comment']);
       $this->request->data['ProductionRun']['comment']= str_replace("[newline]","\n",$this->request->data['ProductionRun']['comment']);

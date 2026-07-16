@@ -1260,10 +1260,7 @@ else
 		
 		
 		$date = new DateTime($productionRunDate);
-		$date->setTime(23, 59, 59); // Cambia la hora a las 23:59:59
-
 		$productionRunDate = $date->format('Y-m-d H:i:s');
-
 		
     //echo "product id is ".$productId."<br/>";
     //echo "quantityNeeded is ".$quantityNeeded."<br/>";
@@ -1278,7 +1275,7 @@ else
 			],
 			'conditions' => [
 				'StockItem.product_id'=>$productId,
-				'StockItem.remaining_quantity >'=>'>0',
+				'StockItem.remaining_quantity >'=>0,
 				'StockItem.stockitem_creation_date <='=>$productionRunDate,
         'StockItem.stockitem_depletion_date >'=>$productionRunDate,
         'StockItem.warehouse_id'=>$warehouseId,
@@ -1338,7 +1335,7 @@ else
 			],
 			'conditions' => [
 				'StockItem.product_id'=>$productId,
-				'StockItem.remaining_quantity >'=>'>0',
+				'StockItem.remaining_quantity >'=>0,
 				'StockItem.stockitem_creation_date <='=>$productionRunDate,
         'StockItem.stockitem_depletion_date >'=>$productionRunDate,
         'StockItem.warehouse_id'=>$warehouseId,
