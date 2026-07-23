@@ -8560,6 +8560,8 @@ class OrdersController extends AppController {
           ]);						
           try {
             if (!empty($stockMovementsOriginalSale)){
+              $stockItemsToRecreate=[];
+              $stockItemRestoration=[];
               foreach ($stockMovementsOriginalSale as $originalStockMovement){						
                 // set all stockmovements to 0
                 $annulledStockMovementData=[];
@@ -8575,20 +8577,32 @@ class OrdersController extends AppController {
                   throw new Exception();
                 }
                 if ($originalStockMovement['Product']['product_type_id'] != PRODUCT_TYPE_SERVICE){
-                  // restore the stockitems to their previous level
-                  $annulledStockItemData=[];
-                  $annulledStockItemData['id']=$originalStockMovement['StockItem']['id'];
-                  $annulledStockItemData['description']=$originalStockMovement['StockItem']['description']." added back quantity ".$originalStockMovement['StockMovement']['product_quantity']." through editing on ".date('Y-m-d')." for order ".$id;
-                  $annulledStockItemData['remaining_quantity']=$originalStockMovement['StockItem']['remaining_quantity']+$originalStockMovement['StockMovement']['product_quantity'];
-                  if (!$this->StockItem->save($annulledStockItemData)) {
-                    echo "problema al guardar el lote";
-                    pr($this->validateErrors($this->StockItem));
-                    throw new Exception();
+                  $siId=$originalStockMovement['StockItem']['id'];
+                  if (!isset($stockItemRestoration[$siId])){
+                    $stockItemRestoration[$siId]=[
+                      'current_remaining'=>$originalStockMovement['StockItem']['remaining_quantity'],
+                      'total_to_add'=>0,
+                      'description'=>$originalStockMovement['StockItem']['description'],
+                    ];
                   }
-                  
-                  $this->recreateStockItemLogs($originalStockMovement['StockItem']['id']);
+                  $stockItemRestoration[$siId]['total_to_add']+=$originalStockMovement['StockMovement']['product_quantity'];
+                  $stockItemsToRecreate[$siId]=true;
                 }
                 
+              }
+              foreach ($stockItemRestoration as $siId=>$restoration){
+                $annulledStockItemData=[];
+                $annulledStockItemData['id']=$siId;
+                $annulledStockItemData['description']=$restoration['description']." added back quantity ".$restoration['total_to_add']." through editing on ".date('Y-m-d')." for order ".$id;
+                $annulledStockItemData['remaining_quantity']=$restoration['current_remaining']+$restoration['total_to_add'];
+                if (!$this->StockItem->save($annulledStockItemData)) {
+                  echo "problema al guardar el lote";
+                  pr($this->validateErrors($this->StockItem));
+                  throw new Exception();
+                }
+              }
+              foreach (array_keys($stockItemsToRecreate) as $siId){
+                $this->recreateStockItemLogs($siId);
               }
             }					
             if (!empty($originalInvoice)){				
@@ -8725,6 +8739,8 @@ class OrdersController extends AppController {
           $datasource->begin();
           try {
             if (!empty($stockMovementsOriginalSale)){
+              $stockItemsToRecreate=[];
+              $stockItemRestoration=[];
               foreach ($stockMovementsOriginalSale as $originalStockMovement){						
                 // set all stockmovements to 0
                 $annulledStockMovementData=[];
@@ -8740,23 +8756,32 @@ class OrdersController extends AppController {
                   throw new Exception();
                 }
                 if ($originalStockMovement['Product']['product_type_id'] != PRODUCT_TYPE_SERVICE){
-                  // restore the stockitems to their previous level
-                  $annulledStockItemData=[];
-                  $annulledStockItemData['id']=$originalStockMovement['StockItem']['id'];
-                  $annulledStockItemData['description']=$originalStockMovement['StockItem']['description']." added back quantity ".$originalStockMovement['StockMovement']['product_quantity']." through editing on ".date('Y-m-d')." for order ".$id;
-                  $annulledStockItemData['remaining_quantity']=$originalStockMovement['StockItem']['remaining_quantity']+$originalStockMovement['StockMovement']['product_quantity'];
-                  //if ($originalStockMovement['StockItem']['id']==8907){
-                  //  pr($annulledStockItemData);
-                  //}
-                  if (!$this->StockItem->save($annulledStockItemData)) {
-                    echo "problema al guardar el lote";
-                    pr($this->validateErrors($this->StockItem));
-                    throw new Exception();
+                  $siId=$originalStockMovement['StockItem']['id'];
+                  if (!isset($stockItemRestoration[$siId])){
+                    $stockItemRestoration[$siId]=[
+                      'current_remaining'=>$originalStockMovement['StockItem']['remaining_quantity'],
+                      'total_to_add'=>0,
+                      'description'=>$originalStockMovement['StockItem']['description'],
+                    ];
                   }
-                  
-                  $this->recreateStockItemLogs($originalStockMovement['StockItem']['id']);
+                  $stockItemRestoration[$siId]['total_to_add']+=$originalStockMovement['StockMovement']['product_quantity'];
+                  $stockItemsToRecreate[$siId]=true;
                 }
                 
+              }
+              foreach ($stockItemRestoration as $siId=>$restoration){
+                $annulledStockItemData=[];
+                $annulledStockItemData['id']=$siId;
+                $annulledStockItemData['description']=$restoration['description']." added back quantity ".$restoration['total_to_add']." through editing on ".date('Y-m-d')." for order ".$id;
+                $annulledStockItemData['remaining_quantity']=$restoration['current_remaining']+$restoration['total_to_add'];
+                if (!$this->StockItem->save($annulledStockItemData)) {
+                  echo "problema al guardar el lote";
+                  pr($this->validateErrors($this->StockItem));
+                  throw new Exception();
+                }
+              }
+              foreach (array_keys($stockItemsToRecreate) as $siId){
+                $this->recreateStockItemLogs($siId);
               }
             }
             

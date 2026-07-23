@@ -1799,7 +1799,11 @@ class ProductionRunsController extends AppController {
             // step 2: create new stock items for the produced products
             for ($c=0;$c<sizeof($resultCodes);$c++){
               $code=$resultCodes[$c]['ProductionResultCode']['code'];
-              $quantityProduced=$this->request->data['Stockitems'][$resultCodes[$c]['ProductionResultCode']['code']];
+              $quantityProduced=(int)$this->request->data['Stockitems'][$resultCodes[$c]['ProductionResultCode']['code']];
+              if ($quantityProduced <= 0) {
+                $this->Session->setFlash(__('La cantidad producida debe ser mayor que cero. No se guardó la orden de producción.'), 'default',['class' => 'error-message']);
+                return $this->redirect(array('action' => 'index'));
+              }
               $finishedProductId=$this->request->data['ProductionRun']['finished_product_id'];
               $movementdate=$productionRunDate;
               $message = "Produced quantity ".$quantityProduced." of product type ".$finishedProductId." quality ".$code." in product run ".$productionruncode;
@@ -2666,7 +2670,11 @@ class ProductionRunsController extends AppController {
                 $finishedUnitPrice=$totalRawCost/$rawMaterialQuantity;
                   
                 foreach ($productionResultCodes as $productionResultCodeId=>$resultCode){
-                  $quantityProduced=$this->request->data['StockItems'][$productionResultCodeId];
+                  $quantityProduced=(int)$this->request->data['StockItems'][$productionResultCodeId];
+                  if ($quantityProduced <= 0) {
+                    $this->Session->setFlash(__('La cantidad producida debe ser mayor que cero. No se guardó la orden de producción.'), 'default',['class' => 'error-message']);
+                    return $this->redirect(array('action' => 'index'));
+                  }
                   $finishedProductId=$this->request->data['ProductionRun']['finished_product_id'];
                   $movementDate=$productionRunDate;
                   $message = "Se fabricaron ".$quantityProduced." de producto ".$finishedProductId." calidad ".$resultCode." en proceso producción ".$productionRunCode;
@@ -4058,7 +4066,11 @@ class ProductionRunsController extends AppController {
                   $finishedUnitPrice=$totalRawCost/$rawMaterialQuantity;
                     
                   foreach ($productionResultCodes as $productionResultCodeId=>$resultCode){
-                    $quantityProduced=$this->request->data['StockItems'][$productionResultCodeId];
+                    $quantityProduced=(int)$this->request->data['StockItems'][$productionResultCodeId];
+                    if ($quantityProduced <= 0) {
+                      $this->Session->setFlash(__('La cantidad producida debe ser mayor que cero. No se guardó la orden de producción.'), 'default',['class' => 'error-message']);
+                      return $this->redirect(array('action' => 'index'));
+                    }
                     $finishedProductId=$this->request->data['ProductionRun']['finished_product_id'];
                     $movementDate=$productionRunDate;
                     $message = "Se fabricaron ".$quantityProduced." de producto ".$finishedProductId." calidad ".$resultCode." en proceso producción ".$productionRunCode;
