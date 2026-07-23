@@ -2347,6 +2347,7 @@ class AppController extends Controller {
 					for ($r=$amountrawregistered;$r<count($exitedrawmovements);$r++){
 						if ($movement['ProductionMovement']['movement_date']>$exitedrawmovements[$r]['StockMovement']['movement_date']){
 							$remainingQuantityStockItem-=$exitedrawmovements[$r]['StockMovement']['product_quantity'];
+							if ($remainingQuantityStockItem < 0) { $remainingQuantityStockItem = 0; }
 							
 							$StockItemLogData=array();
 							$StockItemLogData['stockitem_id']=$id;
@@ -2369,12 +2370,13 @@ class AppController extends Controller {
 							$amountrawregistered++;
 						}
 					}
-					$remainingQuantityStockItem-=$movement['ProductionMovement']['product_quantity'];
-					
-					$StockItemLogData=array();
-					$StockItemLogData['stockitem_id']=$id;
-					$StockItemLogData['stock_movement_id']=null;
-					$StockItemLogData['production_movement_id']=$movement['ProductionMovement']['id'];
+				$remainingQuantityStockItem-=$movement['ProductionMovement']['product_quantity'];
+				if ($remainingQuantityStockItem < 0) { $remainingQuantityStockItem = 0; }
+				
+				$StockItemLogData=array();
+				$StockItemLogData['stockitem_id']=$id;
+				$StockItemLogData['stock_movement_id']=null;
+				$StockItemLogData['production_movement_id']=$movement['ProductionMovement']['id'];
 					$StockItemLogData['stockitem_date']=$movement['ProductionMovement']['movement_date'];
 					$StockItemLogData['product_id']=$movement['ProductionMovement']['product_id'];
 					$StockItemLogData['product_quantity']=$remainingQuantityStockItem;
@@ -2400,6 +2402,7 @@ class AppController extends Controller {
 				}
 				for ($k=$amountrawregistered;$k<count($exitedrawmovements);$k++){
 					$remainingQuantityStockItem-=$exitedrawmovements[$k]['StockMovement']['product_quantity'];
+					if ($remainingQuantityStockItem < 0) { $remainingQuantityStockItem = 0; }
 					$StockItemLogData=array();
 					$StockItemLogData['stockitem_id']=$id;
 					$StockItemLogData['stock_movement_id']=$exitedrawmovements[$k]['StockMovement']['id'];
@@ -2432,6 +2435,7 @@ class AppController extends Controller {
 				foreach ($movements as $movement){
 					if ($productionMovementUsed){
 						$remainingQuantityStockItem-=$movement['ProductionMovement']['product_quantity'];
+						if ($remainingQuantityStockItem < 0) { $remainingQuantityStockItem = 0; }
 						
 						$StockItemLogData=array();
 						$StockItemLogData['stockitem_id']=$id;
@@ -2455,6 +2459,7 @@ class AppController extends Controller {
 					}
 					if ($stockMovementUsed){
 						$remainingQuantityStockItem-=$movement['StockMovement']['product_quantity'];
+						if ($remainingQuantityStockItem < 0) { $remainingQuantityStockItem = 0; }
 						
 						$StockItemLogData=array();
 						$StockItemLogData['stockitem_id']=$id;

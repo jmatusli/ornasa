@@ -77,18 +77,16 @@ class StockMovement extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			],
 		],
-		/*
 		'product_quantity' => [
 			'numeric' => [
 				'rule' => ['numeric'],
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'La cantidad debe ser un numero',
+			],
+			'noNegativo' => [
+				'rule' => ['comparison', '>=', 0],
+				'message' => 'La cantidad del movimiento no puede ser negativa',
 			],
 		],
-		*/
 		/*
 		'product_unit_price' => [
 			'numeric' => [

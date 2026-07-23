@@ -1409,6 +1409,7 @@ else
 		$saleDatePlusOne=date("Y-m-d",strtotime($saledate."+1 days"));
 		$finishedMaterialsComplete=false;
 		$usedFinishedMaterials=null;
+		$stockSufficient=true;
 		
 		$conditions=array(
 			'StockItem.product_id'=>$productid,
@@ -1481,6 +1482,10 @@ else
 				break;
 			}
 		}
+		if (!$finishedMaterialsComplete && $quantityneeded > 0) {
+			$stockSufficient = false;
+		}
+		$usedFinishedMaterials['_stockSufficient'] = $stockSufficient;
 		return $usedFinishedMaterials;
 	}
 	
@@ -1538,6 +1543,8 @@ else
 				break;
 			}
 		}
+		$stockSufficient = $otherMaterialsComplete || $quantityneeded <= 0;
+		$usedOtherMaterials['_stockSufficient'] = $stockSufficient;
 		return $usedOtherMaterials;
 	}
 
@@ -1948,6 +1955,10 @@ else
     'remaining_quantity' => [
 			'numeric' => [
 				'rule' => ['numeric'],
+			],
+			'noNegativo' => [
+				'rule' => ['comparison', '>=', 0],
+				'message' => 'El saldo del lote no puede ser negativo',
 			],
 		],
     'production_result_code_id' => [

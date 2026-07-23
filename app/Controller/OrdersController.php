@@ -9318,10 +9318,16 @@ class OrdersController extends AppController {
                       elseif ($this->WarehouseProduct->hasWarehouse($productId,WAREHOUSE_INJECTION)){
                         $usedMaterials= $this->StockItem->getOtherMaterialsForSale($productId,$productQuantity,$saleDateString,WAREHOUSE_INJECTION);		
                       }
-                    }
-                    //pr($usedMaterials);
-
-                    for ($k=0;$k<count($usedMaterials);$k++){
+                }
+                //pr($usedMaterials);
+                // RE-CHECK: verify stock is still sufficient inside transaction (race condition protection)
+                if (isset($usedMaterials['_stockSufficient']) && !$usedMaterials['_stockSufficient']) {
+                  $datasource->rollback();
+                  $this->Session->setFlash(__('Stock insuficiente para '.$productName.'. La cantidad requerida excede la disponible. Intente nuevamente.'), 'default',['class' => 'error-message']);
+                  return $this->redirect(['action' => 'editarVenta', $this->request->data['Order']['id']]);
+                }
+              
+                for ($k=0;$k<count($usedMaterials);$k++){
                       $materialUsed=$usedMaterials[$k];
                       $stockItemId=$materialUsed['id'];
                       $quantity_present=$materialUsed['quantity_present'];
