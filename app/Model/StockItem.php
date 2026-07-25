@@ -2,6 +2,8 @@
 App::uses('AppModel', 'Model');
 
 class StockItem extends AppModel {
+
+	public $lastStockSufficient = true;
 	
   public function getStockItemById($stockItemId){
     return $this->find('first',[
@@ -1409,7 +1411,7 @@ else
 		$saleDatePlusOne=date("Y-m-d",strtotime($saledate."+1 days"));
 		$finishedMaterialsComplete=false;
 		$usedFinishedMaterials=null;
-		$stockSufficient=true;
+		$this->lastStockSufficient=true;
 		
 		$conditions=array(
 			'StockItem.product_id'=>$productid,
@@ -1482,15 +1484,13 @@ else
 				break;
 			}
 		}
-		if (!$finishedMaterialsComplete && $quantityneeded > 0) {
-			$stockSufficient = false;
-		}
-		$usedFinishedMaterials['_stockSufficient'] = $stockSufficient;
+		$this->lastStockSufficient=$finishedMaterialsComplete || $quantityneeded <= 0;
 		return $usedFinishedMaterials;
 	}
 	
 	function getOtherMaterialsForSale($productid=null,$quantityneeded=0,$saledate,$warehouseId=0,$orderby="ASC"){
 		$saleDatePlusOne=date("Y-m-d",strtotime($saledate."+1 days"));
+		$this->lastStockSufficient=true;
 		$conditions=array(
 			'StockItem.product_id'=>$productid,
 			'StockItem.remaining_quantity >'=>'0',
@@ -1543,8 +1543,7 @@ else
 				break;
 			}
 		}
-		$stockSufficient = $otherMaterialsComplete || $quantityneeded <= 0;
-		$usedOtherMaterials['_stockSufficient'] = $stockSufficient;
+		$this->lastStockSufficient=$otherMaterialsComplete || $quantityneeded <= 0;
 		return $usedOtherMaterials;
 	}
 

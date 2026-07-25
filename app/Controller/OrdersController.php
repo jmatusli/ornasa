@@ -5238,7 +5238,7 @@ class OrdersController extends AppController {
         }
         catch(Exception $e){
           $datasource->rollback();
-          pr($e);
+          $this->logHandledException($e, 'OrdersController::crearVenta');
           $this->Session->setFlash(__('The sale could not be saved. Please, try again.'), 'default',['class' => 'error-message']);
         }
       }					
@@ -5416,6 +5416,7 @@ class OrdersController extends AppController {
           
           $datasource=$this->Order->getDataSource();
           $datasource->begin();
+          $stockInsufficientDuringSave=null;
           try {
             $currency_id=$this->request->data['Invoice']['currency_id'];
           
@@ -5730,6 +5731,11 @@ class OrdersController extends AppController {
                   }
                 }
                 //pr($usedMaterials);
+                if (!$this->StockItem->lastStockSufficient) {
+                  $stockInsufficientDuringSave=$productName;
+                  throw new Exception();
+                }
+
               
                 for ($k=0;$k<count($usedMaterials);$k++){
                   $materialUsed=$usedMaterials[$k];
@@ -5877,8 +5883,13 @@ class OrdersController extends AppController {
           }
           catch(Exception $e){
             $datasource->rollback();
-            pr($e);
-            $this->Session->setFlash(__('The sale could not be saved. Please, try again.'), 'default',['class' => 'error-message']);
+            if (!empty($stockInsufficientDuringSave)){
+              $this->Session->setFlash(__('Stock insuficiente para '.$stockInsufficientDuringSave.'. La cantidad requerida excede la disponible. Intente nuevamente.'), 'default',['class' => 'error-message']);
+            }
+            else {
+              $this->logHandledException($e, 'OrdersController::crearVenta');
+              $this->Session->setFlash(__('The sale could not be saved. Please, try again.'), 'default',['class' => 'error-message']);
+            }
           }
         }
       }
@@ -8624,7 +8635,7 @@ class OrdersController extends AppController {
           }
           catch(Exception $e){
             $datasource->rollback();
-            pr($e);
+            $this->logHandledException($e, 'OrdersController::editarVenta');
             $this->Session->setFlash(__('Problema al eliminar los datos viejos en la anulación.'), 'default',['class' => 'error-message']);
           }
           // then save the minimum data for the annulled invoice/order				
@@ -8691,7 +8702,7 @@ class OrdersController extends AppController {
           }
           catch(Exception $e){
             $datasource->rollback();
-            pr($e);
+            $this->logHandledException($e, 'OrdersController::editarVenta');
             $this->Session->setFlash(__('The sale could not be saved. Please, try again.'), 'default',['class' => 'error-message']);
           }
         }
@@ -8818,13 +8829,12 @@ class OrdersController extends AppController {
               }
             }
             
-            $datasource->commit();
-            $this->recordUserActivity($this->Session->read('User.username'),"Se removieron los datos viejos para venta ".$this->request->data['Order']['order_code']);
+            // Keep the old-data removal pending until the complete edit succeeds.
             $oldDataRemoved=true;
           }
           catch(Exception $e){
             $datasource->rollback();
-            pr($e);
+            $this->logHandledException($e, 'OrdersController::editarVenta');
             $this->Session->setFlash(__('Problema al eliminar los datos viejos.'), 'default',['class' => 'error-message']);
           }
           //$restoredStockItemForTaponVerde=$this->StockItem->find('first',array(
@@ -8989,9 +8999,13 @@ class OrdersController extends AppController {
             }			
             
             if (!$saleItemsOK){
+              $datasource->rollback();
+              $oldDataRemoved=false;
               $this->Session->setFlash(__('The quantity in stock for the following items is not sufficient.')."<br/>".$exceedingItems, 'default',['class' => 'error-message']);
             }
             elseif (($creditBlocked || $unpaidBlocked) && $userRoleId != ROLE_ADMIN && !$boolCreditAuthorized){
+              $datasource->rollback();
+              $oldDataRemoved=false;
               //echo 'credit not ok<br/>';  
               //echo 'creditBlocked is '.$creditBlocked.'<br/>';  
               //echo 'unpaidBlocked is '.$unpaidBlocked.'<br/>';  
@@ -9001,8 +9015,7 @@ class OrdersController extends AppController {
             else{
               $totalPriceProducts=0;
               
-              $datasource=$this->Order->getDataSource();
-              $datasource->begin();
+              // Continue in the transaction opened before removing the old data.
               try {
                 $currency_id=$this->request->data['Invoice']['currency_id'];
               
@@ -9346,7 +9359,7 @@ class OrdersController extends AppController {
                 }
                 //pr($usedMaterials);
                 // RE-CHECK: verify stock is still sufficient inside transaction (race condition protection)
-                if (isset($usedMaterials['_stockSufficient']) && !$usedMaterials['_stockSufficient']) {
+                if (!$this->StockItem->lastStockSufficient) {
                   $datasource->rollback();
                   $this->Session->setFlash(__('Stock insuficiente para '.$productName.'. La cantidad requerida excede la disponible. Intente nuevamente.'), 'default',['class' => 'error-message']);
                   return $this->redirect(['action' => 'editarVenta', $this->request->data['Order']['id']]);
@@ -9488,102 +9501,11 @@ class OrdersController extends AppController {
               }
               catch(Exception $e){
                 $datasource->rollback();
-                pr($e);
+                $this->logHandledException($e, 'OrdersController::editarVenta');
                 $this->Session->setFlash(__('The sale could not be edited. Please, try again.'), 'default',['class' => 'error-message']);
               }
             }
-            if (!$newDataSaved){
-              $datasource=$this->Order->getDataSource();
-              $datasource->begin();	
-              try {
-                if (!empty($stockMovementsOriginalSale)){
-                  foreach ($stockMovementsOriginalSale as $originalStockMovement){						
-                    // set all stockmovements to 0
-                    $restoredStockMovementData=[];
-                    $restoredStockMovementData['id']=$originalStockMovement['StockMovement']['id'];
-                    $restoredStockMovementData['description']=$originalStockMovement['StockMovement']['description'];
-                    $restoredStockMovementData['product_quantity']=$originalStockMovement['StockMovement']['product_quantity'];
-                    $restoredStockMovementData['service_unit_cost']=$originalStockMovement['StockMovement']['service_unit_cost'];								
-                    $restoredStockMovementData['service_total_cost']=$originalStockMovement['StockMovement']['service_total_cost'];								
-                    $restoredStockMovementData['product_total_price']=$originalStockMovement['StockMovement']['product_total_price'];								
-                    if (!$this->StockMovement->save($restoredStockMovementData)) {
-                      echo "problema al guardar el movimiento de salida";
-                      pr($this->validateErrors($this->StockMovement));
-                      throw new Exception();
-                    }
-                    
-                    
-                    $this->Product->recursive=-1;
-                    $linkedProduct=$this->Product->find('first',[
-                      'conditions'=>[
-                        'Product.id'=>$originalStockMovement['StockMovement']['product_id'],
-                      ],
-                    ]);
-                    if ($linkedProduct['Product']['product_type_id'] != PRODUCT_TYPE_SERVICE){
-                    // restore the stockitems to their previous level
-                      $restoredStockItemData=[];
-                      $restoredStockItemData['id']=$originalStockMovement['StockItem']['id'];
-                      $restoredStockItemData['description']=$originalStockMovement['StockItem']['description'];
-                      $restoredStockItemData['remaining_quantity']=$originalStockMovement['StockItem']['remaining_quantity'];
-                      if (!$this->StockItem->save($restoredStockItemData)) {
-                        echo "problema al guardar el lote";
-                        pr($this->validateErrors($this->StockItem));
-                        throw new Exception();
-                      }
-                      
-                      $this->recreateStockItemLogs($originalStockMovement['StockItem']['id']);
-                    }
-                  }
-                }					
-                if (!empty($originalInvoice)){				
-                  if (!empty($originalInvoice['AccountingRegisterInvoice'])){
-                    foreach ($originalInvoice['AccountingRegisterInvoice'] as $originalAccountingRegisterInvoice){
-                      if (!empty($originalAccountingRegisterInvoice['AccountingRegister']['AccountingMovement'])){
-                        foreach ($originalAccountingRegisterInvoice['AccountingRegister']['AccountingMovement'] as $originalAccountingMovement){
-                          $accountingMovementArray=$originalAccountingMovement;
-                          $this->AccountingMovement->create();
-                          if (!$this->AccountingMovement->save($accountingMovementArray)) {
-                            echo "problema al guardar el movimeinto contable";
-                            pr($this->validateErrors($this->AccountingMovement));
-                            throw new Exception();
-                          }
-                        }
-                      }
-                      $accountingRegisterArray=$originalAccountingRegisterInvoice['AccountingRegister'];
-                      $this->AccountingRegister->create();
-                      if (!$this->AccountingRegister->save($restoredStockItemData)) {
-                        echo "problema al guardar el asiento contable";
-                        pr($this->validateErrors($this->AccountingRegister));
-                        throw new Exception();
-                      }
-                      $accountingRegisterInvoiceArray=$originalAccountingRegisterInvoice;
-                      $this->AccountingRegisterInvoice->create();
-                      if (!$this->AccountingRegisterInvoice->save($accountingRegisterInvoiceArray)) {
-                        echo "problema al guardar el vínculo entre asiento contable y factura";
-                        pr($this->validateErrors($this->AccountingRegisterInvoice));
-                        throw new Exception();
-                      }
-                    }
-                  }
-                  $invoiceArray=$originalInvoice['Invoice'];
-                  $this->Invoice->create();
-                  if (!$this->Invoice->save($invoiceArray)) {
-                    echo "problema al guardar la factura";
-                    pr($this->validateErrors($this->Invoice));
-                    throw new Exception();
-                  }
-                  $this->Invoice->delete($originalInvoice['Invoice']['id']);
-                }						
-                $datasource->commit();
-                $this->recordUserActivity($this->Session->read('User.username'),"Se removieron los datos viejos para venta ".$this->request->data['Order']['order_code']);
-                $oldDateRemoved=true;
-              }
-              catch(Exception $e){
-                $datasource->rollback();
-                pr($e);
-                $this->Session->setFlash(__('Problema al eliminar los datos viejos.'), 'default',['class' => 'error-message']);
-              }
-            }
+            // A rollback restores the original sale; no manual reconstruction is required.
           }
         }
       } 

@@ -9,6 +9,140 @@ class ProductionRunsController extends AppController {
 	//public $helpers = array('PhpExcel','InventoryCountDisplay');
 	public $helpers = ['PhpExcel'];
 
+  protected function normalizeProductionOutputQuantities($submittedQuantities,$productionResultCodes){
+    $normalizedQuantities=[];
+    $totalProduced=0;
+    if (!is_array($submittedQuantities)){
+      $submittedQuantities=[];
+    }
+    foreach ($productionResultCodes as $productionResultCodeId=>$resultCode){
+      $normalizedQuantities[$productionResultCodeId]=0;
+    }
+    foreach ($productionResultCodes as $productionResultCodeId=>$resultCode){
+      if (!array_key_exists($productionResultCodeId,$submittedQuantities)){
+        return [
+          'success'=>false,
+          'quantities'=>$normalizedQuantities,
+          'error'=>'Falta la cantidad producida para calidad '.$resultCode.'.',
+        ];
+      }
+      $submittedQuantity=$submittedQuantities[$productionResultCodeId];
+      if ($submittedQuantity === '' || !is_numeric($submittedQuantity)){
+        return [
+          'success'=>false,
+          'quantities'=>$normalizedQuantities,
+          'error'=>'La cantidad producida para calidad '.$resultCode.' debe ser un número entero.',
+        ];
+      }
+      $numericQuantity=(float)$submittedQuantity;
+      if ($numericQuantity < 0 || floor($numericQuantity) != $numericQuantity){
+        return [
+          'success'=>false,
+          'quantities'=>$normalizedQuantities,
+          'error'=>'La cantidad producida para calidad '.$resultCode.' debe ser un número entero no negativo.',
+        ];
+      }
+      $normalizedQuantities[$productionResultCodeId]=(int)$numericQuantity;
+      $totalProduced+=$normalizedQuantities[$productionResultCodeId];
+    }
+    return [
+      'success'=>$totalProduced > 0,
+      'quantities'=>$normalizedQuantities,
+      'error'=>$totalProduced > 0?'':'La cantidad total producida debe ser mayor que cero.',
+    ];
+  }
+
+  protected function savePetProductionOutputs(
+    $productionResultCodes,
+    $productionResultCodeOutputQuantities,
+    $finishedProductId,
+    $productionRunDate,
+    $productionRunId,
+    $productionRunCode,
+    $rawMaterialId,
+    $rawMaterialName,
+    $productName,
+    $finishedUnitPrice,
+    $recordActivity=true
+  ){
+    $createdOutputs=[];
+    foreach ($productionResultCodes as $productionResultCodeId=>$resultCode){
+      $quantityProduced=$productionResultCodeOutputQuantities[$productionResultCodeId];
+      if ($quantityProduced === 0){
+        continue;
+      }
+      if ($quantityProduced < 0){
+        throw new InvalidArgumentException('La cantidad producida no puede ser negativa.');
+      }
+      $message="Se fabricaron ".$quantityProduced." de producto ".$finishedProductId." calidad ".$resultCode." en proceso producción ".$productionRunCode;
+      $finishedItemData=[
+        'StockItem'=>[
+          'name'=>$productionRunDate['day']."_".$productionRunDate['month']."_".$productionRunDate['year']."_".$productionRunCode."_".$rawMaterialName." ".$productName." ".$resultCode,
+          'stockitem_creation_date'=>$productionRunDate,
+          'product_id'=>$finishedProductId,
+          'unit_id'=>UNIT_UNIT,
+          'product_unit_price'=>$finishedUnitPrice,
+          'original_quantity'=>$quantityProduced,
+          'remaining_quantity'=>$quantityProduced,
+          'production_result_code_id'=>$productionResultCodeId,
+          'raw_material_id'=>$rawMaterialId,
+        ],
+      ];
+      $this->StockItem->create();
+      if (!$this->StockItem->save($finishedItemData)){
+        throw new Exception('No se pudo guardar el lote de producto terminado.');
+      }
+      $stockItemId=$this->StockItem->id;
+      $movementData=[
+        'ProductionMovement'=>[
+          'name'=>$productionRunCode."_".$resultCode,
+          'description'=>$message,
+          'movement_date'=>$productionRunDate,
+          'bool_input'=>false,
+          'stockitem_id'=>$stockItemId,
+          'production_run_id'=>$productionRunId,
+          'product_id'=>$finishedProductId,
+          'unit_id'=>UNIT_UNIT,
+          'product_quantity'=>$quantityProduced,
+          'production_result_code_id'=>$productionResultCodeId,
+          'product_unit_price'=>$finishedUnitPrice,
+        ],
+      ];
+      $this->ProductionMovement->create();
+      if (!$this->ProductionMovement->save($movementData['ProductionMovement'])){
+        throw new Exception('No se pudo guardar el movimiento de producción.');
+      }
+      $productionMovementId=$this->ProductionMovement->id;
+      $logData=[
+        'StockItemLog'=>[
+          'production_movement_id'=>$productionMovementId,
+          'stockitem_id'=>$stockItemId,
+          'stockitem_date'=>$productionRunDate,
+          'product_id'=>$finishedProductId,
+          'unit_id'=>UNIT_UNIT,
+          'product_quantity'=>$quantityProduced,
+          'product_unit_price'=>$finishedUnitPrice,
+          'production_result_code_id'=>$productionResultCodeId,
+        ],
+      ];
+      $this->StockItemLog->create();
+      if (!$this->StockItemLog->save($logData['StockItemLog'])){
+        throw new Exception('No se pudo guardar el estado de lote.');
+      }
+      if ($recordActivity){
+        $this->recordUserActivity($this->Session->read('User.username'),$message);
+      }
+      $createdOutputs[]=[
+        'production_result_code_id'=>$productionResultCodeId,
+        'quantity'=>$quantityProduced,
+        'stockitem_id'=>$stockItemId,
+        'production_movement_id'=>$productionMovementId,
+        'stockitem_log_id'=>$this->StockItemLog->id,
+      ];
+    }
+    return $createdOutputs;
+  }
+
 	public function beforeFilter(){
 		parent::beforeFilter();
 		// Allow users to register and logout.
@@ -977,6 +1111,24 @@ class ProductionRunsController extends AppController {
 		$resultCodes = $this->ProductionResultCode->find('all');
 		
 		if ($this->request->is('post')) {	
+      $productionResultCodeLabels=[];
+      foreach ($resultCodes as $resultCode){
+        $productionResultCodeLabels[$resultCode['ProductionResultCode']['code']]=$resultCode['ProductionResultCode']['code'];
+      }
+      $outputValidation=$this->normalizeProductionOutputQuantities(
+        isset($this->request->data['Stockitems'])?$this->request->data['Stockitems']:[],
+        $productionResultCodeLabels
+      );
+      if (!$outputValidation['success']){
+        $this->Session->setFlash(
+          __($outputValidation['error'].' No se guardó la orden de producción.'),
+          'default',
+          ['class' => 'error-message']
+        );
+        return $this->redirect(['action' => 'index']);
+      }
+      $normalizedProductionQuantities=$outputValidation['quantities'];
+
 			//pr($this->request->data);
 			//reclassify C
       //$reclassificationDate=$this->request->data['ProductionRun']['production_run_date'];
@@ -1139,7 +1291,7 @@ class ProductionRunsController extends AppController {
 				}
 				catch(Exception $e){
 					$datasource->rollback();
-					pr($e);
+					$this->logHandledException($e, 'ProductionRunsController::manipularProduccion');
 					$this->Session->setFlash(__('Reclasificación falló'), 'default',array('class' => 'error-message'), 'default',array('class' => 'error-message'));
           $boolReclassificationSuccess='0';
 				}
@@ -1291,7 +1443,7 @@ class ProductionRunsController extends AppController {
 				}
 				catch(Exception $e){
 					$datasource->rollback();
-					pr($e);
+					$this->logHandledException($e, 'ProductionRunsController::manipularProduccion');
 					$this->Session->setFlash(__('Reclasificación falló'), 'default',array('class' => 'error-message'), 'default',array('class' => 'error-message'));
           $boolReclassificationSuccess='0';
 				}
@@ -1447,7 +1599,7 @@ class ProductionRunsController extends AppController {
 				}
 				catch(Exception $e){
 					$datasource->rollback();
-					pr($e);
+					$this->logHandledException($e, 'ProductionRunsController::manipularProduccion');
 					$this->Session->setFlash(__('Reclasificación falló'), 'default',array('class' => 'error-message'), 'default',array('class' => 'error-message'));
           $boolReclassificationSuccess='0';
 				}
@@ -1596,7 +1748,7 @@ class ProductionRunsController extends AppController {
 				}
 				catch(Exception $e){
 					$datasource->rollback();
-					pr($e);
+					$this->logHandledException($e, 'ProductionRunsController::manipularProduccion');
 					$this->Session->setFlash(__('Reclasificación falló'), 'default',array('class' => 'error-message'), 'default',array('class' => 'error-message'));
 				}
 			}
@@ -1799,10 +1951,9 @@ class ProductionRunsController extends AppController {
             // step 2: create new stock items for the produced products
             for ($c=0;$c<sizeof($resultCodes);$c++){
               $code=$resultCodes[$c]['ProductionResultCode']['code'];
-              $quantityProduced=(int)$this->request->data['Stockitems'][$resultCodes[$c]['ProductionResultCode']['code']];
-              if ($quantityProduced <= 0) {
-                $this->Session->setFlash(__('La cantidad producida debe ser mayor que cero. No se guardó la orden de producción.'), 'default',['class' => 'error-message']);
-                return $this->redirect(array('action' => 'index'));
+              $quantityProduced=$normalizedProductionQuantities[$code];
+              if ($quantityProduced === 0){
+                continue;
               }
               $finishedProductId=$this->request->data['ProductionRun']['finished_product_id'];
               $movementdate=$productionRunDate;
@@ -1895,7 +2046,7 @@ class ProductionRunsController extends AppController {
         } 
         catch(Exception $e){
           $datasource->rollback();
-          pr($e);					
+          $this->logHandledException($e, 'ProductionRunsController::manipularProduccion');
           $this->Session->setFlash(__('The production run could not be saved. Please, try again.'), 'default',array('class' => 'error-message'));
         }
       }
@@ -2144,27 +2295,34 @@ class ProductionRunsController extends AppController {
       $this->request->data['ProductionRun']['bag_product_id']=$bagId;
       $productionTypeId=$this->request->data['ProductionRun']['production_type_id'];
       
-      $productionResultCodeOutputQuantities;
+      $productionResultCodeOutputQuantities=[];
+      $productionOutputValidationError=null;
       if ($productionTypeId == PRODUCTION_TYPE_PET){
-        $productionResultCodeOutputQuantities=[
-          PRODUCTION_RESULT_CODE_A=>$this->request->data['StockItems'][PRODUCTION_RESULT_CODE_A],
-          PRODUCTION_RESULT_CODE_B=>$this->request->data['StockItems'][PRODUCTION_RESULT_CODE_B],
-          PRODUCTION_RESULT_CODE_C=>$this->request->data['StockItems'][PRODUCTION_RESULT_CODE_C],
-        ];
+        $outputValidation=$this->normalizeProductionOutputQuantities(
+          isset($this->request->data['StockItems'])?$this->request->data['StockItems']:[],
+          $productionResultCodes
+        );
+        $productionResultCodeOutputQuantities=$outputValidation['quantities'];
+        if (!$outputValidation['success']){
+          $productionOutputValidationError=$outputValidation['error'];
+        }
       }
       
       $boolAcceptableProduction=true;
       $acceptableProductionValue=$this->Product->getAcceptableProductionValue($finishedProductId,$productionRunDateAsString);
       $finishedProductQuantity=0;
       $finishedProductQuantityForBags=0;
+      $checkedProductionQuantity=0;
       switch ($productionTypeId){
         case PRODUCTION_TYPE_PET:
-          $boolAcceptableProduction=$this->ProductionRun->checkProduction($acceptableProductionValue,$this->request->data['StockItems'][PRODUCTION_RESULT_CODE_A],$productionRunDateAsString,$this->request->data['ProductionRun']['shift_id']);		  
+          $checkedProductionQuantity=$productionResultCodeOutputQuantities[PRODUCTION_RESULT_CODE_A];
+          $boolAcceptableProduction=$this->ProductionRun->checkProduction($acceptableProductionValue,$checkedProductionQuantity,$productionRunDateAsString,$this->request->data['ProductionRun']['shift_id']);
           $finishedProductQuantity=$this->request->data['ProductionRun']['raw_material_quantity'];
           $finishedProductQuantityForBags=$productionResultCodeOutputQuantities[PRODUCTION_RESULT_CODE_A]+$productionResultCodeOutputQuantities[PRODUCTION_RESULT_CODE_B];
           break;
         case PRODUCTION_TYPE_INJECTION:
-          $boolAcceptableProduction=$this->ProductionRun->checkProduction($acceptableProductionValue,$this->request->data['ProductionRun']['finished_product_quantity'],$productionRunDateAsString,$this->request->data['ProductionRun']['shift_id']);		  
+          $checkedProductionQuantity=$this->request->data['ProductionRun']['finished_product_quantity'];
+          $boolAcceptableProduction=$this->ProductionRun->checkProduction($acceptableProductionValue,$checkedProductionQuantity,$productionRunDateAsString,$this->request->data['ProductionRun']['shift_id']);		  
           $finishedProductQuantity=$this->request->data['ProductionRun']['finished_product_quantity'];
           $finishedProductQuantityForBags=$finishedProductQuantity;
           break;
@@ -2174,7 +2332,7 @@ class ProductionRunsController extends AppController {
       if (count($namedProductionRuns)>0){
         $this->Session->setFlash(__('Ya existe un proceso de producción con el mismo código!  No se guardó el proceso de producción.'), 'default',['class' => 'error-message']);
       }
-      elseif ($productionRunDateAsString>date('Y-m-d H:i')){
+      elseif (new DateTime($productionRunDateAsString) > new DateTime()){
         $this->Session->setFlash(__('La fecha del proceso de producción no puede estar en el futuro!  No se guardó el proceso de producción.'), 'default',['class' => 'error-message']);
       }
       elseif ($productionRunDateAsString<$latestClosingDatePlusOne){
@@ -2232,11 +2390,14 @@ class ProductionRunsController extends AppController {
       elseif (empty($this->request->data['ProductionRun']['shift_id'])){
         $this->Session->setFlash(__('Se debe seleccionar el turno!  No se guardó el proceso de producción.'), 'default',['class' => 'error-message']);
       }
+      elseif (!empty($productionOutputValidationError)){
+        $this->Session->setFlash(__($productionOutputValidationError.' No se guardó el proceso de producción.'), 'default',['class' => 'error-message']);
+      }
       elseif ($finishedProductQuantity <= 0){
         $this->Session->setFlash('La cantidad producida debe ser mayor que cero!  No se guardó el proceso de producción.', 'default',['class' => 'error-message']);
       }
       elseif (!$this->request->data['ProductionRun']['incidence_id'] && !$boolAcceptableProduction) {
-        $this->Session->setFlash('La cantidad para el proceso de producción '.$finishedProductQuantity.' no es aceptable porque es menos que '.$acceptableProductionValue.'.  Por favor registrar la incidencia correspondiente.', 'default',['class' => 'error-message']);
+        $this->Session->setFlash('La cantidad producida '.$checkedProductionQuantity.' no es aceptable porque es menos que '.$acceptableProductionValue.'.  Por favor registrar la incidencia correspondiente.', 'default',['class' => 'error-message']);
       }
       elseif ($finishedProduct['Product']['packaging_unit'] > 0 && abs($this->request->data['ProductionRun']['bag_quantity'] -  ($finishedProductQuantityForBags/$finishedProduct['Product']['packaging_unit'])) > 2){
         $this->Session->setFlash('La cantidad de bolsas indicados es '.$this->request->data['ProductionRun']['bag_quantity'].' pero según la unidad de empaque '.$finishedProduct['Product']['packaging_unit'].' debería haber '.round($finishedProductQuantityForBags/$finishedProduct['Product']['packaging_unit'],1).' bolsas.', 'default',['class' => 'error-message']);
@@ -2669,84 +2830,18 @@ class ProductionRunsController extends AppController {
               case PRODUCTION_TYPE_PET:
                 $finishedUnitPrice=$totalRawCost/$rawMaterialQuantity;
                   
-                foreach ($productionResultCodes as $productionResultCodeId=>$resultCode){
-                  $quantityProduced=(int)$this->request->data['StockItems'][$productionResultCodeId];
-                  if ($quantityProduced <= 0) {
-                    $this->Session->setFlash(__('La cantidad producida debe ser mayor que cero. No se guardó la orden de producción.'), 'default',['class' => 'error-message']);
-                    return $this->redirect(array('action' => 'index'));
-                  }
-                  $finishedProductId=$this->request->data['ProductionRun']['finished_product_id'];
-                  $movementDate=$productionRunDate;
-                  $message = "Se fabricaron ".$quantityProduced." de producto ".$finishedProductId." calidad ".$resultCode." en proceso producción ".$productionRunCode;
-                  $finishedItemData=[
-                    'StockItem'=>[
-                      'name'=>$productionRunDate['day']."_".$productionRunDate['month']."_".$productionRunDate['year']."_".$productionRunCode."_".$rawMaterialName." ".$productName." ".$resultCode,
-                      'stockitem_creation_date'=>$productionRunDate,
-                      'product_id'=>$finishedProductId,
-                      'unit_id'=>UNIT_UNIT,
-                      // no unit price is set yet until the time of purchase
-                      'product_unit_price'=>$finishedUnitPrice,
-                      'original_quantity'=>$quantityProduced,
-                      'remaining_quantity'=>$quantityProduced,
-                      'production_result_code_id'=>$productionResultCodeId,
-                      'raw_material_id'=>$rawMaterialId,
-                    ],
-                  ];    
-                  //pr($finishedItem);
-                  $this->StockItem->create();
-                  if (!$this->StockItem->save($finishedItemData)) {
-                    echo "problema guardando el lote de producto terminado";
-                    pr($this->validateErrors($this->StockItem));
-                    throw new Exception();
-                  }
-                  
-                  $latestStockItemId=$this->StockItem->id;
-                  //echo "latest stock item id".$latestStockItemId."<br/>";
-                  
-                  $finishedProductionMovement=[
-                    'ProductionMovement'=>[
-                      'name'=>$productionRunCode."_".$resultCode,
-                      'description'=>$message,
-                      'movement_date'=>$movementDate,
-                      'bool_input'=>'0',
-                      'stockitem_id'=>$latestStockItemId,
-                      'production_run_id'=>$productionRunId,
-                      'product_id'=>$finishedProductId,
-                      'unit_id'=>UNIT_UNIT,
-                      'product_quantity'=>$quantityProduced,
-                      'production_result_code_id'=>$productionResultCodeId,
-                      'product_unit_price'=>$finishedUnitPrice,
-                    ],
-                  ];
-                  //echo "checkpoint before saving produced material production movement<br/>";	
-                  $this->ProductionMovement->create();
-                  if (!$this->ProductionMovement->save($finishedProductionMovement['ProductionMovement'])) {
-                    echo "problema guardando el movimiento de producción";
-                    pr($this->validateErrors($this->ProductionMovement));
-                    throw new Exception();
-                  }
-                  
-                  $productionMovementId=$this->ProductionMovement->id;
-                  $StockItemLog=[
-                    'StockItemLog'=>[
-                      'production_movement_id'=>$productionMovementId,
-                      'stockitem_id'=>$latestStockItemId,
-                      'stockitem_date'=>$productionRunDate,
-                      'product_id'=>$finishedProductId,
-                      'unit_id'=>UNIT_UNIT,
-                      'product_quantity'=>$quantityProduced,
-                      'product_unit_price'=>$finishedUnitPrice,
-                      'production_result_code_id'=>$productionResultCodeId,
-                    ],
-                  ];                           
-                  $this->StockItemLog->create();
-                  if (!$this->StockItemLog->save($StockItemLog['StockItemLog'])) {
-                    echo "problema guardando el estado de lote";
-                    pr($this->validateErrors($this->StockItemLog));
-                    throw new Exception();
-                  }
-                  $this->recordUserActivity($this->Session->read('User.username'),$message);
-                }
+                $this->savePetProductionOutputs(
+                  $productionResultCodes,
+                  $productionResultCodeOutputQuantities,
+                  $finishedProductId,
+                  $productionRunDate,
+                  $productionRunId,
+                  $productionRunCode,
+                  $rawMaterialId,
+                  $rawMaterialName,
+                  $productName,
+                  $finishedUnitPrice
+                );
                 break;
               case PRODUCTION_TYPE_INJECTION:
                 $movementDate=$productionRunDate;
@@ -3010,22 +3105,22 @@ class ProductionRunsController extends AppController {
               default:  
             }
             
-            $datasource->commit();
-            $this->recordUserAction($this->ProductionRun->id,null,null);
-            $this->recordUserActivity($this->Session->read('User.username'),"Se ejecutó proceso de producción con numero ".$this->request->data['ProductionRun']['production_run_code']);
-            
-            //echo "checkpoint before creating raw material stock item log<br/>";	
+            // Recreate logs before commit so production and inventory stay atomic.
             foreach ($usedRawMaterials as $usedRawMaterial){
-              $this->recreateStockItemLogs($usedRawMaterial['id']);
+              $this->recreateStockItemLogs($usedRawMaterial['id'], false);
             }
             foreach ($usedBags as $usedBag){
-              $this->recreateStockItemLogs($usedBag['id']);
+              $this->recreateStockItemLogs($usedBag['id'], false);
             }
             if (!empty($consumableStockItemsArray)){
               foreach ($consumableStockItemsArray as $consumableStockItemId){
-                $this->recreateStockItemLogs($consumableStockItemId);
+                $this->recreateStockItemLogs($consumableStockItemId, false);
               }
             }
+
+            $datasource->commit();
+            $this->recordUserAction($this->ProductionRun->id,null,null);
+            $this->recordUserActivity($this->Session->read('User.username'),"Se ejecutó proceso de producción con numero ".$this->request->data['ProductionRun']['production_run_code']);
             $this->Session->setFlash(__('Se guardó el proceso de producción.'),'default',['class' => 'success']);
             return $this->redirect(['action' => 'detalle',$productionRunId]);
           }
@@ -3033,7 +3128,7 @@ class ProductionRunsController extends AppController {
             $datasource->rollback();
             //echo substr(print_r($e,true),0,500);
             //var_dump($e);
-            pr($e);					
+            $this->logHandledException($e, 'ProductionRunsController::crear');
             $this->Session->setFlash(__('No se podía guardar el proceso de producción.'), 'default',['class' => 'error-message']);
           }
         }
@@ -3363,11 +3458,15 @@ class ProductionRunsController extends AppController {
         ];
       }
       if ($productionTypeId == PRODUCTION_TYPE_PET){
-        $productionResultCodeOutputQuantities=[
-          PRODUCTION_RESULT_CODE_A=>$this->request->data['StockItems'][PRODUCTION_RESULT_CODE_A],
-          PRODUCTION_RESULT_CODE_B=>$this->request->data['StockItems'][PRODUCTION_RESULT_CODE_B],
-          PRODUCTION_RESULT_CODE_C=>$this->request->data['StockItems'][PRODUCTION_RESULT_CODE_C],
-        ];
+        $outputValidation=$this->normalizeProductionOutputQuantities(
+          isset($this->request->data['StockItems'])?$this->request->data['StockItems']:[],
+          $productionResultCodes
+        );
+        $productionResultCodeOutputQuantities=$outputValidation['quantities'];
+        $productionOutputValidationError=$outputValidation['success']?null:$outputValidation['error'];
+      }
+      else {
+        $productionOutputValidationError=null;
       }
       $productionRunDate=$this->request->data['ProductionRun']['production_run_date'];
 			//pr($productionRunDate);
@@ -3394,14 +3493,17 @@ class ProductionRunsController extends AppController {
       $acceptableProductionValue=$this->Product->getAcceptableProductionValue($finishedProductId,$productionRunDateAsString);
       $finishedProductQuantity=0;
       $finishedProductQuantityForBags=0;
+      $checkedProductionQuantity=0;
       switch ($productionTypeId){
         case PRODUCTION_TYPE_PET:
-          $boolAcceptableProduction=$this->ProductionRun->checkProduction($acceptableProductionValue,$this->request->data['StockItems'][PRODUCTION_RESULT_CODE_A],$productionRunDateAsString,$this->request->data['ProductionRun']['shift_id']);		  
+          $checkedProductionQuantity=$productionResultCodeOutputQuantities[PRODUCTION_RESULT_CODE_A];
+          $boolAcceptableProduction=$this->ProductionRun->checkProduction($acceptableProductionValue,$checkedProductionQuantity,$productionRunDateAsString,$this->request->data['ProductionRun']['shift_id']);
           $finishedProductQuantity=$this->request->data['ProductionRun']['raw_material_quantity'];
           $finishedProductQuantityForBags=$productionResultCodeOutputQuantities[PRODUCTION_RESULT_CODE_A]+$productionResultCodeOutputQuantities[PRODUCTION_RESULT_CODE_B];
           break;
         case PRODUCTION_TYPE_INJECTION:
-          $boolAcceptableProduction=$this->ProductionRun->checkProduction($acceptableProductionValue,$this->request->data['ProductionRun']['finished_product_quantity'],$productionRunDateAsString,$this->request->data['ProductionRun']['shift_id']);		  
+          $checkedProductionQuantity=$this->request->data['ProductionRun']['finished_product_quantity'];
+          $boolAcceptableProduction=$this->ProductionRun->checkProduction($acceptableProductionValue,$checkedProductionQuantity,$productionRunDateAsString,$this->request->data['ProductionRun']['shift_id']);		  
           $finishedProductQuantity=$this->request->data['ProductionRun']['finished_product_quantity'];
           $finishedProductQuantityForBags=$finishedProductQuantity;
           break;
@@ -3429,7 +3531,7 @@ class ProductionRunsController extends AppController {
       if (count($namedProductionRuns)>0){
         $this->Session->setFlash(__('Ya existe un proceso de producción con el mismo código!  No se guardó el proceso de producción.'), 'default',['class' => 'error-message']);
       }
-      elseif ($productionRunDateAsString>date('Y-m-d H:i')){
+      elseif (new DateTime($productionRunDateAsString) > new DateTime()){
           $this->Session->setFlash(__('La fecha del proceso de producción no puede estar en el futuro!  No se guardó el proceso de producción.'), 'default',['class' => 'error-message']);
         }
       elseif ($productionRunDateAsString<$latestClosingDatePlusOne){
@@ -3454,7 +3556,7 @@ class ProductionRunsController extends AppController {
                 pr($this->validateErrors($this->StockItem));
                 throw new Exception();
               }
-              $this->recreateStockItemLogs($productionMovement['stockitem_id']);										
+              $this->recreateStockItemLogs($productionMovement['stockitem_id'], false);
             }
             else {
               foreach ($productionMovement['StockItem']['StockItemLog'] as $stockItemLog){
@@ -3514,7 +3616,7 @@ class ProductionRunsController extends AppController {
         }						 
         catch(Exception $e){
           $datasource->rollback();
-          pr($e);					
+          $this->logHandledException($e, 'ProductionRunsController::editar');
           $this->Session->setFlash(__('No se podía guardar el proceso de producción como anulada.'), 'default',['class' => 'error-message']);
         }
       }
@@ -3535,11 +3637,14 @@ class ProductionRunsController extends AppController {
       elseif (empty($this->request->data['ProductionRun']['shift_id'])){
         $this->Session->setFlash(__('Se debe seleccionar el turno!  No se editó el proceso de producción.'), 'default',['class' => 'error-message']);
       }
+      elseif (!empty($productionOutputValidationError)){
+        $this->Session->setFlash(__($productionOutputValidationError.' No se editó el proceso de producción.'), 'default',['class' => 'error-message']);
+      }
       elseif ($finishedProductQuantity <= 0){
         $this->Session->setFlash('La cantidad producida debe ser mayor que cero!  No se editó el proceso de producción.', 'default',['class' => 'error-message']);
       }
       elseif (!$this->request->data['ProductionRun']['incidence_id'] && !$boolAcceptableProduction) {
-        $this->Session->setFlash('La cantidad para el proceso de producción '.$finishedProductQuantity.' no es aceptable porque es menos que '.$acceptableProductionValue.'.  Por favor registrar la incidencia correspondiente.', 'default',['class' => 'error-message']);
+        $this->Session->setFlash('La cantidad producida '.$checkedProductionQuantity.' no es aceptable porque es menos que '.$acceptableProductionValue.'.  Por favor registrar la incidencia correspondiente.', 'default',['class' => 'error-message']);
       }    
       elseif ($finishedProduct['Product']['packaging_unit'] > 0 && abs($this->request->data['ProductionRun']['bag_quantity'] -  ($finishedProductQuantityForBags/$finishedProduct['Product']['packaging_unit'])) > 2){
         $this->Session->setFlash('La cantidad de bolsas indicados es '.$this->request->data['ProductionRun']['bag_quantity'].' pero según la unidad de empaque '.$finishedProduct['Product']['packaging_unit'].' debería haber '.round($finishedProductQuantityForBags/$finishedProduct['Product']['packaging_unit'],1).' bolsas.', 'default',['class' => 'error-message']);
@@ -3721,7 +3826,7 @@ class ProductionRunsController extends AppController {
                     pr($this->validateErrors($this->StockItem));
                     throw new Exception();
                   }
-                  $this->recreateStockItemLogs($productionMovement['stockitem_id']);										
+                  $this->recreateStockItemLogs($productionMovement['stockitem_id'], false);
                 }
                 else {
                   foreach ($productionMovement['StockItem']['StockItemLog'] as $stockItemLog){
@@ -3758,18 +3863,15 @@ class ProductionRunsController extends AppController {
               }
             }  
               
-            $datasource->commit();
-            
-            $this->recordUserAction($this->ProductionRun->id,null,null);
-            $this->recordUserActivity($this->Session->read('User.username'),"Eliminado movimientos viejos (en edición) para producción número ".$this->request->data['ProductionRun']['production_run_code']);
           }						 
           catch(Exception $e){
             $datasource->rollback();
-            pr($e);					
+            $this->logHandledException($e, 'ProductionRunsController::editar');
             $boolRemovalPreviousData='0';
             $this->Session->setFlash(__('No se podían eliminar los movimientos viejos'), 'default',['class' => 'error-message']);
           }
           if ($boolRemovalPreviousData){
+            try {
             //echo 'starting to save data<br/>';
             
             $rawMaterialQuantity=0;
@@ -3811,9 +3913,6 @@ class ProductionRunsController extends AppController {
             $bagQuantity=$this->request->data['ProductionRun']['bag_quantity'];
             $usedBags= $this->StockItem->getRawMaterialsForProductionRun($bagId,$bagQuantity,$productionRunDateAsString,$warehouseId);
            
-            $datasource=$this->ProductionRun->getDataSource();
-            $datasource->begin();
-            try {
               $this->ProductionRun->id=$id;
               if ($productionTypeId == PRODUCTION_TYPE_PET){
                 $this->request->data['ProductionRun']['finished_product_quantity']=$this->request->data['ProductionRun']['raw_material_quantity'];
@@ -4065,84 +4164,18 @@ class ProductionRunsController extends AppController {
                 case PRODUCTION_TYPE_PET:
                   $finishedUnitPrice=$totalRawCost/$rawMaterialQuantity;
                     
-                  foreach ($productionResultCodes as $productionResultCodeId=>$resultCode){
-                    $quantityProduced=(int)$this->request->data['StockItems'][$productionResultCodeId];
-                    if ($quantityProduced <= 0) {
-                      $this->Session->setFlash(__('La cantidad producida debe ser mayor que cero. No se guardó la orden de producción.'), 'default',['class' => 'error-message']);
-                      return $this->redirect(array('action' => 'index'));
-                    }
-                    $finishedProductId=$this->request->data['ProductionRun']['finished_product_id'];
-                    $movementDate=$productionRunDate;
-                    $message = "Se fabricaron ".$quantityProduced." de producto ".$finishedProductId." calidad ".$resultCode." en proceso producción ".$productionRunCode;
-                    $finishedItemData=[
-                      'StockItem'=>[
-                        'name'=>$productionRunDate['day']."_".$productionRunDate['month']."_".$productionRunDate['year']."_".$productionRunCode."_".$rawMaterialName." ".$productName." ".$resultCode,
-                        'stockitem_creation_date'=>$productionRunDate,
-                        'product_id'=>$finishedProductId,
-                        'unit_id'=>UNIT_UNIT,
-                        // no unit price is set yet until the time of purchase
-                        'product_unit_price'=>$finishedUnitPrice,
-                        'original_quantity'=>$quantityProduced,
-                        'remaining_quantity'=>$quantityProduced,
-                        'production_result_code_id'=>$productionResultCodeId,
-                        'raw_material_id'=>$rawMaterialId,
-                      ],
-                    ];    
-                    //pr($finishedItem);
-                    $this->StockItem->create();
-                    if (!$this->StockItem->save($finishedItemData)) {
-                      echo "problema guardando el lote de producto terminado";
-                      pr($this->validateErrors($this->StockItem));
-                      throw new Exception();
-                    }
-                    
-                    $latestStockItemId=$this->StockItem->id;
-                    //echo "latest stock item id".$latestStockItemId."<br/>";
-                    
-                    $finishedProductionMovement=[
-                      'ProductionMovement'=>[
-                        'name'=>$productionRunCode."_".$resultCode,
-                        'description'=>$message,
-                        'movement_date'=>$movementDate,
-                        'bool_input'=>'0',
-                        'stockitem_id'=>$latestStockItemId,
-                        'production_run_id'=>$productionRunId,
-                        'product_id'=>$finishedProductId,
-                        'unit_id'=>UNIT_UNIT,
-                        'product_quantity'=>$quantityProduced,
-                        'production_result_code_id'=>$productionResultCodeId,
-                        'product_unit_price'=>$finishedUnitPrice,
-                      ],
-                    ];
-                    //echo "checkpoint before saving produced material production movement<br/>";	
-                    $this->ProductionMovement->create();
-                    if (!$this->ProductionMovement->save($finishedProductionMovement['ProductionMovement'])) {
-                      echo "problema guardando el movimiento de producción";
-                      pr($this->validateErrors($this->ProductionMovement));
-                      throw new Exception();
-                    }
-                    
-                    $productionMovementId=$this->ProductionMovement->id;
-                    $StockItemLog=[
-                      'StockItemLog'=>[
-                        'production_movement_id'=>$productionMovementId,
-                        'stockitem_id'=>$latestStockItemId,
-                        'stockitem_date'=>$productionRunDate,
-                        'product_id'=>$finishedProductId,
-                        'unit_id'=>UNIT_UNIT,
-                        'product_quantity'=>$quantityProduced,
-                        'product_unit_price'=>$finishedUnitPrice,
-                        'production_result_code_id'=>$productionResultCodeId,
-                      ],
-                    ];                           
-                    $this->StockItemLog->create();
-                    if (!$this->StockItemLog->save($StockItemLog['StockItemLog'])) {
-                      echo "problema guardando el estado de lote";
-                      pr($this->validateErrors($this->StockItemLog));
-                      throw new Exception();
-                    }
-                    $this->recordUserActivity($this->Session->read('User.username'),$message);
-                  }
+                  $this->savePetProductionOutputs(
+                    $productionResultCodes,
+                    $productionResultCodeOutputQuantities,
+                    $finishedProductId,
+                    $productionRunDate,
+                    $productionRunId,
+                    $productionRunCode,
+                    $rawMaterialId,
+                    $rawMaterialName,
+                    $productName,
+                    $finishedUnitPrice
+                  );
                   break;
                 case PRODUCTION_TYPE_INJECTION:
                   $movementDate=$productionRunDate;
@@ -4329,28 +4362,28 @@ class ProductionRunsController extends AppController {
                 default:  
               }
               
-              $datasource->commit();
-              $this->recordUserAction($this->ProductionRun->id,null,null);
-              $this->recordUserActivity($this->Session->read('User.username'),"Se editó proceso de producción con numero ".$this->request->data['ProductionRun']['production_run_code']);
-              
-              //echo "checkpoint before creating raw material stock item log<br/>";	
+              // Recreate logs before commit so the complete edit is atomic.
               foreach ($usedRawMaterials as $usedRawMaterial){
-                $this->recreateStockItemLogs($usedRawMaterial['id']);
+                $this->recreateStockItemLogs($usedRawMaterial['id'], false);
               }
               foreach ($usedBags as $usedBag){
-                $this->recreateStockItemLogs($usedBag['id']);
+                $this->recreateStockItemLogs($usedBag['id'], false);
               }
               if (!empty($consumableStockItemsArray)){
                 foreach ($consumableStockItemsArray as $consumableStockItemId){
-                  $this->recreateStockItemLogs($consumableStockItemId);
+                  $this->recreateStockItemLogs($consumableStockItemId, false);
                 }
               }
+
+              $datasource->commit();
+              $this->recordUserAction($this->ProductionRun->id,null,null);
+              $this->recordUserActivity($this->Session->read('User.username'),"Se editó proceso de producción con numero ".$this->request->data['ProductionRun']['production_run_code']);
               $this->Session->setFlash(__('Se editó el proceso de producción.'),'default',['class' => 'success']);
               return $this->redirect(['action' => 'detalle',$id]);
             }
             catch(Exception $e){
               $datasource->rollback();
-              pr($e);					
+              $this->logHandledException($e, 'ProductionRunsController::editar');
               $this->Session->setFlash(__('No se podía editar el proceso de producción.'), 'default',['class' => 'error-message']);
             }
           }
@@ -4765,7 +4798,7 @@ class ProductionRunsController extends AppController {
 				
 				// recreate stockitemlogs
 				foreach ($usedMovements as $usedMovement){
-					$this->recreateStockItemLogs($usedMovement['ProductionMovement']['stockitem_id']);
+					$this->recreateStockItemLogs($usedMovement['ProductionMovement']['stockitem_id'], false);
 				}
 		
 				$datasource->commit();
@@ -4903,7 +4936,7 @@ class ProductionRunsController extends AppController {
 				
 				// recreate stockitemlogs
 				foreach ($usedMovements as $usedMovement){
-					$this->recreateStockItemLogs($usedMovement['ProductionMovement']['stockitem_id']);
+					$this->recreateStockItemLogs($usedMovement['ProductionMovement']['stockitem_id'], false);
 				}
 		
 				$datasource->commit();
