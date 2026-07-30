@@ -2116,7 +2116,7 @@ class AppController extends Controller {
 						),
 					));
 				}
-				if (empty($creationmovement) && empty($reclassificationcreationmovement)){
+				if (empty($reclassificationcreationmovement)){
 					$transfercreationmovement=$this->StockMovement->find('first',array(
 						'conditions'=>array(
 							'StockMovement.stockitem_id'=>$id,
@@ -2128,7 +2128,7 @@ class AppController extends Controller {
 						),
 					));
 				}
-        if (empty($creationmovement) && empty($transfercreationmovement)){
+        if (empty($transfercreationmovement)){
 					$adjustmentCreationMovement=$this->StockMovement->find('first',[
 						'conditions'=>[
 							'StockMovement.stockitem_id'=>$id,
@@ -2226,72 +2226,72 @@ class AppController extends Controller {
 				break;  
 		}
 		
-		// === FIX: Get additional stock entries (purchases, transfer-ins, adjustment-ins) ===
-		// that are NOT the creation movement. These entries increase stock but were
-		// previously ignored by recreateStockItemLogs.
-		$additionalEntries = array();
-		$excludeMovementIds = array();
-		if (isset($creationmovement) && is_array($creationmovement)) {
-			if (isset($creationmovement['StockMovement']['id'])) {
-				$excludeMovementIds[] = $creationmovement['StockMovement']['id'];
-			}
-		}
-		if (!empty($reclassificationcreationmovement) && isset($reclassificationcreationmovement['StockMovement']['id'])) {
-			$excludeMovementIds[] = $reclassificationcreationmovement['StockMovement']['id'];
-		}
-		if (!empty($transfercreationmovement) && isset($transfercreationmovement['StockMovement']['id'])) {
-			$excludeMovementIds[] = $transfercreationmovement['StockMovement']['id'];
-		}
-		if (!empty($adjustmentCreationMovement) && isset($adjustmentCreationMovement['StockMovement']['id'])) {
-			$excludeMovementIds[] = $adjustmentCreationMovement['StockMovement']['id'];
-		}
-		$additionalEntryConditions = array(
-			'StockMovement.stockitem_id' => $id,
-			'StockMovement.bool_input' => '1',
-		);
-		if (!empty($excludeMovementIds)) {
-			$exclInts = array_map('intval', $excludeMovementIds);
-			$additionalEntryConditions[] = 'StockMovement.id NOT IN (' . implode(',', $exclInts) . ')';
-		}
-		$additionalEntries = $this->StockMovement->find('all', array(
-			'conditions' => $additionalEntryConditions,
-			'contain' => array('StockItem'),
-			'order' => 'movement_date, StockMovement.id',
-		));
+																						
+																			  
+												 
+							   
+								
+																
+														 
+		//pr($creationmovement);
+	
+   
+																													 
+																					
+   
+																									 
+																			
+   
+																										 
+																			  
+   
+									 
+									   
+									 
+	
+									
+														
+																							  
+   
+															   
+											  
+								   
+												
+	 
 
-		$allStockMovements = array();
-		if (!empty($exitedrawmovements)) {
-			foreach ($exitedrawmovements as $m) {
-				$m['_is_entry'] = false;
-				$allStockMovements[] = $m;
-			}
-		}
-		// For PRODUCED/OTHER categories, stock exits are in $movements (not $exitedrawmovements)
-		if ($stockMovementUsed && !empty($movements)) {
-			foreach ($movements as $m) {
-				$m['_is_entry'] = false;
-				$allStockMovements[] = $m;
-			}
-		}
-		if (!empty($additionalEntries)) {
-			foreach ($additionalEntries as $m) {
-				$m['_is_entry'] = true;
-				$allStockMovements[] = $m;
-			}
-		}
-		if (count($allStockMovements) > 1) {
-			usort($allStockMovements, function($a, $b) {
-				$dateA = $a['StockMovement']['movement_date'];
-				$dateB = $b['StockMovement']['movement_date'];
-				if ($dateA == $dateB) {
-					return $a['StockMovement']['id'] - $b['StockMovement']['id'];
-				}
-				return strtotime($dateA) - strtotime($dateB);
-			});
-		}
-		if (count($allStockMovements) > 0 && $productionMovementUsed) {
-			$productionMovementAndRawExitUsed = true;
-		}
+							   
+									
+										
+							
+							  
+	
+   
+																						   
+		//pr($movements);
+		
+							
+							  
+	
+   
+								   
+									   
+						   
+							  
+	
+   
+									  
+											   
+												  
+												  
+						   
+																  
+	 
+												 
+	  
+   
+																 
+											
+   
 
 		$StockItemLogData=[];
 		$datasource=$this->StockItem->getDataSource();
@@ -2428,41 +2428,41 @@ class AppController extends Controller {
 					}
 					break;
 			}
-			$remainingQuantityStockItem=$stockItem['StockItem']['original_quantity'];
+			$remainingQuantityStockItem=$stockItem['StockItem']['original_quantity'];		
 
-			if (empty($creationmovement)) {
-				if (!empty($reclassificationcreationmovement)) {
-					$creationmovement = $reclassificationcreationmovement;
-				} elseif (!empty($transfercreationmovement)) {
-					$creationmovement = $transfercreationmovement;
-				} elseif (!empty($adjustmentCreationMovement)) {
-					$creationmovement = $adjustmentCreationMovement;
-				}
-			}
+								  
+													
+														   
+												  
+												   
+													
+													 
+	 
+	
 			
 			if ($productionMovementAndRawExitUsed){
 				$amountrawregistered=0;
 				foreach ($movements as $movement){
-					for ($r=$amountrawregistered;$r<count($allStockMovements);$r++){
-						if ($movement['ProductionMovement']['movement_date']>$allStockMovements[$r]['StockMovement']['movement_date']){
-							if (!empty($allStockMovements[$r]['_is_entry'])){
-								$remainingQuantityStockItem=$remainingQuantityStockItem + $allStockMovements[$r]['StockMovement']['product_quantity'];
-							} else {
-								$remainingQuantityStockItem=$this->subtractStockItemQuantityOrFail(
-									$remainingQuantityStockItem,
-									$allStockMovements[$r]['StockMovement']['product_quantity'],
-									$id,
-									'StockMovement',
-									$allStockMovements[$r]['StockMovement']['id']
-								);
-							}
+					for ($r=$amountrawregistered;$r<count($exitedrawmovements);$r++){
+						if ($movement['ProductionMovement']['movement_date']>$exitedrawmovements[$r]['StockMovement']['movement_date']){
+														
+																															  
+			   
+							$remainingQuantityStockItem=$this->subtractStockItemQuantityOrFail(
+								$remainingQuantityStockItem,
+								$exitedrawmovements[$r]['StockMovement']['product_quantity'],
+								$id,
+								'StockMovement',
+								$exitedrawmovements[$r]['StockMovement']['id']
+							);
+		
 							
 							$StockItemLogData=array();
 							$StockItemLogData['stockitem_id']=$id;
-							$StockItemLogData['stock_movement_id']=$allStockMovements[$r]['StockMovement']['id'];
+							$StockItemLogData['stock_movement_id']=$exitedrawmovements[$r]['StockMovement']['id'];
 							$StockItemLogData['production_movement_id']=null;
-							$StockItemLogData['stockitem_date']=$allStockMovements[$r]['StockMovement']['movement_date'];
-							$StockItemLogData['product_id']=$allStockMovements[$r]['StockMovement']['product_id'];
+							$StockItemLogData['stockitem_date']=$exitedrawmovements[$r]['StockMovement']['movement_date'];
+							$StockItemLogData['product_id']=$exitedrawmovements[$r]['StockMovement']['product_id'];
 							$StockItemLogData['product_quantity']=$remainingQuantityStockItem;
 							switch ($categoryid){
 								case CATEGORY_RAW:
@@ -2474,13 +2474,13 @@ class AppController extends Controller {
 									$StockItemLogData['product_unit_price']=$creationmovement['ProductionMovement']['product_unit_price'];
 									break;
 							}
-							$StockItemLogData['warehouse_id']=$allStockMovements[$r]['StockItem']['warehouse_id'];
-							$this->StockItemLog->create();
-							if (!$this->StockItemLog->save($StockItemLogData)) {
-								echo "problema guardando los estado de lote";
-								pr($this->validateErrors($this->StockItemLog));
-								throw new Exception();
-							}
+							//$StockItemLogData['production_result_code_id']=$exitedrawmovement['StockMovement']['production_result_code_id'];
+									 
+														   
+													 
+													   
+							  
+		
 							$amountrawregistered++;
 						}
 					}
@@ -2519,24 +2519,24 @@ class AppController extends Controller {
 						throw new Exception();
 					}
 				}
-				for ($k=$amountrawregistered;$k<count($allStockMovements);$k++){
-					if (!empty($allStockMovements[$k]['_is_entry'])){
-						$remainingQuantityStockItem=$remainingQuantityStockItem + $allStockMovements[$k]['StockMovement']['product_quantity'];
-					} else {
-						$remainingQuantityStockItem=$this->subtractStockItemQuantityOrFail(
-							$remainingQuantityStockItem,
-							$allStockMovements[$k]['StockMovement']['product_quantity'],
-							$id,
-							'StockMovement',
-							$allStockMovements[$k]['StockMovement']['id']
-						);
-					}
+				for ($k=$amountrawregistered;$k<count($exitedrawmovements);$k++){
+													  
+					$remainingQuantityStockItem=$this->subtractStockItemQuantityOrFail(
+						$remainingQuantityStockItem,
+																		 
+								   
+						$exitedrawmovements[$k]['StockMovement']['product_quantity'],
+						$id,
+						'StockMovement',
+						$exitedrawmovements[$k]['StockMovement']['id']
+					);
+	  
 					$StockItemLogData=array();
 					$StockItemLogData['stockitem_id']=$id;
-					$StockItemLogData['stock_movement_id']=$allStockMovements[$k]['StockMovement']['id'];
+					$StockItemLogData['stock_movement_id']=$exitedrawmovements[$k]['StockMovement']['id'];
 					$StockItemLogData['production_movement_id']=null;
-					$StockItemLogData['stockitem_date']=$allStockMovements[$k]['StockMovement']['movement_date'];
-					$StockItemLogData['product_id']=$allStockMovements[$k]['StockMovement']['product_id'];
+					$StockItemLogData['stockitem_date']=$exitedrawmovements[$k]['StockMovement']['movement_date'];
+					$StockItemLogData['product_id']=$exitedrawmovements[$k]['StockMovement']['product_id'];
 					$StockItemLogData['product_quantity']=$remainingQuantityStockItem;
 					switch ($categoryid){
 						case CATEGORY_RAW:
@@ -2548,7 +2548,8 @@ class AppController extends Controller {
 							$StockItemLogData['product_unit_price']=$creationmovement['ProductionMovement']['product_unit_price'];
 							break;
 					}
-					$StockItemLogData['warehouse_id']=$allStockMovements[$k]['StockItem']['warehouse_id'];
+					//$StockItemLogData['production_result_code_id']=$exitedrawmovements[$k]['StockMovement']['production_result_code_id'];
+					$StockItemLogData['warehouse_id']=$exitedrawmovements[$k]['StockItem']['warehouse_id'];
 					
 					$this->StockItemLog->create();
 					if (!$this->StockItemLog->save($StockItemLogData)) {
@@ -2559,40 +2560,40 @@ class AppController extends Controller {
 				}
 			}
 			else {
-				if ($productionMovementUsed && !empty($allStockMovements)){
-					$amountrawregistered=0;
-					foreach ($movements as $movement){
-						for ($r=$amountrawregistered;$r<count($allStockMovements);$r++){
-							if ($movement['ProductionMovement']['movement_date']>$allStockMovements[$r]['StockMovement']['movement_date']){
-								if (!empty($allStockMovements[$r]['_is_entry'])){
-									$remainingQuantityStockItem=$remainingQuantityStockItem + $allStockMovements[$r]['StockMovement']['product_quantity'];
-								} else {
-									$remainingQuantityStockItem=$this->subtractStockItemQuantityOrFail(
-										$remainingQuantityStockItem,
-										$allStockMovements[$r]['StockMovement']['product_quantity'],
-										$id,
-										'StockMovement',
-										$allStockMovements[$r]['StockMovement']['id']
-									);
-								}
-								$StockItemLogData=array();
-								$StockItemLogData['stockitem_id']=$id;
-								$StockItemLogData['stock_movement_id']=$allStockMovements[$r]['StockMovement']['id'];
-								$StockItemLogData['production_movement_id']=null;
-								$StockItemLogData['stockitem_date']=$allStockMovements[$r]['StockMovement']['movement_date'];
-								$StockItemLogData['product_id']=$allStockMovements[$r]['StockMovement']['product_id'];
-								$StockItemLogData['product_quantity']=$remainingQuantityStockItem;
-								$StockItemLogData['product_unit_price']=(array_key_exists('StockMovement',$creationmovement)?$creationmovement['StockMovement']['product_unit_price']:$creationmovement['ProductionMovement']['product_unit_price']);
-								$StockItemLogData['warehouse_id']=$allStockMovements[$r]['StockItem']['warehouse_id'];
-								$this->StockItemLog->create();
-								if (!$this->StockItemLog->save($StockItemLogData)) {
-									echo "problema guardando los estado de lote";
-									pr($this->validateErrors($this->StockItemLog));
-									throw new Exception();
-								}
-								$amountrawregistered++;
-							}
-						}
+															   
+							
+				foreach ($movements as $movement){
+					if ($productionMovementUsed){
+																													  
+														 
+																															   
+				
+																			
+									  
+																	  
+			  
+						  
+													   
+		   
+		 
+								  
+											  
+																							 
+														 
+																									 
+																							  
+																		  
+																																																							 
+																							  
+									  
+															
+													  
+														
+							   
+		 
+							   
+		
+	   
 						$remainingQuantityStockItem=$this->subtractStockItemQuantityOrFail(
 							$remainingQuantityStockItem,
 							$movement['ProductionMovement']['product_quantity'],
@@ -2600,6 +2601,7 @@ class AppController extends Controller {
 							'ProductionMovement',
 							$movement['ProductionMovement']['id']
 						);
+						
 						$StockItemLogData=array();
 						$StockItemLogData['stockitem_id']=$id;
 						$StockItemLogData['stock_movement_id']=null;
@@ -2607,124 +2609,145 @@ class AppController extends Controller {
 						$StockItemLogData['stockitem_date']=$movement['ProductionMovement']['movement_date'];
 						$StockItemLogData['product_id']=$movement['ProductionMovement']['product_id'];
 						$StockItemLogData['product_quantity']=$remainingQuantityStockItem;
-						$StockItemLogData['product_unit_price']=(array_key_exists('StockMovement',$creationmovement)?$creationmovement['StockMovement']['product_unit_price']:$creationmovement['ProductionMovement']['product_unit_price']);
+						switch ($categoryid){
+							case CATEGORY_RAW:
+              case CATEGORY_CONSUMIBLE:
+							case CATEGORY_OTHER:
+								$StockItemLogData['product_unit_price']=(array_key_exists('StockMovement',$creationmovement)?$creationmovement['StockMovement']['product_unit_price']:$creationmovement['ProductionMovement']['product_unit_price']);
+								break;
+							case CATEGORY_PRODUCED:
+								$StockItemLogData['product_unit_price']=$creationmovement['ProductionMovement']['product_unit_price'];
+								break;
+						}
 						$StockItemLogData['production_result_code_id']=$movement['ProductionMovement']['production_result_code_id'];
 						$StockItemLogData['warehouse_id']=$movement['StockItem']['warehouse_id'];
-						$this->StockItemLog->create();
-						if (!$this->StockItemLog->save($StockItemLogData)) {
-							echo "problema guardando los estado de lote";
-							pr($this->validateErrors($this->StockItemLog));
-							throw new Exception();
-						}
+									
+														  
+													
+													  
+							 
+	   
 					}
-					for ($k=$amountrawregistered;$k<count($allStockMovements);$k++){
-						if (!empty($allStockMovements[$k]['_is_entry'])){
-							$remainingQuantityStockItem=$remainingQuantityStockItem + $allStockMovements[$k]['StockMovement']['product_quantity'];
-						} else {
-							$remainingQuantityStockItem=$this->subtractStockItemQuantityOrFail(
-								$remainingQuantityStockItem,
-								$allStockMovements[$k]['StockMovement']['product_quantity'],
-								$id,
-								'StockMovement',
-								$allStockMovements[$k]['StockMovement']['id']
-							);
-						}
+					if ($stockMovementUsed){
+						$remainingQuantityStockItem=$this->subtractStockItemQuantityOrFail(
+							$remainingQuantityStockItem,
+			  
+																		  
+									
+							$movement['StockMovement']['product_quantity'],
+							$id,
+							'StockMovement',
+							$movement['StockMovement']['id']
+						);
+						
 						$StockItemLogData=array();
 						$StockItemLogData['stockitem_id']=$id;
-						$StockItemLogData['stock_movement_id']=$allStockMovements[$k]['StockMovement']['id'];
+						$StockItemLogData['stock_movement_id']=$movement['StockMovement']['id'];
 						$StockItemLogData['production_movement_id']=null;
-						$StockItemLogData['stockitem_date']=$allStockMovements[$k]['StockMovement']['movement_date'];
-						$StockItemLogData['product_id']=$allStockMovements[$k]['StockMovement']['product_id'];
+						$StockItemLogData['stockitem_date']=$movement['StockMovement']['movement_date'];
+						$StockItemLogData['product_id']=$movement['StockMovement']['product_id'];
 						$StockItemLogData['product_quantity']=$remainingQuantityStockItem;
-						$StockItemLogData['product_unit_price']=(array_key_exists('StockMovement',$creationmovement)?$creationmovement['StockMovement']['product_unit_price']:$creationmovement['ProductionMovement']['product_unit_price']);
-						$StockItemLogData['warehouse_id']=$allStockMovements[$k]['StockItem']['warehouse_id'];
-						$this->StockItemLog->create();
-						if (!$this->StockItemLog->save($StockItemLogData)) {
-							echo "problema guardando los estado de lote";
-							pr($this->validateErrors($this->StockItemLog));
-							throw new Exception();
+						switch ($categoryid){
+							case CATEGORY_RAW:
+              case CATEGORY_CONSUMIBLE:
+							case CATEGORY_OTHER:
+								$StockItemLogData['product_unit_price']=$creationmovement['StockMovement']['product_unit_price'];
+								break;
+							case CATEGORY_PRODUCED:
+								if (!empty($creationmovement)){
+									$StockItemLogData['product_unit_price']=$creationmovement['ProductionMovement']['product_unit_price'];
+								}
+								elseif (!empty($reclassificationcreationmovement)) {
+									$StockItemLogData['product_unit_price']=$reclassificationcreationmovement['StockMovement']['product_unit_price'];
+								}
+								elseif (!empty($transfercreationmovement)) {
+									$StockItemLogData['product_unit_price']=$transfercreationmovement['StockMovement']['product_unit_price'];
+								}
+								break;
 						}
+						$StockItemLogData['production_result_code_id']=$movement['StockMovement']['production_result_code_id'];
+						$StockItemLogData['warehouse_id']=$movement['StockItem']['warehouse_id'];
+					}
+					
+															  
+										
+								   
+																										 
+			  
+																		  
+									
+												
+			
+						
+								 
+		 
+	   
+								
+											
+																	   
+													   
+																			   
+																		
+																		
+																																																						   
+																									  
+																		
+					$this->StockItemLog->create();
+					if (!$this->StockItemLog->save($StockItemLogData)) {
+						echo "problema guardando los estado de lote";
+						pr($this->validateErrors($this->StockItemLog));
+						throw new Exception();
+	   
 					}
 				}
-				elseif ($stockMovementUsed && !empty($allStockMovements)){
-					foreach ($allStockMovements as $m){
-						if (!empty($m['_is_entry'])){
-							$remainingQuantityStockItem=$remainingQuantityStockItem + $m['StockMovement']['product_quantity'];
-						} else {
-							$remainingQuantityStockItem=$this->subtractStockItemQuantityOrFail(
-								$remainingQuantityStockItem,
-								$m['StockMovement']['product_quantity'],
-								$id,
-								'StockMovement',
-								$m['StockMovement']['id']
-							);
-						}
-						$StockItemLogData=array();
-						$StockItemLogData['stockitem_id']=$id;
-						$StockItemLogData['stock_movement_id']=$m['StockMovement']['id'];
-						$StockItemLogData['production_movement_id']=null;
-						$StockItemLogData['stockitem_date']=$m['StockMovement']['movement_date'];
-						$StockItemLogData['product_id']=$m['StockMovement']['product_id'];
-						$StockItemLogData['product_quantity']=$remainingQuantityStockItem;
-						$StockItemLogData['product_unit_price']=(array_key_exists('StockMovement',$creationmovement)?$creationmovement['StockMovement']['product_unit_price']:$creationmovement['ProductionMovement']['product_unit_price']);
-						$StockItemLogData['production_result_code_id']=$m['StockMovement']['production_result_code_id'];
-						$StockItemLogData['warehouse_id']=$m['StockItem']['warehouse_id'];
-						$this->StockItemLog->create();
-						if (!$this->StockItemLog->save($StockItemLogData)) {
-							echo "problema guardando los estado de lote";
-							pr($this->validateErrors($this->StockItemLog));
-							throw new Exception();
-						}
-					}
-				}
-				else {
-					foreach ($movements as $movement){
-						if ($productionMovementUsed){
-							$remainingQuantityStockItem=$this->subtractStockItemQuantityOrFail(
-								$remainingQuantityStockItem,
-								$movement['ProductionMovement']['product_quantity'],
-								$id,
-								'ProductionMovement',
-								$movement['ProductionMovement']['id']
-							);
-							$StockItemLogData=array();
-							$StockItemLogData['stockitem_id']=$id;
-							$StockItemLogData['stock_movement_id']=null;
-							$StockItemLogData['production_movement_id']=$movement['ProductionMovement']['id'];
-							$StockItemLogData['stockitem_date']=$movement['ProductionMovement']['movement_date'];
-							$StockItemLogData['product_id']=$movement['ProductionMovement']['product_id'];
-							$StockItemLogData['product_quantity']=$remainingQuantityStockItem;
-							$StockItemLogData['product_unit_price']=(array_key_exists('StockMovement',$creationmovement)?$creationmovement['StockMovement']['product_unit_price']:$creationmovement['ProductionMovement']['product_unit_price']);
-							$StockItemLogData['production_result_code_id']=$movement['ProductionMovement']['production_result_code_id'];
-							$StockItemLogData['warehouse_id']=$movement['StockItem']['warehouse_id'];
-						}
-						if ($stockMovementUsed){
-							$remainingQuantityStockItem=$this->subtractStockItemQuantityOrFail(
-								$remainingQuantityStockItem,
-								$movement['StockMovement']['product_quantity'],
-								$id,
-								'StockMovement',
-								$movement['StockMovement']['id']
-							);
-							$StockItemLogData=array();
-							$StockItemLogData['stockitem_id']=$id;
-							$StockItemLogData['stock_movement_id']=$movement['StockMovement']['id'];
-							$StockItemLogData['production_movement_id']=null;
-							$StockItemLogData['stockitem_date']=$movement['StockMovement']['movement_date'];
-							$StockItemLogData['product_id']=$movement['StockMovement']['product_id'];
-							$StockItemLogData['product_quantity']=$remainingQuantityStockItem;
-							$StockItemLogData['product_unit_price']=$creationmovement['StockMovement']['product_unit_price'];
-							$StockItemLogData['production_result_code_id']=$movement['StockMovement']['production_result_code_id'];
-							$StockItemLogData['warehouse_id']=$movement['StockItem']['warehouse_id'];
-						}
-						$this->StockItemLog->create();
-						if (!$this->StockItemLog->save($StockItemLogData)) {
-							echo "problema guardando los estado de lote";
-							pr($this->validateErrors($this->StockItemLog));
-							throw new Exception();
-						}
-					}
-				}
+		  
+									   
+								   
+																		  
+									
+															
+			
+							 
+											 
+		 
+								 
+											 
+												   
+																						 
+																							
+																					 
+																		 
+																																																							
+																												   
+																				
+	   
+							  
+																		  
+									
+													   
+			
+						
+										
+		 
+								 
+											 
+																			   
+														
+																					   
+																				
+																		 
+																										
+																											  
+																				
+	   
+									
+														  
+													
+													  
+							 
+	   
+	  
+	 
 			}
 			if ($manageTransaction){
 				$datasource->commit();
