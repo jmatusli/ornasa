@@ -2086,6 +2086,8 @@ class AppController extends Controller {
 		$reclassificationcreationmovement=array();
 		$transfercreationmovement=array();
     $adjustmentCreationMovement=[];
+		$creationPmId = null;
+		$creationSmId = null;
 		$movements=array();
 		$exitedrawmovements=array();
 		$stockMovementUsed='0';
@@ -2186,7 +2188,17 @@ class AppController extends Controller {
 						'StockItem',
 					),
 				));
-        // when raw or consumible are produced during injection production
+        if (empty($creationmovement)){
+          $creationmovement=$this->ProductionMovement->find('first',[
+            'conditions'=>[
+              'ProductionMovement.stockitem_id'=>$id,
+              'bool_input'=>false,
+            ],
+            'contain'=>[
+              'StockItem',
+            ],
+          ]);
+        }
         if (empty($creationmovement)){
           $creationmovement=$this->ProductionMovement->find('first',[
             'conditions'=>[
@@ -2198,31 +2210,49 @@ class AppController extends Controller {
             ],
           ]);
         }
-				
-				$movements=$this->ProductionMovement->find('all',array(
-					'conditions'=>array(
-						'ProductionMovement.stockitem_id'=>$id,
-						'bool_input'=>true,
-					),
-					'contain'=>array(
-						'StockItem',
-					),
-					'order'=>'movement_date, ProductionMovement.id',
-				));
-				$productionMovementUsed=true;
-				$exitedrawmovements=$this->StockMovement->find('all',array(
-					'conditions'=>array(
-						'StockMovement.stockitem_id'=>$id,
-						'bool_input'=>'0',
-					),
-					'contain'=>array(
-						'StockItem',
-					),
-					'order'=>'movement_date, StockMovement.id',
-				));
-				if (count($exitedrawmovements)>0){
-					$productionMovementAndRawExitUsed=true;
-				}
+
+        if (!empty($creationmovement)){
+          if (array_key_exists('ProductionMovement', $creationmovement)) {
+            $creationPmId = $creationmovement['ProductionMovement']['id'];
+          } else {
+            $creationSmId = $creationmovement['StockMovement']['id'];
+          }
+        }
+
+        $allPms = $this->ProductionMovement->find('all', [
+          'conditions' => [
+            'ProductionMovement.stockitem_id' => $id,
+            'ProductionMovement.id !=' => $creationPmId !== null ? $creationPmId : 0,
+          ],
+          'contain' => ['StockItem'],
+        ]);
+        $allSms = $this->StockMovement->find('all', [
+          'conditions' => [
+            'StockMovement.stockitem_id' => $id,
+            'StockMovement.id !=' => $creationSmId !== null ? $creationSmId : 0,
+          ],
+          'contain' => ['StockItem'],
+        ]);
+        $movements = [];
+        foreach ($allPms as $pm) {
+          $pm['_sign'] = $pm['ProductionMovement']['bool_input'] == 0 ? 1 : -1;
+          $pm['_source'] = 'PM';
+          $movements[] = $pm;
+        }
+        foreach ($allSms as $sm) {
+          $sm['_sign'] = $sm['StockMovement']['bool_input'] == 1 ? 1 : -1;
+          $sm['_source'] = 'SM';
+          $movements[] = $sm;
+        }
+        usort($movements, function ($a, $b) {
+          $dateA = $a['_source'] == 'PM' ? $a['ProductionMovement']['movement_date'] : $a['StockMovement']['movement_date'];
+          $dateB = $b['_source'] == 'PM' ? $b['ProductionMovement']['movement_date'] : $b['StockMovement']['movement_date'];
+          $idA = $a['_source'] == 'PM' ? $a['ProductionMovement']['id'] : $a['StockMovement']['id'];
+          $idB = $b['_source'] == 'PM' ? $b['ProductionMovement']['id'] : $b['StockMovement']['id'];
+          if ($dateA == $dateB) return $idA - $idB;
+          return ($dateA < $dateB) ? -1 : 1;
+        });
+        $mergedMovementsForRawConsumible = true;
 				break;  
 		}
 		
@@ -2439,8 +2469,48 @@ class AppController extends Controller {
 													 
 	 
 	
-			
-			if ($productionMovementAndRawExitUsed){
+			if (!empty($mergedMovementsForRawConsumible)) {
+				foreach ($movements as $movement) {
+					if ($movement['_source'] == 'PM') {
+						$remainingQuantityStockItem += $movement['ProductionMovement']['product_quantity'] * $movement['_sign'];
+						$StockItemLogData = [
+							'stockitem_id' => $id,
+							'stock_movement_id' => null,
+							'production_movement_id' => $movement['ProductionMovement']['id'],
+							'stockitem_date' => $movement['ProductionMovement']['movement_date'],
+							'product_id' => $movement['ProductionMovement']['product_id'],
+							'product_quantity' => $remainingQuantityStockItem,
+							'product_unit_price' => array_key_exists('StockMovement', $creationmovement)
+								? $creationmovement['StockMovement']['product_unit_price']
+								: $creationmovement['ProductionMovement']['product_unit_price'],
+							'production_result_code_id' => $movement['ProductionMovement']['production_result_code_id'],
+							'warehouse_id' => $movement['StockItem']['warehouse_id'],
+						];
+					} else {
+						$remainingQuantityStockItem += $movement['StockMovement']['product_quantity'] * $movement['_sign'];
+						$StockItemLogData = [
+							'stockitem_id' => $id,
+							'stock_movement_id' => $movement['StockMovement']['id'],
+							'production_movement_id' => null,
+							'stockitem_date' => $movement['StockMovement']['movement_date'],
+							'product_id' => $movement['StockMovement']['product_id'],
+							'product_quantity' => $remainingQuantityStockItem,
+							'product_unit_price' => array_key_exists('StockMovement', $creationmovement)
+								? $creationmovement['StockMovement']['product_unit_price']
+								: $creationmovement['ProductionMovement']['product_unit_price'],
+							'production_result_code_id' => $movement['StockMovement']['production_result_code_id'],
+							'warehouse_id' => $movement['StockItem']['warehouse_id'],
+						];
+					}
+					$this->StockItemLog->create();
+					if (!$this->StockItemLog->save($StockItemLogData)) {
+						echo "problema guardando los estado de lote";
+						pr($this->validateErrors($this->StockItemLog));
+						throw new Exception();
+					}
+				}
+			}
+			elseif ($productionMovementAndRawExitUsed){
 				$amountrawregistered=0;
 				foreach ($movements as $movement){
 					for ($r=$amountrawregistered;$r<count($exitedrawmovements);$r++){
