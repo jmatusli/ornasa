@@ -1189,7 +1189,7 @@ class SalesOrdersController extends AppController {
 		
 		$actionTypes=$this->ActionType->find('list',['order'=>'ActionType.list_order ASC']);
 		$this->set(compact('actionTypes'));
-    $this->Product->isQuotation=false;
+    $this->Product->boolIncludeProductsWithoutStock=true;
     $availableProductsForSale=$this->Product->getAvailableProductsForSale($salesOrderDate,$warehouseId,false);
  
     $products=$availableProductsForSale['products'];
@@ -1735,6 +1735,7 @@ class SalesOrdersController extends AppController {
         $rawMaterialsForEdit[]=$requestProduct['SalesOrderProduct']['raw_material_id'];
       }
     }
+    $this->Product->boolIncludeProductsWithoutStock=true;
     $availableProductsForSale=$this->Product->getAvailableProductsForSale($salesOrderDate,$warehouseId,false,$finishedProductsForEdit,$rawMaterialsForEdit);
     $products=$availableProductsForSale['products'];
     if ($warehouseId != WAREHOUSE_INJECTION){
