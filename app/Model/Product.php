@@ -349,12 +349,6 @@ class Product extends AppModel {
   function getAvailableProductsForSale ($salesDate,$warehouseId,$boolIncludeServices=false,$finishedProductsForEdit=[],$rawMaterialsForEdit=[]){
     $salesDatePlusOne=date( "Y-m-d", strtotime($salesDate."+1 days"));
     //pr($salesDatePlusOne);
-    $stockItemConditions=[
-      'StockItem.bool_active'=>true,
-      'StockItem.stockitem_creation_date <'=>$salesDatePlusOne,
-      'StockItem.warehouse_id'=>$warehouseId,
-    ];
-    //pr($stockItemConditions);
     $excludedProductTypeIds=$this->ProductType->find('list',[
       'fields'=>'ProductType.id',
       'conditions'=>['ProductType.product_category_id'=>[CATEGORY_RAW,CATEGORY_CONSUMIBLE]],
@@ -386,10 +380,6 @@ class Product extends AppModel {
       'conditions'=>$productConditions,
 			'contain'=>[
 				'ProductType',
-				'StockItem'=>[
-					'fields'=> ['remaining_quantity','raw_material_id','production_result_code_id'],
-          'conditions'=>$stockItemConditions,
-				],
 			],
 			'order'=>'product_type_id DESC, name ASC',
 		]);
@@ -397,45 +387,142 @@ class Product extends AppModel {
 		$products = [];
 		$rawMaterialIds=[];
     $rawMaterialsAvailablePerFinishedProduct=[];
-	$boolIncludeProductsWithoutStock=(isset($this->boolIncludeProductsWithoutStock)?$this->boolIncludeProductsWithoutStock:false);
+		$boolIncludeProductsWithoutStock=(isset($this->boolIncludeProductsWithoutStock)?$this->boolIncludeProductsWithoutStock:false);
 
+		// Compute the balance for every visible product replicating the current
+		// inventory process (sp_inventary/sp_saldo): for each stock item take the
+		// last stock item log by date and sum its quantity grouped by product,
+		// raw material and production result code (A/B/C).
+		$productIds=[];
 		foreach ($productsAll as $product){
-			// only show products that are in inventory AT CURRENT DATE
-			if ($product['StockItem'] != null){
-				foreach ($product['StockItem'] as $stockItem){
-          //pr($stockItem);
-					if ((isset($stockItem['remaining_quantity']) && $boolIncludeProductsWithoutStock==true)||($stockItem['remaining_quantity']>0 && $boolIncludeProductsWithoutStock==false  ) || in_array($product['Product']['id'],$finishedProductsForEdit)){
-            $productId=$product['Product']['id'];
-						$products[$productId]=substr($product['Product']['name'],0,28).(strlen($product['Product']['name'])>28?"...":"");
-            //$products[$productId]=$product['Product']['name'];
-            if (!empty($stockItem['raw_material_id'])){
-              $rawMaterialId=$stockItem['raw_material_id'];
-              $productionResultCodeId=$stockItem['production_result_code_id'];
-              // first build list of general raw material ids
-              if (!in_array($rawMaterialId,$rawMaterialIds)){
-                $rawMaterialIds[]=$rawMaterialId;
-              }
-              // verify and if necessary add the product id to inventory table
-              if (!array_key_exists($productId,$rawMaterialsAvailablePerFinishedProduct)){
-                $rawMaterialsAvailablePerFinishedProduct[$productId]=[];
-              }
-              // initialize rawmaterial if needed
-              if (!array_key_exists($rawMaterialId,$rawMaterialsAvailablePerFinishedProduct[$productId])){
-                $rawMaterialsAvailablePerFinishedProduct[$productId][$rawMaterialId]=[
-                  '1'=>0,
-                  '2'=>0,
-                  '3'=>0
-                ];
-              }
-              // add relevant figure to raw material production result codes
-              $rawMaterialsAvailablePerFinishedProduct[$productId][$rawMaterialId][$productionResultCodeId]+=$stockItem['remaining_quantity'];
-            }  
-          }            
+			$productIds[]=$product['Product']['id'];
+		}
+		$saldoByProduct=[];
+		if (!empty($productIds)){
+			$productIdsList=implode(',',$productIds);
+			$saldoRows=$this->query("
+				SELECT `StockItemLog`.`product_id` AS `product_id`,
+				       `StockItem`.`raw_material_id` AS `raw_material_id`,
+				       SUM(`StockItemLog`.`product_quantity`) AS `total`,
+				       SUM(case when `StockItem`.`production_result_code_id`=1 then `StockItemLog`.`product_quantity` else 0 end) AS `Remaining_A`,
+				       SUM(case when `StockItem`.`production_result_code_id`=2 then `StockItemLog`.`product_quantity` else 0 end) AS `Remaining_B`,
+				       SUM(case when `StockItem`.`production_result_code_id`=3 then `StockItemLog`.`product_quantity` else 0 end) AS `Remaining_C`
+				FROM `orna1114_ornasa`.`stock_item_logs` AS `StockItemLog`
+				JOIN `orna1114_ornasa`.`stock_items` AS `StockItem` ON `StockItem`.`id`=`StockItemLog`.`stockitem_id`
+				JOIN ( SELECT si.id, sil.id AS idx
+				       FROM `orna1114_ornasa`.`stock_items` si
+				       INNER JOIN `orna1114_ornasa`.`stock_item_logs` sil ON sil.stockitem_id = si.id
+				       LEFT JOIN `orna1114_ornasa`.`stock_item_logs` sil2
+				         ON sil2.stockitem_id = sil.stockitem_id
+				        AND sil2.stockitem_date < DATE_ADD('".$salesDate."', INTERVAL 1 DAY)
+				        AND (sil2.stockitem_date > sil.stockitem_date
+				             OR (sil2.stockitem_date = sil.stockitem_date AND sil2.id > sil.id))
+				       WHERE sil.stockitem_date < DATE_ADD('".$salesDate."', INTERVAL 1 DAY)
+				         AND si.warehouse_id = ".(int)$warehouseId."
+				         AND sil2.id IS NULL
+				     ) sm ON sm.idx=`StockItemLog`.`id`
+				WHERE `StockItemLog`.`product_id` IN (".$productIdsList.")
+				  AND `StockItem`.`warehouse_id` = ".(int)$warehouseId."
+				  AND `StockItemLog`.`product_quantity` <> 0
+				GROUP BY `StockItemLog`.`product_id`, `StockItem`.`raw_material_id`
+			");
+			foreach ($saldoRows as $saldoRow){
+				$rowData=$saldoRow[0];
+				$productId=$saldoRow['StockItemLog']['product_id'];
+				$rawMaterialId=$saldoRow['StockItem']['raw_material_id'];
+				if (!array_key_exists($productId,$saldoByProduct)){
+					$saldoByProduct[$productId]=[
+						'total'=>0,
+						'rawMaterials'=>[],
+					];
+				}
+				$saldoByProduct[$productId]['total']+=(float)$rowData['total'];
+				if (!empty($rawMaterialId)){
+					if (!array_key_exists($rawMaterialId,$saldoByProduct[$productId]['rawMaterials'])){
+						$saldoByProduct[$productId]['rawMaterials'][$rawMaterialId]=[
+							'1'=>0,
+							'2'=>0,
+							'3'=>0,
+						];
+					}
+					$saldoByProduct[$productId]['rawMaterials'][$rawMaterialId]['1']+=(float)$rowData['Remaining_A'];
+					$saldoByProduct[$productId]['rawMaterials'][$rawMaterialId]['2']+=(float)$rowData['Remaining_B'];
+					$saldoByProduct[$productId]['rawMaterials'][$rawMaterialId]['3']+=(float)$rowData['Remaining_C'];
 				}
 			}
-      elseif ($product['ProductType']['id'] == PRODUCT_TYPE_SERVICE && $boolIncludeServices){
-        $products[$product['Product']['id']]=substr($product['Product']['name'],0,18).(strlen($product['Product']['name'])>18?"...":"");
-      }
+		}
+		//pr($saldoByProduct);
+
+		// When editing an order the finished products (even the ones that are
+		// currently out of stock) and their raw materials must keep appearing.
+		// Make sure the products that have stock items (regardless of balance)
+		// are present in the balance map with their raw materials.
+		$stockItemConditions=[
+			'StockItem.warehouse_id'=>$warehouseId,
+		];
+		if (empty($finishedProductsForEdit)){
+			$stockItemConditions['StockItem.stockitem_creation_date <']=$salesDatePlusOne;
+		}
+		$stockItemsForSale=$this->StockItem->find('all',[
+			'fields'=>['StockItem.product_id','StockItem.raw_material_id'],
+			'conditions'=>$stockItemConditions,
+			'recursive'=>-1,
+		]);
+		$productsWithStockItems=[];
+		foreach ($stockItemsForSale as $stockItemForSale){
+			$productId=$stockItemForSale['StockItem']['product_id'];
+			if (!in_array($productId,$productsWithStockItems)){
+				$productsWithStockItems[]=$productId;
+			}
+			$rawMaterialId=$stockItemForSale['StockItem']['raw_material_id'];
+			if (empty($rawMaterialId)){
+				continue;
+			}
+			if (!array_key_exists($productId,$saldoByProduct)){
+				$saldoByProduct[$productId]=[
+					'total'=>0,
+					'rawMaterials'=>[],
+				];
+			}
+			if (!array_key_exists($rawMaterialId,$saldoByProduct[$productId]['rawMaterials'])){
+				$saldoByProduct[$productId]['rawMaterials'][$rawMaterialId]=[
+					'1'=>0,
+					'2'=>0,
+					'3'=>0,
+				];
+			}
+		}
+
+		foreach ($productsAll as $product){
+			$productId=$product['Product']['id'];
+			$boolShowProduct=false;
+			if (in_array($productId,$finishedProductsForEdit)){
+				$boolShowProduct=true;
+			}
+			elseif ($boolIncludeProductsWithoutStock && in_array($productId,$productsWithStockItems)){
+				$boolShowProduct=true;
+			}
+			elseif (!$boolIncludeProductsWithoutStock && array_key_exists($productId,$saldoByProduct) && $saldoByProduct[$productId]['total'] != 0){
+				$boolShowProduct=true;
+			}
+			if ($boolShowProduct){
+				$products[$productId]=substr($product['Product']['name'],0,28).(strlen($product['Product']['name'])>28?"...":"");
+				if (!empty($saldoByProduct[$productId]['rawMaterials'])){
+					if (!array_key_exists($productId,$rawMaterialsAvailablePerFinishedProduct)){
+						$rawMaterialsAvailablePerFinishedProduct[$productId]=[];
+					}
+					foreach ($saldoByProduct[$productId]['rawMaterials'] as $rawMaterialId=>$saldoPerRawMaterial){
+						// first build list of general raw material ids
+						if (!in_array($rawMaterialId,$rawMaterialIds)){
+							$rawMaterialIds[]=$rawMaterialId;
+						}
+						$rawMaterialsAvailablePerFinishedProduct[$productId][$rawMaterialId]=$saldoPerRawMaterial;
+					}
+				}
+			}
+			elseif ($product['ProductType']['id'] == PRODUCT_TYPE_SERVICE && $boolIncludeServices){
+				$products[$product['Product']['id']]=substr($product['Product']['name'],0,18).(strlen($product['Product']['name'])>18?"...":"");
+			}
 		}
 		//pr($products);
     $preformaConditions=[];
