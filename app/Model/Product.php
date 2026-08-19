@@ -417,9 +417,15 @@ class Product extends AppModel {
 				        AND sil2.stockitem_date < DATE_ADD('".$salesDate."', INTERVAL 1 DAY)
 				        AND (sil2.stockitem_date > sil.stockitem_date
 				             OR (sil2.stockitem_date = sil.stockitem_date AND sil2.id > sil.id))
+				       INNER JOIN `orna1114_ornasa`.`products` p ON p.id = si.product_id
 				       WHERE sil.stockitem_date < DATE_ADD('".$salesDate."', INTERVAL 1 DAY)
 				         AND si.warehouse_id = ".(int)$warehouseId."
 				         AND sil2.id IS NULL
+				         AND (
+				           (p.product_type_id IN (9, 11, 18) AND si.stockitem_depletion_date > DATE_ADD('".$salesDate."', INTERVAL 1 DAY))
+				           OR
+				           (p.product_type_id NOT IN (9, 11, 12, 17))
+				         )
 				     ) sm ON sm.idx=`StockItemLog`.`id`
 				WHERE `StockItemLog`.`product_id` IN (".$productIdsList.")
 				  AND `StockItem`.`warehouse_id` = ".(int)$warehouseId."
